@@ -40,6 +40,9 @@ extension ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let isExpanded = expandedSectionHeaders.contains(section)
         let header = Bundle.main.loadNibNamed("ListHeader", owner: self, options: nil)?.first as! ListHeader
+        if(isExpanded){
+            header.setDropShadow()
+        }
         let text = isExpanded ? "-" : "+"
         header.button.setTitle(text, for: UIControlState.normal)
         header.delegate = self

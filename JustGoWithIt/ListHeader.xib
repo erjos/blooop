@@ -22,43 +22,52 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90f-a8-gNA" userLabel="Bubble">
-                    <rect key="frame" x="20" y="0.0" width="382" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="442" height="50"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcK-rY-OBs">
+                            <rect key="frame" x="392" y="10" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="ZOA-Cz-Moe"/>
+                                <constraint firstAttribute="width" constant="30" id="neC-9I-5dE"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <state key="normal" title="+"/>
+                            <connections>
+                                <action selector="expandOrCollapse:" destination="iN0-l3-epB" eventType="touchUpInside" id="lT1-9r-A8D"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ann Arbor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVk-mL-Fsi">
-                            <rect key="frame" x="30" y="14" width="93.5" height="24"/>
+                            <rect key="frame" x="30" y="13" width="93.5" height="24"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dgy-hm-Ygv" userLabel="Divider">
+                            <rect key="frame" x="0.0" y="49" width="442" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="cSf-Yf-bwH"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="HcK-rY-OBs" secondAttribute="trailing" constant="20" id="16n-uB-gUW"/>
+                        <constraint firstItem="Dgy-hm-Ygv" firstAttribute="leading" secondItem="90f-a8-gNA" secondAttribute="leading" id="FUh-lO-NUp"/>
+                        <constraint firstItem="HcK-rY-OBs" firstAttribute="centerY" secondItem="90f-a8-gNA" secondAttribute="centerY" id="buB-HV-Zuv"/>
                         <constraint firstItem="KVk-mL-Fsi" firstAttribute="leading" secondItem="90f-a8-gNA" secondAttribute="leading" constant="30" id="ijf-eZ-80f"/>
+                        <constraint firstAttribute="bottom" secondItem="Dgy-hm-Ygv" secondAttribute="bottom" id="mse-cL-lue"/>
                         <constraint firstItem="KVk-mL-Fsi" firstAttribute="centerY" secondItem="90f-a8-gNA" secondAttribute="centerY" id="zBt-AS-tAm"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcK-rY-OBs">
-                    <rect key="frame" x="407" y="10" width="30" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="ZOA-Cz-Moe"/>
-                        <constraint firstAttribute="width" constant="30" id="neC-9I-5dE"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                    <state key="normal" title="+"/>
-                    <connections>
-                        <action selector="expandOrCollapse:" destination="iN0-l3-epB" eventType="touchUpInside" id="lT1-9r-A8D"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HcK-rY-OBs" secondAttribute="bottom" constant="10" id="PlE-0D-Wsc"/>
-                <constraint firstItem="90f-a8-gNA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="QeJ-L5-FBF"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HcK-rY-OBs" secondAttribute="trailing" constant="5" id="TbV-BW-5Lv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Dgy-hm-Ygv" secondAttribute="trailing" id="IPe-Jf-UEx"/>
+                <constraint firstItem="90f-a8-gNA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QeJ-L5-FBF"/>
                 <constraint firstAttribute="bottom" secondItem="90f-a8-gNA" secondAttribute="bottom" id="VoW-oY-fuK"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="90f-a8-gNA" secondAttribute="trailing" constant="40" id="arT-lC-mxL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="90f-a8-gNA" secondAttribute="trailing" id="arT-lC-mxL"/>
                 <constraint firstItem="90f-a8-gNA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="dEr-kX-x27"/>
-                <constraint firstItem="HcK-rY-OBs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="nvC-so-NJY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -73,10 +82,5 @@
             </connections>
             <point key="canvasLocation" x="34" y="-123"/>
         </view>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UKC-5U-cSF">
-            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <state key="normal" title="Button"/>
-        </button>
     </objects>
 </document>
