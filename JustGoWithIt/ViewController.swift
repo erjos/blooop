@@ -38,8 +38,10 @@ extension ViewController: ListHeaderDelegate{
 
 extension ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let isExpanded = expandedSectionHeaders.contains(section)
         let header = Bundle.main.loadNibNamed("ListHeader", owner: self, options: nil)?.first as! ListHeader
-        header.bubble.layer.cornerRadius = 25.0
+        let text = isExpanded ? "-" : "+"
+        header.button.setTitle(text, for: UIControlState.normal)
         header.delegate = self
         header.section = section
         return header
@@ -61,7 +63,6 @@ extension ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
-        cell.bubble.layer.cornerRadius = 16.0
         return cell
     }
     
