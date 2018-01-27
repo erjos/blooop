@@ -43,8 +43,7 @@ extension ViewController: UITableViewDelegate{
         if(isExpanded){
             header.setDropShadow()
         }
-        let text = isExpanded ? "-" : "+"
-        header.button.setTitle(text, for: UIControlState.normal)
+        header.arrow.image = isExpanded ? header.arrow.image : header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0)
         header.delegate = self
         header.section = section
         return header
