@@ -16,6 +16,7 @@
 		86A895B6201992AE00CE3926 /* ListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A895B5201992AE00CE3926 /* ListHeader.swift */; };
 		86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */; };
 		86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */; };
+		86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		86A895B5201992AE00CE3926 /* ListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeader.swift; sourceTree = "<group>"; };
 		86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				86A895B5201992AE00CE3926 /* ListHeader.swift */,
 				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
 				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
+				86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86A895A42019917D00CE3926 /* ViewController.swift in Sources */,
+				86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */,
 				86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */,
 				86A895B6201992AE00CE3926 /* ListHeader.swift in Sources */,
 				86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */,
