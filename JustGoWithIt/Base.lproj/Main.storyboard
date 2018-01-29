@@ -69,12 +69,14 @@
                         <barButtonItem key="rightBarButtonItem" title="•••" id="tOJ-1N-u5O">
                             <color key="tintColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="CCD-B3-gX2" kind="presentation" id="6Ot-Bv-rAh"/>
+                                <action selector="rightBarAction:" destination="BYZ-38-t0r" id="tgh-nH-oAw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="rightBarItem" destination="tOJ-1N-u5O" id="YkQ-Nq-PPG"/>
                         <outlet property="tableView" destination="fZj-xw-miw" id="OhB-nJ-pcx"/>
+                        <segue destination="CCD-B3-gX2" kind="presentation" identifier="presentMenu" id="NRS-tL-je8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -97,8 +99,19 @@
                                     <action selector="cancel:" destination="CCD-B3-gX2" eventType="touchUpInside" id="asg-Zf-1Bd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fmn-yJ-gSS">
+                                <rect key="frame" x="172" y="318.5" width="30" height="30"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="edit:" destination="CCD-B3-gX2" eventType="touchUpInside" id="aeC-Je-uhl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fmn-yJ-gSS" firstAttribute="centerX" secondItem="Hj1-xc-eOc" secondAttribute="centerX" id="CVW-im-QGl"/>
+                            <constraint firstItem="Fmn-yJ-gSS" firstAttribute="centerY" secondItem="Hj1-xc-eOc" secondAttribute="centerY" id="WtG-mn-cVj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ztg-HP-RIa"/>
                     </view>
                 </viewController>

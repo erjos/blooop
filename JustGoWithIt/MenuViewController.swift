@@ -2,12 +2,22 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    @IBAction func edit(_ sender: Any) {
+        if let presentingVC = presentingViewController as? UINavigationController {
+            if let vc = presentingVC.viewControllers.first as? ViewController {
+                vc.rightBarItem.title = "Done"
+            }
+            presentingVC.setEditing(true, animated: true)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
