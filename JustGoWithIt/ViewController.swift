@@ -4,7 +4,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     //TODO: if we want to have multiple sections expanded at once we could make this a list and check to see what is expanded and what is not
-    var expandedSectionHeaders = [Int]()
+    var collapsedSectionHeaders = [Int]()
     @IBOutlet weak var tableView: UITableView!
     @IBAction func rightBarAction(_ sender: Any) {
         if(isEditing){
@@ -30,17 +30,17 @@ class ViewController: UIViewController {
 
 extension ViewController: ListHeaderDelegate{
     func shouldExpandOrCollapse(section: Int) {
-        let isExpanded = expandedSectionHeaders.contains(section)
+        let isExpanded = collapsedSectionHeaders.contains(section)
         if(isExpanded){
             //Collapse the cell
-            expandedSectionHeaders = expandedSectionHeaders.filter({ expanded -> Bool in
+            collapsedSectionHeaders = collapsedSectionHeaders.filter({ expanded -> Bool in
                 //will remove the expanded section from the list
                 return expanded != section
             })
             tableView(self.tableView, numberOfRowsInSection: section)
         } else {
             //expand the section
-            expandedSectionHeaders.append(section)
+            collapsedSectionHeaders.append(section)
             tableView(self.tableView, numberOfRowsInSection: section)
         }
         let set = IndexSet.init(integer: section)
@@ -64,12 +64,12 @@ extension ViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let isExpanded = expandedSectionHeaders.contains(section)
+        let isCollapsed = collapsedSectionHeaders.contains(section)
         let header = Bundle.main.loadNibNamed("ListHeader", owner: self, options: nil)?.first as! ListHeader
-        if(isExpanded){
+        if(!isCollapsed){
             header.setDropShadow()
         }
-        header.arrow.image = isExpanded ? header.arrow.image : header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0)
+        header.arrow.image = isCollapsed ? header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0) : header.arrow.image
         header.delegate = self
         header.section = section
         return header
@@ -95,11 +95,11 @@ extension ViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let shouldExpand = self.expandedSectionHeaders.contains(section)
-        if (shouldExpand){
-            return 3
-        } else {
+        let shouldCollapse = self.collapsedSectionHeaders.contains(section)
+        if (shouldCollapse){
             return 0
+        } else {
+            return 3
         }
     }
 }
