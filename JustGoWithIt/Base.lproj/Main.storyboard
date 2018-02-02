@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwO-zC-JjW" userLabel="Add City view">
-                                <rect key="frame" x="0.0" y="417" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="367" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIM-v7-ltK">
                                         <rect key="frame" x="30" y="8.5" width="315" height="33"/>
@@ -128,7 +128,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytv-UD-UnE" userLabel="Edit view">
-                                <rect key="frame" x="0.0" y="467" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="417" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fmn-yJ-gSS">
                                         <rect key="frame" x="30" y="8.5" width="315" height="33"/>
@@ -160,7 +160,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z0U-sp-8rD" userLabel="Rename view">
-                                <rect key="frame" x="0.0" y="517" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="467" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4K-lo-A7Y">
                                         <rect key="frame" x="30" y="8.5" width="315" height="33"/>
@@ -189,7 +189,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JvY-pi-Wnt" userLabel="Share view">
-                                <rect key="frame" x="0.0" y="567" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="517" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLl-yK-sms">
                                         <rect key="frame" x="30" y="8.5" width="315" height="33"/>
@@ -215,6 +215,35 @@
                                     <constraint firstAttribute="bottom" secondItem="nWu-01-l7D" secondAttribute="bottom" id="cxm-cW-Xey"/>
                                     <constraint firstAttribute="trailing" secondItem="jLl-yK-sms" secondAttribute="trailing" constant="30" id="e20-8i-4rm"/>
                                     <constraint firstItem="jLl-yK-sms" firstAttribute="leading" secondItem="JvY-pi-Wnt" secondAttribute="leading" constant="30" id="mC0-T6-2ut"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obW-h2-an7" userLabel="Delete view">
+                                <rect key="frame" x="0.0" y="567" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xd-pS-vh8">
+                                        <rect key="frame" x="30" y="8.5" width="315" height="33"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Delete Trip">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6y-nt-aZv" userLabel="Divider">
+                                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="D2l-kN-Buq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="5xd-pS-vh8" firstAttribute="leading" secondItem="obW-h2-an7" secondAttribute="leading" constant="30" id="09k-D3-pMJ"/>
+                                    <constraint firstItem="5xd-pS-vh8" firstAttribute="centerY" secondItem="obW-h2-an7" secondAttribute="centerY" id="82b-r6-iLw"/>
+                                    <constraint firstItem="Q6y-nt-aZv" firstAttribute="leading" secondItem="obW-h2-an7" secondAttribute="leading" id="9Mc-G8-R5O"/>
+                                    <constraint firstAttribute="trailing" secondItem="5xd-pS-vh8" secondAttribute="trailing" constant="30" id="H1i-hA-a9D"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q6y-nt-aZv" secondAttribute="trailing" id="exW-yA-zlB"/>
+                                    <constraint firstAttribute="height" constant="50" id="jE5-Oj-QvM"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q6y-nt-aZv" secondAttribute="bottom" id="umx-iT-alL"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usp-ID-60h" userLabel="Cancel view">
@@ -259,14 +288,17 @@
                             <constraint firstItem="JvY-pi-Wnt" firstAttribute="leading" secondItem="ztg-HP-RIa" secondAttribute="leading" id="JKk-44-tjc"/>
                             <constraint firstItem="ztg-HP-RIa" firstAttribute="bottom" secondItem="usp-ID-60h" secondAttribute="bottom" id="QMg-S1-E6Z"/>
                             <constraint firstItem="JvY-pi-Wnt" firstAttribute="top" secondItem="z0U-sp-8rD" secondAttribute="bottom" id="Qwi-Xq-uDt"/>
+                            <constraint firstItem="obW-h2-an7" firstAttribute="top" secondItem="JvY-pi-Wnt" secondAttribute="bottom" id="RUe-3W-iJm"/>
                             <constraint firstItem="z0U-sp-8rD" firstAttribute="trailing" secondItem="ztg-HP-RIa" secondAttribute="trailing" id="RxG-EW-QS1"/>
                             <constraint firstItem="ytv-UD-UnE" firstAttribute="top" secondItem="cwO-zC-JjW" secondAttribute="bottom" id="U1F-fe-zcj"/>
+                            <constraint firstItem="obW-h2-an7" firstAttribute="leading" secondItem="ztg-HP-RIa" secondAttribute="leading" id="VHh-YM-mra"/>
                             <constraint firstItem="ytv-UD-UnE" firstAttribute="leading" secondItem="ztg-HP-RIa" secondAttribute="leading" id="am9-r8-vov"/>
                             <constraint firstItem="cwO-zC-JjW" firstAttribute="leading" secondItem="ztg-HP-RIa" secondAttribute="leading" id="bF5-pP-RD2"/>
                             <constraint firstItem="usp-ID-60h" firstAttribute="leading" secondItem="ztg-HP-RIa" secondAttribute="leading" id="fvq-oi-UrN"/>
-                            <constraint firstItem="usp-ID-60h" firstAttribute="top" secondItem="JvY-pi-Wnt" secondAttribute="bottom" id="qMe-xg-izD"/>
+                            <constraint firstItem="obW-h2-an7" firstAttribute="trailing" secondItem="ztg-HP-RIa" secondAttribute="trailing" id="nI4-4j-uFI"/>
                             <constraint firstItem="usp-ID-60h" firstAttribute="trailing" secondItem="ztg-HP-RIa" secondAttribute="trailing" id="tad-Ks-O7A"/>
                             <constraint firstAttribute="trailing" secondItem="JvY-pi-Wnt" secondAttribute="trailing" id="u72-2h-fjc"/>
+                            <constraint firstItem="usp-ID-60h" firstAttribute="top" secondItem="obW-h2-an7" secondAttribute="bottom" id="xet-Sf-k41"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ztg-HP-RIa"/>
                     </view>
