@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  JustGoWithIt
-//
-//  Created by Joseph, Ethan on 1/24/18.
-//  Copyright © 2018 Joseph, Ethan. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

@@ -17,6 +17,8 @@
 		86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */; };
 		86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */; };
 		86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */; };
+		86CA2C0D20226CB400A0D770 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */; };
+		86CA2C0E20226CB400A0D770 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
 				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
 				86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */,
+				86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */,
+				86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
@@ -140,6 +146,7 @@
 			files = (
 				86A895B42019922E00CE3926 /* ListHeader.xib in Resources */,
 				86A895AC2019917D00CE3926 /* LaunchScreen.storyboard in Resources */,
+				86CA2C0E20226CB400A0D770 /* CalendarViewController.xib in Resources */,
 				86A895A92019917D00CE3926 /* Assets.xcassets in Resources */,
 				86A895A72019917D00CE3926 /* Main.storyboard in Resources */,
 				86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */,
@@ -153,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86CA2C0D20226CB400A0D770 /* CalendarViewController.swift in Sources */,
 				86A895A42019917D00CE3926 /* ViewController.swift in Sources */,
 				86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */,
 				86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */,

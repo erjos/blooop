@@ -7,13 +7,25 @@ class ListHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var bubble: UIView!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var arrow: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     @objc func expandCollapse(){
         delegate?.shouldExpandOrCollapse(section: self.section!)
     }
     
+    func addDateShadow(){
+        let shadowPath = UIBezierPath(rect: dateLabel.bounds)
+        dateLabel.layer.masksToBounds = false
+        dateLabel.layer.shadowColor = UIColor.black.cgColor
+        dateLabel.layer.shadowOffset = CGSize(width: 0, height: 1)
+        dateLabel.layer.shadowOpacity = 0.5
+        dateLabel.layer.shadowRadius = 1.5
+        dateLabel.layer.shadowPath = shadowPath.cgPath
+    }
+    
     override func awakeFromNib() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.expandCollapse))
+        addDateShadow()
         self.addGestureRecognizer(tapGesture)
     }
     

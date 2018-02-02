@@ -6,6 +6,8 @@ class ViewController: UIViewController {
     //TODO: if we want to have multiple sections expanded at once we could make this a list and check to see what is expanded and what is not
     var collapsedSectionHeaders = [Int]()
     @IBOutlet weak var tableView: UITableView!
+    
+    //TODO: if the user leaves the main page while still editing, we should turn off edit mode
     @IBAction func rightBarAction(_ sender: Any) {
         if(isEditing){
             setEditing(false, animated: true)
