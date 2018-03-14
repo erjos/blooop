@@ -25,7 +25,7 @@ class ListHeader: UITableViewHeaderFooterView {
     
     override func awakeFromNib() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.expandCollapse))
-        addDateShadow()
+        //addDateShadow()
         self.addGestureRecognizer(tapGesture)
     }
     
