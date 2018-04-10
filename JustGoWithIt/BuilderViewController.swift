@@ -13,21 +13,38 @@ class BuilderViewController: UIViewController {
     
     var trip = Trip()
     
+    let datePicker = UIDatePicker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //hide date and name views at start
         nameView.isHidden = true
         dateView.isHidden = true
-        
         //set field delegates
         locationField.delegate = self
         setupNameField()
+        setupDatePicker(dateField, datePicker, nil)
     }
     
     private func setupNameField(){
         nameField.keyboardType = .alphabet
         nameField.inputAccessoryView = setupPickerToolbar()
         nameField.delegate = self
+    }
+    
+    private func setupDatePicker(_ field: UITextField, _ datePicker: UIDatePicker, _ yearsToMax: Int?){
+        datePicker.datePickerMode = .date
+        //check if there's a max date
+        if let max = yearsToMax {
+            var dateComponents = DateComponents()
+            dateComponents.year = max
+            let endDate = Calendar.current.date(byAdding: dateComponents, to: Date())
+            datePicker.maximumDate = endDate
+        }
+        datePicker.minimumDate = Date()
+        field.delegate = self
+        field.inputView = datePicker
+        field.inputAccessoryView = setupPickerToolbar()
     }
     
     private func setupPickerToolbar()-> UIToolbar{
