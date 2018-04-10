@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mIh-FH-oA4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fae-cD-tnu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -328,20 +328,51 @@
             </objects>
             <point key="canvasLocation" x="-335" y="133"/>
         </scene>
-        <!--View Controller-->
+        <!--Builder View Controller-->
         <scene sceneID="hx2-7N-UyS">
             <objects>
-                <viewController id="fae-cD-tnu" sceneMemberID="viewController">
+                <viewController id="fae-cD-tnu" customClass="BuilderViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fxO-61-NTL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose a location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LFa-LO-zgz">
+                                <rect key="frame" x="20" y="163.5" width="345" height="21"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you going?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdN-zR-QuI">
+                                <rect key="frame" x="20" y="120" width="227" height="28.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick your starting location. You can always change this later" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Sr-ff-Efh">
+                                <rect key="frame" x="20" y="199.5" width="335" height="40.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WdN-zR-QuI" secondAttribute="trailing" constant="20" symbolic="YES" id="6bx-1Z-gbM"/>
+                            <constraint firstItem="3Sr-ff-Efh" firstAttribute="leading" secondItem="cdQ-Eo-jsi" secondAttribute="leading" constant="20" id="G2R-8z-Jh0"/>
+                            <constraint firstItem="LFa-LO-zgz" firstAttribute="top" secondItem="WdN-zR-QuI" secondAttribute="bottom" constant="15" id="Oob-ue-6dc"/>
+                            <constraint firstItem="cdQ-Eo-jsi" firstAttribute="trailing" secondItem="LFa-LO-zgz" secondAttribute="trailing" constant="10" id="X70-3H-eIH"/>
+                            <constraint firstItem="WdN-zR-QuI" firstAttribute="leading" secondItem="cdQ-Eo-jsi" secondAttribute="leading" constant="20" id="ZGh-pZ-pR4"/>
+                            <constraint firstItem="3Sr-ff-Efh" firstAttribute="top" secondItem="LFa-LO-zgz" secondAttribute="bottom" constant="15" id="ctq-AN-2eC"/>
+                            <constraint firstItem="WdN-zR-QuI" firstAttribute="top" secondItem="cdQ-Eo-jsi" secondAttribute="top" constant="100" id="pWa-ZX-Jbn"/>
+                            <constraint firstItem="LFa-LO-zgz" firstAttribute="leading" secondItem="cdQ-Eo-jsi" secondAttribute="leading" constant="20" id="qVq-x1-O2G"/>
+                            <constraint firstItem="cdQ-Eo-jsi" firstAttribute="trailing" secondItem="3Sr-ff-Efh" secondAttribute="trailing" constant="20" id="zzY-Z0-a6g"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cdQ-Eo-jsi"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rnk-fR-M32" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-328" y="865"/>
+            <point key="canvasLocation" x="-328.80000000000001" y="864.91754122938539"/>
         </scene>
     </scenes>
 </document>
