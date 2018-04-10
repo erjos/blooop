@@ -67,6 +67,11 @@ class BuilderViewController: UIViewController {
             nameField.resignFirstResponder()
             dateView.isHidden = false
         }
+        if(dateField.isFirstResponder){
+            trip.startDate = datePicker.date
+            dateField.text = datePicker.date.formatDateAsString()
+            dateField.resignFirstResponder()
+        }
     }
     
     @objc private func selectCancel(){
@@ -77,6 +82,22 @@ class BuilderViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+extension Date {
+    var day: Int { return Calendar.current.component(.day, from:self) }
+    var month: Int { return Calendar.current.component(.month, from:self) }
+    var year: Int { return Calendar.current.component(.year, from:self) }
+    
+    func formatDateAsString() -> String {
+        let dateFormater = DateFormatter()
+        if (self.month < 10) {
+            dateFormater.dateFormat = "M/dd/yy"
+        } else {
+            dateFormater.dateFormat = "MM/dd/yy"
+        }
+        return dateFormater.string(from: self)
     }
 }
 
