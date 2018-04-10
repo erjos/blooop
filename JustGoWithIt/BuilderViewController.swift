@@ -18,6 +18,8 @@ class BuilderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "New Trip"
+        
         //hide views on load
         nameView.isHidden = true
         dateView.isHidden = true
