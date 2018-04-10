@@ -10,6 +10,8 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var dateField: UITextField!
     
+    var trip = Trip()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,7 +21,31 @@ class BuilderViewController: UIViewController {
         
         //set field delegates
         locationField.delegate = self
+        setupNameField()
     }
+    
+    private func setupNameField(){
+        nameField.keyboardType = .alphabet
+        nameField.inputAccessoryView = setupPickerToolbar()
+        nameField.delegate = self
+    }
+    
+    private func setupPickerToolbar()-> UIToolbar{
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.black
+        toolBar.sizeToFit()
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(self.selectCancel))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done = UIBarButtonItem(title: "Submit", style: .plain, target: self, action: #selector(self.selectDone))
+        toolBar.setItems([cancel,spaceButton,done], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        return toolBar
+    }
+    
+    @objc private func selectDone(){}
+    @objc private func selectCancel(){}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,10 +66,18 @@ extension BuilderViewController: UITextFieldDelegate {
 
 extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        //Do work with place object
-        print(place.name)
-        print(place.formattedAddress)
-        print(place.attributions)
+        //create city
+        let city = City.init(place: place)
+        
+        //add to city list on trip object
+        //TODO: add this method to the trip class and ensure no duplicates
+        trip.cities.append(city)
+        
+        //set the text field for location
+        locationField.text = place.name
+        
+        //show the next field
+        nameView.isHidden = false
         dismiss(animated: true, completion: nil)
     }
     
