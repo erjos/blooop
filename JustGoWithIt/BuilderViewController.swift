@@ -44,8 +44,17 @@ class BuilderViewController: UIViewController {
         return toolBar
     }
     
-    @objc private func selectDone(){}
-    @objc private func selectCancel(){}
+    @objc private func selectDone(){
+        if(nameField.isFirstResponder){
+            trip.name = nameField.text
+            nameField.resignFirstResponder()
+        }
+    }
+    
+    @objc private func selectCancel(){
+        nameField.resignFirstResponder()
+        dateField.resignFirstResponder()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
