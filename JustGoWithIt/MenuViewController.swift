@@ -5,7 +5,7 @@ class MenuViewController: UIViewController {
 
     @IBAction func edit(_ sender: Any) {
         if let presentingVC = presentingViewController as? UINavigationController {
-            if let vc = presentingVC.viewControllers.first as? ViewController {
+            if let vc = presentingVC.viewControllers.first as? TripViewController {
                 vc.rightBarItem.title = "Done"
             }
             presentingVC.setEditing(true, animated: true)
@@ -25,12 +25,6 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 

@@ -1,7 +1,7 @@
 import UIKit
 import GooglePlaces
 
-class ViewController: UIViewController {
+class TripViewController: UIViewController {
 
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     //TODO: if we want to have multiple sections expanded at once we could make this a list and check to see what is expanded and what is not
@@ -36,9 +36,30 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: GMSAutocompleteViewControllerDelegate {
+class Trip {
+    var name: String
+    var startDate: Date?
+    var endDate: Date?
+    var cities = [City]()
+    
+    init(name: String){
+        self.name = name
+    }
+}
+
+class City {
+    var googlePlace: GMSPlace?
+    var locations : [Location]?
+}
+
+class Location {
+    var googlePlace: GMSPlace?
+}
+
+extension TripViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        //Do work with place object
+        //Sub location selected by user (contained by main city)
+        let selectedLocation = place
         print(place.name)
         print(place.formattedAddress)
         print(place.attributions)
@@ -63,7 +84,7 @@ extension ViewController: GMSAutocompleteViewControllerDelegate {
     }
 }
 
-extension ViewController: ListHeaderDelegate{
+extension TripViewController: ListHeaderDelegate{
     func shouldExpandOrCollapse(section: Int) {
         let isExpanded = collapsedSectionHeaders.contains(section)
         if(isExpanded){
@@ -89,7 +110,7 @@ extension ViewController: ListHeaderDelegate{
     }
 }
 
-extension ViewController: UITableViewDelegate{
+extension TripViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.delete
@@ -120,7 +141,7 @@ extension ViewController: UITableViewDelegate{
     }
 }
 
-extension ViewController: UITableViewDataSource{
+extension TripViewController: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
