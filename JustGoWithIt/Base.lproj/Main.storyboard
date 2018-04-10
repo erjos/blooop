@@ -372,7 +372,7 @@
                                     <constraint firstItem="SGc-AA-02a" firstAttribute="top" secondItem="3d2-aD-Iqt" secondAttribute="bottom" constant="20" id="vhw-q6-5uV"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnv-ll-kTI" userLabel="Location View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnv-ll-kTI" userLabel="Name View">
                                 <rect key="frame" x="0.0" y="216" width="375" height="176"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name your trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivW-zD-7BM">
@@ -408,7 +408,7 @@
                                     <constraint firstItem="ivW-zD-7BM" firstAttribute="leading" secondItem="rnv-ll-kTI" secondAttribute="leading" constant="20" id="zdA-Id-LFd"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87e-h6-cAV" userLabel="Location View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87e-h6-cAV" userLabel="Date View">
                                 <rect key="frame" x="0.0" y="392" width="375" height="176"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbB-3f-14M">
@@ -459,6 +459,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cdQ-Eo-jsi"/>
                     </view>
+                    <connections>
+                        <outlet property="dateField" destination="YPF-Ha-5YC" id="pOF-RK-gHq"/>
+                        <outlet property="locationField" destination="SGc-AA-02a" id="L0t-uf-Wzz"/>
+                        <outlet property="nameField" destination="avW-sI-acH" id="rB8-x7-TZa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rnk-fR-M32" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
