@@ -144,7 +144,10 @@ extension TripViewController: UITableViewDelegate{
 
 extension TripViewController: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        guard let cityCount = trip?.cities.count else{
+            return 0
+        }
+        return cityCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,10 +157,13 @@ extension TripViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let shouldCollapse = self.collapsedSectionHeaders.contains(section)
+        guard let placeCount = trip?.cities[section].locations?.count else {
+            return 0
+        }
         if (shouldCollapse){
             return 0
         } else {
-            return 3
+            return placeCount
         }
     }
 }
