@@ -4,6 +4,7 @@ import GooglePlaces
 class BuilderViewController: UIViewController {
     //One idea would be to show and hide the fields as needed to reduce the noise on the page and only allow users to enter information in a predetermined order
     
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var locationField: UITextField!
@@ -14,7 +15,6 @@ class BuilderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //hide date and name views at start
         nameView.isHidden = true
         dateView.isHidden = true
@@ -48,6 +48,7 @@ class BuilderViewController: UIViewController {
         if(nameField.isFirstResponder){
             trip.name = nameField.text
             nameField.resignFirstResponder()
+            dateView.isHidden = false
         }
     }
     

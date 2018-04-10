@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
         <array key="HelveticaNeueLights.ttc">
             <string>HelveticaNeue-Light</string>
         </array>
@@ -340,35 +343,26 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="176"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you going?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3d2-aD-Iqt">
-                                        <rect key="frame" x="20" y="0.0" width="335" height="28.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                        <rect key="frame" x="20" y="0.0" width="335" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose a location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SGc-AA-02a">
-                                        <rect key="frame" x="20" y="109" width="335" height="21"/>
+                                        <rect key="frame" x="20" y="51.5" width="335" height="29"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick your starting location. You can always change this later" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhG-gU-0vs">
-                                        <rect key="frame" x="20" y="48.5" width="335" height="40.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="SGc-AA-02a" firstAttribute="leading" secondItem="4mr-rN-iri" secondAttribute="leading" constant="20" id="C0c-Wa-n7Q"/>
-                                    <constraint firstItem="DhG-gU-0vs" firstAttribute="top" secondItem="3d2-aD-Iqt" secondAttribute="bottom" constant="20" id="FPQ-R6-I4a"/>
                                     <constraint firstItem="3d2-aD-Iqt" firstAttribute="top" secondItem="4mr-rN-iri" secondAttribute="top" id="G6H-tf-v1A"/>
                                     <constraint firstAttribute="trailing" secondItem="3d2-aD-Iqt" secondAttribute="trailing" constant="20" id="HKH-Lo-tcU"/>
                                     <constraint firstAttribute="height" constant="176" id="OoA-PO-gkC"/>
                                     <constraint firstItem="3d2-aD-Iqt" firstAttribute="leading" secondItem="4mr-rN-iri" secondAttribute="leading" constant="20" id="PbA-Jw-rPH"/>
-                                    <constraint firstAttribute="trailing" secondItem="DhG-gU-0vs" secondAttribute="trailing" constant="20" id="V07-48-jOS"/>
-                                    <constraint firstItem="SGc-AA-02a" firstAttribute="top" secondItem="DhG-gU-0vs" secondAttribute="bottom" constant="20" id="YMh-4Z-CdJ"/>
-                                    <constraint firstItem="DhG-gU-0vs" firstAttribute="leading" secondItem="4mr-rN-iri" secondAttribute="leading" constant="20" id="hhh-fd-yZn"/>
+                                    <constraint firstItem="SGc-AA-02a" firstAttribute="top" secondItem="3d2-aD-Iqt" secondAttribute="bottom" constant="20" id="lwm-Jh-usi"/>
                                     <constraint firstAttribute="trailing" secondItem="SGc-AA-02a" secondAttribute="trailing" constant="20" id="m40-rX-yha"/>
                                 </constraints>
                             </view>
@@ -376,33 +370,24 @@
                                 <rect key="frame" x="0.0" y="246" width="375" height="176"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name your trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivW-zD-7BM">
-                                        <rect key="frame" x="20" y="0.0" width="335" height="28.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                        <rect key="frame" x="20" y="0.0" width="335" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="avW-sI-acH">
-                                        <rect key="frame" x="20" y="89" width="335" height="21"/>
+                                        <rect key="frame" x="20" y="51.5" width="335" height="29"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a name for your trip." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn9-s4-ohy">
-                                        <rect key="frame" x="20" y="48.5" width="335" height="20.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="avW-sI-acH" secondAttribute="trailing" constant="20" id="0Mb-yh-a2e"/>
+                                    <constraint firstItem="avW-sI-acH" firstAttribute="top" secondItem="ivW-zD-7BM" secondAttribute="bottom" constant="20" id="2Bc-Lr-qH8"/>
                                     <constraint firstAttribute="trailing" secondItem="ivW-zD-7BM" secondAttribute="trailing" constant="20" id="2Yw-db-4NM"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jn9-s4-ohy" secondAttribute="trailing" constant="20" id="AtU-LD-a2U"/>
-                                    <constraint firstItem="Jn9-s4-ohy" firstAttribute="leading" secondItem="rnv-ll-kTI" secondAttribute="leading" constant="20" id="BQs-em-4Pp"/>
                                     <constraint firstItem="avW-sI-acH" firstAttribute="leading" secondItem="rnv-ll-kTI" secondAttribute="leading" constant="20" id="Xn4-x3-Te5"/>
-                                    <constraint firstItem="Jn9-s4-ohy" firstAttribute="top" secondItem="ivW-zD-7BM" secondAttribute="bottom" constant="20" id="Y0w-0b-q0L"/>
-                                    <constraint firstItem="avW-sI-acH" firstAttribute="top" secondItem="Jn9-s4-ohy" secondAttribute="bottom" constant="20" id="ooZ-5Q-dLp"/>
                                     <constraint firstAttribute="height" constant="176" id="oxG-YL-yf4"/>
                                     <constraint firstItem="ivW-zD-7BM" firstAttribute="top" secondItem="rnv-ll-kTI" secondAttribute="top" id="xin-nO-qZO"/>
                                     <constraint firstItem="ivW-zD-7BM" firstAttribute="leading" secondItem="rnv-ll-kTI" secondAttribute="leading" constant="20" id="zdA-Id-LFd"/>
@@ -412,32 +397,23 @@
                                 <rect key="frame" x="0.0" y="422" width="375" height="176"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbB-3f-14M">
-                                        <rect key="frame" x="20" y="0.0" width="335" height="28.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
+                                        <rect key="frame" x="20" y="0.0" width="335" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
                                         <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a start date for your trip." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp9-xA-flc">
-                                        <rect key="frame" x="20" y="48.5" width="335" height="20.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose a start date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YPF-Ha-5YC">
-                                        <rect key="frame" x="20" y="89" width="335" height="21"/>
+                                        <rect key="frame" x="20" y="51.5" width="335" height="29"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="HbB-3f-14M" firstAttribute="top" secondItem="87e-h6-cAV" secondAttribute="top" id="0kh-dc-J2B"/>
-                                    <constraint firstItem="Hp9-xA-flc" firstAttribute="top" secondItem="HbB-3f-14M" secondAttribute="bottom" constant="20" id="4KP-kS-a4s"/>
-                                    <constraint firstItem="YPF-Ha-5YC" firstAttribute="top" secondItem="Hp9-xA-flc" secondAttribute="bottom" constant="20" id="D4j-J7-dEw"/>
-                                    <constraint firstAttribute="trailing" secondItem="Hp9-xA-flc" secondAttribute="trailing" constant="20" id="K2b-jM-MXW"/>
+                                    <constraint firstItem="YPF-Ha-5YC" firstAttribute="top" secondItem="HbB-3f-14M" secondAttribute="bottom" constant="20" id="Ot9-aC-4Bg"/>
                                     <constraint firstItem="YPF-Ha-5YC" firstAttribute="leading" secondItem="87e-h6-cAV" secondAttribute="leading" constant="20" id="R1C-GS-ABK"/>
-                                    <constraint firstItem="Hp9-xA-flc" firstAttribute="leading" secondItem="87e-h6-cAV" secondAttribute="leading" constant="20" id="VM1-BI-5j2"/>
                                     <constraint firstAttribute="trailing" secondItem="YPF-Ha-5YC" secondAttribute="trailing" constant="20" id="as0-qf-PMq"/>
                                     <constraint firstAttribute="trailing" secondItem="HbB-3f-14M" secondAttribute="trailing" constant="20" id="kW8-jr-r2D"/>
                                     <constraint firstItem="HbB-3f-14M" firstAttribute="leading" secondItem="87e-h6-cAV" secondAttribute="leading" constant="20" id="nE5-zI-3zp"/>
@@ -463,6 +439,7 @@
                         <outlet property="dateField" destination="YPF-Ha-5YC" id="pOF-RK-gHq"/>
                         <outlet property="dateView" destination="87e-h6-cAV" id="BKl-tP-BNC"/>
                         <outlet property="locationField" destination="SGc-AA-02a" id="L0t-uf-Wzz"/>
+                        <outlet property="locationLabel" destination="3d2-aD-Iqt" id="b6v-PL-HHC"/>
                         <outlet property="nameField" destination="avW-sI-acH" id="rB8-x7-TZa"/>
                         <outlet property="nameView" destination="rnv-ll-kTI" id="Wdn-E6-idF"/>
                     </connections>
