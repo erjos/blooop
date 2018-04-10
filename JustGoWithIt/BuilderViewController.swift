@@ -2,7 +2,6 @@ import UIKit
 import GooglePlaces
 
 class BuilderViewController: UIViewController {
-    //One idea would be to show and hide the fields as needed to reduce the noise on the page and only allow users to enter information in a predetermined order
     
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
@@ -10,6 +9,8 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var dateField: UITextField!
+    @IBOutlet weak var locationDivider: UIView!
+    @IBOutlet weak var nameDivider: UIView!
     
     var trip = Trip()
     
@@ -17,9 +18,12 @@ class BuilderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //hide date and name views at start
+        //hide views on load
         nameView.isHidden = true
         dateView.isHidden = true
+        locationDivider.isHidden = true
+        nameDivider.isHidden = true
+        
         //set field delegates
         locationField.delegate = self
         setupNameField()
@@ -65,6 +69,7 @@ class BuilderViewController: UIViewController {
         if(nameField.isFirstResponder){
             trip.name = nameField.text
             nameField.resignFirstResponder()
+            nameDivider.isHidden = false
             dateView.isHidden = false
         }
         if(dateField.isFirstResponder){
@@ -85,6 +90,7 @@ class BuilderViewController: UIViewController {
     }
 }
 
+//TODO: move to another file
 extension Date {
     var day: Int { return Calendar.current.component(.day, from:self) }
     var month: Int { return Calendar.current.component(.month, from:self) }
@@ -125,6 +131,7 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         locationField.text = place.name
         
         //show the next field
+        locationDivider.isHidden = false
         nameView.isHidden = false
         dismiss(animated: true, completion: nil)
     }

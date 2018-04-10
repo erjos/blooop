@@ -354,15 +354,25 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLc-jD-Lny" userLabel="Divider">
+                                        <rect key="frame" x="0.0" y="145" width="375" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="HkJ-DU-oia"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="fLc-jD-Lny" firstAttribute="leading" secondItem="4mr-rN-iri" secondAttribute="leading" id="0xl-d2-8zJ"/>
                                     <constraint firstItem="SGc-AA-02a" firstAttribute="leading" secondItem="4mr-rN-iri" secondAttribute="leading" constant="20" id="C0c-Wa-n7Q"/>
                                     <constraint firstItem="3d2-aD-Iqt" firstAttribute="top" secondItem="4mr-rN-iri" secondAttribute="top" id="G6H-tf-v1A"/>
                                     <constraint firstAttribute="trailing" secondItem="3d2-aD-Iqt" secondAttribute="trailing" constant="20" id="HKH-Lo-tcU"/>
                                     <constraint firstAttribute="height" constant="176" id="OoA-PO-gkC"/>
                                     <constraint firstItem="3d2-aD-Iqt" firstAttribute="leading" secondItem="4mr-rN-iri" secondAttribute="leading" constant="20" id="PbA-Jw-rPH"/>
+                                    <constraint firstAttribute="trailing" secondItem="fLc-jD-Lny" secondAttribute="trailing" id="aPQ-zH-RhH"/>
                                     <constraint firstItem="SGc-AA-02a" firstAttribute="top" secondItem="3d2-aD-Iqt" secondAttribute="bottom" constant="20" id="lwm-Jh-usi"/>
+                                    <constraint firstAttribute="bottom" secondItem="fLc-jD-Lny" secondAttribute="bottom" constant="30" id="lyc-wP-iE0"/>
                                     <constraint firstAttribute="trailing" secondItem="SGc-AA-02a" secondAttribute="trailing" constant="20" id="m40-rX-yha"/>
                                 </constraints>
                             </view>
@@ -381,13 +391,23 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bo7-A9-IKZ" userLabel="Divider">
+                                        <rect key="frame" x="0.0" y="145" width="375" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="xnR-8W-JqW"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="avW-sI-acH" secondAttribute="trailing" constant="20" id="0Mb-yh-a2e"/>
                                     <constraint firstItem="avW-sI-acH" firstAttribute="top" secondItem="ivW-zD-7BM" secondAttribute="bottom" constant="20" id="2Bc-Lr-qH8"/>
                                     <constraint firstAttribute="trailing" secondItem="ivW-zD-7BM" secondAttribute="trailing" constant="20" id="2Yw-db-4NM"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bo7-A9-IKZ" secondAttribute="bottom" constant="30" id="M2m-QD-gVa"/>
                                     <constraint firstItem="avW-sI-acH" firstAttribute="leading" secondItem="rnv-ll-kTI" secondAttribute="leading" constant="20" id="Xn4-x3-Te5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bo7-A9-IKZ" secondAttribute="trailing" id="c05-KF-wxZ"/>
+                                    <constraint firstItem="Bo7-A9-IKZ" firstAttribute="leading" secondItem="rnv-ll-kTI" secondAttribute="leading" id="dnY-yU-q4t"/>
                                     <constraint firstAttribute="height" constant="176" id="oxG-YL-yf4"/>
                                     <constraint firstItem="ivW-zD-7BM" firstAttribute="top" secondItem="rnv-ll-kTI" secondAttribute="top" id="xin-nO-qZO"/>
                                     <constraint firstItem="ivW-zD-7BM" firstAttribute="leading" secondItem="rnv-ll-kTI" secondAttribute="leading" constant="20" id="zdA-Id-LFd"/>
@@ -438,8 +458,10 @@
                     <connections>
                         <outlet property="dateField" destination="YPF-Ha-5YC" id="pOF-RK-gHq"/>
                         <outlet property="dateView" destination="87e-h6-cAV" id="BKl-tP-BNC"/>
+                        <outlet property="locationDivider" destination="fLc-jD-Lny" id="hzW-As-psp"/>
                         <outlet property="locationField" destination="SGc-AA-02a" id="L0t-uf-Wzz"/>
                         <outlet property="locationLabel" destination="3d2-aD-Iqt" id="b6v-PL-HHC"/>
+                        <outlet property="nameDivider" destination="Bo7-A9-IKZ" id="Gbs-tg-QIv"/>
                         <outlet property="nameField" destination="avW-sI-acH" id="rB8-x7-TZa"/>
                         <outlet property="nameView" destination="rnv-ll-kTI" id="Wdn-E6-idF"/>
                     </connections>
