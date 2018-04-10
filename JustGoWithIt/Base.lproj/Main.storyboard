@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fZj-xw-miw">
-                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="yqH-nN-5BJ"/>
@@ -35,7 +35,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAH-fd-Ank" userLabel="Top view">
-                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZi-eK-I9j">
                                         <rect key="frame" x="253" y="13" width="102" height="24"/>
@@ -86,6 +86,8 @@
                     <connections>
                         <outlet property="rightBarItem" destination="tOJ-1N-u5O" id="YkQ-Nq-PPG"/>
                         <outlet property="tableView" destination="fZj-xw-miw" id="OhB-nJ-pcx"/>
+                        <outlet property="tripDate" destination="DZi-eK-I9j" id="000-U8-m7n"/>
+                        <outlet property="tripName" destination="faQ-pz-CYd" id="fTp-za-B5Q"/>
                         <segue destination="CCD-B3-gX2" kind="presentation" identifier="presentMenu" modalPresentationStyle="overFullScreen" id="NRS-tL-je8"/>
                     </connections>
                 </viewController>
@@ -464,6 +466,7 @@
                         <outlet property="nameDivider" destination="Bo7-A9-IKZ" id="Gbs-tg-QIv"/>
                         <outlet property="nameField" destination="avW-sI-acH" id="rB8-x7-TZa"/>
                         <outlet property="nameView" destination="rnv-ll-kTI" id="Wdn-E6-idF"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="builderToTrip" id="36t-JV-9et"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rnk-fR-M32" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -471,4 +474,7 @@
             <point key="canvasLocation" x="-328.80000000000001" y="864.91754122938539"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="36t-JV-9et"/>
+    </inferredMetricsTieBreakers>
 </document>

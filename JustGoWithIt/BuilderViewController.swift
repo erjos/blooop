@@ -76,6 +76,7 @@ class BuilderViewController: UIViewController {
             trip.startDate = datePicker.date
             dateField.text = datePicker.date.formatDateAsString()
             dateField.resignFirstResponder()
+            performSegue(withIdentifier: "builderToTrip", sender: self)
         }
     }
     
@@ -83,10 +84,10 @@ class BuilderViewController: UIViewController {
         nameField.resignFirstResponder()
         dateField.resignFirstResponder()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let tripVC = segue.destination as? TripViewController
+        tripVC?.trip = self.trip
     }
 }
 

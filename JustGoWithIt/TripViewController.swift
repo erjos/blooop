@@ -3,11 +3,13 @@ import GooglePlaces
 
 class TripViewController: UIViewController {
 
-    @IBOutlet weak var rightBarItem: UIBarButtonItem!
-    //TODO: if we want to have multiple sections expanded at once we could make this a list and check to see what is expanded and what is not
     var collapsedSectionHeaders = [Int]()
-    @IBOutlet weak var tableView: UITableView!
+    var trip: Trip?
     
+    @IBOutlet weak var tripDate: UILabel!
+    @IBOutlet weak var tripName: UILabel!
+    @IBOutlet weak var rightBarItem: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
     //TODO: if the user leaves the main page while still editing, we should turn off edit mode
     @IBAction func rightBarAction(_ sender: Any) {
         if(isEditing){
@@ -17,12 +19,14 @@ class TripViewController: UIViewController {
             performSegue(withIdentifier: "presentMenu", sender: self)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
         
-        //TODO:Move this into an edit button on the menu page
-        //setEditing(true, animated: true)
+        //set name and date labels
+        tripName.text = trip?.name!
+        tripDate.text = trip?.startDate?.formatDateAsString()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,11 +62,8 @@ class Location {
 
 extension TripViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        //Sub location selected by user (contained by main city)
+        //Sub location selected by user (contained by main city) - new cities are added via the menu
         let selectedLocation = place
-        print(place.name)
-        print(place.formattedAddress)
-        print(place.attributions)
         dismiss(animated: true, completion: nil)
     }
     
