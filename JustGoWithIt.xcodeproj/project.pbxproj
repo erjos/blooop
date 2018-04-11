@@ -138,9 +138,9 @@
 				86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */,
 				86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */,
 				86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */,
+				862EF6C1207D0BAC005D268B /* BuilderViewController.swift */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
-				862EF6C1207D0BAC005D268B /* BuilderViewController.swift */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";

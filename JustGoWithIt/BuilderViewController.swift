@@ -3,6 +3,7 @@ import GooglePlaces
 
 class BuilderViewController: UIViewController {
     
+    @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var dateView: UIView!
@@ -21,7 +22,7 @@ class BuilderViewController: UIViewController {
         self.title = "New Trip"
         
         //hide views on load
-        nameView.isHidden = true
+        locationView.isHidden = true
         dateView.isHidden = true
         locationDivider.isHidden = true
         nameDivider.isHidden = true
@@ -72,7 +73,7 @@ class BuilderViewController: UIViewController {
             trip.name = nameField.text
             nameField.resignFirstResponder()
             nameDivider.isHidden = false
-            dateView.isHidden = false
+            locationView.isHidden = false
         }
         if(dateField.isFirstResponder){
             trip.startDate = datePicker.date
@@ -136,7 +137,7 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         
         //show the next field
         locationDivider.isHidden = false
-        nameView.isHidden = false
+        dateView.isHidden = false
         dismiss(animated: true, completion: nil)
     }
     
