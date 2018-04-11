@@ -126,6 +126,7 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         //create city
         let city = City.init(place: place)
         
+        //TODO: account for if the user selects a city multiple times from this page - it should clean the list or immediately allow them to enter multiple cities...
         //add to city list on trip object
         //TODO: add this method to the trip class and ensure no duplicates
         trip.cities.append(city)

@@ -132,15 +132,19 @@ extension TripViewController: UITableViewDelegate{
         header.arrow.image = isCollapsed ? header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0) : header.arrow.image
         header.delegate = self
         header.section = section
-        let sectionCount = trip.cities.count
-        if(section == sectionCount){
-            //configure for last section
-            header.dateLabel.isHidden = true
-            //header.button.isHidden = true
-            header.arrow.image = #imageLiteral(resourceName: "Add")
-            header.arrow.contentMode = .scaleAspectFit
-            header.mainLabel.text = "New Location"
-        }
+        //
+        let city = trip.cities[section]
+        //set city name on label
+        header.mainLabel.text = city.googlePlace.name
+//        let sectionCount = trip.cities.count
+//        if(section == sectionCount){
+//            //configure for last section
+//            header.dateLabel.isHidden = true
+//            //header.button.isHidden = true
+//            header.arrow.image = #imageLiteral(resourceName: "Add")
+//            header.arrow.contentMode = .scaleAspectFit
+//            header.mainLabel.text = "New Location"
+//        }
         return header
     }
     
@@ -158,7 +162,7 @@ extension TripViewController: UITableViewDataSource{
         guard let cityCount = trip?.cities.count else{
             return 0
         }
-        return cityCount + 1
+        return cityCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

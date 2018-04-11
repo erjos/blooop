@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862EF6C1207D0BAC005D268B /* BuilderViewController.swift */; };
+		864F67E0207E823200B6554B /* Builder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864F67DF207E823200B6554B /* Builder.storyboard */; };
 		86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A895A12019917D00CE3926 /* AppDelegate.swift */; };
 		86A895A42019917D00CE3926 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A895A32019917D00CE3926 /* TripViewController.swift */; };
 		86A895A72019917D00CE3926 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A895A52019917D00CE3926 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		862EF6C1207D0BAC005D268B /* BuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderViewController.swift; sourceTree = "<group>"; };
+		864F67DF207E823200B6554B /* Builder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Builder.storyboard; sourceTree = "<group>"; };
 		86A8959E2019917D00CE3926 /* JustGoWithIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustGoWithIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A895A12019917D00CE3926 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A895A32019917D00CE3926 /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				86A895A12019917D00CE3926 /* AppDelegate.swift */,
 				86A895A32019917D00CE3926 /* TripViewController.swift */,
 				86A895A52019917D00CE3926 /* Main.storyboard */,
+				864F67DF207E823200B6554B /* Builder.storyboard */,
 				86A895A82019917D00CE3926 /* Assets.xcassets */,
 				86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */,
 				86A895AD2019917D00CE3926 /* Info.plist */,
@@ -228,6 +231,7 @@
 				86CA2C0E20226CB400A0D770 /* CalendarViewController.xib in Resources */,
 				86A895A92019917D00CE3926 /* Assets.xcassets in Resources */,
 				86A895A72019917D00CE3926 /* Main.storyboard in Resources */,
+				864F67E0207E823200B6554B /* Builder.storyboard in Resources */,
 				86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
