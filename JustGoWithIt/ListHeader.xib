@@ -27,20 +27,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90f-a8-gNA" userLabel="Bubble">
                     <rect key="frame" x="0.0" y="0.0" width="442" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcK-rY-OBs">
-                            <rect key="frame" x="402" y="15" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="ZOA-Cz-Moe"/>
-                                <constraint firstAttribute="width" constant="20" id="neC-9I-5dE"/>
-                            </constraints>
-                            <state key="normal" image="plus"/>
-                            <connections>
-                                <action selector="pressAddLocation:" destination="iN0-l3-epB" eventType="touchUpInside" id="5Cj-NA-WDn"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ann Arbor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVk-mL-Fsi">
-                            <rect key="frame" x="40" y="13" width="93.5" height="24"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                            <rect key="frame" x="40" y="9.5" width="126.5" height="32.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="27"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -52,7 +41,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/15 - 1/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqB-I5-LLJ">
-                            <rect key="frame" x="153.5" y="16.5" width="74" height="18"/>
+                            <rect key="frame" x="186.5" y="16.5" width="74" height="18"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                             <nil key="textColor"/>
@@ -80,12 +69,10 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="HcK-rY-OBs" secondAttribute="trailing" constant="20" id="16n-uB-gUW"/>
                         <constraint firstItem="hqB-I5-LLJ" firstAttribute="leading" secondItem="KVk-mL-Fsi" secondAttribute="trailing" constant="20" id="AJf-Kj-9VA"/>
                         <constraint firstItem="Dgy-hm-Ygv" firstAttribute="leading" secondItem="90f-a8-gNA" secondAttribute="leading" id="FUh-lO-NUp"/>
                         <constraint firstItem="DWF-16-9wa" firstAttribute="leading" secondItem="90f-a8-gNA" secondAttribute="leading" id="Twd-aa-Dfy"/>
                         <constraint firstItem="hqB-I5-LLJ" firstAttribute="centerY" secondItem="90f-a8-gNA" secondAttribute="centerY" id="Vp4-kB-l7d"/>
-                        <constraint firstItem="HcK-rY-OBs" firstAttribute="centerY" secondItem="90f-a8-gNA" secondAttribute="centerY" id="buB-HV-Zuv"/>
                         <constraint firstItem="KVk-mL-Fsi" firstAttribute="leading" secondItem="90f-a8-gNA" secondAttribute="leading" constant="40" id="ijf-eZ-80f"/>
                         <constraint firstItem="DWF-16-9wa" firstAttribute="centerY" secondItem="90f-a8-gNA" secondAttribute="centerY" id="kPQ-3o-pfA"/>
                         <constraint firstAttribute="bottom" secondItem="Dgy-hm-Ygv" secondAttribute="bottom" id="mse-cL-lue"/>
@@ -111,7 +98,6 @@
             <connections>
                 <outlet property="arrow" destination="Jmz-Vr-GGo" id="Jye-be-hUU"/>
                 <outlet property="bubble" destination="90f-a8-gNA" id="TPv-OL-dhK"/>
-                <outlet property="button" destination="HcK-rY-OBs" id="moR-dw-f8U"/>
                 <outlet property="dateLabel" destination="hqB-I5-LLJ" id="HkD-8P-kj0"/>
                 <outlet property="mainLabel" destination="KVk-mL-Fsi" id="Ctq-hV-vF1"/>
             </connections>
@@ -120,6 +106,5 @@
     </objects>
     <resources>
         <image name="down" width="612" height="792"/>
-        <image name="plus" width="64" height="64"/>
     </resources>
 </document>

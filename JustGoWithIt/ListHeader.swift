@@ -5,7 +5,6 @@ class ListHeader: UITableViewHeaderFooterView {
     weak var delegate: ListHeaderDelegate?
     var section: Int?
     @IBOutlet weak var bubble: UIView!
-    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var arrow: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -14,10 +13,10 @@ class ListHeader: UITableViewHeaderFooterView {
         delegate?.shouldExpandOrCollapse(section: self.section!)
     }
     
-    @IBAction func pressAddLocation(_ sender: Any) {
-        //Action when a user presses the "add" button
-        delegate?.didSelectAdd()
-    }
+//    @IBAction func pressAddLocation(_ sender: Any) {
+//        //Action when a user presses the "add" button
+//        delegate?.didSelectAdd()
+//    }
     
     func addDateShadow(){
         let shadowPath = UIBezierPath(rect: dateLabel.bounds)

@@ -127,7 +127,7 @@ extension TripViewController: UITableViewDelegate{
         let isCollapsed = collapsedSectionHeaders.contains(section)
         let header = Bundle.main.loadNibNamed("ListHeader", owner: self, options: nil)?.first as! ListHeader
         if(!isCollapsed){
-            header.setDropShadow()
+            //header.setDropShadow()
         }
         header.arrow.image = isCollapsed ? header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0) : header.arrow.image
         header.delegate = self
@@ -136,14 +136,16 @@ extension TripViewController: UITableViewDelegate{
         if(section == sectionCount){
             //configure for last section
             header.dateLabel.isHidden = true
-            header.button.isHidden = true
+            //header.button.isHidden = true
+            header.arrow.image = #imageLiteral(resourceName: "Add")
+            header.arrow.contentMode = .scaleAspectFit
             header.mainLabel.text = "New Location"
         }
         return header
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        return 60.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

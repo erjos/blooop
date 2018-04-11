@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fZj-xw-miw">
-                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="528"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="yqH-nN-5BJ"/>
@@ -35,17 +35,17 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAH-fd-Ank" userLabel="Top view">
-                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZi-eK-I9j">
-                                        <rect key="frame" x="253" y="13" width="102" height="24"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <rect key="frame" x="202" y="20.5" width="153" height="35.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-pz-CYd">
-                                        <rect key="frame" x="20" y="13" width="88" height="24"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <rect key="frame" x="20" y="20.5" width="132" height="35.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -55,7 +55,7 @@
                                     <constraint firstItem="DZi-eK-I9j" firstAttribute="centerY" secondItem="xAH-fd-Ank" secondAttribute="centerY" id="7Mv-tg-UQe"/>
                                     <constraint firstItem="faQ-pz-CYd" firstAttribute="leading" secondItem="xAH-fd-Ank" secondAttribute="leading" constant="20" id="GUT-SB-Kkw"/>
                                     <constraint firstItem="faQ-pz-CYd" firstAttribute="centerY" secondItem="xAH-fd-Ank" secondAttribute="centerY" id="Kq2-aM-CZl"/>
-                                    <constraint firstAttribute="height" constant="50" id="mn8-mI-pKw"/>
+                                    <constraint firstAttribute="height" constant="75" id="mn8-mI-pKw"/>
                                     <constraint firstAttribute="trailing" secondItem="DZi-eK-I9j" secondAttribute="trailing" constant="20" id="zrF-jj-53B"/>
                                 </constraints>
                             </view>
