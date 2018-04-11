@@ -2,7 +2,7 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var bubble: UIView!
+    @IBOutlet weak var cellLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

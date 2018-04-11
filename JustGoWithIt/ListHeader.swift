@@ -9,6 +9,7 @@ class ListHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var arrow: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var mainLabel: UILabel!
     @objc func expandCollapse(){
         delegate?.shouldExpandOrCollapse(section: self.section!)
     }

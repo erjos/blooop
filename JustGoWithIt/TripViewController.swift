@@ -132,6 +132,13 @@ extension TripViewController: UITableViewDelegate{
         header.arrow.image = isCollapsed ? header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0) : header.arrow.image
         header.delegate = self
         header.section = section
+        let sectionCount = trip.cities.count
+        if(section == sectionCount){
+            //configure for last section
+            header.dateLabel.isHidden = true
+            header.button.isHidden = true
+            header.mainLabel.text = "New Location"
+        }
         return header
     }
     
@@ -158,8 +165,10 @@ extension TripViewController: UITableViewDataSource{
         
         let placeCount = trip.cities[indexPath.section].locations.count
         
-        if(indexPath.row == (placeCount + 1)){
+        //row starts at 0; count starts at 1
+        if(indexPath.row == placeCount){
             //configure for last cell in list
+            cell.cellLabel.text = "+ Add Place"
             return cell
         }
         return cell

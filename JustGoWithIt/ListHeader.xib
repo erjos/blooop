@@ -113,6 +113,7 @@
                 <outlet property="bubble" destination="90f-a8-gNA" id="TPv-OL-dhK"/>
                 <outlet property="button" destination="HcK-rY-OBs" id="moR-dw-f8U"/>
                 <outlet property="dateLabel" destination="hqB-I5-LLJ" id="HkD-8P-kj0"/>
+                <outlet property="mainLabel" destination="KVk-mL-Fsi" id="Ctq-hV-vF1"/>
             </connections>
             <point key="canvasLocation" x="34" y="-123"/>
         </view>
