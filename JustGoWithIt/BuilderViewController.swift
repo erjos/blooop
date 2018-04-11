@@ -19,15 +19,30 @@ class BuilderViewController: UIViewController {
     
     let datePicker = UIDatePicker()
     
+    //flag used to identify if builder is used for Location or Place (Locations contain places)
+    var shouldConfigure = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "New Trip"
         
         //hide views on load
-        locationView.isHidden = true
+        nameView.isHidden = true
         dateView.isHidden = true
         locationDivider.isHidden = true
         nameDivider.isHidden = true
+        
+        //configure for place
+        if(shouldConfigure){
+            locationLabel.text = "Choose a location"
+            locationField.placeholder = "Search places"
+            
+            nameLabel.text = "What will you be doing?"
+            nameField.placeholder = "Add activity label"
+            
+            dateLabel.text = "When is it?"
+            dateField.placeholder = "Choose a Date"
+        }
         
         //set field delegates
         locationField.delegate = self
@@ -75,7 +90,7 @@ class BuilderViewController: UIViewController {
             trip.name = nameField.text
             nameField.resignFirstResponder()
             nameDivider.isHidden = false
-            locationView.isHidden = false
+            dateView.isHidden = false
         }
         if(dateField.isFirstResponder){
             trip.startDate = datePicker.date
@@ -139,7 +154,7 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         
         //show the next field
         locationDivider.isHidden = false
-        dateView.isHidden = false
+        nameView.isHidden = false
         dismiss(animated: true, completion: nil)
     }
     

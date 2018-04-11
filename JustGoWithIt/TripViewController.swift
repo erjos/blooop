@@ -12,7 +12,7 @@ class TripViewController: UIViewController {
     @IBOutlet weak var tripName: UILabel!
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    //TODO: if the user leaves the main page while still editing, we should turn off edit mode
+    //TODO: if the user leaves the main page while still editing, we should turn off edit mode // what would th asd
     @IBAction func rightBarAction(_ sender: Any) {
         if(isEditing){
             setEditing(false, animated: true)
@@ -34,6 +34,17 @@ class TripViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigation = segue.destination as? UINavigationController
+        guard let builder = navigation?.viewControllers[0] as? BuilderViewController else {
+            let it = "didNotWork"
+            print(it) //lol
+            return
+        }
+        
+        builder.shouldConfigure = true
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
