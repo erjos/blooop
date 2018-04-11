@@ -86,11 +86,20 @@
                         <outlet property="tripDate" destination="DZi-eK-I9j" id="000-U8-m7n"/>
                         <outlet property="tripName" destination="faQ-pz-CYd" id="fTp-za-B5Q"/>
                         <segue destination="CCD-B3-gX2" kind="presentation" identifier="presentMenu" modalPresentationStyle="overFullScreen" id="NRS-tL-je8"/>
+                        <segue destination="Qoe-hB-Oom" kind="presentation" identifier="tripToBuilder" id="In4-AL-NdR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="476" y="132.68365817091455"/>
+        </scene>
+        <!--Builder-->
+        <scene sceneID="yhq-4w-PaM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Builder" id="Qoe-hB-Oom" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="it4-qa-nKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="479" y="582"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="blb-zq-5B5">

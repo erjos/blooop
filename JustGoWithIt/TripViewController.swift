@@ -123,6 +123,13 @@ extension TripViewController: UITableViewDelegate{
         //TODO: this is the callback after delete is pressed, use this to remove the cells from the table
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let placeCount = trip.cities[indexPath.section].locations.count
+        if(indexPath.row == placeCount){
+            performSegue(withIdentifier: "tripToBuilder", sender: self)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let isCollapsed = collapsedSectionHeaders.contains(section)
         let header = Bundle.main.loadNibNamed("ListHeader", owner: self, options: nil)?.first as! ListHeader

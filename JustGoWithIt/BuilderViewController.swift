@@ -3,7 +3,9 @@ import GooglePlaces
 
 class BuilderViewController: UIViewController {
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var dateView: UIView!
