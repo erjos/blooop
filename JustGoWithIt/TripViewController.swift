@@ -4,7 +4,9 @@ import GooglePlaces
 class TripViewController: UIViewController {
 
     var collapsedSectionHeaders = [Int]()
-    var trip: Trip?
+    
+    //cant get to this page unless you have a trip
+    var trip: Trip!
     
     @IBOutlet weak var tripDate: UILabel!
     @IBOutlet weak var tripName: UILabel!
@@ -49,7 +51,7 @@ class Trip {
 
 class City {
     var googlePlace: GMSPlace
-    var locations : [Location]?
+    var locations = [Location]()
     
     init(place: GMSPlace){
         self.googlePlace = place
@@ -147,23 +149,38 @@ extension TripViewController: UITableViewDataSource{
         guard let cityCount = trip?.cities.count else{
             return 0
         }
-        return cityCount
+        return cityCount + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
+        //TODO: add cell configuration
+        
+        let placeCount = trip.cities[indexPath.section].locations.count
+        
+        if(indexPath.row == (placeCount + 1)){
+            //configure for last cell in list
+            return cell
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let shouldCollapse = self.collapsedSectionHeaders.contains(section)
-        guard let placeCount = trip?.cities[section].locations?.count else {
+        //TODO: make it easier to retrieve this (push to model)
+        let sectionCount = trip.cities.count
+        
+        //This should only happen if it is the last section in the table (used to add more sections)
+        if(section >= sectionCount){
             return 0
         }
+        
+        let placeCount = trip.cities[section].locations.count
+        
         if (shouldCollapse){
             return 0
         } else {
-            return placeCount
+            return placeCount + 1
         }
     }
 }
