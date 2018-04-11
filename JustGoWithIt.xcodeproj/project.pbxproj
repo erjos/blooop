@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862EF6C1207D0BAC005D268B /* BuilderViewController.swift */; };
 		864F67E0207E823200B6554B /* Builder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864F67DF207E823200B6554B /* Builder.storyboard */; };
+		864F67E2207EACD500B6554B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864F67E1207EACD500B6554B /* Models.swift */; };
 		86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A895A12019917D00CE3926 /* AppDelegate.swift */; };
 		86A895A42019917D00CE3926 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A895A32019917D00CE3926 /* TripViewController.swift */; };
 		86A895A72019917D00CE3926 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A895A52019917D00CE3926 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		862EF6C1207D0BAC005D268B /* BuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderViewController.swift; sourceTree = "<group>"; };
 		864F67DF207E823200B6554B /* Builder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Builder.storyboard; sourceTree = "<group>"; };
+		864F67E1207EACD500B6554B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		86A8959E2019917D00CE3926 /* JustGoWithIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustGoWithIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A895A12019917D00CE3926 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A895A32019917D00CE3926 /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				862EF6C1207D0BAC005D268B /* BuilderViewController.swift */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
+				864F67E1207EACD500B6554B /* Models.swift */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				86CA2C0D20226CB400A0D770 /* CalendarViewController.swift in Sources */,
 				86A895A42019917D00CE3926 /* TripViewController.swift in Sources */,
 				86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */,
+				864F67E2207EACD500B6554B /* Models.swift in Sources */,
 				86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */,
 				862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */,
 				86A895B6201992AE00CE3926 /* ListHeader.swift in Sources */,

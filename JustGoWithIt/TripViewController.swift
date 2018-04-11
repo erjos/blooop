@@ -37,40 +37,24 @@ class TripViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigation = segue.destination as? UINavigationController
-        guard let builder = navigation?.viewControllers[0] as? BuilderViewController else {
-            let it = "didNotWork"
-            print(it) //lol
-            return
+        if(segue.identifier == "tripToBuilder"){
+            let navigation = segue.destination as? UINavigationController
+            guard let builder = navigation?.viewControllers[0] as? BuilderViewController else {
+                print("Failed to cast view controller")
+                return
+            }
+            let indexPath = sender as! IndexPath
+            //pass necessary objects off to the builder
+            builder.shouldConfigure = true
+            builder.cityIndex = indexPath.section
+            builder.trip = self.trip
         }
-        
-        builder.shouldConfigure = true
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         self.tableView.setEditing(editing, animated: animated)
     }
-}
-
-class Trip {
-    var name: String?
-    var startDate: Date?
-    var endDate: Date?
-    var cities = [City]()
-}
-
-class City {
-    var googlePlace: GMSPlace
-    var locations = [Location]()
-    
-    init(place: GMSPlace){
-        self.googlePlace = place
-    }
-}
-
-class Location {
-    var googlePlace: GMSPlace?
 }
 
 extension TripViewController: GMSAutocompleteViewControllerDelegate {
@@ -137,7 +121,7 @@ extension TripViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeCount = trip.cities[indexPath.section].locations.count
         if(indexPath.row == placeCount){
-            performSegue(withIdentifier: "tripToBuilder", sender: self)
+            performSegue(withIdentifier: "tripToBuilder", sender: indexPath)
         }
     }
     
@@ -217,4 +201,3 @@ extension TripViewController: UITableViewDataSource{
         }
     }
 }
-

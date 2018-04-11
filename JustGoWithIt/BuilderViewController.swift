@@ -15,12 +15,10 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var locationDivider: UIView!
     @IBOutlet weak var nameDivider: UIView!
     
-    var trip = Trip()
-    
     let datePicker = UIDatePicker()
-    
-    //flag used to identify if builder is used for Location or Place (Locations contain places)
-    var shouldConfigure = false
+    var trip = Trip()
+    var shouldConfigure = false //flag used to identify if builder is used for Location or Place (Locations contain places)
+    var cityIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,17 +139,21 @@ extension BuilderViewController: UITextFieldDelegate {
 
 extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        //create city
-        let city = City.init(place: place)
-        
-        //TODO: account for if the user selects a city multiple times from this page - it should clean the list or immediately allow them to enter multiple cities...
-        //add to city list on trip object
-        //TODO: add this method to the trip class and ensure no duplicates
-        trip.cities.append(city)
-        
+        if(!shouldConfigure){
+            //create city
+            let city = City.init(place: place)
+            //TODO: account for if the user selects a city multiple times from this page - it should clean the list or immediately allow them to enter multiple cities...
+            //add to city list on trip object
+            //TODO: add this method to the trip class and ensure no duplicates
+            trip.cities.append(city)
+        } else {
+            let location = Location(place: place)
+            
+            //need an easy way to get the city index of current location addition.
+            //trip.cities[]
+        }
         //set the text field for location
         locationField.text = place.name
-        
         //show the next field
         locationDivider.isHidden = false
         nameView.isHidden = false
