@@ -1,55 +1,51 @@
 import Foundation
 import GooglePlaces
 
+enum PhotoStatus {
+    case FailedMetaData
+    case FailedPhoto
+    case Success
+}
+
 class GoogleManager {
     
-    static func getPhoto(placeID: String)->(UIImage?, NSAttributedString?){
-        var image: UIImage?
-        var attributedText: NSAttributedString?
-        
-        let result = loadFirstPhotoForPlace(placeID: placeID)
-        
-        image = result.image
-        attributedText = result.text
-        
-        return (image, attributedText)
+    static func getPhoto(placeID: String, success: @escaping (_ image: UIImage, _ attributedText: NSAttributedString)-> Void, failure: @escaping (_ status: PhotoStatus)->Void){
+        loadFirstPhotoForPlace(placeID: placeID, success: { (image, string) in
+            success(image, string)
+        }) { status in
+            failure(status)
+        }
     }
     
-    static func loadFirstPhotoForPlace(placeID: String) -> (image: UIImage?, text: NSAttributedString?) {
-        var image: UIImage?
-        var attributedText: NSAttributedString?
+    static func loadFirstPhotoForPlace(placeID: String, success: @escaping (_ image: UIImage, _ attributedText: NSAttributedString)-> Void, failure: @escaping (_ status: PhotoStatus)->Void){
         
         GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
             if let error = error {
-                // TODO: handle the error.
+                failure(.FailedMetaData)
                 print("Error: \(error.localizedDescription)")
             } else {
                 if let firstPhoto = photos?.results.first {
-                    let result = self.loadImageForMetadata(photoMetadata: firstPhoto)
-                    image = result.image
-                    attributedText = result.text
+                    self.loadImageForMetadata(photoMetadata: firstPhoto, success: { (image, string) in
+                        success(image, string)
+                    }, failure: { (status) in
+                        failure(status)
+                    })
+                    
                 }
             }
         }
-        
-        return (image, attributedText)
     }
     
-    static func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata) -> (image: UIImage?, text: NSAttributedString?){
-        var image: UIImage?
-        var attributedText: NSAttributedString?
+    static func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata, success: @escaping (_ image: UIImage, _ attributedText: NSAttributedString)-> Void, failure: @escaping (_ status: PhotoStatus)->Void){
         
         GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
             (photo, error) -> Void in
             if let error = error {
-                // TODO: handle the error.
+                failure(.FailedPhoto)
                 print("Error: \(error.localizedDescription)")
             } else {
-                //return(photo, photoMetadata.attributions)
-                image = photo;
-                attributedText = photoMetadata.attributions;
+                success(photo!, photoMetadata.attributions!)
             }
         })
-        return (image, attributedText)
     }
 }
