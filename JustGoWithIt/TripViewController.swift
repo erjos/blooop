@@ -8,7 +8,6 @@ class TripViewController: UIViewController {
     //cant get to this page unless you have a trip
     var trip: Trip!
     
-    @IBOutlet weak var tripDate: UILabel!
     @IBOutlet weak var tripName: UILabel!
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -154,7 +153,7 @@ extension TripViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return 177.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -172,6 +171,8 @@ extension TripViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
+        cell.activityIndicator.isHidden = true
+        cell.cellImage.isHidden = false
         let placeCount = trip.cities[indexPath.section].locations.count
         //row starts at 0; count starts at 1
         if(indexPath.row == placeCount){
@@ -180,6 +181,20 @@ extension TripViewController: UITableViewDataSource{
             return cell
         }
         //TODO: pull this into a method on the model
+        let placeID = trip.cities[indexPath.section].locations[indexPath.row].googlePlace.placeID
+        cell.activityIndicator.isHidden = false
+        cell.cellImage.isHidden = true
+        GooglePhotoManager.getPhoto(placeID: placeID, success: { (image, string) in
+            //success
+            cell.cellImage.image = image
+            cell.cellImage.contentMode = .scaleAspectFit
+            cell.activityIndicator.isHidden = true
+            cell.cellImage.isHidden = false
+        }) { (error) in
+            //error
+            let error = error
+            print(error)
+        }
         cell.cellLabel.text = trip.cities[indexPath.section].locations[indexPath.row].googlePlace.name
         return cell
     }
