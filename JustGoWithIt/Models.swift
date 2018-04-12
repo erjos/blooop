@@ -19,6 +19,9 @@ class City {
 
 class Location {
     var googlePlace: GMSPlace
+    var label: String?
+    var date: Date?
+    
     init(place: GMSPlace){
         self.googlePlace = place
     }

@@ -30,8 +30,22 @@ class BuilderViewController: UIViewController {
         locationDivider.isHidden = true
         nameDivider.isHidden = true
         
+        //TODO: add a dismiss icon to the navbar when sent from the tripVC
         //configure for place
         if(shouldConfigure){
+            let button = UIButton()
+            button.setImage(#imageLiteral(resourceName: "closer"), for: .normal)
+            button.addTarget(self, action: #selector(dismissIt), for: .touchUpInside)
+            let barItem = UIBarButtonItem(customView: button)
+            
+            let width = barItem.customView?.widthAnchor.constraint(equalToConstant: 30)
+            width?.isActive = true
+            let height = barItem.customView?.heightAnchor.constraint(equalToConstant: 35)
+            height?.isActive = true
+            button.tintColor = UIColor.darkGray
+            
+            self.navigationItem.leftBarButtonItem = barItem
+            
             locationLabel.text = "Choose a location"
             locationField.placeholder = "Search places"
             
@@ -46,6 +60,10 @@ class BuilderViewController: UIViewController {
         locationField.delegate = self
         setupNameField()
         setupDatePicker(dateField, datePicker, nil)
+    }
+    
+    @objc private func dismissIt(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     private func setupNameField(){
@@ -85,7 +103,14 @@ class BuilderViewController: UIViewController {
     
     @objc private func selectDone(){
         if(nameField.isFirstResponder){
-            trip.name = nameField.text
+            if(!shouldConfigure){
+                trip.name = nameField.text
+            } else {
+                //should be the last element of the collection because we always append from this screen
+                //could I write a test to ensure that this sets the correct name?
+                trip.cities[cityIndex].locations.last?.label = nameField.text
+            }
+            
             nameField.resignFirstResponder()
             nameDivider.isHidden = false
             dateView.isHidden = false
@@ -148,9 +173,8 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
             trip.cities.append(city)
         } else {
             let location = Location(place: place)
-            
-            //need an easy way to get the city index of current location addition.
-            //trip.cities[]
+            //append the new location to the end of the list at the appropriate index
+            trip.cities[cityIndex].locations.append(location)
         }
         //set the text field for location
         locationField.text = place.name
