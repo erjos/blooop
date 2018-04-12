@@ -11,6 +11,7 @@ class Trip {
 class City {
     var googlePlace: GMSPlace
     var locations = [Location]()
+    var date: Date?
     
     init(place: GMSPlace){
         self.googlePlace = place

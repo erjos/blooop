@@ -34,14 +34,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAH-fd-Ank" userLabel="Top view">
                                 <rect key="frame" x="0.0" y="64" width="375" height="75"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZi-eK-I9j">
-                                        <rect key="frame" x="202" y="20.5" width="153" height="35.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-pz-CYd">
-                                        <rect key="frame" x="20" y="20.5" width="132" height="35.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-pz-CYd">
+                                        <rect key="frame" x="20" y="20.5" width="335" height="35.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -49,11 +43,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="DZi-eK-I9j" firstAttribute="centerY" secondItem="xAH-fd-Ank" secondAttribute="centerY" id="7Mv-tg-UQe"/>
                                     <constraint firstItem="faQ-pz-CYd" firstAttribute="leading" secondItem="xAH-fd-Ank" secondAttribute="leading" constant="20" id="GUT-SB-Kkw"/>
+                                    <constraint firstAttribute="trailing" secondItem="faQ-pz-CYd" secondAttribute="trailing" constant="20" id="H0A-7x-h0X"/>
                                     <constraint firstItem="faQ-pz-CYd" firstAttribute="centerY" secondItem="xAH-fd-Ank" secondAttribute="centerY" id="Kq2-aM-CZl"/>
                                     <constraint firstAttribute="height" constant="75" id="mn8-mI-pKw"/>
-                                    <constraint firstAttribute="trailing" secondItem="DZi-eK-I9j" secondAttribute="trailing" constant="20" id="zrF-jj-53B"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -83,7 +76,6 @@
                     <connections>
                         <outlet property="rightBarItem" destination="tOJ-1N-u5O" id="YkQ-Nq-PPG"/>
                         <outlet property="tableView" destination="fZj-xw-miw" id="OhB-nJ-pcx"/>
-                        <outlet property="tripDate" destination="DZi-eK-I9j" id="000-U8-m7n"/>
                         <outlet property="tripName" destination="faQ-pz-CYd" id="fTp-za-B5Q"/>
                         <segue destination="CCD-B3-gX2" kind="presentation" identifier="presentMenu" modalPresentationStyle="overFullScreen" id="NRS-tL-je8"/>
                         <segue destination="Qoe-hB-Oom" kind="presentation" identifier="tripToBuilder" id="In4-AL-NdR"/>

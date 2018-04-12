@@ -28,7 +28,7 @@ class TripViewController: UIViewController {
         
         //set name and date labels
         tripName.text = trip?.name!
-        tripDate.text = trip?.startDate?.formatDateAsString()
+        //tripDate.text = trip?.startDate?.formatDateAsString()
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,6 +138,9 @@ extension TripViewController: UITableViewDelegate{
         let city = trip.cities[section]
         //set city name on label
         header.mainLabel.text = city.googlePlace.name
+        //set date on label - issue date on trip vs date on location - this should be date on location
+        header.dateLabel.text = city.date?.formatDateAsString()
+        
 //        let sectionCount = trip.cities.count
 //        if(section == sectionCount){
 //            //configure for last section

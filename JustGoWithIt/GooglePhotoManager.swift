@@ -7,7 +7,7 @@ enum PhotoError {
     case NilPhoto
 }
 
-class GoogleManager {
+class GooglePhotoManager{
     
     static func getPhoto(placeID: String, success: @escaping (_ image: UIImage, _ attributedText: NSAttributedString?)-> Void, failure: @escaping (_ status: PhotoError)->Void){
         loadFirstPhotoForPlace(placeID: placeID, success: { (image, string) in

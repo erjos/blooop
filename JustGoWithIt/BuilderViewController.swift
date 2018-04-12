@@ -120,7 +120,8 @@ class BuilderViewController: UIViewController {
         
         if(dateField.isFirstResponder){
             if(!shouldConfigure){
-                trip.startDate = datePicker.date
+                //we will only set dates on cities and locations - lets calculate trip date dynamically based on how the user sets up their events
+                trip.cities.last?.date = datePicker.date
             } else {
                 trip.cities[cityIndex].locations.last?.date = datePicker.date
             }
