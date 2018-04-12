@@ -33,18 +33,19 @@ class BuilderViewController: UIViewController {
         //TODO: add a dismiss icon to the navbar when sent from the tripVC
         //configure for place
         if(shouldConfigure){
-            //THIS MAKES ME SO MADE BUT IT WORKS I HATE IT!!
+            
+            //setup dismiss button
             let button = UIButton()
             button.setImage(#imageLiteral(resourceName: "closer"), for: .normal)
             button.addTarget(self, action: #selector(dismissIt), for: .touchUpInside)
             let barItem = UIBarButtonItem(customView: button)
-            
+            //set constraints on barItem
             let width = barItem.customView?.widthAnchor.constraint(equalToConstant: 30)
             width?.isActive = true
             let height = barItem.customView?.heightAnchor.constraint(equalToConstant: 35)
             height?.isActive = true
             button.tintColor = UIColor.darkGray
-            
+            //set button on navigationItem
             self.navigationItem.leftBarButtonItem = barItem
             
             locationLabel.text = "Choose a location"
