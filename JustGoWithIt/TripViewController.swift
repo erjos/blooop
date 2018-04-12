@@ -60,7 +60,7 @@ class TripViewController: UIViewController {
 extension TripViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         //Sub location selected by user (contained by main city) - new cities are added via the menu
-        let selectedLocation = place
+        //let selectedLocation = place
         dismiss(animated: true, completion: nil)
     }
     
@@ -169,16 +169,15 @@ extension TripViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
-        //TODO: add cell configuration
-        
         let placeCount = trip.cities[indexPath.section].locations.count
-        
         //row starts at 0; count starts at 1
         if(indexPath.row == placeCount){
             //configure for last cell in list
             cell.cellLabel.text = "+ Add Place"
             return cell
         }
+        //TODO: pull this into a method on the model
+        cell.cellLabel.text = trip.cities[indexPath.section].locations[indexPath.row].googlePlace.name
         return cell
     }
     

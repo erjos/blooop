@@ -126,6 +126,8 @@
 		86A895A02019917D00CE3926 /* JustGoWithIt */ = {
 			isa = PBXGroup;
 			children = (
+				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
+				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 				86A895A12019917D00CE3926 /* AppDelegate.swift */,
 				86A895A32019917D00CE3926 /* TripViewController.swift */,
 				86A895A52019917D00CE3926 /* Main.storyboard */,
@@ -141,8 +143,6 @@
 				86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */,
 				864F67DF207E823200B6554B /* Builder.storyboard */,
 				862EF6C1207D0BAC005D268B /* BuilderViewController.swift */,
-				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
-				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				864F67E1207EACD500B6554B /* Models.swift */,
 			);
 			path = JustGoWithIt;

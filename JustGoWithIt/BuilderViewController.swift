@@ -33,6 +33,7 @@ class BuilderViewController: UIViewController {
         //TODO: add a dismiss icon to the navbar when sent from the tripVC
         //configure for place
         if(shouldConfigure){
+            //THIS MAKES ME SO MADE BUT IT WORKS I HATE IT!!
             let button = UIButton()
             button.setImage(#imageLiteral(resourceName: "closer"), for: .normal)
             button.addTarget(self, action: #selector(dismissIt), for: .touchUpInside)
@@ -115,8 +116,14 @@ class BuilderViewController: UIViewController {
             nameDivider.isHidden = false
             dateView.isHidden = false
         }
+        
         if(dateField.isFirstResponder){
-            trip.startDate = datePicker.date
+            if(!shouldConfigure){
+                trip.startDate = datePicker.date
+            } else {
+                trip.cities[cityIndex].locations.last?.date = datePicker.date
+            }
+            
             dateField.text = datePicker.date.formatDateAsString()
             dateField.resignFirstResponder()
             performSegue(withIdentifier: "builderToTrip", sender: self)
@@ -131,23 +138,6 @@ class BuilderViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tripVC = segue.destination as? TripViewController
         tripVC?.trip = self.trip
-    }
-}
-
-//TODO: move to another file
-extension Date {
-    var day: Int { return Calendar.current.component(.day, from:self) }
-    var month: Int { return Calendar.current.component(.month, from:self) }
-    var year: Int { return Calendar.current.component(.year, from:self) }
-    
-    func formatDateAsString() -> String {
-        let dateFormater = DateFormatter()
-        if (self.month < 10) {
-            dateFormater.dateFormat = "M/dd/yy"
-        } else {
-            dateFormater.dateFormat = "MM/dd/yy"
-        }
-        return dateFormater.string(from: self)
     }
 }
 
