@@ -180,21 +180,9 @@ extension TripViewController: UITableViewDataSource{
             cell.cellLabel.text = "+ Add Place"
             return cell
         }
-        //TODO: pull this into a method on the model
-        let placeID = trip.cities[indexPath.section].locations[indexPath.row].googlePlace.placeID
-        cell.activityIndicator.isHidden = false
-        cell.cellImage.isHidden = true
-        GooglePhotoManager.getPhoto(placeID: placeID, success: { (image, string) in
-            //success
-            cell.cellImage.image = image
-            cell.cellImage.contentMode = .scaleAspectFit
-            cell.activityIndicator.isHidden = true
-            cell.cellImage.isHidden = false
-        }) { (error) in
-            //error
-            let error = error
-            print(error)
-        }
+        let placeID = trip.getLocationPlaceId(from: indexPath)
+        cell.setCellImage(placeID: placeID)
+        
         cell.cellLabel.text = trip.cities[indexPath.section].locations[indexPath.row].googlePlace.name
         return cell
     }

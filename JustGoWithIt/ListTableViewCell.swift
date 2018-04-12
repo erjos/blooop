@@ -10,6 +10,34 @@ class ListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    private func handlePictureError(error: PhotoError){
+        switch error {
+        case .FailedMetaData :
+            //inform user of failure - try again
+            print("no meta data retrieved")
+        case .FailedPhoto :
+            //inform user of failure - try again
+            print("no photo retrieved")
+        case .NilPhoto:
+            //inform user no picture exists
+            print("photo came back as nil")
+        }
+    }
+    
+    func setCellImage(placeID: String){
+        activityIndicator.isHidden = false
+        cellImage.isHidden = true
+        GooglePhotoManager.getPhoto(placeID: placeID, success: { (image, string) in
+            //success
+            self.cellImage.image = image
+            self.cellImage.contentMode = .scaleAspectFit
+            self.activityIndicator.isHidden = true
+            self.cellImage.isHidden = false
+        }) { (error) in
+            self.handlePictureError(error: error)
+        }
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
