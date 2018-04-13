@@ -157,7 +157,7 @@
                                     <constraint firstItem="mAC-bj-j9x" firstAttribute="centerX" secondItem="seT-Zz-PjA" secondAttribute="centerX" id="wUX-Kp-SII"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rya-Fo-KRD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rya-Fo-KRD" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="423" width="375" height="200"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -187,7 +187,7 @@
                         <outlet property="locationField" destination="zpS-xA-Eqg" id="rCq-hW-JNd"/>
                         <outlet property="locationLabel" destination="HXy-K7-P1M" id="f0C-vh-K4N"/>
                         <outlet property="locationView" destination="cfu-TQ-bQg" id="bzL-gv-ohl"/>
-                        <outlet property="mapView" destination="rya-Fo-KRD" id="BL4-Bc-ypk"/>
+                        <outlet property="mapView" destination="rya-Fo-KRD" id="FTo-6V-Spe"/>
                         <outlet property="nameDivider" destination="0Qc-Y6-kGE" id="8U4-Do-7ee"/>
                         <outlet property="nameField" destination="PfM-WC-44R" id="SEx-Cv-TXf"/>
                         <outlet property="nameLabel" destination="ykY-HS-t4A" id="VHW-ft-NXj"/>

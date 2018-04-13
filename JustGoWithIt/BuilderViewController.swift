@@ -1,7 +1,10 @@
 import UIKit
 import GooglePlaces
+import GoogleMaps
 
 class BuilderViewController: UIViewController {
+    
+    
     
     @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -63,8 +66,16 @@ class BuilderViewController: UIViewController {
         locationField.delegate = self
         setupNameField()
         setupDatePicker(dateField, datePicker, nil)
-        
-        mapView =
+        mapView.isHidden = true
+        if(isSubLocation){
+            mapView.isHidden = false
+            let target = trip.cities[cityIndex].googlePlace.coordinate
+            var camera = GMSCameraPosition.camera(withTarget: target, zoom: 12)
+            
+            let map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
+            //need to add it as a subview
+            mapView.addSubview(map)
+        }
     }
     
     @objc private func dismissIt(){

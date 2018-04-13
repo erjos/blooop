@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		186C7225388DE9F244B17140 /* Pods_JustGoWithIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */; };
 		862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862EF6C1207D0BAC005D268B /* BuilderViewController.swift */; };
 		863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */; };
 		863E26E7207FFDBD00029FF4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863E26E6207FFDBD00029FF4 /* LocationManager.swift */; };
@@ -44,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F520DA6DB0379C82D7EF55A /* Pods-JustGoWithIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.release.xcconfig"; sourceTree = "<group>"; };
+		294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.debug.xcconfig"; sourceTree = "<group>"; };
 		862EF6C1207D0BAC005D268B /* BuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderViewController.swift; sourceTree = "<group>"; };
 		863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePhotoManager.swift; sourceTree = "<group>"; };
 		863E26E6207FFDBD00029FF4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 		86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
+		FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustGoWithIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 				86B75C452059511700D53F90 /* Accelerate.framework in Frameworks */,
 				86B75C40205950A200D53F90 /* GooglePlaces.framework in Frameworks */,
 				86B75C42205950B200D53F90 /* GoogleMapsBase.framework in Frameworks */,
+				186C7225388DE9F244B17140 /* Pods_JustGoWithIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +121,7 @@
 				86A895A02019917D00CE3926 /* JustGoWithIt */,
 				86A8959F2019917D00CE3926 /* Products */,
 				86B75C432059511700D53F90 /* Frameworks */,
+				A7FC76D481DC4DB99073EB0B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,8 +178,18 @@
 				86B75C482059512A00D53F90 /* CoreGraphics.framework */,
 				86B75C462059512300D53F90 /* CoreData.framework */,
 				86B75C442059511700D53F90 /* Accelerate.framework */,
+				FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7FC76D481DC4DB99073EB0B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */,
+				1F520DA6DB0379C82D7EF55A /* Pods-JustGoWithIt.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,9 +199,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86A895B02019917D00CE3926 /* Build configuration list for PBXNativeTarget "JustGoWithIt" */;
 			buildPhases = (
+				D13B7BFCF694F97C890BD4F2 /* [CP] Check Pods Manifest.lock */,
 				86A8959A2019917D00CE3926 /* Sources */,
 				86A8959B2019917D00CE3926 /* Frameworks */,
 				86A8959C2019917D00CE3926 /* Resources */,
+				55194F647C154365272D73BE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,6 +264,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		55194F647C154365272D73BE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D13B7BFCF694F97C890BD4F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JustGoWithIt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		86A8959A2019917D00CE3926 /* Sources */ = {
@@ -398,6 +457,7 @@
 		};
 		86A895B12019917D00CE3926 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -417,6 +477,7 @@
 		};
 		86A895B22019917D00CE3926 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F520DA6DB0379C82D7EF55A /* Pods-JustGoWithIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
