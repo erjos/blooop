@@ -1,5 +1,6 @@
 import Foundation
 import GooglePlaces
+import GoogleMaps
 
 class LocationManager {
     
@@ -15,6 +16,14 @@ class LocationManager {
         let southWestCorner = CLLocationCoordinate2D.init(latitude: southLat, longitude: westLong)
         
         return GMSCoordinateBounds.init(coordinate: southWestCorner, coordinate: northEastCorner)
+    }
+    
+    static func getLocationBoundsFromMap(map: GMSMapView) -> GMSCoordinateBounds {
+        let projection = map.projection.visibleRegion()
+        let southwestBound = projection.nearLeft
+        let northeastBound = projection.farRight
+        let coordinateBounds = GMSCoordinateBounds.init(coordinate: southwestBound, coordinate: northeastBound)
+        return coordinateBounds
     }
     
 }

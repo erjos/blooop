@@ -4,8 +4,6 @@ import GoogleMaps
 
 class BuilderViewController: UIViewController {
     
-    
-    
     @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationView: UIView!
@@ -23,6 +21,9 @@ class BuilderViewController: UIViewController {
     var trip = Trip()
     var isSubLocation = false //flag used to identify if builder is used for Location or Place (Locations contain places)
     var cityIndex = 0
+    var coordinateBounds: GMSCoordinateBounds?
+    var map: GMSMapView?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,9 +73,12 @@ class BuilderViewController: UIViewController {
             let target = trip.cities[cityIndex].googlePlace.coordinate
             var camera = GMSCameraPosition.camera(withTarget: target, zoom: 6)
             
-            let map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
+            map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
+            map?.delegate = self
+            //TODO: lets update these bounds when the map changes position
+            coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
             //need to add it as a subview?
-            self.mapView.addSubview(map)
+            self.mapView.addSubview(map!)
         }
     }
     
@@ -164,7 +168,7 @@ extension BuilderViewController: UITextFieldDelegate {
             let autocompleteController = GMSAutocompleteViewController()
             if(isSubLocation){
                 autocompleteController.autocompleteBoundsMode = .restrict
-                autocompleteController.autocompleteBounds = LocationManager.getLocationBounds(trip.cities[cityIndex].googlePlace.coordinate)
+                autocompleteController.autocompleteBounds = self.coordinateBounds//LocationManager.getLocationBounds(trip.cities[cityIndex].googlePlace.coordinate)
             }
             autocompleteController.delegate = self
             present(autocompleteController, animated: true, completion: nil)
@@ -209,5 +213,13 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
+
+extension BuilderViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        
+        //need to utilize shared map instance
+        self.coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
     }
 }
