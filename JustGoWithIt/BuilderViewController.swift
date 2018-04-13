@@ -70,11 +70,11 @@ class BuilderViewController: UIViewController {
         if(isSubLocation){
             mapView.isHidden = false
             let target = trip.cities[cityIndex].googlePlace.coordinate
-            var camera = GMSCameraPosition.camera(withTarget: target, zoom: 12)
+            var camera = GMSCameraPosition.camera(withTarget: target, zoom: 6)
             
             let map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
-            //need to add it as a subview
-            mapView.addSubview(map)
+            //need to add it as a subview?
+            self.mapView.addSubview(map)
         }
     }
     
