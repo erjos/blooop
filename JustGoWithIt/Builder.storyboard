@@ -21,14 +21,13 @@
         <!--Builder View Controller-->
         <scene sceneID="UHA-Kx-kaY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="olg-X0-qhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="G0m-Ch-JEk" customClass="BuilderViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w5s-PY-t8M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seT-Zz-PjA">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="359"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAC-bj-j9x" userLabel="Content">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="470"/>
@@ -158,13 +157,21 @@
                                     <constraint firstItem="mAC-bj-j9x" firstAttribute="centerX" secondItem="seT-Zz-PjA" secondAttribute="centerX" id="wUX-Kp-SII"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rya-Fo-KRD">
+                                <rect key="frame" x="0.0" y="423" width="375" height="200"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="muf-cb-gP4" firstAttribute="bottom" secondItem="seT-Zz-PjA" secondAttribute="bottom" id="3Sf-HP-0Kk"/>
+                            <constraint firstItem="muf-cb-gP4" firstAttribute="bottom" secondItem="seT-Zz-PjA" secondAttribute="bottom" constant="200" id="3Sf-HP-0Kk"/>
                             <constraint firstItem="muf-cb-gP4" firstAttribute="trailing" secondItem="seT-Zz-PjA" secondAttribute="trailing" id="4mj-6w-MRO"/>
+                            <constraint firstItem="rya-Fo-KRD" firstAttribute="leading" secondItem="muf-cb-gP4" secondAttribute="leading" id="Ck3-Tj-Hki"/>
+                            <constraint firstItem="muf-cb-gP4" firstAttribute="trailing" secondItem="rya-Fo-KRD" secondAttribute="trailing" id="IWi-Pz-9U3"/>
                             <constraint firstItem="seT-Zz-PjA" firstAttribute="leading" secondItem="muf-cb-gP4" secondAttribute="leading" id="KPo-Gi-U4B"/>
                             <constraint firstItem="seT-Zz-PjA" firstAttribute="width" secondItem="w5s-PY-t8M" secondAttribute="width" id="Ld3-PK-o2f"/>
+                            <constraint firstItem="muf-cb-gP4" firstAttribute="bottom" secondItem="rya-Fo-KRD" secondAttribute="bottom" id="j3N-5X-Pf0"/>
+                            <constraint firstItem="rya-Fo-KRD" firstAttribute="top" secondItem="seT-Zz-PjA" secondAttribute="bottom" id="nDe-we-0RD"/>
                             <constraint firstItem="seT-Zz-PjA" firstAttribute="top" secondItem="muf-cb-gP4" secondAttribute="top" id="wwl-hh-ePw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="muf-cb-gP4"/>
@@ -180,6 +187,7 @@
                         <outlet property="locationField" destination="zpS-xA-Eqg" id="rCq-hW-JNd"/>
                         <outlet property="locationLabel" destination="HXy-K7-P1M" id="f0C-vh-K4N"/>
                         <outlet property="locationView" destination="cfu-TQ-bQg" id="bzL-gv-ohl"/>
+                        <outlet property="mapView" destination="rya-Fo-KRD" id="BL4-Bc-ypk"/>
                         <outlet property="nameDivider" destination="0Qc-Y6-kGE" id="8U4-Do-7ee"/>
                         <outlet property="nameField" destination="PfM-WC-44R" id="SEx-Cv-TXf"/>
                         <outlet property="nameLabel" destination="ykY-HS-t4A" id="VHW-ft-NXj"/>
@@ -187,6 +195,7 @@
                         <segue destination="Kvy-Xg-HaM" kind="show" identifier="builderToTrip" id="Bgl-iS-w5T"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="olg-X0-qhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3.75" y="863.75"/>
         </scene>

@@ -3,6 +3,7 @@ import GooglePlaces
 
 class BuilderViewController: UIViewController {
     
+    @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -62,6 +63,8 @@ class BuilderViewController: UIViewController {
         locationField.delegate = self
         setupNameField()
         setupDatePicker(dateField, datePicker, nil)
+        
+        mapView =
     }
     
     @objc private func dismissIt(){
