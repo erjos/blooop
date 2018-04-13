@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862EF6C1207D0BAC005D268B /* BuilderViewController.swift */; };
 		863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */; };
+		863E26E7207FFDBD00029FF4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863E26E6207FFDBD00029FF4 /* LocationManager.swift */; };
 		864F67E0207E823200B6554B /* Builder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864F67DF207E823200B6554B /* Builder.storyboard */; };
 		864F67E2207EACD500B6554B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864F67E1207EACD500B6554B /* Models.swift */; };
 		86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A895A12019917D00CE3926 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		862EF6C1207D0BAC005D268B /* BuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderViewController.swift; sourceTree = "<group>"; };
 		863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePhotoManager.swift; sourceTree = "<group>"; };
+		863E26E6207FFDBD00029FF4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		864F67DF207E823200B6554B /* Builder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Builder.storyboard; sourceTree = "<group>"; };
 		864F67E1207EACD500B6554B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		86A8959E2019917D00CE3926 /* JustGoWithIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustGoWithIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 				862EF6C1207D0BAC005D268B /* BuilderViewController.swift */,
 				864F67E1207EACD500B6554B /* Models.swift */,
 				863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */,
+				863E26E6207FFDBD00029FF4 /* LocationManager.swift */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			files = (
 				86CA2C0D20226CB400A0D770 /* CalendarViewController.swift in Sources */,
 				86A895A42019917D00CE3926 /* TripViewController.swift in Sources */,
+				863E26E7207FFDBD00029FF4 /* LocationManager.swift in Sources */,
 				86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */,
 				864F67E2207EACD500B6554B /* Models.swift in Sources */,
 				86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */,

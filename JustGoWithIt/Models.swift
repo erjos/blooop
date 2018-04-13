@@ -9,8 +9,8 @@ class Trip {
     
     //Returns the place ID of a location in a city, given a corresponding index path
     //city index corresponds to secion ; location index corresponds to row
-    func getLocationPlaceId(from indexPath: IndexPath) -> String{
-        return cities[indexPath.section].locations[indexPath.row].googlePlace.placeID
+    func getLocationGMSPlace(from indexPath: IndexPath) -> GMSPlace{
+        return cities[indexPath.section].locations[indexPath.row].googlePlace
     }
 }
 

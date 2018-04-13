@@ -4,10 +4,9 @@ import GooglePlaces
 class TripViewController: UIViewController {
 
     var collapsedSectionHeaders = [Int]()
-    
-    //cant get to this page unless you have a trip
+    //Trip must be initialized to access this page
     var trip: Trip!
-    
+
     @IBOutlet weak var tripName: UILabel!
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -44,7 +43,7 @@ class TripViewController: UIViewController {
             }
             let indexPath = sender as! IndexPath
             //pass necessary objects off to the builder
-            builder.shouldConfigure = true
+            builder.isSubLocation = true
             builder.cityIndex = indexPath.section
             builder.trip = self.trip
         }
@@ -60,6 +59,7 @@ extension TripViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         //Sub location selected by user (contained by main city) - new cities are added via the menu
         //let selectedLocation = place
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -100,6 +100,7 @@ extension TripViewController: ListHeaderDelegate{
         tableView.reloadSections(set, with: UITableViewRowAnimation.automatic)
     }
     
+    //No longer in use
     func didSelectAdd() {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
@@ -128,16 +129,16 @@ extension TripViewController: UITableViewDelegate{
         let isCollapsed = collapsedSectionHeaders.contains(section)
         let header = Bundle.main.loadNibNamed("ListHeader", owner: self, options: nil)?.first as! ListHeader
         if(!isCollapsed){
+            //style collapsed headers
             //header.setDropShadow()
         }
         header.arrow.image = isCollapsed ? header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0) : header.arrow.image
         header.delegate = self
         header.section = section
-        //
         let city = trip.cities[section]
         //set city name on label
         header.mainLabel.text = city.googlePlace.name
-        //set date on label - issue date on trip vs date on location - this should be date on location
+        //set date on label
         header.dateLabel.text = city.date?.formatDateAsString()
         
 //        let sectionCount = trip.cities.count
@@ -171,19 +172,15 @@ extension TripViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
-        cell.activityIndicator.isHidden = true
-        cell.cellImage.isHidden = false
         let placeCount = trip.cities[indexPath.section].locations.count
         //row starts at 0; count starts at 1
         if(indexPath.row == placeCount){
-            //configure for last cell in list
-            cell.cellLabel.text = "+ Add Place"
+            cell.configureLastCell()
             return cell
         }
-        let placeID = trip.getLocationPlaceId(from: indexPath)
-        cell.setCellImage(placeID: placeID)
-        
-        cell.cellLabel.text = trip.cities[indexPath.section].locations[indexPath.row].googlePlace.name
+        let gmsPlace = trip.getLocationGMSPlace(from: indexPath)
+        cell.setCellImage(placeID: gmsPlace.placeID)
+        cell.cellLabel.text = gmsPlace.name
         return cell
     }
     

@@ -25,6 +25,13 @@ class ListTableViewCell: UITableViewCell {
         }
     }
     
+    func configureLastCell(){
+        //TODO: decide how we want this to change for this cell
+        activityIndicator.isHidden = true
+        cellImage.isHidden = false
+        cellLabel.text = "+ Add Place"
+    }
+    
     func setCellImage(placeID: String){
         activityIndicator.isHidden = false
         cellImage.isHidden = true

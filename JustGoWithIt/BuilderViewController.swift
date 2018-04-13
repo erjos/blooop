@@ -17,7 +17,7 @@ class BuilderViewController: UIViewController {
     
     let datePicker = UIDatePicker()
     var trip = Trip()
-    var shouldConfigure = false //flag used to identify if builder is used for Location or Place (Locations contain places)
+    var isSubLocation = false //flag used to identify if builder is used for Location or Place (Locations contain places)
     var cityIndex = 0
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class BuilderViewController: UIViewController {
         
         //TODO: add a dismiss icon to the navbar when sent from the tripVC
         //configure for place
-        if(shouldConfigure){
+        if(isSubLocation){
             
             //setup dismiss button
             let button = UIButton()
@@ -105,7 +105,7 @@ class BuilderViewController: UIViewController {
     
     @objc private func selectDone(){
         if(nameField.isFirstResponder){
-            if(!shouldConfigure){
+            if(!isSubLocation){
                 trip.name = nameField.text
             } else {
                 //should be the last element of the collection because we always append from this screen
@@ -119,7 +119,7 @@ class BuilderViewController: UIViewController {
         }
         
         if(dateField.isFirstResponder){
-            if(!shouldConfigure){
+            if(!isSubLocation){
                 //we will only set dates on cities and locations - lets calculate trip date dynamically based on how the user sets up their events
                 trip.cities.last?.date = datePicker.date
             } else {
@@ -148,6 +148,10 @@ extension BuilderViewController: UITextFieldDelegate {
         if(locationField.isFirstResponder){
             //launch google place picker
             let autocompleteController = GMSAutocompleteViewController()
+            if(isSubLocation){
+                autocompleteController.autocompleteBoundsMode = .restrict
+                autocompleteController.autocompleteBounds = LocationManager.getLocationBounds(trip.cities[cityIndex].googlePlace.coordinate)
+            }
             autocompleteController.delegate = self
             present(autocompleteController, animated: true, completion: nil)
         }
@@ -156,7 +160,7 @@ extension BuilderViewController: UITextFieldDelegate {
 
 extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        if(!shouldConfigure){
+        if(!isSubLocation){
             //create city
             let city = City.init(place: place)
             //TODO: account for if the user selects a city multiple times from this page - it should clean the list or immediately allow them to enter multiple cities...
