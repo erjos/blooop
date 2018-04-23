@@ -2,6 +2,8 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -30,9 +32,10 @@ class ListTableViewCell: UITableViewCell {
     }
     
     func configureLastCell(){
-        //TODO: decide how we want this to change for this cell
+        //TODO: create set cell methods to show and hide the correct things so that dequeued cells dont break
         activityIndicator.isHidden = true
-        cellImage.isHidden = false
+        cellImage.isHidden = true
+        activityLabel.isHidden = true
         cellLabel.text = "+ Add Place"
     }
     
@@ -42,7 +45,7 @@ class ListTableViewCell: UITableViewCell {
         GooglePhotoManager.getPhoto(placeID: placeID, success: { (image, string) in
             //success
             self.cellImage.image = image
-            self.cellImage.contentMode = .scaleAspectFill//.scaleAspectFit
+            self.cellImage.contentMode = .scaleAspectFill //.scaleAspectFit
             self.activityIndicator.isHidden = true
             self.cellImage.isHidden = false
         }) { (error) in

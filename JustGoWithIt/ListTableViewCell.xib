@@ -45,7 +45,6 @@
                             </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wER-vb-gX0">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="115.5"/>
-                                <color key="backgroundColor" red="0.75686274509999996" green="0.074509803920000006" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="ZRe-fR-wBa"/>
                                 </constraints>
@@ -61,8 +60,16 @@
                             <constraint firstItem="wER-vb-gX0" firstAttribute="leading" secondItem="fRh-At-WXN" secondAttribute="leading" id="wou-QE-7Gw"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/02/18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8y-Xa-33W">
+                        <rect key="frame" x="378.5" y="52" width="68.5" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="o8y-Xa-33W" firstAttribute="bottom" secondItem="9fy-ER-DCi" secondAttribute="bottom" id="AIk-sV-adn"/>
+                    <constraint firstItem="o8y-Xa-33W" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-10" id="BEt-AS-b2J"/>
                     <constraint firstItem="fRh-At-WXN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="CMl-cl-7eW"/>
                     <constraint firstItem="fRh-At-WXN" firstAttribute="top" secondItem="9fy-ER-DCi" secondAttribute="bottom" constant="10" id="DX9-IT-xfN"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="fRh-At-WXN" secondAttribute="trailing" constant="177" id="Mn0-nI-GCb"/>
@@ -79,6 +86,8 @@
                 <outlet property="activityLabel" destination="m0o-gw-pVk" id="aBK-7u-4GJ"/>
                 <outlet property="cellImage" destination="wER-vb-gX0" id="tFB-DY-8Cc"/>
                 <outlet property="cellLabel" destination="9fy-ER-DCi" id="Q3n-7a-06z"/>
+                <outlet property="dateLabel" destination="o8y-Xa-33W" id="0Ee-Er-hxd"/>
+                <outlet property="imageContainer" destination="fRh-At-WXN" id="olg-16-NDE"/>
                 <outlet property="imageViewWidth" destination="ZRe-fR-wBa" id="iMQ-7o-nVW"/>
             </connections>
             <point key="canvasLocation" x="227.5" y="102.5"/>
