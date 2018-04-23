@@ -2,6 +2,7 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var cellImage: UIImageView!
@@ -22,6 +23,8 @@ class ListTableViewCell: UITableViewCell {
         case .NilPhoto:
             //inform user no picture exists
             print("photo came back as nil")
+        case .NoPhotosInList:
+            print("no photos in the list")
         }
     }
     

@@ -5,6 +5,7 @@ enum PhotoError {
     case FailedMetaData
     case FailedPhoto
     case NilPhoto
+    case NoPhotosInList
 }
 
 class GooglePhotoManager{
@@ -24,12 +25,15 @@ class GooglePhotoManager{
                 failure(.FailedMetaData)
                 print("Error: \(error.localizedDescription)")
             } else {
+                //nothing in the list skips this and doesn't return an error
                 if let firstPhoto = photos?.results.first {
                     self.loadImageForMetadata(photoMetadata: firstPhoto, success: { (image, string) in
                         success(image, string)
                     }, failure: { (status) in
                         failure(status)
                     })
+                } else {
+                    failure(.NoPhotosInList)
                 }
             }
         }
