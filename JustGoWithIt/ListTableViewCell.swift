@@ -2,6 +2,7 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cellLabel: UILabel!
@@ -41,7 +42,7 @@ class ListTableViewCell: UITableViewCell {
         GooglePhotoManager.getPhoto(placeID: placeID, success: { (image, string) in
             //success
             self.cellImage.image = image
-            self.cellImage.contentMode = .scaleAspectFit
+            self.cellImage.contentMode = .scaleAspectFill//.scaleAspectFit
             self.activityIndicator.isHidden = true
             self.cellImage.isHidden = false
         }) { (error) in

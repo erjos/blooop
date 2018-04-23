@@ -12,6 +12,10 @@ class Trip {
     func getLocationGMSPlace(from indexPath: IndexPath) -> GMSPlace{
         return cities[indexPath.section].locations[indexPath.row].googlePlace
     }
+    
+    func getSubLocation(from indexPath: IndexPath)-> Location{
+        return cities[indexPath.section].locations[indexPath.row]
+    }
 }
 
 class City {

@@ -34,11 +34,8 @@ class BuilderViewController: UIViewController {
         dateView.isHidden = true
         locationDivider.isHidden = true
         nameDivider.isHidden = true
-        
-        //TODO: add a dismiss icon to the navbar when sent from the tripVC
         //configure for place
         if(isSubLocation){
-            
             //setup dismiss button
             let button = UIButton()
             button.setImage(#imageLiteral(resourceName: "closer"), for: .normal)
@@ -68,6 +65,8 @@ class BuilderViewController: UIViewController {
         setupNameField()
         setupDatePicker(dateField, datePicker, nil)
         mapView.isHidden = true
+        
+        //handle map view
         if(isSubLocation){
             mapView.isHidden = false
             let target = trip.cities[cityIndex].googlePlace.coordinate

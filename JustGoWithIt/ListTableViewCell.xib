@@ -76,6 +76,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="activityIndicator" destination="kBv-3b-GQj" id="WMH-Gd-6DK"/>
+                <outlet property="activityLabel" destination="m0o-gw-pVk" id="aBK-7u-4GJ"/>
                 <outlet property="cellImage" destination="wER-vb-gX0" id="tFB-DY-8Cc"/>
                 <outlet property="cellLabel" destination="9fy-ER-DCi" id="Q3n-7a-06z"/>
                 <outlet property="imageViewWidth" destination="ZRe-fR-wBa" id="iMQ-7o-nVW"/>
