@@ -7,7 +7,7 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var cellLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var cellImage: UIImageView!
     
     override func awakeFromNib() {
@@ -36,7 +36,8 @@ class ListTableViewCell: UITableViewCell {
         activityIndicator.isHidden = true
         cellImage.isHidden = true
         activityLabel.isHidden = true
-        cellLabel.text = "+ Add Place"
+        dateLabel.isHidden = true
+        locationLabel.text = "+ Add Place"
     }
     
     func setCellImage(placeID: String){

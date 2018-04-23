@@ -182,7 +182,7 @@ extension TripViewController: UITableViewDataSource{
         cell.setCellImage(placeID: gmsPlace.placeID)
         cell.activityLabel.text = trip.getSubLocation(from: indexPath).label
         cell.dateLabel.text = trip.getSubLocation(from: indexPath).date?.formatDateAsString()
-        cell.cellLabel.text = gmsPlace.name
+        cell.locationLabel.text = gmsPlace.name
         return cell
     }
     
