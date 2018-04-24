@@ -2,6 +2,7 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var activityLabel: UILabel!
@@ -24,9 +25,10 @@ class ListTableViewCell: UITableViewCell {
             //inform user of failure - try again
             print("no photo retrieved")
         case .NilPhoto:
-            //inform user no picture exists
+            //inform user picture failed - set state
             print("photo came back as nil")
         case .NoPhotosInList:
+            //inform user no pictures exist - set state
             print("no photos in the list")
         }
     }

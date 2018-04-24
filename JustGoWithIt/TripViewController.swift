@@ -178,6 +178,10 @@ extension TripViewController: UITableViewDataSource{
             cell.configureLastCell()
             return cell
         }
+        //Set cell collection data source and register identifier... could be done in cell class?
+        cell.collectionView.delegate = self
+        cell.collectionView.dataSource = self
+        cell.collectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
         let gmsPlace = trip.getLocationGMSPlace(from: indexPath)
         cell.setCellImage(placeID: gmsPlace.placeID)
         cell.activityLabel.text = trip.getSubLocation(from: indexPath).label
@@ -203,5 +207,30 @@ extension TripViewController: UITableViewDataSource{
         } else {
             return placeCount + 1
         }
+    }
+}
+
+extension TripViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize.init(width: 200, height: 115)
+    }
+}
+
+extension TripViewController : UICollectionViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //use this function to load the photos within the cells before they come onto the screen.
+    }
+}
+
+extension TripViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //Should start out as 2 until a user opts to see more photos...
+        //two states - more photos / standard
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionViewCell
+        return cell
     }
 }

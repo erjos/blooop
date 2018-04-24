@@ -37,6 +37,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/02/18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8y-Xa-33W">
+                        <rect key="frame" x="378" y="21" width="68.5" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-At-WXN" userLabel="Image Container">
                         <rect key="frame" x="30" y="82.5" width="200" height="115.5"/>
                         <subviews>
@@ -60,24 +66,32 @@
                             <constraint firstItem="wER-vb-gX0" firstAttribute="leading" secondItem="fRh-At-WXN" secondAttribute="leading" id="wou-QE-7Gw"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/02/18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8y-Xa-33W">
-                        <rect key="frame" x="378.5" y="21" width="68.5" height="21"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="I4E-VO-E1f">
+                        <rect key="frame" x="10" y="83" width="467" height="125.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="czV-id-hs7">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="I4E-VO-E1f" secondAttribute="bottom" constant="10" id="1aS-Ve-K6Y"/>
                     <constraint firstAttribute="trailingMargin" secondItem="o8y-Xa-33W" secondAttribute="trailing" constant="10" id="2gd-7U-q0Q"/>
+                    <constraint firstItem="I4E-VO-E1f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="4fP-e0-WTH"/>
                     <constraint firstItem="fRh-At-WXN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="CMl-cl-7eW"/>
                     <constraint firstItem="fRh-At-WXN" firstAttribute="top" secondItem="9fy-ER-DCi" secondAttribute="bottom" constant="10" id="DX9-IT-xfN"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="fRh-At-WXN" secondAttribute="trailing" constant="177" id="Mn0-nI-GCb"/>
                     <constraint firstAttribute="bottomMargin" secondItem="fRh-At-WXN" secondAttribute="bottom" constant="10" id="Vzz-Cx-0AC"/>
                     <constraint firstItem="o8y-Xa-33W" firstAttribute="bottom" secondItem="m0o-gw-pVk" secondAttribute="bottom" id="dRi-mW-axZ"/>
+                    <constraint firstItem="I4E-VO-E1f" firstAttribute="top" secondItem="9fy-ER-DCi" secondAttribute="bottom" constant="10" id="e6Y-KO-eue"/>
                     <constraint firstItem="m0o-gw-pVk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="hd8-Aj-mSv"/>
                     <constraint firstItem="9fy-ER-DCi" firstAttribute="top" secondItem="m0o-gw-pVk" secondAttribute="bottom" constant="10" id="lct-El-Rks"/>
                     <constraint firstItem="m0o-gw-pVk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="mRt-vZ-8bK"/>
                     <constraint firstItem="9fy-ER-DCi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="r7c-yR-4rk"/>
+                    <constraint firstAttribute="trailing" secondItem="I4E-VO-E1f" secondAttribute="trailing" id="vAh-WC-VzF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -85,6 +99,7 @@
                 <outlet property="activityIndicator" destination="kBv-3b-GQj" id="WMH-Gd-6DK"/>
                 <outlet property="activityLabel" destination="9fy-ER-DCi" id="gVu-3i-WZT"/>
                 <outlet property="cellImage" destination="wER-vb-gX0" id="tFB-DY-8Cc"/>
+                <outlet property="collectionView" destination="I4E-VO-E1f" id="tTz-dE-fAh"/>
                 <outlet property="dateLabel" destination="o8y-Xa-33W" id="0Ee-Er-hxd"/>
                 <outlet property="imageContainer" destination="fRh-At-WXN" id="olg-16-NDE"/>
                 <outlet property="imageViewWidth" destination="ZRe-fR-wBa" id="iMQ-7o-nVW"/>

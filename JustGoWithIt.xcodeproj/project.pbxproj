@@ -37,6 +37,8 @@
 		86B75C5D2059518F00D53F90 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B75C5C2059518F00D53F90 /* QuartzCore.framework */; };
 		86B75C5F2059519900D53F90 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B75C5E2059519900D53F90 /* SystemConfiguration.framework */; };
 		86B75C612059519E00D53F90 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B75C602059519E00D53F90 /* UIKit.framework */; };
+		86B7EB14208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B7EB12208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift */; };
+		86B7EB15208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */; };
 		86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */; };
 		86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */; };
 		86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */; };
@@ -78,6 +80,8 @@
 		86B75C5C2059518F00D53F90 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		86B75C5E2059519900D53F90 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		86B75C602059519E00D53F90 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		86B7EB12208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 				864F67E1207EACD500B6554B /* Models.swift */,
 				863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */,
 				863E26E6207FFDBD00029FF4 /* LocationManager.swift */,
+				86B7EB12208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift */,
+				86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 				86CA2C0E20226CB400A0D770 /* CalendarViewController.xib in Resources */,
 				86A895A92019917D00CE3926 /* Assets.xcassets in Resources */,
 				86A895A72019917D00CE3926 /* Main.storyboard in Resources */,
+				86B7EB15208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib in Resources */,
 				864F67E0207E823200B6554B /* Builder.storyboard in Resources */,
 				86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */,
 			);
@@ -320,6 +327,7 @@
 				862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */,
 				86A895B6201992AE00CE3926 /* ListHeader.swift in Sources */,
 				863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */,
+				86B7EB14208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift in Sources */,
 				86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
