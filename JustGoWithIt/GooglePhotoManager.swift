@@ -56,7 +56,7 @@ class GooglePhotoManager{
         }
     }
     
-    private static func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata, success: @escaping (_ image: UIImage, _ attributedText: NSAttributedString?)-> Void, failure: @escaping (_ status: PhotoError)->Void){
+    static func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata, success: @escaping (_ image: UIImage, _ attributedText: NSAttributedString?)-> Void, failure: @escaping (_ status: PhotoError)->Void){
         
         GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
             (photo, error) -> Void in

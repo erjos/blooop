@@ -9,6 +9,9 @@ class Trip {
     
     //Returns the place ID of a location in a city, given a corresponding index path
     //city index corresponds to secion ; location index corresponds to row
+    func getPhotoMetaData(from indexPath: IndexPath, collectionRow: Int) -> GMSPlacePhotoMetadata? {
+        return cities[indexPath.section].locations[indexPath.row].photoMetaDataList?[collectionRow]
+    }
     func setPhotoMetaData(_ indexPath: IndexPath, _ list: [GMSPlacePhotoMetadata]) {
         cities[indexPath.section].locations[indexPath.row].photoMetaDataList = list
     }

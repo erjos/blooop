@@ -6,6 +6,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageContainer: UIView!
     
+    //var imageLoaded = false
+    
     func setFirstImage(placeID: String){
         activityIndicator.isHidden = false
         imageView.isHidden = true
@@ -18,6 +20,14 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         }) { (error) in
             self.handlePictureError(error: error)
         }
+    }
+    
+    func setImage(image: UIImage){
+        self.imageView.image = image
+        self.imageView.contentMode = .scaleAspectFill //.scaleAspectFit
+        self.activityIndicator.isHidden = true
+        self.imageView.isHidden = false
+        //self.imageLoaded = true
     }
     
     private func handlePictureError(error: PhotoError){

@@ -191,6 +191,7 @@ extension TripViewController: UITableViewDataSource{
         GooglePhotoManager.loadMetaDataList(placeID: gmsPlace.placeID, success: { list in
             //successfully get meta data list
             self.trip.setPhotoMetaData(indexPath, list)
+            cell.collectionView.reloadData()
         }) { error in
             //failed to get metaDatalist
         }
@@ -232,8 +233,17 @@ extension TripViewController : UICollectionViewDelegateFlowLayout {
 extension TripViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let collection = collectionView as! TableCollectionView
-        
-        //load photo for cell at this location
+        let rowLocation = collection.rowLocation
+        let photoCell = cell as! PhotoCollectionViewCell
+        guard let metaData = trip.getPhotoMetaData(from: rowLocation!, collectionRow: indexPath.row) else {
+            return
+        }
+        //should this be called by a method on the cell like "setFirstImage" ?
+        GooglePhotoManager.loadImageForMetadata(photoMetadata: metaData, success: { (image, attributes) in
+            photoCell.setImage(image: image)
+        }) { photoError in
+            //error
+        }
     }
 }
 
