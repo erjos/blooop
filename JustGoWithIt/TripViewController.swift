@@ -178,12 +178,13 @@ extension TripViewController: UITableViewDataSource{
             cell.configureLastCell()
             return cell
         }
+        
         //Set cell collection data source and register identifier... could be done in cell class?
         cell.collectionView.delegate = self
         cell.collectionView.dataSource = self
         cell.collectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
         let gmsPlace = trip.getLocationGMSPlace(from: indexPath)
-        cell.setCellImage(placeID: gmsPlace.placeID)
+        //cell.loadPictures
         cell.activityLabel.text = trip.getSubLocation(from: indexPath).label
         cell.dateLabel.text = trip.getSubLocation(from: indexPath).date?.formatDateAsString()
         cell.locationLabel.text = gmsPlace.name
@@ -224,7 +225,7 @@ extension TripViewController : UICollectionViewDelegate {
 
 extension TripViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //Should start out as 2 until a user opts to see more photos...
+        //We need to get the number of cells for each location in the city - where do we store that common value
         //two states - more photos / standard
         return 20
     }

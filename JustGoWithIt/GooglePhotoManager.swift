@@ -10,11 +10,28 @@ enum PhotoError {
 
 class GooglePhotoManager{
     
+    //Gets a single photo and returns either photo or error enum
     static func getPhoto(placeID: String, success: @escaping (_ image: UIImage, _ attributedText: NSAttributedString?)-> Void, failure: @escaping (_ status: PhotoError)->Void){
         loadFirstPhotoForPlace(placeID: placeID, success: { (image, string) in
             success(image, string)
         }) { status in
             failure(status)
+        }
+    }
+    
+    //Will return the metaData list of photos available for a place
+    static func loadMetaDataList(placeID: String, success: @escaping (_ metaDataList: [GMSPlacePhotoMetadata])->Void, failure: @escaping (_ status: PhotoError)->Void){
+        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
+            if let error = error {
+                failure(.FailedMetaData)
+                print("Error: \(error.localizedDescription)")
+            } else {
+                guard let list = photos?.results else {
+                    failure(.NoPhotosInList)
+                    return
+                }
+                success(list)
+            }
         }
     }
     
