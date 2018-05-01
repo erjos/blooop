@@ -2,7 +2,8 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var collectionView: TableCollectionView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -12,22 +13,16 @@ class ListTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-//    private func handlePictureError(error: PhotoError){
-//        switch error {
-//        case .FailedMetaData :
-//            //inform user of failure - try again
-//            print("no meta data retrieved")
-//        case .FailedPhoto :
-//            //inform user of failure - try again
-//            print("no photo retrieved")
-//        case .NilPhoto:
-//            //inform user picture failed - set state
-//            print("photo came back as nil")
-//        case .NoPhotosInList:
-//            //inform user no pictures exist - set state
-//            print("no photos in the list")
-//        }
-//    }
+    //Sets the data source and delegate for the collection view
+    func setupCollectionView
+        <dataSourceDelegate: UICollectionViewDelegate & UICollectionViewDataSource>
+        (viewController: dataSourceDelegate, forIndexPath indexPath: IndexPath){
+        collectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
+        collectionView.dataSource = viewController
+        collectionView.delegate = viewController
+        collectionView.rowLocation = indexPath
+        collectionView.reloadData()
+    }
     
     func loadCollectionPhotos(){
         
@@ -41,23 +36,14 @@ class ListTableViewCell: UITableViewCell {
         locationLabel.text = "+ Add Place"
     }
     
-//    func setCellImage(placeID: String){
-//        activityIndicator.isHidden = false
-//        cellImage.isHidden = true
-//        GooglePhotoManager.getPhoto(placeID: placeID, success: { (image, string) in
-//            //success
-//            self.cellImage.image = image
-//            self.cellImage.contentMode = .scaleAspectFill //.scaleAspectFit
-//            self.activityIndicator.isHidden = true
-//            self.cellImage.isHidden = false
-//        }) { (error) in
-//            self.handlePictureError(error: error)
-//        }
-//    }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+}
+
+class TableCollectionView: UICollectionView {
+    //allows us to quickly set/store and lookup the location of a collection view inside the table view
+    var rowLocation: IndexPath?
 }

@@ -160,6 +160,13 @@ extension TripViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50.0
     }
+    
+    //might still want to use this at somepoint to improve performance
+    //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    //        //use this function to load the photos within the cells before they come onto the screen.
+    //        let f = indexPath.row
+    //        print(f)
+    //    }
 }
 
 extension TripViewController: UITableViewDataSource{
@@ -179,12 +186,17 @@ extension TripViewController: UITableViewDataSource{
             return cell
         }
         
-        //Set cell collection data source and register identifier... could be done in cell class?
-        cell.collectionView.delegate = self
-        cell.collectionView.dataSource = self
-        cell.collectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
-        let gmsPlace = trip.getLocationGMSPlace(from: indexPath)
-        //cell.loadPictures
+        let gmsPlace = trip.getSubLocationGMSPlace(from: indexPath)
+        //for each place in the list - fetch the photo meta data and store on the model
+        GooglePhotoManager.loadMetaDataList(placeID: gmsPlace.placeID, success: { list in
+            //successfully get meta data list
+            self.trip.setPhotoMetaData(indexPath, list)
+        }) { error in
+            //failed to get metaDatalist
+        }
+        
+        cell.setupCollectionView(viewController: self, forIndexPath: indexPath)
+        
         cell.activityLabel.text = trip.getSubLocation(from: indexPath).label
         cell.dateLabel.text = trip.getSubLocation(from: indexPath).date?.formatDateAsString()
         cell.locationLabel.text = gmsPlace.name
@@ -218,16 +230,23 @@ extension TripViewController : UICollectionViewDelegateFlowLayout {
 }
 
 extension TripViewController : UICollectionViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //use this function to load the photos within the cells before they come onto the screen.
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let collection = collectionView as! TableCollectionView
+        
+        //load photo for cell at this location
     }
 }
 
 extension TripViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //We need to get the number of cells for each location in the city - where do we store that common value
-        //two states - more photos / standard
-        return 20
+        let collection = collectionView as! TableCollectionView
+        guard let indexPath = collection.rowLocation else {
+            return 1
+        }
+        guard let photoList = trip.getSubLocation(from: indexPath).photoMetaDataList else {
+            return 1
+        }
+        return photoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

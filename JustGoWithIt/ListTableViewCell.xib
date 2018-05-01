@@ -43,7 +43,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="I4E-VO-E1f">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="I4E-VO-E1f" customClass="TableCollectionView" customModule="JustGoWithIt" customModuleProvider="target">
                         <rect key="frame" x="10" y="83" width="467" height="125.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="czV-id-hs7">
@@ -70,7 +70,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="activityLabel" destination="9fy-ER-DCi" id="gVu-3i-WZT"/>
-                <outlet property="collectionView" destination="I4E-VO-E1f" id="tTz-dE-fAh"/>
+                <outlet property="collectionView" destination="I4E-VO-E1f" id="GOU-rd-6s1"/>
                 <outlet property="dateLabel" destination="o8y-Xa-33W" id="0Ee-Er-hxd"/>
                 <outlet property="locationLabel" destination="m0o-gw-pVk" id="M5n-Sc-qvR"/>
             </connections>

@@ -9,7 +9,11 @@ class Trip {
     
     //Returns the place ID of a location in a city, given a corresponding index path
     //city index corresponds to secion ; location index corresponds to row
-    func getLocationGMSPlace(from indexPath: IndexPath) -> GMSPlace{
+    func setPhotoMetaData(_ indexPath: IndexPath, _ list: [GMSPlacePhotoMetadata]) {
+        cities[indexPath.section].locations[indexPath.row].photoMetaDataList = list
+    }
+    
+    func getSubLocationGMSPlace(from indexPath: IndexPath) -> GMSPlace{
         return cities[indexPath.section].locations[indexPath.row].googlePlace
     }
     
@@ -32,6 +36,7 @@ class Location {
     var googlePlace: GMSPlace
     var label: String?
     var date: Date?
+    var photoMetaDataList: [GMSPlacePhotoMetadata]?
     
     init(place: GMSPlace){
         self.googlePlace = place
