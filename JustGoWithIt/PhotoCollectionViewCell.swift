@@ -8,18 +8,26 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     var imageLoaded = false
     
-    func setFirstImage(placeID: String){
-        activityIndicator.isHidden = false
-        imageView.isHidden = true
-        GooglePhotoManager.getPhoto(placeID: placeID, success: { (image, string) in
-            //success
-            self.imageView.image = image
-            self.imageView.contentMode = .scaleAspectFill //.scaleAspectFit
-            self.activityIndicator.isHidden = true
-            self.imageView.isHidden = false
-        }) { (error) in
-            self.handlePictureError(error: error)
-        }
+//    func setFirstImage(placeID: String){
+//        activityIndicator.isHidden = false
+//        imageView.isHidden = true
+//        GooglePhotoManager.getPhoto(placeID: placeID, success: { (image, string) in
+//            //success
+//            self.imageView.image = image
+//            self.imageView.contentMode = .scaleAspectFill //.scaleAspectFit
+//            self.activityIndicator.isHidden = true
+//            self.imageView.isHidden = false
+//        }) { (error) in
+//            self.handlePictureError(error: error)
+//        }
+//    }
+    
+    //should probably be called after a new cell is dequed from the list?
+    func resetCell(){
+        self.imageView.image = nil
+        self.activityIndicator.isHidden = false
+        self.imageView.isHidden = true
+        self.imageLoaded = false
     }
     
     func setImage(image: UIImage){
@@ -30,6 +38,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         self.imageLoaded = true
     }
     
+    //Receives the error and the view responds accordingly - message from the controller
     private func handlePictureError(error: PhotoError){
         switch error {
         case .FailedMetaData :

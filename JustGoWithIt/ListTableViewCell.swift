@@ -17,6 +17,7 @@ class ListTableViewCell: UITableViewCell {
     func setupCollectionView
         <dataSourceDelegate: UICollectionViewDelegate & UICollectionViewDataSource>
         (viewController: dataSourceDelegate, forIndexPath indexPath: IndexPath){
+        collectionView.isHidden = false
         collectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
         collectionView.dataSource = viewController
         collectionView.delegate = viewController
