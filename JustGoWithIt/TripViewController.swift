@@ -7,6 +7,11 @@ class TripViewController: UIViewController {
     //Trip must be initialized to access this page
     var trip: Trip!
 
+    @IBAction func addPlaceAction(_ sender: Any) {
+        performSegue(withIdentifier: "tripToBuilder", sender: self)
+    }
+    
+    @IBOutlet weak var addPlaceButton: UIButton!
     @IBOutlet weak var tripName: UILabel!
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -41,10 +46,13 @@ class TripViewController: UIViewController {
                 print("Failed to cast view controller")
                 return
             }
-            let indexPath = sender as! IndexPath
+//            let indexPath = sender as! IndexPath
             //pass necessary objects off to the builder
             builder.isSubLocation = true
-            builder.cityIndex = indexPath.section
+            
+            //TODO: create a more flexible builder to allow users to add to multiple cities (either by changing the location
+            // on the builder or by assuming it based on where they are on the screen (might even be able to add new cities this way)
+            builder.cityIndex = 0 //This will always set the city to be the first on the trip !!! won't work for multi city
             builder.trip = self.trip
         }
     }
@@ -100,12 +108,12 @@ extension TripViewController: ListHeaderDelegate{
         tableView.reloadSections(set, with: UITableViewRowAnimation.automatic)
     }
     
-    //No longer in use
-    func didSelectAdd() {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        present(autocompleteController, animated: true, completion: nil)
-    }
+    //No longer in use - was for adding via header tap
+//    func didSelectAdd() {
+//        let autocompleteController = GMSAutocompleteViewController()
+//        autocompleteController.delegate = self
+//        present(autocompleteController, animated: true, completion: nil)
+//    }
 }
 
 extension TripViewController: UITableViewDelegate{
@@ -179,12 +187,13 @@ extension TripViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
-        let placeCount = trip.cities[indexPath.section].locations.count
+        
+        let placeCount = trip.cities[indexPath.section].locations.count // we may not need this anymore cause the table cell should match the count :)
         //row starts at 0; count starts at 1
-        if(indexPath.row == placeCount){
-            cell.configureLastCell()
-            return cell
-        }
+//        if(indexPath.row == placeCount){
+//            cell.configureLastCell()
+//            return cell
+//        }
         
         let gmsPlace = trip.getSubLocationGMSPlace(from: indexPath)
         //for each place in the list - fetch the photo meta data and store on the model
@@ -219,7 +228,7 @@ extension TripViewController: UITableViewDataSource{
         if (shouldCollapse){
             return 0
         } else {
-            return placeCount + 1
+            return placeCount //+ 1
         }
     }
 }

@@ -29,13 +29,13 @@ class ListTableViewCell: UITableViewCell {
         
     }
     
-    func configureLastCell(){
-        //TODO: create set cell methods to show and hide the correct things so that dequeued cells dont break
-        collectionView.isHidden = true
-        activityLabel.isHidden = true
-        dateLabel.isHidden = true
-        locationLabel.text = "+ Add Place"
-    }
+//    func configureLastCell(){
+//        //TODO: create set cell methods to show and hide the correct things so that dequeued cells dont break
+//        collectionView.isHidden = true
+//        activityLabel.isHidden = true
+//        dateLabel.isHidden = true
+//        locationLabel.text = "+ Add Place"
+//    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fZj-xw-miw">
-                                <rect key="frame" x="0.0" y="139" width="375" height="528"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="478"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="yqH-nN-5BJ"/>
@@ -49,14 +49,28 @@
                                     <constraint firstAttribute="height" constant="75" id="mn8-mI-pKw"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZZ-Cb-FAV">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="+ Add Place">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="addPlaceAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="36u-7h-v57"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fZj-xw-miw" secondAttribute="bottom" id="0xI-Ex-rRr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fZj-xw-miw" secondAttribute="bottom" constant="50" id="0xI-Ex-rRr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uZZ-Cb-FAV" secondAttribute="trailing" id="2n3-9B-36L"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GAF-eY-Eno"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LLy-1a-Lct"/>
                             <constraint firstItem="xAH-fd-Ank" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PQz-Io-lKL"/>
+                            <constraint firstItem="uZZ-Cb-FAV" firstAttribute="top" secondItem="fZj-xw-miw" secondAttribute="bottom" id="VXr-ok-b1I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uZZ-Cb-FAV" secondAttribute="bottom" id="Xb9-Am-ILk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xAH-fd-Ank" secondAttribute="trailing" id="f6n-Ab-d1R"/>
+                            <constraint firstItem="uZZ-Cb-FAV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fLa-Uz-CY3"/>
                             <constraint firstItem="xAH-fd-Ank" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jCV-cm-cbd"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="top" secondItem="xAH-fd-Ank" secondAttribute="bottom" id="zUh-rx-cRb"/>
                         </constraints>
@@ -74,6 +88,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPlaceButton" destination="uZZ-Cb-FAV" id="3VP-fU-Kja"/>
                         <outlet property="rightBarItem" destination="tOJ-1N-u5O" id="YkQ-Nq-PPG"/>
                         <outlet property="tableView" destination="fZj-xw-miw" id="OhB-nJ-pcx"/>
                         <outlet property="tripName" destination="faQ-pz-CYd" id="fTp-za-B5Q"/>

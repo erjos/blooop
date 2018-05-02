@@ -70,5 +70,5 @@ class ListHeader: UITableViewHeaderFooterView {
 
 protocol ListHeaderDelegate: class {
     func shouldExpandOrCollapse(section: Int)
-    func didSelectAdd()
+    //func didSelectAdd()
 }
