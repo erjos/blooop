@@ -6,7 +6,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageContainer: UIView!
     
-    //var imageLoaded = false
+    var imageLoaded = false
     
     func setFirstImage(placeID: String){
         activityIndicator.isHidden = false
@@ -27,7 +27,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         self.imageView.contentMode = .scaleAspectFill //.scaleAspectFit
         self.activityIndicator.isHidden = true
         self.imageView.isHidden = false
-        //self.imageLoaded = true
+        self.imageLoaded = true
     }
     
     private func handlePictureError(error: PhotoError){

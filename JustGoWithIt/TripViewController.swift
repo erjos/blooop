@@ -235,6 +235,9 @@ extension TripViewController : UICollectionViewDelegate {
         let collection = collectionView as! TableCollectionView
         let rowLocation = collection.rowLocation
         let photoCell = cell as! PhotoCollectionViewCell
+        guard !photoCell.imageLoaded else {
+            return
+        }
         guard let metaData = trip.getPhotoMetaData(from: rowLocation!, collectionRow: indexPath.row) else {
             return
         }
