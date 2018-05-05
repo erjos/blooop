@@ -53,15 +53,25 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMY-5i-9Hh" userLabel="Divider">
+                        <rect key="frame" x="0.0" y="217.5" width="477" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="sSK-Kt-6yz"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="I4E-VO-E1f" secondAttribute="bottom" constant="10" id="1aS-Ve-K6Y"/>
                     <constraint firstAttribute="trailingMargin" secondItem="o8y-Xa-33W" secondAttribute="trailing" constant="10" id="2gd-7U-q0Q"/>
                     <constraint firstItem="I4E-VO-E1f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="4fP-e0-WTH"/>
+                    <constraint firstAttribute="trailing" secondItem="CMY-5i-9Hh" secondAttribute="trailing" id="BKz-J2-LRX"/>
+                    <constraint firstAttribute="bottom" secondItem="CMY-5i-9Hh" secondAttribute="bottom" id="CHg-A5-lGo"/>
                     <constraint firstItem="o8y-Xa-33W" firstAttribute="bottom" secondItem="m0o-gw-pVk" secondAttribute="bottom" id="dRi-mW-axZ"/>
                     <constraint firstItem="I4E-VO-E1f" firstAttribute="top" secondItem="9fy-ER-DCi" secondAttribute="bottom" constant="10" id="e6Y-KO-eue"/>
                     <constraint firstItem="m0o-gw-pVk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="hd8-Aj-mSv"/>
                     <constraint firstItem="9fy-ER-DCi" firstAttribute="top" secondItem="m0o-gw-pVk" secondAttribute="bottom" constant="10" id="lct-El-Rks"/>
+                    <constraint firstItem="CMY-5i-9Hh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mL0-df-pOY"/>
                     <constraint firstItem="m0o-gw-pVk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="mRt-vZ-8bK"/>
                     <constraint firstItem="9fy-ER-DCi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="r7c-yR-4rk"/>
                     <constraint firstAttribute="trailing" secondItem="I4E-VO-E1f" secondAttribute="trailing" id="vAh-WC-VzF"/>

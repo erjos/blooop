@@ -44,7 +44,6 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.75686274509999996" green="0.074509803920000006" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="S8E-TA-A8w" secondAttribute="trailing" id="OUx-ES-y3D"/>
                 <constraint firstItem="S8E-TA-A8w" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ums-to-l2f"/>
