@@ -162,7 +162,7 @@ extension TripViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 219.0
+        return 130.0
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -188,24 +188,25 @@ extension TripViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
         
-        let placeCount = trip.cities[indexPath.section].locations.count // we may not need this anymore cause the table cell should match the count :)
-        //row starts at 0; count starts at 1
-//        if(indexPath.row == placeCount){
-//            cell.configureLastCell()
-//            return cell
-//        }
+        //let placeCount = trip.cities[indexPath.section].locations.count // we may not need this anymore cause the table cell should match the count :)
         
         let gmsPlace = trip.getSubLocationGMSPlace(from: indexPath)
         //for each place in the list - fetch the photo meta data and store on the model
         GooglePhotoManager.loadMetaDataList(placeID: gmsPlace.placeID, success: { list in
             //successfully get meta data list
             self.trip.setPhotoMetaData(indexPath, list)
-            cell.collectionView.reloadData()
+            //cell.collectionView.reloadData()
         }) { error in
             //failed to get metaDatalist
         }
         
-        cell.setupCollectionView(viewController: self, forIndexPath: indexPath)
+        GooglePhotoManager.getFirstPhoto(placeID: gmsPlace.placeID, success: { (image, attr) in
+            cell.thumbnail.image = image
+        }) { error in
+            //error
+        }
+        
+        //cell.setupCollectionView(viewController: self, forIndexPath: indexPath)
         
         cell.activityLabel.text = trip.getSubLocation(from: indexPath).label
         cell.dateLabel.text = trip.getSubLocation(from: indexPath).date?.formatDateAsString()
@@ -233,47 +234,48 @@ extension TripViewController: UITableViewDataSource{
     }
 }
 
-extension TripViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: 200, height: 115)
-    }
-}
+//extension TripViewController : UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize.init(width: 200, height: 115)
+//    }
+//}
+//
+//extension TripViewController : UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        let collection = collectionView as! TableCollectionView
+//        let rowLocation = collection.rowLocation
+//        let photoCell = cell as! PhotoCollectionViewCell
+//        guard !photoCell.imageLoaded else {
+//            return
+//        }
+//        guard let metaData = trip.getPhotoMetaData(from: rowLocation!, collectionRow: indexPath.row) else {
+//            return
+//        }
+//        //should this be called by a method on the cell like "setFirstImage" ?
+//        GooglePhotoManager.loadImageForMetadata(photoMetadata: metaData, success: { (image, attributes) in
+//            photoCell.setImage(image: image)
+//        }) { photoError in
+//            //error
+//        }
+//    }
+//}
+//
+//extension TripViewController : UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        let collection = collectionView as! TableCollectionView
+//        guard let indexPath = collection.rowLocation else {
+//            return 1
+//        }
+//        guard let photoList = trip.getSubLocation(from: indexPath).photoMetaDataList else {
+//            return 1
+//        }
+//        return photoList.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionViewCell
+//        cell.resetCell()
+//        return cell
+//    }
+//}
 
-extension TripViewController : UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let collection = collectionView as! TableCollectionView
-        let rowLocation = collection.rowLocation
-        let photoCell = cell as! PhotoCollectionViewCell
-        guard !photoCell.imageLoaded else {
-            return
-        }
-        guard let metaData = trip.getPhotoMetaData(from: rowLocation!, collectionRow: indexPath.row) else {
-            return
-        }
-        //should this be called by a method on the cell like "setFirstImage" ?
-        GooglePhotoManager.loadImageForMetadata(photoMetadata: metaData, success: { (image, attributes) in
-            photoCell.setImage(image: image)
-        }) { photoError in
-            //error
-        }
-    }
-}
-
-extension TripViewController : UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let collection = collectionView as! TableCollectionView
-        guard let indexPath = collection.rowLocation else {
-            return 1
-        }
-        guard let photoList = trip.getSubLocation(from: indexPath).photoMetaDataList else {
-            return 1
-        }
-        return photoList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionViewCell
-        cell.resetCell()
-        return cell
-    }
-}

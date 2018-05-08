@@ -11,7 +11,7 @@ enum PhotoError {
 class GooglePhotoManager{
     
     //Gets a single photo and returns either photo or error enum
-    static func getPhoto(placeID: String, success: @escaping (_ image: UIImage, _ attributedText: NSAttributedString?)-> Void, failure: @escaping (_ status: PhotoError)->Void){
+    static func getFirstPhoto(placeID: String, success: @escaping (_ image: UIImage, _ attributedText: NSAttributedString?)-> Void, failure: @escaping (_ status: PhotoError)->Void){
         loadFirstPhotoForPlace(placeID: placeID, success: { (image, string) in
             success(image, string)
         }) { status in
