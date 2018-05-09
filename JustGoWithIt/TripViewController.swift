@@ -128,9 +128,7 @@ extension TripViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeCount = trip.cities[indexPath.section].locations.count
-        if(indexPath.row == placeCount){
-            performSegue(withIdentifier: "tripToBuilder", sender: indexPath)
-        }
+        performSegue(withIdentifier: "presentPlace", sender: indexPath)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

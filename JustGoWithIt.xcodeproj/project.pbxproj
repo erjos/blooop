@@ -45,7 +45,6 @@
 		86CA2C0D20226CB400A0D770 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */; };
 		86CA2C0E20226CB400A0D770 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */; };
 		86FC567D20A1E9A100D9BB00 /* PlaceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */; };
-		86FC567E20A1E9A100D9BB00 /* PlaceModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86FC567C20A1E9A100D9BB00 /* PlaceModalViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,7 +89,6 @@
 		86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
 		86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModalViewController.swift; sourceTree = "<group>"; };
-		86FC567C20A1E9A100D9BB00 /* PlaceModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceModalViewController.xib; sourceTree = "<group>"; };
 		FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustGoWithIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -167,7 +165,6 @@
 				86B7EB12208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift */,
 				86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */,
 				86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */,
-				86FC567C20A1E9A100D9BB00 /* PlaceModalViewController.xib */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
@@ -269,7 +266,6 @@
 				86A895AC2019917D00CE3926 /* LaunchScreen.storyboard in Resources */,
 				86CA2C0E20226CB400A0D770 /* CalendarViewController.xib in Resources */,
 				86A895A92019917D00CE3926 /* Assets.xcassets in Resources */,
-				86FC567E20A1E9A100D9BB00 /* PlaceModalViewController.xib in Resources */,
 				86A895A72019917D00CE3926 /* Main.storyboard in Resources */,
 				86B7EB15208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib in Resources */,
 				864F67E0207E823200B6554B /* Builder.storyboard in Resources */,
