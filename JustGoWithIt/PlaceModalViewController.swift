@@ -1,11 +1,3 @@
-//
-//  PlaceModalViewController.swift
-//  JustGoWithIt
-//
-//  Created by Joseph, Ethan on 5/8/18.
-//  Copyright © 2018 Joseph, Ethan. All rights reserved.
-//
-
 import UIKit
 
 class PlaceModalViewController: UIViewController {
