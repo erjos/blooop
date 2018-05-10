@@ -215,6 +215,7 @@ extension TripViewController: UITableViewDataSource{
         cell.activityLabel.text = trip.getSubLocation(from: indexPath).label
         cell.dateLabel.text = trip.getSubLocation(from: indexPath).date?.formatDateAsString()
         cell.locationLabel.text = gmsPlace.name
+        cell.selectionStyle = .none
         return cell
     }
     
