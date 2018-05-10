@@ -55,6 +55,12 @@ class TripViewController: UIViewController {
             builder.cityIndex = 0 //This will always set the city to be the first on the trip !!! won't work for multi city
             builder.trip = self.trip
         }
+        if(segue.identifier == "presentPlace"){
+            let destination = segue.destination as! PlaceModalViewController
+            //TODO: might be easier to just make the sender the place we are sending...
+            let indexPath = sender as! IndexPath
+            destination.place = trip.getSubLocation(from: indexPath)
+        }
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
