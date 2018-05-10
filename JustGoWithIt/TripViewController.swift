@@ -28,9 +28,8 @@ class TripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
-        
-        //set name and date labels
-        tripName.text = trip?.name!
+        self.title = trip?.name!
+
         //tripDate.text = trip?.startDate?.formatDateAsString()
     }
 
