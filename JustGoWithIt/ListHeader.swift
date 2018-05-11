@@ -2,6 +2,7 @@ import UIKit
 
 class ListHeader: UITableViewHeaderFooterView {
    
+    @IBOutlet weak var titleView: UIView!
     weak var delegate: ListHeaderDelegate?
     var section: Int?
     @IBOutlet weak var bubble: UIView!
@@ -9,6 +10,7 @@ class ListHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var headerImage: UIImageView!
     @objc func expandCollapse(){
         delegate?.shouldExpandOrCollapse(section: self.section!)
     }
@@ -32,6 +34,14 @@ class ListHeader: UITableViewHeaderFooterView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.expandCollapse))
         //addDateShadow()
         self.addGestureRecognizer(tapGesture)
+        setGradient()
+    }
+    
+    func setGradient(){
+        let gradient = CAGradientLayer()
+        gradient.frame = titleView.bounds
+        gradient.colors = [UIColor.clear.cgColor, UIColor.white.withAlphaComponent(0.9).cgColor, UIColor.white.cgColor]
+        titleView.layer.mask = gradient
     }
     
     //maybe add to extension of UI image

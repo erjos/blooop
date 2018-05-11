@@ -12,7 +12,7 @@ class TripViewController: UIViewController {
     }
     
     @IBOutlet weak var addPlaceButton: UIButton!
-    @IBOutlet weak var tripName: UILabel!
+    //@IBOutlet weak var tripName: UILabel!
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     //TODO: if the user leaves the main page while still editing, we should turn off edit mode // what would th asd
@@ -147,6 +147,13 @@ extension TripViewController: UITableViewDelegate{
         header.delegate = self
         header.section = section
         let city = trip.cities[section]
+        
+        GooglePhotoManager.getFirstPhoto(placeID: city.googlePlace.placeID, success: { image, attributes in
+            //success
+            header.headerImage.image = image
+        }) { (error) in
+            //error
+        }
         //set city name on label
         header.mainLabel.text = city.googlePlace.name
         //set date on label
@@ -169,7 +176,7 @@ extension TripViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return 180.0
     }
     
     //might still want to use this at somepoint to improve performance
