@@ -112,13 +112,6 @@ extension TripViewController: ListHeaderDelegate{
         let set = IndexSet.init(integer: section)
         tableView.reloadSections(set, with: UITableViewRowAnimation.automatic)
     }
-    
-    //No longer in use - was for adding via header tap
-//    func didSelectAdd() {
-//        let autocompleteController = GMSAutocompleteViewController()
-//        autocompleteController.delegate = self
-//        present(autocompleteController, animated: true, completion: nil)
-//    }
 }
 
 extension TripViewController: UITableViewDelegate{
@@ -211,9 +204,9 @@ extension TripViewController: UITableViewDataSource{
         }
         
         GooglePhotoManager.getFirstPhoto(placeID: gmsPlace.placeID, success: { (image, attr) in
-            cell.thumbnail.image = image
+            cell.setThumbnailImage(image: image)
         }) { error in
-            //error
+            cell.handleFailedImage()
         }
         
         //cell.setupCollectionView(viewController: self, forIndexPath: indexPath)

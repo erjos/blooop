@@ -2,6 +2,7 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
@@ -26,6 +27,15 @@ class ListTableViewCell: UITableViewCell {
     
     func loadCollectionPhotos(){
         
+    }
+    
+    func setThumbnailImage(image: UIImage){
+        imageContainer.isHidden = false
+        thumbnail.image = image
+    }
+    
+    func handleFailedImage(){
+        imageContainer.isHidden = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

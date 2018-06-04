@@ -91,6 +91,7 @@
             <connections>
                 <outlet property="activityLabel" destination="9fy-ER-DCi" id="gVu-3i-WZT"/>
                 <outlet property="dateLabel" destination="o8y-Xa-33W" id="0Ee-Er-hxd"/>
+                <outlet property="imageContainer" destination="Q5U-Ek-EF6" id="Ic5-23-ro1"/>
                 <outlet property="locationLabel" destination="m0o-gw-pVk" id="M5n-Sc-qvR"/>
                 <outlet property="thumbnail" destination="BZn-jD-qcB" id="ZTZ-JS-IBl"/>
             </connections>
