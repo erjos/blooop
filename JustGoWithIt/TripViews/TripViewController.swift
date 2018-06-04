@@ -7,6 +7,8 @@ class TripViewController: UIViewController {
     //Trip must be initialized to access this page
     var trip: Trip!
 
+    var lastContentOffset: CGFloat = 0
+    
     @IBOutlet weak var addPlaceBottomConstrain: NSLayoutConstraint!
     @IBAction func addPlaceAction(_ sender: Any) {
         performSegue(withIdentifier: "tripToBuilder", sender: self)
@@ -109,14 +111,12 @@ extension TripViewController: ListHeaderDelegate{
         let isExpanded = collapsedSectionHeaders.contains(section)
         if(isExpanded){
             //Collapse the cell
-            self.showHideButtonAnimate(shouldShow: true)
             collapsedSectionHeaders = collapsedSectionHeaders.filter({ expanded -> Bool in
                 //will remove the expanded section from the list
                 return expanded != section
             })
             tableView(self.tableView, numberOfRowsInSection: section)
         } else {
-            self.showHideButtonAnimate(shouldShow: false)
             //expand the section
             collapsedSectionHeaders.append(section)
             tableView(self.tableView, numberOfRowsInSection: section)
@@ -127,6 +127,21 @@ extension TripViewController: ListHeaderDelegate{
 }
 
 extension TripViewController: UITableViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (self.lastContentOffset < scrollView.contentOffset.y) {
+            // moved to top
+            self.showHideButtonAnimate(shouldShow: true)
+        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+            // moved to bottom
+            self.showHideButtonAnimate(shouldShow: false)
+        } else {
+            // didn't move
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.delete
