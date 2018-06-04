@@ -266,7 +266,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fZj-xw-miw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="yqH-nN-5BJ"/>
@@ -308,7 +308,7 @@
                             <constraint firstItem="fZj-xw-miw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LLy-1a-Lct"/>
                             <constraint firstItem="ZcX-R9-foy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NJ8-VI-l1h"/>
                             <constraint firstItem="ZcX-R9-foy" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QZP-Qv-CE6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fZj-xw-miw" secondAttribute="bottom" constant="60" id="fhL-Qp-Ecx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fZj-xw-miw" secondAttribute="bottom" id="fhL-Qp-Ecx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -325,11 +325,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPlaceButton" destination="uZZ-Cb-FAV" id="TXj-Yo-fS4"/>
-                        <outlet property="bottomViewHeight" destination="wTi-0h-Vpw" id="hML-P1-deF"/>
                         <outlet property="bottomViewToBottom" destination="QZP-Qv-CE6" id="hKF-FY-nyQ"/>
                         <outlet property="rightBarItem" destination="tOJ-1N-u5O" id="YkQ-Nq-PPG"/>
                         <outlet property="tableView" destination="fZj-xw-miw" id="OhB-nJ-pcx"/>
-                        <outlet property="tableViewToBottom" destination="fhL-Qp-Ecx" id="rg3-Yv-h2h"/>
                         <segue destination="CCD-B3-gX2" kind="presentation" identifier="presentMenu" modalPresentationStyle="overFullScreen" id="NRS-tL-je8"/>
                         <segue destination="Qoe-hB-Oom" kind="presentation" identifier="tripToBuilder" id="In4-AL-NdR"/>
                         <segue destination="Cw7-aV-B5g" kind="presentation" identifier="presentPlace" id="8ht-7x-Bo9"/>
