@@ -34,7 +34,7 @@ class ListHeader: UITableViewHeaderFooterView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.expandCollapse))
         //addDateShadow()
         self.addGestureRecognizer(tapGesture)
-        setGradient()
+        //setGradient()
     }
     
     func setGradient(){

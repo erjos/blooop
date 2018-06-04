@@ -1,5 +1,6 @@
 import Foundation
 import GooglePlaces
+import SwiftyJSON
 
 class Trip {
     var name: String?
@@ -29,6 +30,7 @@ class City {
     var googlePlace: GMSPlace
     var locations = [Location]()
     var date: Date?
+    //var number: Int
     
     init(place: GMSPlace){
         self.googlePlace = place

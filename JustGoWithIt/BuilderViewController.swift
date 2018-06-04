@@ -38,7 +38,7 @@ class BuilderViewController: UIViewController {
         if(isSubLocation){
             //setup dismiss button
             let button = UIButton()
-            button.setImage(#imageLiteral(resourceName: "closer"), for: .normal)
+            button.setImage(#imageLiteral(resourceName: "close"), for: .normal)
             button.addTarget(self, action: #selector(dismissIt), for: .touchUpInside)
             let barItem = UIBarButtonItem(customView: button)
             //set constraints on barItem

@@ -10,5 +10,6 @@ target 'JustGoWithIt' do
   # Pods for JustGoWithIt
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'SwiftyJSON'
 
 end

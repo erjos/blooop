@@ -29,7 +29,7 @@ class TripViewController: UIViewController {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
         self.title = trip?.name!
-
+        addPlaceButton.layer.cornerRadius = 20.0
         //tripDate.text = trip?.startDate?.formatDateAsString()
     }
 

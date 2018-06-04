@@ -42,22 +42,22 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pyZ-8G-acR">
-                            <rect key="frame" x="0.0" y="79" width="442" height="100"/>
+                            <rect key="frame" x="0.0" y="129" width="442" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ann Arbor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivt-K0-s1G">
-                                    <rect key="frame" x="10" y="58" width="126.5" height="32.5"/>
+                                    <rect key="frame" x="10" y="8" width="126.5" height="32.5"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="27"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/15 - 1/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1U-Vq-z6z">
-                                    <rect key="frame" x="156" y="66" width="74" height="18"/>
+                                    <rect key="frame" x="156" y="16" width="74" height="18"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0I-oA-6Z9" userLabel="Arrow Container">
-                                    <rect key="frame" x="397" y="57" width="35" height="35"/>
+                                    <rect key="frame" x="397" y="7" width="35" height="35"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down" translatesAutoresizingMaskIntoConstraints="NO" id="CYz-9G-pKr" userLabel="Arrow">
                                             <rect key="frame" x="10" y="10" width="15" height="15"/>
@@ -83,7 +83,7 @@
                                 <constraint firstItem="t1U-Vq-z6z" firstAttribute="centerY" secondItem="ivt-K0-s1G" secondAttribute="centerY" id="fei-aT-Xed"/>
                                 <constraint firstItem="ivt-K0-s1G" firstAttribute="leading" secondItem="pyZ-8G-acR" secondAttribute="leading" constant="10" id="gir-aE-OmC"/>
                                 <constraint firstItem="t1U-Vq-z6z" firstAttribute="leading" secondItem="ivt-K0-s1G" secondAttribute="trailing" constant="20" id="k45-up-9aA"/>
-                                <constraint firstAttribute="height" constant="100" id="q0B-Yq-PTJ"/>
+                                <constraint firstAttribute="height" constant="50" id="q0B-Yq-PTJ"/>
                             </constraints>
                         </view>
                     </subviews>
