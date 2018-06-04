@@ -9,7 +9,10 @@ class TripViewController: UIViewController {
 
     var lastContentOffset: CGFloat = 0
     
-    @IBOutlet weak var addPlaceBottomConstrain: NSLayoutConstraint!
+    @IBOutlet weak var bottomViewToBottom: NSLayoutConstraint!
+    @IBOutlet weak var tableViewToBottom: NSLayoutConstraint!
+    @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
+    //@IBOutlet weak var addPlaceBottomConstrain: NSLayoutConstraint!
     @IBAction func addPlaceAction(_ sender: Any) {
         performSegue(withIdentifier: "tripToBuilder", sender: self)
     }
@@ -29,10 +32,12 @@ class TripViewController: UIViewController {
     }
     
     func showHideButtonAnimate(shouldShow: Bool){
-        let value: CGFloat = shouldShow ? 10.0 : -50.0
+        let bottomViewValue: CGFloat = shouldShow ? 0.0 : 60.0
+        let tableViewValue: CGFloat = shouldShow ? 60.0 : 0.0
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
-            self.addPlaceBottomConstrain.constant = value
+            self.bottomViewToBottom.constant = bottomViewValue
+            self.tableViewToBottom.constant = tableViewValue
             self.view.layoutIfNeeded()
         }, completion: nil)
     }

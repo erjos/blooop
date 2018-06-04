@@ -142,18 +142,14 @@
 		86A895A02019917D00CE3926 /* JustGoWithIt */ = {
 			isa = PBXGroup;
 			children = (
-				86B5D47020C5BB0000A851DE /* TripViews */,
-				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
-				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 				86A895A12019917D00CE3926 /* AppDelegate.swift */,
 				86A895A52019917D00CE3926 /* Main.storyboard */,
+				86B5D47020C5BB0000A851DE /* TripList */,
+				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
+				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 				86A895A82019917D00CE3926 /* Assets.xcassets */,
 				86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */,
 				86A895AD2019917D00CE3926 /* Info.plist */,
-				86A895B32019922E00CE3926 /* ListHeader.xib */,
-				86A895B5201992AE00CE3926 /* ListHeader.swift */,
-				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
-				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
 				86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */,
 				86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */,
 				86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */,
@@ -162,19 +158,31 @@
 				864F67E1207EACD500B6554B /* Models.swift */,
 				863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */,
 				863E26E6207FFDBD00029FF4 /* LocationManager.swift */,
-				86B7EB12208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift */,
-				86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */,
-				86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
 		};
-		86B5D47020C5BB0000A851DE /* TripViews */ = {
+		86B5D47020C5BB0000A851DE /* TripList */ = {
 			isa = PBXGroup;
 			children = (
+				86B5D47120C5CEDA00A851DE /* PlaceDetails */,
 				86A895A32019917D00CE3926 /* TripViewController.swift */,
+				86A895B32019922E00CE3926 /* ListHeader.xib */,
+				86A895B5201992AE00CE3926 /* ListHeader.swift */,
+				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
+				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
 			);
-			path = TripViews;
+			path = TripList;
+			sourceTree = "<group>";
+		};
+		86B5D47120C5CEDA00A851DE /* PlaceDetails */ = {
+			isa = PBXGroup;
+			children = (
+				86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */,
+				86B7EB12208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift */,
+				86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */,
+			);
+			path = PlaceDetails;
 			sourceTree = "<group>";
 		};
 		86B75C432059511700D53F90 /* Frameworks */ = {
