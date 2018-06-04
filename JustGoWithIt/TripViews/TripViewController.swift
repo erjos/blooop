@@ -7,6 +7,7 @@ class TripViewController: UIViewController {
     //Trip must be initialized to access this page
     var trip: Trip!
 
+    @IBOutlet weak var addPlaceBottomConstrain: NSLayoutConstraint!
     @IBAction func addPlaceAction(_ sender: Any) {
         performSegue(withIdentifier: "tripToBuilder", sender: self)
     }
@@ -23,6 +24,15 @@ class TripViewController: UIViewController {
         }else {
             performSegue(withIdentifier: "presentMenu", sender: self)
         }
+    }
+    
+    func showHideButtonAnimate(shouldShow: Bool){
+        let value: CGFloat = shouldShow ? 10.0 : -50.0
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
+            self.addPlaceBottomConstrain.constant = value
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -99,12 +109,14 @@ extension TripViewController: ListHeaderDelegate{
         let isExpanded = collapsedSectionHeaders.contains(section)
         if(isExpanded){
             //Collapse the cell
+            self.showHideButtonAnimate(shouldShow: true)
             collapsedSectionHeaders = collapsedSectionHeaders.filter({ expanded -> Bool in
                 //will remove the expanded section from the list
                 return expanded != section
             })
             tableView(self.tableView, numberOfRowsInSection: section)
         } else {
+            self.showHideButtonAnimate(shouldShow: false)
             //expand the section
             collapsedSectionHeaders.append(section)
             tableView(self.tableView, numberOfRowsInSection: section)

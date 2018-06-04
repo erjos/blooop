@@ -142,10 +142,10 @@
 		86A895A02019917D00CE3926 /* JustGoWithIt */ = {
 			isa = PBXGroup;
 			children = (
+				86B5D47020C5BB0000A851DE /* TripViews */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 				86A895A12019917D00CE3926 /* AppDelegate.swift */,
-				86A895A32019917D00CE3926 /* TripViewController.swift */,
 				86A895A52019917D00CE3926 /* Main.storyboard */,
 				86A895A82019917D00CE3926 /* Assets.xcassets */,
 				86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */,
@@ -167,6 +167,14 @@
 				86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */,
 			);
 			path = JustGoWithIt;
+			sourceTree = "<group>";
+		};
+		86B5D47020C5BB0000A851DE /* TripViews */ = {
+			isa = PBXGroup;
+			children = (
+				86A895A32019917D00CE3926 /* TripViewController.swift */,
+			);
+			path = TripViews;
 			sourceTree = "<group>";
 		};
 		86B75C432059511700D53F90 /* Frameworks */ = {

@@ -312,6 +312,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addPlaceBottomConstrain" destination="Xb9-Am-ILk" id="JdR-fo-1H9"/>
                         <outlet property="addPlaceButton" destination="uZZ-Cb-FAV" id="3VP-fU-Kja"/>
                         <outlet property="rightBarItem" destination="tOJ-1N-u5O" id="YkQ-Nq-PPG"/>
                         <outlet property="tableView" destination="fZj-xw-miw" id="OhB-nJ-pcx"/>
