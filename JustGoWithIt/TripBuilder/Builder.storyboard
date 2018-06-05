@@ -25,18 +25,53 @@
                     <view key="view" contentMode="scaleToFill" id="VNH-lG-6Ud">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ctq-c8-DDi">
+                                <rect key="frame" x="20" y="222.66666666666663" width="374" height="291"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="291" id="EpG-AD-kYR"/>
+                                    <constraint firstAttribute="width" constant="374" id="gGl-CZ-BvK"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B7C-Xm-ASG">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1uu-3a-B5l">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="AMg-Tl-zRa" id="DDV-C2-XMA"/>
+                                    <outlet property="delegate" destination="AMg-Tl-zRa" id="a1g-Hu-YTf"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ctq-c8-DDi" firstAttribute="centerX" secondItem="VNH-lG-6Ud" secondAttribute="centerX" id="gTZ-ui-tiM"/>
+                            <constraint firstItem="ctq-c8-DDi" firstAttribute="centerY" secondItem="VNH-lG-6Ud" secondAttribute="centerY" id="xse-bd-LFP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8cX-z7-udk"/>
                     </view>
                     <navigationItem key="navigationItem" id="ypA-BG-5iG"/>
                     <connections>
+                        <outlet property="collection" destination="ctq-c8-DDi" id="7Oy-AY-89y"/>
                         <segue destination="G0m-Ch-JEk" kind="show" id="qV7-1r-FsE"/>
                         <segue destination="Kvy-Xg-HaM" kind="show" id="vME-CI-iG3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxh-BR-IXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="865" y="239"/>
+            <point key="canvasLocation" x="863.768115942029" y="238.85869565217394"/>
         </scene>
         <!--Builder View Controller-->
         <scene sceneID="UHA-Kx-kaY">
