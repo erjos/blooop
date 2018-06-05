@@ -144,6 +144,7 @@
 			children = (
 				86A895A12019917D00CE3926 /* AppDelegate.swift */,
 				86A895A52019917D00CE3926 /* Main.storyboard */,
+				86B5D47220C5E46600A851DE /* TripBuilder */,
 				86B5D47020C5BB0000A851DE /* TripList */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
@@ -153,8 +154,6 @@
 				86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */,
 				86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */,
 				86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */,
-				864F67DF207E823200B6554B /* Builder.storyboard */,
-				862EF6C1207D0BAC005D268B /* BuilderViewController.swift */,
 				864F67E1207EACD500B6554B /* Models.swift */,
 				863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */,
 				863E26E6207FFDBD00029FF4 /* LocationManager.swift */,
@@ -183,6 +182,15 @@
 				86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */,
 			);
 			path = PlaceDetails;
+			sourceTree = "<group>";
+		};
+		86B5D47220C5E46600A851DE /* TripBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				864F67DF207E823200B6554B /* Builder.storyboard */,
+				862EF6C1207D0BAC005D268B /* BuilderViewController.swift */,
+			);
+			path = TripBuilder;
 			sourceTree = "<group>";
 		};
 		86B75C432059511700D53F90 /* Frameworks */ = {

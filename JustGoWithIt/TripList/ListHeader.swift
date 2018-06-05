@@ -15,11 +15,6 @@ class ListHeader: UITableViewHeaderFooterView {
         delegate?.shouldExpandOrCollapse(section: self.section!)
     }
     
-//    @IBAction func pressAddLocation(_ sender: Any) {
-//        //Action when a user presses the "add" button
-//        delegate?.didSelectAdd()
-//    }
-    
     func addDateShadow(){
         let shadowPath = UIBezierPath(rect: dateLabel.bounds)
         dateLabel.layer.masksToBounds = false
@@ -32,9 +27,8 @@ class ListHeader: UITableViewHeaderFooterView {
     
     override func awakeFromNib() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.expandCollapse))
-        //addDateShadow()
         self.addGestureRecognizer(tapGesture)
-        //setGradient()
+        self.arrow.isHidden = true
     }
     
     func setGradient(){
@@ -80,5 +74,4 @@ class ListHeader: UITableViewHeaderFooterView {
 
 protocol ListHeaderDelegate: class {
     func shouldExpandOrCollapse(section: Int)
-    //func didSelectAdd()
 }

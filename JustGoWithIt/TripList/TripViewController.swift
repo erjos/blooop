@@ -4,6 +4,7 @@ import GooglePlaces
 class TripViewController: UIViewController {
 
     var collapsedSectionHeaders = [Int]()
+    
     //Trip must be initialized to access this page
     var trip: Trip!
 
@@ -106,25 +107,26 @@ extension TripViewController: GMSAutocompleteViewControllerDelegate {
     }
 }
 
-extension TripViewController: ListHeaderDelegate{
-    func shouldExpandOrCollapse(section: Int) {
-        let isExpanded = collapsedSectionHeaders.contains(section)
-        if(isExpanded){
-            //Collapse the cell
-            collapsedSectionHeaders = collapsedSectionHeaders.filter({ expanded -> Bool in
-                //will remove the expanded section from the list
-                return expanded != section
-            })
-            tableView(self.tableView, numberOfRowsInSection: section)
-        } else {
-            //expand the section
-            collapsedSectionHeaders.append(section)
-            tableView(self.tableView, numberOfRowsInSection: section)
-        }
-        let set = IndexSet.init(integer: section)
-        tableView.reloadSections(set, with: UITableViewRowAnimation.automatic)
-    }
-}
+//TODO: save this for later - do not need expandable table view sections for the MVP
+//extension TripViewController: ListHeaderDelegate{
+//    func shouldExpandOrCollapse(section: Int) {
+//        let isExpanded = collapsedSectionHeaders.contains(section)
+//        if(isExpanded){
+//            //Collapse the cell
+//            collapsedSectionHeaders = collapsedSectionHeaders.filter({ expanded -> Bool in
+//                //will remove the expanded section from the list
+//                return expanded != section
+//            })
+//            tableView(self.tableView, numberOfRowsInSection: section)
+//        } else {
+//            //expand the section
+//            collapsedSectionHeaders.append(section)
+//            tableView(self.tableView, numberOfRowsInSection: section)
+//        }
+//        let set = IndexSet.init(integer: section)
+//        tableView.reloadSections(set, with: UITableViewRowAnimation.automatic)
+//    }
+//}
 
 extension TripViewController: UITableViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -157,14 +159,16 @@ extension TripViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let isCollapsed = collapsedSectionHeaders.contains(section)
         let header = Bundle.main.loadNibNamed("ListHeader", owner: self, options: nil)?.first as! ListHeader
-        if(!isCollapsed){
-            //style collapsed headers
-            //header.setDropShadow()
-        }
-        header.arrow.image = isCollapsed ? header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0) : header.arrow.image
-        header.delegate = self
+        
+        //TODO: uncomment this code when enabling collapsable table view sections
+//        let isCollapsed = collapsedSectionHeaders.contains(section)
+//        if(!isCollapsed){
+//            //style collapsed headers
+//        }
+//        header.arrow.image = isCollapsed ? header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0) : header.arrow.image
+//        header.delegate = self
+        
         header.section = section
         let city = trip.cities[section]
         
@@ -196,7 +200,7 @@ extension TripViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 180.0
+        return 255.0
     }
     
     //might still want to use this at somepoint to improve performance
