@@ -11,7 +11,7 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Medium</string>
+            <string>HelveticaNeue</string>
         </array>
         <array key="HelveticaNeueLights.ttc">
             <string>HelveticaNeue-Light</string>
@@ -45,13 +45,13 @@
                             <rect key="frame" x="0.0" y="0.0" width="442" height="75"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ann Arbor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivt-K0-s1G">
-                                    <rect key="frame" x="10" y="10" width="126.5" height="32.5"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="27"/>
+                                    <rect key="frame" x="10" y="10" width="108.5" height="28"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0I-oA-6Z9" userLabel="Arrow Container">
-                                    <rect key="frame" x="397" y="9" width="35" height="35"/>
+                                    <rect key="frame" x="397" y="6.5" width="35" height="35"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down" translatesAutoresizingMaskIntoConstraints="NO" id="CYz-9G-pKr" userLabel="Arrow">
                                             <rect key="frame" x="10" y="10" width="15" height="15"/>
@@ -69,7 +69,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/15 - 1/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1U-Vq-z6z">
-                                    <rect key="frame" x="10" y="47.5" width="74" height="18"/>
+                                    <rect key="frame" x="10" y="43" width="74" height="18"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>

@@ -6,24 +6,45 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.6.0):
     - GoogleMaps/Base (= 2.6.0)
+  - MaterialComponents/Cards (54.4.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Icons/ic_check_circle
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/Shapes
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/Ink (54.4.0):
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Icons/Base (54.4.0)
+  - MaterialComponents/private/Icons/ic_check_circle (54.4.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Math (54.4.0)
+  - MaterialComponents/private/Shapes (54.4.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/ShadowElevations (54.4.0)
+  - MaterialComponents/ShadowLayer (54.4.0):
+    - MaterialComponents/ShadowElevations
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - MaterialComponents/Cards
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - GoogleMaps
     - GooglePlaces
+    - MaterialComponents
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
+  MaterialComponents: 5d4b39c4fcbd03417b7709a0458c869082983e2f
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: d89be23addbd088ae490ce67839d6cb521e9859d
+PODFILE CHECKSUM: 2f7c27d3bce6f871cd36f096305fec796d9a1f81
 
 COCOAPODS: 1.5.0

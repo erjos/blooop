@@ -11,5 +11,6 @@ target 'JustGoWithIt' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'SwiftyJSON'
+  pod 'MaterialComponents/Cards'
 
 end
