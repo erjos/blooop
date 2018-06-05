@@ -20,6 +20,7 @@
 		86A895AC2019917D00CE3926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */; };
 		86A895B42019922E00CE3926 /* ListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A895B32019922E00CE3926 /* ListHeader.xib */; };
 		86A895B6201992AE00CE3926 /* ListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A895B5201992AE00CE3926 /* ListHeader.swift */; };
+		86B5D47420C74F8500A851DE /* MyTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5D47320C74F8500A851DE /* MyTripsViewController.swift */; };
 		86B75C40205950A200D53F90 /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B75C3F205950A200D53F90 /* GooglePlaces.framework */; };
 		86B75C42205950B200D53F90 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B75C41205950B200D53F90 /* GoogleMapsBase.framework */; };
 		86B75C452059511700D53F90 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B75C442059511700D53F90 /* Accelerate.framework */; };
@@ -64,6 +65,7 @@
 		86A895AD2019917D00CE3926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86A895B32019922E00CE3926 /* ListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListHeader.xib; sourceTree = "<group>"; };
 		86A895B5201992AE00CE3926 /* ListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeader.swift; sourceTree = "<group>"; };
+		86B5D47320C74F8500A851DE /* MyTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsViewController.swift; sourceTree = "<group>"; };
 		86B75C3F205950A200D53F90 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlaces.framework; sourceTree = "<group>"; };
 		86B75C41205950B200D53F90 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
 		86B75C442059511700D53F90 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -189,6 +191,7 @@
 			children = (
 				864F67DF207E823200B6554B /* Builder.storyboard */,
 				862EF6C1207D0BAC005D268B /* BuilderViewController.swift */,
+				86B5D47320C74F8500A851DE /* MyTripsViewController.swift */,
 			);
 			path = TripBuilder;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				86B7EB14208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift in Sources */,
 				86FC567D20A1E9A100D9BB00 /* PlaceModalViewController.swift in Sources */,
 				86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */,
+				86B5D47420C74F8500A851DE /* MyTripsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
