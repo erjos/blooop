@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yy0-To-hRx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ocF-GZ-fZU">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ctq-c8-DDi">
-                                <rect key="frame" x="20" y="149.66666666666663" width="374" height="291"/>
+                                <rect key="frame" x="20" y="105.66666666666669" width="374" height="291"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="291" id="EpG-AD-kYR"/>
@@ -55,33 +55,33 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Trips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaJ-kY-Seu">
-                                <rect key="frame" x="20" y="84" width="71.666666666666671" height="23.666666666666671"/>
+                                <rect key="frame" x="20" y="40" width="71.666666666666671" height="23.666666666666671"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMv-jS-YIX">
-                                <rect key="frame" x="20" y="127.66666666666669" width="374" height="2"/>
+                                <rect key="frame" x="20" y="83.666666666666671" width="374" height="2"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="l0f-P6-CXV"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APe-ME-GDq">
-                                <rect key="frame" x="20" y="503.66666666666669" width="374" height="2"/>
+                                <rect key="frame" x="20" y="459.66666666666669" width="374" height="2"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="ceV-Jh-W5D"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sz3-Ql-ajE">
-                                <rect key="frame" x="20" y="460.66666666666669" width="107" height="23.666666666666686"/>
+                                <rect key="frame" x="20" y="416.66666666666669" width="107" height="23.666666666666686"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUT-4B-yJd" customClass="MDCFloatingButton">
-                                <rect key="frame" x="349" y="387" width="45" height="45"/>
+                                <rect key="frame" x="349" y="343" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="BGF-HB-yIe"/>
                                     <constraint firstAttribute="width" constant="45" id="KjK-lG-6Ab"/>
@@ -114,8 +114,6 @@
                     <connections>
                         <outlet property="collection" destination="ctq-c8-DDi" id="7Oy-AY-89y"/>
                         <outlet property="floatingButton" destination="SUT-4B-yJd" id="ndo-HY-IZj"/>
-                        <segue destination="G0m-Ch-JEk" kind="show" identifier="toBuilder" id="qV7-1r-FsE"/>
-                        <segue destination="Kvy-Xg-HaM" kind="show" id="vME-CI-iG3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxh-BR-IXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="olg-X0-qhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864" y="975"/>
+            <point key="canvasLocation" x="1171.0144927536232" y="975.00000000000011"/>
         </scene>
         <!--Main-->
         <scene sceneID="zaH-jH-lFj">
@@ -309,28 +307,25 @@
                 <viewControllerPlaceholder storyboardName="Main" id="Kvy-Xg-HaM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qd6-xU-w7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="686"/>
+            <point key="canvasLocation" x="1687" y="973"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Klf-A3-Kxm">
+        <scene sceneID="t7s-ck-qQ9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yy0-To-hRx" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ocF-GZ-fZU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l9P-qY-caE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XnA-UA-gwx">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="AMg-Tl-zRa" kind="relationship" relationship="rootViewController" id="hNW-zx-6S6"/>
+                        <segue destination="G0m-Ch-JEk" kind="relationship" relationship="rootViewController" id="7ju-Te-8kR"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BJU-xB-nke" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BR9-G1-T1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2.8985507246376816" y="238.85869565217394"/>
+            <point key="canvasLocation" x="423" y="974"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="vME-CI-iG3"/>
-    </inferredMetricsTieBreakers>
 </document>

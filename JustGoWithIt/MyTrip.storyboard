@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZBo-Jb-tVI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--My Trips View Controller-->
+        <scene sceneID="2ke-2N-1cj">
+            <objects>
+                <viewController id="ZBo-Jb-tVI" customClass="MyTripsViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wib-iy-o1c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q6z-bx-BdT">
+                                <rect key="frame" x="0.5" y="106" width="374" height="291"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="k2p-zp-jTg"/>
+                                    <constraint firstAttribute="height" constant="291" id="mMS-2a-eTq"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="raH-1C-whM">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aAM-0q-QNQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZBo-Jb-tVI" id="RDR-XG-auW"/>
+                                    <outlet property="delegate" destination="ZBo-Jb-tVI" id="lk9-wu-vjl"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Trips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMW-On-1BF">
+                                <rect key="frame" x="20" y="40" width="72" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVB-mT-OTd">
+                                <rect key="frame" x="20" y="84" width="335" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="Mr5-lQ-pug"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJn-ky-dEH">
+                                <rect key="frame" x="20" y="460.5" width="335" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="aoZ-WG-NBI"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKk-0w-Zvb">
+                                <rect key="frame" x="20" y="417" width="107" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvM-63-US7" customClass="MDCFloatingButton">
+                                <rect key="frame" x="310" y="343.5" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="aVd-Yz-u4h"/>
+                                    <constraint firstAttribute="width" constant="45" id="osG-FB-1V1"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="pressFloatingAdd:" destination="ZBo-Jb-tVI" eventType="touchUpInside" id="ufF-VG-mVO"/>
+                                    <segue destination="Hih-11-Axb" kind="show" identifier="toBuilder" id="Fp6-dJ-l1p"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gDq-LD-Pbj" firstAttribute="trailing" secondItem="dvM-63-US7" secondAttribute="trailing" constant="20" id="13v-JC-aFH"/>
+                            <constraint firstItem="gDq-LD-Pbj" firstAttribute="trailing" secondItem="GVB-mT-OTd" secondAttribute="trailing" constant="20" id="1A2-fE-pkZ"/>
+                            <constraint firstItem="GVB-mT-OTd" firstAttribute="top" secondItem="oMW-On-1BF" secondAttribute="bottom" constant="20" id="7hb-Qm-qPe"/>
+                            <constraint firstItem="oMW-On-1BF" firstAttribute="top" secondItem="gDq-LD-Pbj" secondAttribute="top" constant="20" id="7vs-u3-lGp"/>
+                            <constraint firstItem="GVB-mT-OTd" firstAttribute="leading" secondItem="gDq-LD-Pbj" secondAttribute="leading" constant="20" id="FFZ-T2-usZ"/>
+                            <constraint firstItem="Q6z-bx-BdT" firstAttribute="centerX" secondItem="wib-iy-o1c" secondAttribute="centerX" id="GSE-Nq-0CB"/>
+                            <constraint firstItem="Q6z-bx-BdT" firstAttribute="top" secondItem="GVB-mT-OTd" secondAttribute="bottom" constant="20" id="K6t-sh-bZ7"/>
+                            <constraint firstItem="KJn-ky-dEH" firstAttribute="trailing" secondItem="gDq-LD-Pbj" secondAttribute="trailing" constant="-20" id="KMs-nx-GTa"/>
+                            <constraint firstItem="KJn-ky-dEH" firstAttribute="top" secondItem="WKk-0w-Zvb" secondAttribute="bottom" constant="20" id="O7x-DM-Rkf"/>
+                            <constraint firstItem="KJn-ky-dEH" firstAttribute="leading" secondItem="gDq-LD-Pbj" secondAttribute="leading" constant="20" id="aT2-jq-X4O"/>
+                            <constraint firstItem="KJn-ky-dEH" firstAttribute="top" secondItem="dvM-63-US7" secondAttribute="bottom" constant="71.670000000000002" id="bdi-Kg-c0D"/>
+                            <constraint firstItem="oMW-On-1BF" firstAttribute="leading" secondItem="gDq-LD-Pbj" secondAttribute="leading" constant="20" id="haJ-8m-2cU"/>
+                            <constraint firstItem="WKk-0w-Zvb" firstAttribute="top" secondItem="Q6z-bx-BdT" secondAttribute="bottom" constant="20" id="jCK-RE-Mfb"/>
+                            <constraint firstItem="WKk-0w-Zvb" firstAttribute="leading" secondItem="gDq-LD-Pbj" secondAttribute="leading" constant="20" id="mob-XV-ANi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gDq-LD-Pbj"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9iK-mq-4Ka"/>
+                    <connections>
+                        <outlet property="collection" destination="Q6z-bx-BdT" id="g3x-Ac-5Vu"/>
+                        <outlet property="floatingButton" destination="dvM-63-US7" id="fhP-Re-DbV"/>
+                        <segue destination="V1h-wF-zjm" kind="show" id="1Xb-kg-YGg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KvH-0a-s8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863.768115942029" y="238.85869565217394"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="7tZ-jB-1ID">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="V1h-wF-zjm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lo6-lf-wMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1485" y="141"/>
+        </scene>
+        <!--Builder-->
+        <scene sceneID="agg-Q0-SEE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Builder" id="Hih-11-Axb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oOB-x1-eFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1496" y="238"/>
+        </scene>
+    </scenes>
+</document>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		186C7225388DE9F244B17140 /* Pods_JustGoWithIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */; };
 		862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862EF6C1207D0BAC005D268B /* BuilderViewController.swift */; };
+		862FBB4020C80FA20078D689 /* MyTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 862FBB3F20C80FA20078D689 /* MyTrip.storyboard */; };
 		863C736220C7546F0054C49A /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863C736020C7546F0054C49A /* TripCollectionViewCell.swift */; };
 		863C736320C7546F0054C49A /* TripCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 863C736120C7546F0054C49A /* TripCollectionViewCell.xib */; };
 		863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */; };
@@ -54,6 +55,7 @@
 		1F520DA6DB0379C82D7EF55A /* Pods-JustGoWithIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.release.xcconfig"; sourceTree = "<group>"; };
 		294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.debug.xcconfig"; sourceTree = "<group>"; };
 		862EF6C1207D0BAC005D268B /* BuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderViewController.swift; sourceTree = "<group>"; };
+		862FBB3F20C80FA20078D689 /* MyTrip.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyTrip.storyboard; sourceTree = "<group>"; };
 		863C736020C7546F0054C49A /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
 		863C736120C7546F0054C49A /* TripCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripCollectionViewCell.xib; sourceTree = "<group>"; };
 		863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePhotoManager.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				86A895A12019917D00CE3926 /* AppDelegate.swift */,
 				86A895A52019917D00CE3926 /* Main.storyboard */,
+				862FBB3F20C80FA20078D689 /* MyTrip.storyboard */,
 				86B5D47220C5E46600A851DE /* TripBuilder */,
 				86B5D47020C5BB0000A851DE /* TripList */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
@@ -301,6 +304,7 @@
 				86CA2C0E20226CB400A0D770 /* CalendarViewController.xib in Resources */,
 				86A895A92019917D00CE3926 /* Assets.xcassets in Resources */,
 				86A895A72019917D00CE3926 /* Main.storyboard in Resources */,
+				862FBB4020C80FA20078D689 /* MyTrip.storyboard in Resources */,
 				86B7EB15208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib in Resources */,
 				864F67E0207E823200B6554B /* Builder.storyboard in Resources */,
 				863C736320C7546F0054C49A /* TripCollectionViewCell.xib in Resources */,
@@ -359,6 +363,8 @@
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -366,6 +372,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

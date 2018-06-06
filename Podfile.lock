@@ -37,6 +37,11 @@ PODS:
     - MaterialComponents/private/Application
   - MDFInternationalization (1.0.4)
   - MDFTextAccessibility (1.2.0)
+  - Realm (3.3.2):
+    - Realm/Headers (= 3.3.2)
+  - Realm/Headers (3.3.2)
+  - RealmSwift (3.3.2):
+    - Realm (= 3.3.2)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
@@ -44,6 +49,7 @@ DEPENDENCIES:
   - GooglePlaces
   - MaterialComponents/Buttons
   - MaterialComponents/Cards
+  - RealmSwift
   - SwiftyJSON
 
 SPEC REPOS:
@@ -53,6 +59,8 @@ SPEC REPOS:
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
+    - Realm
+    - RealmSwift
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -61,8 +69,10 @@ SPEC CHECKSUMS:
   MaterialComponents: 5d4b39c4fcbd03417b7709a0458c869082983e2f
   MDFInternationalization: e355b0cebecf53d60233bd267084e49366c82513
   MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
+  Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
+  RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: d6815b67bb2348c638e180a96d75c1d779bc3c33
+PODFILE CHECKSUM: 1e7769317044d48aee1e3c72f7c08ef6c970a60b
 
 COCOAPODS: 1.5.0
