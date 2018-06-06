@@ -11,10 +11,9 @@ class MyTripsViewController: UIViewController {
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
         
         let plusImage = UIImage(named: "Add")?.withRenderingMode(.alwaysTemplate)
-
         //floatingButton.setBackgroundImage(plusImage, for: .normal)
         floatingButton.setImage(plusImage, for: .normal)
-        //MDCFloatingActionButtonThemer.applyScheme(buttonScheme, to: floatingButton)
+        floatingButton.imageView?.tintColor = UIColor.black
     }
 
     override func didReceiveMemoryWarning() {
