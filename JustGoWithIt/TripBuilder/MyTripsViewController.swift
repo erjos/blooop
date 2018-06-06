@@ -1,5 +1,4 @@
 import UIKit
-import MaterialComponents.MaterialCards
 
 class MyTripsViewController: UIViewController {
 
@@ -7,8 +6,7 @@ class MyTripsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collection.register(MDCCardCollectionCell.self, forCellWithReuseIdentifier: "Card")
-        // Do any additional setup after loading the view.
+        collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,14 +34,7 @@ extension MyTripsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Card",
-                                                      for: indexPath) as! MDCCardCollectionCell
-        // If you wanted to have the card show the selected state when tapped
-        // then you need to turn isSelectable to true, otherwise the default is false.
-        cell.isSelectable = true
-        //cell.selectedImageTintColor = .blue
-        cell.cornerRadius = 8
-        cell.setShadowElevation(ShadowElevation(rawValue: 6), for: .selected)
-        cell.setShadowColor(UIColor.black, for: .highlighted)
+                                                      for: indexPath) as! TripCollectionViewCell
         return cell
     }
 }

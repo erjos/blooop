@@ -54,10 +54,28 @@
                                     <outlet property="delegate" destination="AMg-Tl-zRa" id="a1g-Hu-YTf"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Trips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaJ-kY-Seu">
+                                <rect key="frame" x="20" y="114" width="71.666666666666671" height="23.666666666666657"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMv-jS-YIX">
+                                <rect key="frame" x="20" y="157.66666666666666" width="374" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="l0f-P6-CXV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PaJ-kY-Seu" firstAttribute="leading" secondItem="8cX-z7-udk" secondAttribute="leading" constant="20" id="RwF-lm-mcZ"/>
+                            <constraint firstItem="NMv-jS-YIX" firstAttribute="top" secondItem="PaJ-kY-Seu" secondAttribute="bottom" constant="20" id="VPi-hb-wkl"/>
+                            <constraint firstItem="NMv-jS-YIX" firstAttribute="leading" secondItem="8cX-z7-udk" secondAttribute="leading" constant="20" id="WSZ-RJ-azD"/>
                             <constraint firstItem="ctq-c8-DDi" firstAttribute="centerX" secondItem="VNH-lG-6Ud" secondAttribute="centerX" id="gTZ-ui-tiM"/>
+                            <constraint firstItem="8cX-z7-udk" firstAttribute="trailing" secondItem="NMv-jS-YIX" secondAttribute="trailing" constant="20" id="se6-Io-AjY"/>
+                            <constraint firstItem="PaJ-kY-Seu" firstAttribute="top" secondItem="8cX-z7-udk" secondAttribute="top" constant="50" id="uxk-7T-kft"/>
                             <constraint firstItem="ctq-c8-DDi" firstAttribute="centerY" secondItem="VNH-lG-6Ud" secondAttribute="centerY" id="xse-bd-LFP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8cX-z7-udk"/>
