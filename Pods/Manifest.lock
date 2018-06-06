@@ -6,6 +6,14 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.6.0):
     - GoogleMaps/Base (= 2.6.0)
+  - MaterialComponents/Buttons (54.4.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
   - MaterialComponents/Cards (54.4.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Icons/ic_check_circle
@@ -14,6 +22,7 @@ PODS:
     - MaterialComponents/ShadowLayer
   - MaterialComponents/Ink (54.4.0):
     - MaterialComponents/private/Math
+  - MaterialComponents/private/Application (54.4.0)
   - MaterialComponents/private/Icons/Base (54.4.0)
   - MaterialComponents/private/Icons/ic_check_circle (54.4.0):
     - MaterialComponents/private/Icons/Base
@@ -24,11 +33,16 @@ PODS:
   - MaterialComponents/ShadowElevations (54.4.0)
   - MaterialComponents/ShadowLayer (54.4.0):
     - MaterialComponents/ShadowElevations
+  - MaterialComponents/Typography (54.4.0):
+    - MaterialComponents/private/Application
+  - MDFInternationalization (1.0.4)
+  - MDFTextAccessibility (1.2.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - MaterialComponents/Buttons
   - MaterialComponents/Cards
   - SwiftyJSON
 
@@ -37,14 +51,18 @@ SPEC REPOS:
     - GoogleMaps
     - GooglePlaces
     - MaterialComponents
+    - MDFInternationalization
+    - MDFTextAccessibility
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
   MaterialComponents: 5d4b39c4fcbd03417b7709a0458c869082983e2f
+  MDFInternationalization: e355b0cebecf53d60233bd267084e49366c82513
+  MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 2f7c27d3bce6f871cd36f096305fec796d9a1f81
+PODFILE CHECKSUM: d6815b67bb2348c638e180a96d75c1d779bc3c33
 
 COCOAPODS: 1.5.0

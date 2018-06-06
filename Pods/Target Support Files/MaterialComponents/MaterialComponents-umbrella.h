@@ -10,6 +10,12 @@
 #endif
 #endif
 
+#import "MaterialButtons.h"
+#import "MDCButton.h"
+#import "MDCFlatButton.h"
+#import "MDCFloatingButton+Animation.h"
+#import "MDCFloatingButton.h"
+#import "MDCRaisedButton.h"
 #import "MaterialCards.h"
 #import "MDCCard.h"
 #import "MDCCardCollectionCell.h"
@@ -22,6 +28,13 @@
 #import "MDCShadowElevations.h"
 #import "MaterialShadowLayer.h"
 #import "MDCShadowLayer.h"
+#import "MaterialTypography.h"
+#import "MDCFontTextStyle.h"
+#import "MDCTypography.h"
+#import "UIFont+MaterialTypography.h"
+#import "UIFontDescriptor+MaterialTypography.h"
+#import "MaterialApplication.h"
+#import "UIApplication+AppExtensions.h"
 #import "MaterialIcons.h"
 #import "MDCIcons+BundleLoader.h"
 #import "MDCIcons.h"
