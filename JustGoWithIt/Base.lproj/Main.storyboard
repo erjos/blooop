@@ -299,6 +299,13 @@
                                     <constraint firstAttribute="height" constant="60" id="wTi-0h-Vpw"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i55-GR-l0O" customClass="MDCFloatingButton">
+                                <rect key="frame" x="310" y="542" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Mjd-uN-9m7"/>
+                                    <constraint firstAttribute="width" constant="45" id="jEB-4y-hyp"/>
+                                </constraints>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -308,7 +315,9 @@
                             <constraint firstItem="fZj-xw-miw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LLy-1a-Lct"/>
                             <constraint firstItem="ZcX-R9-foy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NJ8-VI-l1h"/>
                             <constraint firstItem="ZcX-R9-foy" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QZP-Qv-CE6"/>
+                            <constraint firstItem="ZcX-R9-foy" firstAttribute="top" secondItem="i55-GR-l0O" secondAttribute="bottom" constant="20" id="cJX-7k-tVt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fZj-xw-miw" secondAttribute="bottom" id="fhL-Qp-Ecx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i55-GR-l0O" secondAttribute="trailing" constant="20" id="lm5-N2-i2R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -326,6 +335,7 @@
                     <connections>
                         <outlet property="addPlaceButton" destination="uZZ-Cb-FAV" id="TXj-Yo-fS4"/>
                         <outlet property="bottomViewToBottom" destination="QZP-Qv-CE6" id="hKF-FY-nyQ"/>
+                        <outlet property="floatingButton" destination="i55-GR-l0O" id="4DD-YP-adU"/>
                         <outlet property="rightBarItem" destination="tOJ-1N-u5O" id="YkQ-Nq-PPG"/>
                         <outlet property="tableView" destination="fZj-xw-miw" id="OhB-nJ-pcx"/>
                         <segue destination="CCD-B3-gX2" kind="presentation" identifier="presentMenu" modalPresentationStyle="overFullScreen" id="NRS-tL-je8"/>

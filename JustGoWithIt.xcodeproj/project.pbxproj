@@ -153,8 +153,11 @@
 				86A895A12019917D00CE3926 /* AppDelegate.swift */,
 				86A895A52019917D00CE3926 /* Main.storyboard */,
 				862FBB3F20C80FA20078D689 /* MyTrip.storyboard */,
+				86B5D47320C74F8500A851DE /* MyTripsViewController.swift */,
+				863C736120C7546F0054C49A /* TripCollectionViewCell.xib */,
+				863C736020C7546F0054C49A /* TripCollectionViewCell.swift */,
 				86B5D47220C5E46600A851DE /* TripBuilder */,
-				86B5D47020C5BB0000A851DE /* TripList */,
+				86B5D47020C5BB0000A851DE /* TripView */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 				86A895A82019917D00CE3926 /* Assets.xcassets */,
@@ -170,7 +173,7 @@
 			path = JustGoWithIt;
 			sourceTree = "<group>";
 		};
-		86B5D47020C5BB0000A851DE /* TripList */ = {
+		86B5D47020C5BB0000A851DE /* TripView */ = {
 			isa = PBXGroup;
 			children = (
 				86B5D47120C5CEDA00A851DE /* PlaceDetails */,
@@ -180,7 +183,7 @@
 				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
 				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
 			);
-			path = TripList;
+			path = TripView;
 			sourceTree = "<group>";
 		};
 		86B5D47120C5CEDA00A851DE /* PlaceDetails */ = {
@@ -198,9 +201,6 @@
 			children = (
 				864F67DF207E823200B6554B /* Builder.storyboard */,
 				862EF6C1207D0BAC005D268B /* BuilderViewController.swift */,
-				86B5D47320C74F8500A851DE /* MyTripsViewController.swift */,
-				863C736020C7546F0054C49A /* TripCollectionViewCell.swift */,
-				863C736120C7546F0054C49A /* TripCollectionViewCell.xib */,
 			);
 			path = TripBuilder;
 			sourceTree = "<group>";

@@ -1,5 +1,6 @@
 import UIKit
 import GooglePlaces
+import MaterialComponents.MaterialButtons
 
 class TripViewController: UIViewController {
 
@@ -10,6 +11,7 @@ class TripViewController: UIViewController {
 
     var lastContentOffset: CGFloat = 0
     
+    @IBOutlet weak var floatingButton: MDCFloatingButton!
     @IBOutlet weak var bottomViewToBottom: NSLayoutConstraint!
     @IBAction func addPlaceAction(_ sender: Any) {
         performSegue(withIdentifier: "tripToBuilder", sender: self)
@@ -43,7 +45,12 @@ class TripViewController: UIViewController {
         tableView.register(UINib.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
         self.title = trip?.name!
         addPlaceButton.layer.cornerRadius = 20.0
+        //This doesn't really solve the problem of the button being hidden away
+        showHideButtonAnimate(shouldShow: true)
         //tripDate.text = trip?.startDate?.formatDateAsString()
+        
+        let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
+        floatingButton.setImage(plusImage, for: .normal)
     }
 
     override func didReceiveMemoryWarning() {
