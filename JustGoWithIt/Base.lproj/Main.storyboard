@@ -273,51 +273,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="b8K-Uk-P1q"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZcX-R9-foy" userLabel="Bottom view">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZZ-Cb-FAV">
-                                        <rect key="frame" x="125" y="10" width="125" height="40"/>
-                                        <color key="backgroundColor" white="0.80216471354166663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="125" id="FRV-qv-yEb"/>
-                                            <constraint firstAttribute="height" constant="40" id="eu7-n8-pOT"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="+ Add Place">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="addPlaceAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="36u-7h-v57"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="uZZ-Cb-FAV" firstAttribute="centerY" secondItem="ZcX-R9-foy" secondAttribute="centerY" id="2IE-ZF-ls9"/>
-                                    <constraint firstItem="uZZ-Cb-FAV" firstAttribute="centerX" secondItem="ZcX-R9-foy" secondAttribute="centerX" id="h7J-rp-lDf"/>
-                                    <constraint firstAttribute="height" constant="60" id="wTi-0h-Vpw"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i55-GR-l0O" customClass="MDCFloatingButton">
-                                <rect key="frame" x="310" y="542" width="45" height="45"/>
+                                <rect key="frame" x="310" y="602" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Mjd-uN-9m7"/>
                                     <constraint firstAttribute="width" constant="45" id="jEB-4y-hyp"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="addPlace:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pJl-TR-nFJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GAF-eY-Eno"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GGz-qF-y8a"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZcX-R9-foy" secondAttribute="trailing" id="KO4-vt-59D"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LLy-1a-Lct"/>
-                            <constraint firstItem="ZcX-R9-foy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NJ8-VI-l1h"/>
-                            <constraint firstItem="ZcX-R9-foy" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QZP-Qv-CE6"/>
-                            <constraint firstItem="ZcX-R9-foy" firstAttribute="top" secondItem="i55-GR-l0O" secondAttribute="bottom" constant="20" id="cJX-7k-tVt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fZj-xw-miw" secondAttribute="bottom" id="fhL-Qp-Ecx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i55-GR-l0O" secondAttribute="trailing" constant="20" id="lm5-N2-i2R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="i55-GR-l0O" secondAttribute="bottom" constant="20" id="vQM-ww-Ofu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -333,8 +307,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addPlaceButton" destination="uZZ-Cb-FAV" id="TXj-Yo-fS4"/>
-                        <outlet property="bottomViewToBottom" destination="QZP-Qv-CE6" id="hKF-FY-nyQ"/>
                         <outlet property="floatingButton" destination="i55-GR-l0O" id="4DD-YP-adU"/>
                         <outlet property="rightBarItem" destination="tOJ-1N-u5O" id="YkQ-Nq-PPG"/>
                         <outlet property="tableView" destination="fZj-xw-miw" id="OhB-nJ-pcx"/>

@@ -11,13 +11,12 @@ class TripViewController: UIViewController {
 
     var lastContentOffset: CGFloat = 0
     
-    @IBOutlet weak var floatingButton: MDCFloatingButton!
-    @IBOutlet weak var bottomViewToBottom: NSLayoutConstraint!
-    @IBAction func addPlaceAction(_ sender: Any) {
+    @IBAction func addPlace(_ sender: Any) {
         performSegue(withIdentifier: "tripToBuilder", sender: self)
     }
+    @IBOutlet weak var floatingButton: MDCFloatingButton!
+    //@IBOutlet weak var bottomViewToBottom: NSLayoutConstraint!
     
-    @IBOutlet weak var addPlaceButton: UIButton!
     //@IBOutlet weak var tripName: UILabel!
     @IBOutlet weak var rightBarItem: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -35,7 +34,8 @@ class TripViewController: UIViewController {
         let bottomViewValue: CGFloat = shouldShow ? 0.0 : 60.0
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
-            self.bottomViewToBottom.constant = bottomViewValue
+            //TODO: update this with the correct constraints to animate the button
+            //self.bottomViewToBottom.constant = bottomViewValue
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
@@ -44,9 +44,6 @@ class TripViewController: UIViewController {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
         self.title = trip?.name!
-        addPlaceButton.layer.cornerRadius = 20.0
-        //This doesn't really solve the problem of the button being hidden away
-        showHideButtonAnimate(shouldShow: true)
         //tripDate.text = trip?.startDate?.formatDateAsString()
         
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
@@ -137,12 +134,16 @@ extension TripViewController: GMSAutocompleteViewControllerDelegate {
 
 extension TripViewController: UITableViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //TODO: refine this method to correctly determine when to show and hide the button
         if (self.lastContentOffset < scrollView.contentOffset.y) {
             // moved to top
-            self.showHideButtonAnimate(shouldShow: true)
+            
+            //self.showHideButtonAnimate(shouldShow: true)
         } else if (self.lastContentOffset > scrollView.contentOffset.y) {
             // moved to bottom
-            self.showHideButtonAnimate(shouldShow: false)
+            
+            
+            //self.showHideButtonAnimate(shouldShow: false)
         } else {
             // didn't move
         }
