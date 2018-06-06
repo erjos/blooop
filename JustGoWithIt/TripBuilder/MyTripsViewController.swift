@@ -6,6 +6,9 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var floatingButton: MDCFloatingButton!
     
+    @IBAction func pressFloatingAdd(_ sender: Any) {
+        performSegue(withIdentifier: "toBuilder", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")

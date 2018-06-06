@@ -86,6 +86,9 @@
                                     <constraint firstAttribute="height" constant="45" id="BGF-HB-yIe"/>
                                     <constraint firstAttribute="width" constant="45" id="KjK-lG-6Ab"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="pressFloatingAdd:" destination="AMg-Tl-zRa" eventType="touchUpInside" id="brN-Ep-APr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,7 +114,7 @@
                     <connections>
                         <outlet property="collection" destination="ctq-c8-DDi" id="7Oy-AY-89y"/>
                         <outlet property="floatingButton" destination="SUT-4B-yJd" id="ndo-HY-IZj"/>
-                        <segue destination="G0m-Ch-JEk" kind="show" id="qV7-1r-FsE"/>
+                        <segue destination="G0m-Ch-JEk" kind="show" identifier="toBuilder" id="qV7-1r-FsE"/>
                         <segue destination="Kvy-Xg-HaM" kind="show" id="vME-CI-iG3"/>
                     </connections>
                 </viewController>
