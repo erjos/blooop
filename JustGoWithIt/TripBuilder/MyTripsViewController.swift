@@ -1,12 +1,20 @@
 import UIKit
+import MaterialComponents.MaterialButtons
 
 class MyTripsViewController: UIViewController {
 
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var floatingButton: MDCFloatingButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
+        
+        let plusImage = UIImage(named: "Add")?.withRenderingMode(.alwaysTemplate)
+
+        //floatingButton.setBackgroundImage(plusImage, for: .normal)
+        floatingButton.setImage(plusImage, for: .normal)
+        //MDCFloatingActionButtonThemer.applyScheme(buttonScheme, to: floatingButton)
     }
 
     override func didReceiveMemoryWarning() {

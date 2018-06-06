@@ -80,17 +80,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUT-4B-yJd" customClass="MDCFloatingButton">
+                                <rect key="frame" x="349" y="387" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="BGF-HB-yIe"/>
+                                    <constraint firstAttribute="width" constant="45" id="KjK-lG-6Ab"/>
+                                </constraints>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="APe-ME-GDq" firstAttribute="leading" secondItem="8cX-z7-udk" secondAttribute="leading" constant="20" id="Hh8-aT-fv0"/>
                             <constraint firstItem="ctq-c8-DDi" firstAttribute="centerX" secondItem="VNH-lG-6Ud" secondAttribute="centerX" id="Hm2-Ix-6Pa"/>
+                            <constraint firstItem="8cX-z7-udk" firstAttribute="trailing" secondItem="SUT-4B-yJd" secondAttribute="trailing" constant="20" id="PfU-9p-ir7"/>
                             <constraint firstItem="PaJ-kY-Seu" firstAttribute="leading" secondItem="8cX-z7-udk" secondAttribute="leading" constant="20" id="RwF-lm-mcZ"/>
                             <constraint firstItem="NMv-jS-YIX" firstAttribute="top" secondItem="PaJ-kY-Seu" secondAttribute="bottom" constant="20" id="VPi-hb-wkl"/>
                             <constraint firstItem="NMv-jS-YIX" firstAttribute="leading" secondItem="8cX-z7-udk" secondAttribute="leading" constant="20" id="WSZ-RJ-azD"/>
                             <constraint firstItem="APe-ME-GDq" firstAttribute="trailing" secondItem="8cX-z7-udk" secondAttribute="trailing" constant="-20" id="dZ3-mu-c8I"/>
                             <constraint firstItem="ctq-c8-DDi" firstAttribute="top" secondItem="NMv-jS-YIX" secondAttribute="bottom" constant="20" id="ouA-F6-4Wz"/>
                             <constraint firstItem="Sz3-Ql-ajE" firstAttribute="top" secondItem="ctq-c8-DDi" secondAttribute="bottom" constant="20" id="qFH-mi-R07"/>
+                            <constraint firstItem="APe-ME-GDq" firstAttribute="top" secondItem="SUT-4B-yJd" secondAttribute="bottom" constant="71.670000000000002" id="rj8-CP-Wef"/>
                             <constraint firstItem="8cX-z7-udk" firstAttribute="trailing" secondItem="NMv-jS-YIX" secondAttribute="trailing" constant="20" id="se6-Io-AjY"/>
                             <constraint firstItem="APe-ME-GDq" firstAttribute="top" secondItem="Sz3-Ql-ajE" secondAttribute="bottom" constant="20" id="ssK-B5-gDa"/>
                             <constraint firstItem="Sz3-Ql-ajE" firstAttribute="leading" secondItem="8cX-z7-udk" secondAttribute="leading" constant="20" id="taW-pr-fes"/>
@@ -101,6 +110,7 @@
                     <navigationItem key="navigationItem" id="ypA-BG-5iG"/>
                     <connections>
                         <outlet property="collection" destination="ctq-c8-DDi" id="7Oy-AY-89y"/>
+                        <outlet property="floatingButton" destination="SUT-4B-yJd" id="ndo-HY-IZj"/>
                         <segue destination="G0m-Ch-JEk" kind="show" id="qV7-1r-FsE"/>
                         <segue destination="Kvy-Xg-HaM" kind="show" id="vME-CI-iG3"/>
                     </connections>
