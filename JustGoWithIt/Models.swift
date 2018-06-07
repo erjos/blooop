@@ -1,8 +1,10 @@
 import Foundation
 import GooglePlaces
 import SwiftyJSON
+import Realm
+import RealmSwift
 
-class Trip {
+class Trip: Object {
     var name: String?
     var startDate: Date?
     var endDate: Date?
@@ -26,26 +28,17 @@ class Trip {
     }
 }
 
-class City {
-    var googlePlace: GMSPlace
+class City: Object {
+    var googlePlace = GMSPlace.init()
     var locations = [Location]()
     var date: Date?
-    //var number: Int
-    
-    init(place: GMSPlace){
-        self.googlePlace = place
-    }
 }
 
-class Location {
-    var googlePlace: GMSPlace
+class Location: Object {
+    var googlePlace = GMSPlace.init()
     var label: String?
     var date: Date?
     var photoMetaDataList: [GMSPlacePhotoMetadata]?
-    
-    init(place: GMSPlace){
-        self.googlePlace = place
-    }
 }
 
 extension Date {

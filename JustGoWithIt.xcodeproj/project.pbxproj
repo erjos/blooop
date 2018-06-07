@@ -23,6 +23,7 @@
 		86A895AC2019917D00CE3926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */; };
 		86A895B42019922E00CE3926 /* ListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A895B32019922E00CE3926 /* ListHeader.xib */; };
 		86A895B6201992AE00CE3926 /* ListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A895B5201992AE00CE3926 /* ListHeader.swift */; };
+		86B5A8D920C95F5C00B24F43 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5A8D820C95F5C00B24F43 /* RealmManager.swift */; };
 		86B5D47420C74F8500A851DE /* MyTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5D47320C74F8500A851DE /* MyTripsViewController.swift */; };
 		86B75C40205950A200D53F90 /* GooglePlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B75C3F205950A200D53F90 /* GooglePlaces.framework */; };
 		86B75C42205950B200D53F90 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86B75C41205950B200D53F90 /* GoogleMapsBase.framework */; };
@@ -71,6 +72,7 @@
 		86A895AD2019917D00CE3926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86A895B32019922E00CE3926 /* ListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListHeader.xib; sourceTree = "<group>"; };
 		86A895B5201992AE00CE3926 /* ListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeader.swift; sourceTree = "<group>"; };
+		86B5A8D820C95F5C00B24F43 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		86B5D47320C74F8500A851DE /* MyTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsViewController.swift; sourceTree = "<group>"; };
 		86B75C3F205950A200D53F90 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlaces.framework; sourceTree = "<group>"; };
 		86B75C41205950B200D53F90 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				864F67E1207EACD500B6554B /* Models.swift */,
 				863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */,
 				863E26E6207FFDBD00029FF4 /* LocationManager.swift */,
+				86B5A8D820C95F5C00B24F43 /* RealmManager.swift */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			files = (
 				86CA2C0D20226CB400A0D770 /* CalendarViewController.swift in Sources */,
 				86A895A42019917D00CE3926 /* TripViewController.swift in Sources */,
+				86B5A8D920C95F5C00B24F43 /* RealmManager.swift in Sources */,
 				863E26E7207FFDBD00029FF4 /* LocationManager.swift in Sources */,
 				86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */,
 				864F67E2207EACD500B6554B /* Models.swift in Sources */,

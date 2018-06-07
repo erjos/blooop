@@ -179,13 +179,17 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         if(!isSubLocation){
             //create city
-            let city = City.init(place: place)
+            let city = City()
+            //set GMS place
+            city.googlePlace = place
             //TODO: account for if the user selects a city multiple times from this page - it should clean the list or immediately allow them to enter multiple cities...
             //add to city list on trip object
             //TODO: add this method to the trip class and ensure no duplicates
             trip.cities.append(city)
         } else {
-            let location = Location(place: place)
+            let location = Location()
+            //set GMS place
+            location.googlePlace = place
             //append the new location to the end of the list at the appropriate index
             trip.cities[cityIndex].locations.append(location)
         }
