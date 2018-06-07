@@ -27,11 +27,11 @@ class PlaceModalViewController: UIViewController {
     }
     
     func setLabels(){
-        phoneNumber.text = place.googlePlace.phoneNumber
-        address.text = place.googlePlace.formattedAddress
-        openStatus.text = (place.googlePlace.openNowStatus == GMSPlacesOpenNowStatus.yes) ? "Open" : "Closed"
+        phoneNumber.text = place.googlePlace?.phoneNumber
+        address.text = place.googlePlace?.formattedAddress
+        openStatus.text = (place.googlePlace?.openNowStatus == GMSPlacesOpenNowStatus.yes) ? "Open" : "Closed"
         placeLabel.text = place.label
-        locationLabel.text = place.googlePlace.name
+        locationLabel.text = place.googlePlace?.name
     }
 
     override func didReceiveMemoryWarning() {

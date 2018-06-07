@@ -20,7 +20,7 @@ class Trip: Object {
     }
     
     func getSubLocationGMSPlace(from indexPath: IndexPath) -> GMSPlace{
-        return cities[indexPath.section].locations[indexPath.row].googlePlace
+        return cities[indexPath.section].locations[indexPath.row].googlePlace!
     }
     
     func getSubLocation(from indexPath: IndexPath)-> Location{
@@ -29,13 +29,13 @@ class Trip: Object {
 }
 
 class City: Object {
-    var googlePlace = GMSPlace.init()
+    var googlePlace: GMSPlace?
     var locations = [Location]()
     var date: Date?
 }
 
 class Location: Object {
-    var googlePlace = GMSPlace.init()
+    var googlePlace: GMSPlace?
     var label: String?
     var date: Date?
     var photoMetaDataList: [GMSPlacePhotoMetadata]?

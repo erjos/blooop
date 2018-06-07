@@ -69,8 +69,8 @@ class BuilderViewController: UIViewController {
         //handle map view
         if(isSubLocation){
             mapView.isHidden = false
-            let target = trip.cities[cityIndex].googlePlace.coordinate
-            var camera = GMSCameraPosition.camera(withTarget: target, zoom: 6)
+            let target = trip.cities[cityIndex].googlePlace?.coordinate
+            var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 6)
             
             map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
             map?.delegate = self
@@ -157,6 +157,9 @@ class BuilderViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tripVC = segue.destination as? TripViewController
         tripVC?.trip = self.trip
+        
+        //store trip data
+        RealmManager.storeData(object: self.trip)
     }
 }
 

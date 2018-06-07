@@ -47,7 +47,7 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyTripsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return (RealmManager.fetchData()?.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

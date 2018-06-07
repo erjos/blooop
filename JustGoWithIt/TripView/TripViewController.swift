@@ -180,14 +180,14 @@ extension TripViewController: UITableViewDelegate{
         header.section = section
         let city = trip.cities[section]
         
-        GooglePhotoManager.getFirstPhoto(placeID: city.googlePlace.placeID, success: { image, attributes in
+        GooglePhotoManager.getFirstPhoto(placeID: (city.googlePlace?.placeID)!, success: { image, attributes in
             //success
             header.headerImage.image = image
         }) { (error) in
             //error
         }
         //set city name on label
-        header.mainLabel.text = city.googlePlace.name
+        header.mainLabel.text = city.googlePlace?.name
         //set date on label
         header.dateLabel.text = city.date?.formatDateAsString()
         
