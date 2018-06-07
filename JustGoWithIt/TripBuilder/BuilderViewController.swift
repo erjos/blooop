@@ -69,7 +69,8 @@ class BuilderViewController: UIViewController {
         //handle map view
         if(isSubLocation){
             mapView.isHidden = false
-            let target = trip.cities[cityIndex].googlePlace?.coordinate
+            let gms = GMSPlaceManager.sharedInstance.getPlaceForId(ID: trip.cities[cityIndex].placeID)
+            let target = gms?.coordinate
             var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 6)
             
             map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
@@ -123,7 +124,7 @@ class BuilderViewController: UIViewController {
     @objc private func selectDone(){
         if(nameField.isFirstResponder){
             if(!isSubLocation){
-                trip.name = nameField.text
+                trip.name = nameField.text ?? ""
             } else {
                 //should be the last element of the collection because we always append from this screen
                 //could I write a test to ensure that this sets the correct name?
@@ -183,16 +184,15 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         if(!isSubLocation){
             //create city
             let city = City()
-            //set GMS place
-            city.googlePlace = place
+            city.placeID = place.placeID
+            GMSPlaceManager.sharedInstance.addGmsPlace(place: place)
             //TODO: account for if the user selects a city multiple times from this page - it should clean the list or immediately allow them to enter multiple cities...
-            //add to city list on trip object
             //TODO: add this method to the trip class and ensure no duplicates
             trip.cities.append(city)
         } else {
             let location = Location()
-            //set GMS place
-            location.googlePlace = place
+            location.placeID = place.placeID
+            GMSPlaceManager.sharedInstance.addGmsPlace(place: place)
             //append the new location to the end of the list at the appropriate index
             trip.cities[cityIndex].locations.append(location)
         }

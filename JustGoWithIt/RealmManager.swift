@@ -22,8 +22,7 @@ class RealmManager {
         do {
             let realm = try Realm()
             try realm.write {
-                //realm.add(object, update: true) // 
-                realm.add(object)
+                realm.add(object, update: true) //realm.add(object)
                 print("Added new object")
             }
         } catch let error as NSError {

@@ -5,10 +5,14 @@ import Realm
 import RealmSwift
 
 class Trip: Object {
-    var name: String?
-    var startDate: Date?
-    var endDate: Date?
-    var cities = [City]()
+    @objc dynamic var name: String = ""
+    @objc dynamic var startDate: Date?
+    @objc dynamic var endDate: Date?
+    let cities = List<City>()
+    
+    override static func primaryKey() -> String {
+        return "name"
+    }
     
     //Returns the place ID of a location in a city, given a corresponding index path
     //city index corresponds to secion ; location index corresponds to row
@@ -19,9 +23,13 @@ class Trip: Object {
         cities[indexPath.section].locations[indexPath.row].photoMetaDataList = list
     }
     
-    func getSubLocationGMSPlace(from indexPath: IndexPath) -> GMSPlace{
-        return cities[indexPath.section].locations[indexPath.row].googlePlace!
+    func getSubLocationPlaceID(from indexPath: IndexPath) -> String{
+        return cities[indexPath.section].locations[indexPath.row].placeID ?? ""
     }
+    
+//    func getSubLocationGMSPlace(from indexPath: IndexPath) -> GMSPlace?{
+//        return cities[indexPath.section].locations[indexPath.row].googlePlace
+//    }
     
     func getSubLocation(from indexPath: IndexPath)-> Location{
         return cities[indexPath.section].locations[indexPath.row]
@@ -29,16 +37,41 @@ class Trip: Object {
 }
 
 class City: Object {
-    var googlePlace: GMSPlace?
-    var locations = [Location]()
-    var date: Date?
+    let locations = List<Location>()
+    @objc dynamic var date: Date?
+    @objc dynamic var placeID: String = ""
+    
+    //@objc dynamic var googlePlace: GMSPlace?
+    
+    override static func ignoredProperties() -> [String] {
+        return ["googlePlace"]
+    }
+    
+    func fetchGMSPlace(){
+        GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
+            // do something with that callback baby
+        }
+    }
 }
 
 class Location: Object {
-    var googlePlace: GMSPlace?
-    var label: String?
-    var date: Date?
+    @objc dynamic var label: String?
+    @objc dynamic var date: Date?
+    @objc dynamic var placeID: String = ""
+    
     var photoMetaDataList: [GMSPlacePhotoMetadata]?
+    
+    //@objc dynamic var googlePlace: GMSPlace?
+    
+    override static func ignoredProperties() -> [String] {
+        return ["googlePlace"]
+    }
+    
+    func fetchGMSPlace(){
+        GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
+            // do something with that callback baby
+        }
+    }
 }
 
 extension Date {
@@ -54,5 +87,24 @@ extension Date {
             dateFormater.dateFormat = "MM/dd/yy"
         }
         return dateFormater.string(from: self)
+    }
+}
+
+class GMSPlaceManager {
+    private var gmsPlaces = [GMSPlace]()
+    
+    static let sharedInstance = GMSPlaceManager()
+    
+    private init() {}
+    
+    func addGmsPlace(place: GMSPlace){
+        self.gmsPlaces.append(place)
+    }
+    
+    func getPlaceForId(ID: String)->GMSPlace?{
+        let list = self.gmsPlaces.filter { (place) -> Bool in
+            return place.placeID == ID
+        }
+        return list.first
     }
 }

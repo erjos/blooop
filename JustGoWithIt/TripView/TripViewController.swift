@@ -43,7 +43,7 @@ class TripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
-        self.title = trip?.name!
+        self.title = trip?.name
         //tripDate.text = trip?.startDate?.formatDateAsString()
         
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
@@ -180,14 +180,15 @@ extension TripViewController: UITableViewDelegate{
         header.section = section
         let city = trip.cities[section]
         
-        GooglePhotoManager.getFirstPhoto(placeID: (city.googlePlace?.placeID)!, success: { image, attributes in
-            //success
+        GooglePhotoManager.getFirstPhoto(placeID: city.placeID, success: { image, attributes in
+            //SUCCESS
             header.headerImage.image = image
         }) { (error) in
-            //error
+            //ERROR
         }
         //set city name on label
-        header.mainLabel.text = city.googlePlace?.name
+        let gms = GMSPlaceManager.sharedInstance.getPlaceForId(ID: city.placeID)
+        header.mainLabel.text = gms?.name
         //set date on label
         header.dateLabel.text = city.date?.formatDateAsString()
         
@@ -232,9 +233,9 @@ extension TripViewController: UITableViewDataSource{
         
         //let placeCount = trip.cities[indexPath.section].locations.count // we may not need this anymore cause the table cell should match the count :)
         
-        let gmsPlace = trip.getSubLocationGMSPlace(from: indexPath)
+        let placeID = trip.getSubLocationPlaceID(from: indexPath)
         //for each place in the list - fetch the photo meta data and store on the model
-        GooglePhotoManager.loadMetaDataList(placeID: gmsPlace.placeID, success: { list in
+        GooglePhotoManager.loadMetaDataList(placeID: placeID, success: { list in
             //successfully get meta data list
             self.trip.setPhotoMetaData(indexPath, list)
             //cell.collectionView.reloadData()
@@ -242,7 +243,7 @@ extension TripViewController: UITableViewDataSource{
             //failed to get metaDatalist
         }
         
-        GooglePhotoManager.getFirstPhoto(placeID: gmsPlace.placeID, success: { (image, attr) in
+        GooglePhotoManager.getFirstPhoto(placeID: placeID, success: { (image, attr) in
             cell.setThumbnailImage(image: image)
         }) { error in
             cell.handleFailedImage()
@@ -252,7 +253,8 @@ extension TripViewController: UITableViewDataSource{
         
         cell.activityLabel.text = trip.getSubLocation(from: indexPath).label
         cell.dateLabel.text = trip.getSubLocation(from: indexPath).date?.formatDateAsString()
-        cell.locationLabel.text = gmsPlace.name
+        let gms = GMSPlaceManager.sharedInstance.getPlaceForId(ID: placeID)
+        cell.locationLabel.text = gms?.name
         cell.selectionStyle = .none
         return cell
     }
