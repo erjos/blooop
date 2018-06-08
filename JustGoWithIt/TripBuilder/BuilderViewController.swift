@@ -69,7 +69,7 @@ class BuilderViewController: UIViewController {
         //handle map view
         if(isSubLocation){
             mapView.isHidden = false
-            let gms = GMSPlaceManager.sharedInstance.getPlaceForId(ID: trip.cities[cityIndex].placeID)
+            let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: trip.cities[cityIndex].placeID)
             let target = gms?.coordinate
             var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 6)
             
@@ -184,14 +184,14 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
             //create city
             let city = City()
             city.placeID = place.placeID
-            GMSPlaceManager.sharedInstance.addGmsPlace(place: place)
+            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             //TODO: account for if the user selects a city multiple times from this page - it should clean the list or immediately allow them to enter multiple cities...
             //TODO: add this method to the trip class and ensure no duplicates
             trip.cities.append(city)
         } else {
             let location = Location()
             location.placeID = place.placeID
-            GMSPlaceManager.sharedInstance.addGmsPlace(place: place)
+            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             //append the new location to the end of the list at the appropriate index
             RealmManager.addSublocationsToTrip(trip: trip, cityIndex: cityIndex, location: location)
             //trip.cities[cityIndex].locations.append(location)

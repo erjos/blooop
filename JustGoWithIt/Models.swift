@@ -19,6 +19,11 @@ class Trip: Object {
     func getPhotoMetaData(from indexPath: IndexPath, collectionRow: Int) -> GMSPlacePhotoMetadata? {
         return cities[indexPath.section].locations[indexPath.row].photoMetaDataList?[collectionRow]
     }
+    
+    func getPhotoMetaDataList(from indexPath: IndexPath) -> [GMSPlacePhotoMetadata]?{
+        return cities[indexPath.section].locations[indexPath.row].photoMetaDataList
+    }
+    
     func setPhotoMetaData(_ indexPath: IndexPath, _ list: [GMSPlacePhotoMetadata]) {
         cities[indexPath.section].locations[indexPath.row].photoMetaDataList = list
     }
@@ -62,12 +67,6 @@ class Location: Object {
     //TODO: create a way to fetch the metadata
     var photoMetaDataList: [GMSPlacePhotoMetadata]?
     
-    //@objc dynamic var googlePlace: GMSPlace?
-    
-    override static func ignoredProperties() -> [String] {
-        return ["googlePlace"]
-    }
-    
     func fetchGMSPlace(){
         GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
             // do something with that callback baby
@@ -91,10 +90,14 @@ extension Date {
     }
 }
 
-class GMSPlaceManager {
-    private var gmsPlaces = [GMSPlace]()
+class GoogleResourceManager {
+    //** This class should be created and destroyed for every trip that is opened **//
+    //TODO: write a function that disposes of this data
     
-    static let sharedInstance = GMSPlaceManager()
+    private var gmsPlaces = [GMSPlace]()
+    private var photoMetaData = [(String, [GMSPlacePhotoMetadata])]()
+    
+    static let sharedInstance = GoogleResourceManager()
     
     private init() {}
     
@@ -107,5 +110,22 @@ class GMSPlaceManager {
             return place.placeID == ID
         }
         return list.first
+    }
+    
+    func addPhotoMetaData(metaData: (String, [GMSPlacePhotoMetadata])) {
+        //** This list will correspond only to the order of the table cells when the view is initialize **//
+        let isDuplicate = photoMetaData.contains { (id, metaDataList) -> Bool in
+            return id == metaData.0
+        }
+        if(!isDuplicate){
+            self.photoMetaData.append(metaData)
+        }
+    }
+    
+    func getMetaDataListFor(placeId: String) -> [GMSPlacePhotoMetadata]?{
+        let result = photoMetaData.filter { (id, metaDataList) -> Bool in
+            return id == placeId
+        }
+        return result.first?.1
     }
 }

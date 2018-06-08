@@ -27,7 +27,7 @@ class PlaceModalViewController: UIViewController {
     }
     
     func setLabels(){
-        let gms = GMSPlaceManager.sharedInstance.getPlaceForId(ID: place.placeID)
+        let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
         phoneNumber.text = gms?.phoneNumber
         address.text = gms?.formattedAddress
         openStatus.text = (gms?.openNowStatus == GMSPlacesOpenNowStatus.yes) ? "Open" : "Closed"
@@ -43,7 +43,8 @@ class PlaceModalViewController: UIViewController {
 
 extension PlaceModalViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let photoCount = place.photoMetaDataList?.count else {
+        
+        guard let photoCount = GoogleResourceManager.sharedInstance.getMetaDataListFor(placeId: place.placeID)?.count else {
             return 1
         }
         return photoCount
@@ -68,9 +69,13 @@ extension PlaceModalViewController : UICollectionViewDelegate {
         guard !photoCell.imageLoaded else {
             return
         }
-        guard let metaData = place.photoMetaDataList?[indexPath.row] else {
+        
+        guard let metaDataList = GoogleResourceManager.sharedInstance.getMetaDataListFor(placeId: place.placeID) else {
             return
         }
+        
+        let metaData = metaDataList[indexPath.row]
+        
         //should this be called by a method on the cell like "setFirstImage" ?
         GooglePhotoManager.loadImageForMetadata(photoMetadata: metaData, success: { (image, attributes) in
             photoCell.setImage(image: image)

@@ -16,6 +16,19 @@ class RealmManager {
         return results
     }
     
+//    static func saveSublocationIndex(trip: Trip, indexPath: IndexPath){
+//        do {
+//            let realm = try Realm()
+//            try realm.write {
+//                trip.cities[indexPath.section].locations[indexPath.row].index = indexPath.row
+//                print("Added sublocation date")
+//            }
+//        } catch let error as NSError {
+//            //handle error
+//            print(error)
+//        }
+//    }
+    
     static func saveSublocationDate(trip: Trip, cityIndex: Int, date: Date){
         do {
             let realm = try Realm()
