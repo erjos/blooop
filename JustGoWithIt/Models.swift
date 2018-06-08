@@ -59,6 +59,7 @@ class Location: Object {
     @objc dynamic var date: Date?
     @objc dynamic var placeID: String = ""
     
+    //TODO: create a way to fetch the metadata
     var photoMetaDataList: [GMSPlacePhotoMetadata]?
     
     //@objc dynamic var googlePlace: GMSPlace?

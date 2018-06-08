@@ -234,13 +234,12 @@ extension TripViewController: UITableViewDataSource{
         //let placeCount = trip.cities[indexPath.section].locations.count // we may not need this anymore cause the table cell should match the count :)
         
         let placeID = trip.getSubLocationPlaceID(from: indexPath)
-        //for each place in the list - fetch the photo meta data and store on the model
+        
+        //Fetch photo meta data and store
         GooglePhotoManager.loadMetaDataList(placeID: placeID, success: { list in
-            //successfully get meta data list
             self.trip.setPhotoMetaData(indexPath, list)
-            //cell.collectionView.reloadData()
         }) { error in
-            //failed to get metaDatalist
+            //TODO: ERROR
         }
         
         GooglePhotoManager.getFirstPhoto(placeID: placeID, success: { (image, attr) in

@@ -126,9 +126,8 @@ class BuilderViewController: UIViewController {
             if(!isSubLocation){
                 trip.name = nameField.text ?? ""
             } else {
-                //should be the last element of the collection because we always append from this screen
-                //could I write a test to ensure that this sets the correct name?
-                trip.cities[cityIndex].locations.last?.label = nameField.text
+                //TODO: handle if nameField is left blank
+                RealmManager.saveSublocationName(trip: trip, cityIndex: cityIndex, label: nameField.text)
             }
             
             nameField.resignFirstResponder()
@@ -138,10 +137,10 @@ class BuilderViewController: UIViewController {
         
         if(dateField.isFirstResponder){
             if(!isSubLocation){
-                //we will only set dates on cities and locations - lets calculate trip date dynamically based on how the user sets up their events
+                //Does not need to be done in write block because it is not a Realm "managed object" at this point. The first time it becomes a realm managed object is when the segue is triggered from the builder to the trip viewer
                 trip.cities.last?.date = datePicker.date
             } else {
-                trip.cities[cityIndex].locations.last?.date = datePicker.date
+                RealmManager.saveSublocationDate(trip: trip, cityIndex: cityIndex, date: datePicker.date)
             }
             
             dateField.text = datePicker.date.formatDateAsString()
@@ -194,7 +193,8 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
             location.placeID = place.placeID
             GMSPlaceManager.sharedInstance.addGmsPlace(place: place)
             //append the new location to the end of the list at the appropriate index
-            trip.cities[cityIndex].locations.append(location)
+            RealmManager.addSublocationsToTrip(trip: trip, cityIndex: cityIndex, location: location)
+            //trip.cities[cityIndex].locations.append(location)
         }
         //set the text field for location
         locationField.text = place.name
