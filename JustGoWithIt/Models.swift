@@ -14,27 +14,9 @@ class Trip: Object {
         return "name"
     }
     
-    //Returns the place ID of a location in a city, given a corresponding index path
-    //city index corresponds to secion ; location index corresponds to row
-    func getPhotoMetaData(from indexPath: IndexPath, collectionRow: Int) -> GMSPlacePhotoMetadata? {
-        return cities[indexPath.section].locations[indexPath.row].photoMetaDataList?[collectionRow]
-    }
-    
-    func getPhotoMetaDataList(from indexPath: IndexPath) -> [GMSPlacePhotoMetadata]?{
-        return cities[indexPath.section].locations[indexPath.row].photoMetaDataList
-    }
-    
-    func setPhotoMetaData(_ indexPath: IndexPath, _ list: [GMSPlacePhotoMetadata]) {
-        cities[indexPath.section].locations[indexPath.row].photoMetaDataList = list
-    }
-    
     func getSubLocationPlaceID(from indexPath: IndexPath) -> String{
         return cities[indexPath.section].locations[indexPath.row].placeID ?? ""
     }
-    
-//    func getSubLocationGMSPlace(from indexPath: IndexPath) -> GMSPlace?{
-//        return cities[indexPath.section].locations[indexPath.row].googlePlace
-//    }
     
     func getSubLocation(from indexPath: IndexPath)-> Location{
         return cities[indexPath.section].locations[indexPath.row]
@@ -46,15 +28,14 @@ class City: Object {
     @objc dynamic var date: Date?
     @objc dynamic var placeID: String = ""
     
-    //@objc dynamic var googlePlace: GMSPlace?
-    
     override static func ignoredProperties() -> [String] {
         return ["googlePlace"]
     }
     
+    //TODO: implement solution to fetch fresh resources when loading a trip from the main view controller
     func fetchGMSPlace(){
         GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
-            // do something with that callback baby
+            
         }
     }
 }
@@ -64,12 +45,9 @@ class Location: Object {
     @objc dynamic var date: Date?
     @objc dynamic var placeID: String = ""
     
-    //TODO: create a way to fetch the metadata
-    var photoMetaDataList: [GMSPlacePhotoMetadata]?
-    
     func fetchGMSPlace(){
         GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
-            // do something with that callback baby
+            
         }
     }
 }
@@ -90,42 +68,4 @@ extension Date {
     }
 }
 
-class GoogleResourceManager {
-    //** This class should be created and destroyed for every trip that is opened **//
-    //TODO: write a function that disposes of this data
-    
-    private var gmsPlaces = [GMSPlace]()
-    private var photoMetaData = [(String, [GMSPlacePhotoMetadata])]()
-    
-    static let sharedInstance = GoogleResourceManager()
-    
-    private init() {}
-    
-    func addGmsPlace(place: GMSPlace){
-        self.gmsPlaces.append(place)
-    }
-    
-    func getPlaceForId(ID: String)->GMSPlace?{
-        let list = self.gmsPlaces.filter { (place) -> Bool in
-            return place.placeID == ID
-        }
-        return list.first
-    }
-    
-    func addPhotoMetaData(metaData: (String, [GMSPlacePhotoMetadata])) {
-        //** This list will correspond only to the order of the table cells when the view is initialize **//
-        let isDuplicate = photoMetaData.contains { (id, metaDataList) -> Bool in
-            return id == metaData.0
-        }
-        if(!isDuplicate){
-            self.photoMetaData.append(metaData)
-        }
-    }
-    
-    func getMetaDataListFor(placeId: String) -> [GMSPlacePhotoMetadata]?{
-        let result = photoMetaData.filter { (id, metaDataList) -> Bool in
-            return id == placeId
-        }
-        return result.first?.1
-    }
-}
+
