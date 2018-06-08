@@ -21,6 +21,24 @@ class Trip: Object {
     func getSubLocation(from indexPath: IndexPath)-> Location{
         return cities[indexPath.section].locations[indexPath.row]
     }
+    
+    func fetchGMSPlacesForTrip(complete: @escaping(Bool)->Void){
+        var fetchedPlaces = [String]()
+        
+        for city in cities {
+            city.fetchGMSPlace(success: { isSuccess in
+                for location in city.locations{
+                    location.fetchGMSPlace(success: { (id, isSuccess) in
+                        //add the ids to a list to keep track of how many have been retrieved
+                        fetchedPlaces.append(id)
+                        if(fetchedPlaces.count == city.locations.count){
+                            complete(true)
+                        }
+                    })
+                }
+            })
+        }
+    }
 }
 
 class City: Object {
@@ -33,9 +51,13 @@ class City: Object {
     }
     
     //TODO: implement solution to fetch fresh resources when loading a trip from the main view controller
-    func fetchGMSPlace(){
+    func fetchGMSPlace(success: @escaping(Bool)->Void){
         GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
-            
+            guard let gms = place else {
+                return success(false)
+            }
+            GoogleResourceManager.sharedInstance.addGmsPlace(place: gms)
+            success(true)
         }
     }
 }
@@ -45,9 +67,13 @@ class Location: Object {
     @objc dynamic var date: Date?
     @objc dynamic var placeID: String = ""
     
-    func fetchGMSPlace(){
+    func fetchGMSPlace(success: @escaping(_ id: String, _ success: Bool)->Void){
         GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
-            
+            guard let gms = place else {
+                return success(self.placeID, false)
+            }
+            GoogleResourceManager.sharedInstance.addGmsPlace(place: gms)
+            success(self.placeID, true)
         }
     }
 }

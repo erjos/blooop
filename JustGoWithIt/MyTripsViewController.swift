@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 import MaterialComponents.MaterialButtons
 
 class MyTripsViewController: UIViewController {
@@ -9,6 +10,9 @@ class MyTripsViewController: UIViewController {
     @IBAction func pressFloatingAdd(_ sender: Any) {
         performSegue(withIdentifier: "toBuilder", sender: self)
     }
+    
+    var trips: Results<Trip>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
@@ -24,7 +28,15 @@ class MyTripsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toMain"){
+            let tripVC = segue.destination as! TripViewController
+            let indexPath = sender as! IndexPath
+            let trip = trips?[indexPath.row]
+            tripVC.trip = trip
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -37,6 +49,16 @@ class MyTripsViewController: UIViewController {
 
 }
 
+extension MyTripsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //fetch necessary data for the page
+        let trip = trips?[indexPath.row]
+        trip?.fetchGMSPlacesForTrip(complete: { (isComplete) in
+            self.performSegue(withIdentifier: "toMain", sender: indexPath)
+        })
+    }
+}
+
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -47,7 +69,9 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyTripsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (RealmManager.fetchData()?.count)!
+        //TODO: don't force unwrap this
+        self.trips = RealmManager.fetchData()
+        return (trips?.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

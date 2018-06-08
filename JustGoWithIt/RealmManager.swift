@@ -3,6 +3,8 @@ import RealmSwift
 
 class RealmManager {
     
+    //TODO: create ENUM and return an error to be handled by the UI
+    
     static func fetchData() -> Results<Trip>? {
         var results: Results<Trip>?
         do {
@@ -15,19 +17,6 @@ class RealmManager {
         }
         return results
     }
-    
-//    static func saveSublocationIndex(trip: Trip, indexPath: IndexPath){
-//        do {
-//            let realm = try Realm()
-//            try realm.write {
-//                trip.cities[indexPath.section].locations[indexPath.row].index = indexPath.row
-//                print("Added sublocation date")
-//            }
-//        } catch let error as NSError {
-//            //handle error
-//            print(error)
-//        }
-//    }
     
     static func saveSublocationDate(trip: Trip, cityIndex: Int, date: Date){
         do {
@@ -68,7 +57,6 @@ class RealmManager {
         }
     }
     
-    //TODO: create ENUM and return an error to be handled by the UI
     static func storeData(object: Trip) {
         //var realm: Realm
         do {

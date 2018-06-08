@@ -112,7 +112,7 @@
                     <connections>
                         <outlet property="collection" destination="Q6z-bx-BdT" id="g3x-Ac-5Vu"/>
                         <outlet property="floatingButton" destination="dvM-63-US7" id="fhP-Re-DbV"/>
-                        <segue destination="V1h-wF-zjm" kind="show" id="1Xb-kg-YGg"/>
+                        <segue destination="V1h-wF-zjm" kind="show" identifier="toMain" id="1Xb-kg-YGg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KvH-0a-s8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
