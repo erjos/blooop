@@ -15,21 +15,23 @@ class Trip: Object {
     }
     
     func getSubLocationPlaceID(from indexPath: IndexPath) -> String{
-        return cities[indexPath.section].locations[indexPath.row].placeID ?? ""
+        return cities[indexPath.section].locations[indexPath.row].placeID
     }
     
     func getSubLocation(from indexPath: IndexPath)-> Location{
         return cities[indexPath.section].locations[indexPath.row]
     }
     
+    //TODO: Improve this if possible...
     func fetchGMSPlacesForTrip(complete: @escaping(Bool)->Void){
+        //probably don't need the IDs - but might be useful for identifying successes and failures?
+        //could just use a simple counter
         var fetchedPlaces = [String]()
         
         for city in cities {
             city.fetchGMSPlace(success: { isSuccess in
                 for location in city.locations{
                     location.fetchGMSPlace(success: { (id, isSuccess) in
-                        //add the ids to a list to keep track of how many have been retrieved
                         fetchedPlaces.append(id)
                         if(fetchedPlaces.count == city.locations.count){
                             complete(true)

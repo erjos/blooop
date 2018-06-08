@@ -30,7 +30,14 @@ class MyTripsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toMain"){
-            let tripVC = segue.destination as! TripViewController
+            guard let navigationController = segue.destination as? UINavigationController else {
+                print("Failed to cast")
+                return
+            }
+            guard let tripVC = navigationController.viewControllers[0] as? TripViewController else {
+                print("Wrong view controller")
+                return
+            }
             let indexPath = sender as! IndexPath
             let trip = trips?[indexPath.row]
             tripVC.trip = trip
