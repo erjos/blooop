@@ -296,8 +296,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="buv-E1-dfC">
-                        <barButtonItem key="leftBarButtonItem" title="List" id="DwI-bo-4pA">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="DwI-bo-4pA">
                             <color key="tintColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backAction:" destination="BYZ-38-t0r" id="1bA-Bj-ocb"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="•••" id="tOJ-1N-u5O">
                             <color key="tintColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -567,6 +570,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back" width="24" height="24"/>
         <image name="close" width="24" height="24"/>
         <image name="hours" width="24" height="24"/>
         <image name="notes" width="24" height="24"/>

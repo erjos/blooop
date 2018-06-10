@@ -22,6 +22,9 @@ class TripViewController: UIViewController {
             performSegue(withIdentifier: "presentMenu", sender: self)
         }
     }
+    @IBAction func backAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func showHideButtonAnimate(shouldShow: Bool){
         let bottomViewValue: CGFloat = shouldShow ? 0.0 : 60.0
