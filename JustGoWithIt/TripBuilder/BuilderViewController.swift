@@ -17,6 +17,36 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var locationDivider: UIView!
     @IBOutlet weak var nameDivider: UIView!
     
+    @IBAction func dismiss(_ sender: Any) {
+        //Identify which view controller presented the builder
+        if let mainVC = self.presentingViewController as? MyTripsViewController {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        //this isn't working - maybe it's the navigation controller?
+        if let tripVC = self.presentingViewController as? UINavigationController {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func saveNewTrip(){
+        RealmManager.storeData(object: self.trip)
+        
+        if let mainVC = self.presentingViewController as? MyTripsViewController {
+            dismiss(animated: true, completion: {
+                mainVC.performSegue(withIdentifier: "toMain", sender: self.trip)
+            })
+        }
+        
+        if let navigationController = self.presentingViewController as? UINavigationController {
+            guard let tripVC = navigationController.viewControllers[0] as? TripViewController else {
+                return
+            }
+            
+            self.dismiss(animated: true, completion: tripVC.tableView.reloadData)
+        }
+    }
+    
     let datePicker = UIDatePicker()
     var trip = Trip()
     var isSubLocation = false //flag used to identify if builder is used for Location or Place (Locations contain places)
@@ -36,19 +66,19 @@ class BuilderViewController: UIViewController {
         nameDivider.isHidden = true
         //configure for place
         if(isSubLocation){
-            //setup dismiss button
-            let button = UIButton()
-            button.setImage(#imageLiteral(resourceName: "close"), for: .normal)
-            button.addTarget(self, action: #selector(dismissIt), for: .touchUpInside)
-            let barItem = UIBarButtonItem(customView: button)
-            //set constraints on barItem
-            let width = barItem.customView?.widthAnchor.constraint(equalToConstant: 30)
-            width?.isActive = true
-            let height = barItem.customView?.heightAnchor.constraint(equalToConstant: 35)
-            height?.isActive = true
-            button.tintColor = UIColor.darkGray
-            //set button on navigationItem
-            self.navigationItem.leftBarButtonItem = barItem
+
+//            let button = UIButton()
+//            button.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+//            button.addTarget(self, action: #selector(dismissIt), for: .touchUpInside)
+//            let barItem = UIBarButtonItem(customView: button)
+//            //set constraints on barItem
+//            let width = barItem.customView?.widthAnchor.constraint(equalToConstant: 30)
+//            width?.isActive = true
+//            let height = barItem.customView?.heightAnchor.constraint(equalToConstant: 35)
+//            height?.isActive = true
+//            button.tintColor = UIColor.darkGray
+//            //set button on navigationItem
+//            self.navigationItem.leftBarButtonItem = barItem
             
             locationLabel.text = "Choose a location"
             locationField.placeholder = "Search places"
@@ -82,9 +112,9 @@ class BuilderViewController: UIViewController {
         }
     }
     
-    @objc private func dismissIt(){
-        self.dismiss(animated: true, completion: nil)
-    }
+//    @objc private func dismissIt(){
+//        self.dismiss(animated: true, completion: nil)
+//    }
     
     private func setupNameField(){
         nameField.keyboardType = .alphabet
@@ -145,7 +175,8 @@ class BuilderViewController: UIViewController {
             
             dateField.text = datePicker.date.formatDateAsString()
             dateField.resignFirstResponder()
-            performSegue(withIdentifier: "builderToTrip", sender: self)
+            
+            saveNewTrip()
         }
     }
     

@@ -28,15 +28,21 @@ class Trip: Object {
         //could just use a simple counter
         var fetchedPlaces = [String]()
         
+        //TODO: make this a fetch method for places on a single city - eliminate this nested for loop
         for city in cities {
             city.fetchGMSPlace(success: { isSuccess in
-                for location in city.locations{
-                    location.fetchGMSPlace(success: { (id, isSuccess) in
-                        fetchedPlaces.append(id)
-                        if(fetchedPlaces.count == city.locations.count){
-                            complete(true)
-                        }
-                    })
+                if(city.locations.count > 0){
+                    for location in city.locations{
+                        location.fetchGMSPlace(success: { (id, isSuccess) in
+                            fetchedPlaces.append(id)
+                            if(fetchedPlaces.count == city.locations.count){
+                                complete(true)
+                            }
+                        })
+                    }
+                } else {
+                    //doesn't account for if there are multiple cities
+                    complete(true)
                 }
             })
         }

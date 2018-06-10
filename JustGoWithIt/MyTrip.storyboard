@@ -85,7 +85,7 @@
                                 </constraints>
                                 <connections>
                                     <action selector="pressFloatingAdd:" destination="ZBo-Jb-tVI" eventType="touchUpInside" id="ufF-VG-mVO"/>
-                                    <segue destination="Hih-11-Axb" kind="show" identifier="toBuilder" id="Fp6-dJ-l1p"/>
+                                    <segue destination="Hih-11-Axb" kind="presentation" identifier="toBuilder" id="Fp6-dJ-l1p"/>
                                 </connections>
                             </button>
                         </subviews>

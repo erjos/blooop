@@ -38,22 +38,17 @@ class MyTripsViewController: UIViewController {
                 print("Wrong view controller")
                 return
             }
-            let indexPath = sender as! IndexPath
-            let trip = trips?[indexPath.row]
-            tripVC.trip = trip
+            
+            if let indexPath = sender as? IndexPath {
+                let trip = trips?[indexPath.row]
+                tripVC.trip = trip
+            }
+            
+            if let trip = sender as? Trip {
+                tripVC.trip = trip
+            }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension MyTripsViewController: UICollectionViewDelegate {

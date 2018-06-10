@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ocF-GZ-fZU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0m-Ch-JEk">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,13 +27,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seT-Zz-PjA">
-                                <rect key="frame" x="0.0" y="64" width="414" height="428"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="472"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAC-bj-j9x" userLabel="Content">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="470"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-TQ-bQg" userLabel="Location View">
-                                                <rect key="frame" x="0.0" y="20" width="414" height="150"/>
+                                                <rect key="frame" x="0.0" y="50" width="414" height="150"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you going?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXy-K7-P1M">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="32"/>
@@ -70,7 +70,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39W-VV-cCu" userLabel="Name View">
-                                                <rect key="frame" x="0.0" y="170" width="414" height="150"/>
+                                                <rect key="frame" x="0.0" y="200" width="414" height="150"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name your trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykY-HS-t4A">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="32"/>
@@ -107,7 +107,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eo-Hh-f0Z" userLabel="Date View">
-                                                <rect key="frame" x="0.0" y="320" width="414" height="150"/>
+                                                <rect key="frame" x="0.0" y="350" width="414" height="150"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyt-dC-quB">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="32"/>
@@ -133,12 +133,25 @@
                                                     <constraint firstAttribute="height" constant="150" id="xnb-qS-DP1"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XS-h7-PXD">
+                                                <rect key="frame" x="20" y="0.0" width="35" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="WCR-Ro-6xd"/>
+                                                    <constraint firstAttribute="width" constant="35" id="nFO-IQ-uJy"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" image="close"/>
+                                                <connections>
+                                                    <action selector="dismiss:" destination="G0m-Ch-JEk" eventType="touchUpInside" id="MnS-7U-68a"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="0eo-Hh-f0Z" firstAttribute="leading" secondItem="mAC-bj-j9x" secondAttribute="leading" id="3nQ-6E-bZw"/>
-                                            <constraint firstItem="cfu-TQ-bQg" firstAttribute="top" secondItem="mAC-bj-j9x" secondAttribute="top" constant="20" id="LIY-Bn-L1c"/>
+                                            <constraint firstItem="9XS-h7-PXD" firstAttribute="top" secondItem="mAC-bj-j9x" secondAttribute="top" id="82V-ea-0nV"/>
+                                            <constraint firstItem="cfu-TQ-bQg" firstAttribute="top" secondItem="mAC-bj-j9x" secondAttribute="top" constant="50" id="LIY-Bn-L1c"/>
                                             <constraint firstItem="cfu-TQ-bQg" firstAttribute="leading" secondItem="mAC-bj-j9x" secondAttribute="leading" id="T5r-L9-Lt9"/>
+                                            <constraint firstItem="9XS-h7-PXD" firstAttribute="leading" secondItem="mAC-bj-j9x" secondAttribute="leading" constant="20" id="YRd-16-dcF"/>
                                             <constraint firstAttribute="trailing" secondItem="39W-VV-cCu" secondAttribute="trailing" id="eky-cO-qJh"/>
                                             <constraint firstItem="39W-VV-cCu" firstAttribute="top" secondItem="cfu-TQ-bQg" secondAttribute="bottom" id="jkx-qc-PzL"/>
                                             <constraint firstAttribute="trailing" secondItem="cfu-TQ-bQg" secondAttribute="trailing" id="mkN-CW-8vu"/>
@@ -207,23 +220,8 @@
             </objects>
             <point key="canvasLocation" x="1687" y="973"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="t7s-ck-qQ9">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ocF-GZ-fZU" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XnA-UA-gwx">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="G0m-Ch-JEk" kind="relationship" relationship="rootViewController" id="7ju-Te-8kR"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BR9-G1-T1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="423" y="974"/>
-        </scene>
     </scenes>
+    <resources>
+        <image name="close" width="24" height="24"/>
+    </resources>
 </document>

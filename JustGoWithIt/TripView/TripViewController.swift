@@ -53,8 +53,7 @@ class TripViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "tripToBuilder"){
-            let navigation = segue.destination as? UINavigationController
-            guard let builder = navigation?.viewControllers[0] as? BuilderViewController else {
+            guard let builder = segue.destination as? BuilderViewController else {
                 print("Failed to cast view controller")
                 return
             }
