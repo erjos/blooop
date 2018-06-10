@@ -5,6 +5,7 @@ import MaterialComponents.MaterialButtons
 class MyTripsViewController: UIViewController {
 
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var suggestionCollection: UICollectionView!
     @IBOutlet weak var floatingButton: MDCFloatingButton!
     
     @IBAction func pressFloatingAdd(_ sender: Any) {
@@ -16,6 +17,7 @@ class MyTripsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
+        suggestionCollection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
         
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         //floatingButton.setBackgroundImage(plusImage, for: .normal)
@@ -64,21 +66,29 @@ extension MyTripsViewController: UICollectionViewDelegate {
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize.init(width: 125, height: 135)
+        let size = CGSize.init(width: 240, height: 165)
         return size
     }
 }
 
 extension MyTripsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //TODO: don't force unwrap this
-        self.trips = RealmManager.fetchData()
-        return (trips?.count)!
+        if(collectionView == collection){
+            //TODO: don't force unwrap this
+            self.trips = RealmManager.fetchData()
+            return (trips?.count)!
+        } else {
+            return 5
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Card",
                                                       for: indexPath) as! TripCollectionViewCell
+        if(collectionView == collection){
+            let trip = trips?[indexPath.row]
+            cell.setLabel(name: (trip?.name)!)
+        }
         return cell
     }
 }

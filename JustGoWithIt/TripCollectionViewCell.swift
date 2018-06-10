@@ -2,8 +2,14 @@ import UIKit
 
 class TripCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var label: UILabel!
+    
     override func awakeFromNib() {
         dropShadow()
+    }
+    
+    func setLabel(name: String){
+        label.text = name
     }
     
     func dropShadow() {
