@@ -4,6 +4,7 @@ import MaterialComponents.MaterialButtons
 
 class MyTripsViewController: UIViewController {
 
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var suggestionCollection: UICollectionView!
@@ -13,7 +14,19 @@ class MyTripsViewController: UIViewController {
         performSegue(withIdentifier: "toBuilder", sender: self)
     }
     
+    var gradientLayer: CAGradientLayer!
+    
     var trips: Results<Trip>?
+    
+    func createGradientLayer() {
+        gradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = self.view.bounds
+        
+        gradientLayer.colors = [UIColor.white.cgColor, UIColor.lightGray.cgColor]
+        
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +39,7 @@ class MyTripsViewController: UIViewController {
         //floatingButton.setBackgroundImage(plusImage, for: .normal)
         floatingButton.setImage(plusImage, for: .normal)
         //floatingButton.imageView?.tintColor = UIColor.black
+        createGradientLayer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
