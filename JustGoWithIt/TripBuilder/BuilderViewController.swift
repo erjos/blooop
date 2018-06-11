@@ -32,7 +32,11 @@ class BuilderViewController: UIViewController {
     func saveNewTrip(){
         RealmManager.storeData(object: self.trip)
         
-        if let mainVC = self.presentingViewController as? MyTripsViewController {
+        if let navVC = self.presentingViewController as? UINavigationController {
+            guard let mainVC = navVC.viewControllers[0] as? MyTripsViewController else {
+                print("Failed to cast viewController")
+                return
+            }
             dismiss(animated: true, completion: {
                 mainVC.performSegue(withIdentifier: "toMain", sender: self.trip)
             })
@@ -40,6 +44,7 @@ class BuilderViewController: UIViewController {
         
         if let navigationController = self.presentingViewController as? UINavigationController {
             guard let tripVC = navigationController.viewControllers[0] as? TripViewController else {
+                print("Failed to cast viewController")
                 return
             }
             

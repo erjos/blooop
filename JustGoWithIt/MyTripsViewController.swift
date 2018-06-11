@@ -4,6 +4,7 @@ import MaterialComponents.MaterialButtons
 
 class MyTripsViewController: UIViewController {
 
+    @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var suggestionCollection: UICollectionView!
     @IBOutlet weak var floatingButton: MDCFloatingButton!
@@ -17,6 +18,7 @@ class MyTripsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.backgroundColor = UIColor.clear
+
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
         suggestionCollection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
         
@@ -24,6 +26,14 @@ class MyTripsViewController: UIViewController {
         //floatingButton.setBackgroundImage(plusImage, for: .normal)
         floatingButton.setImage(plusImage, for: .normal)
         //floatingButton.imageView?.tintColor = UIColor.black
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //TODO: This is not gonna work for all devices - needs more specific logic
+//        let deviceHeight = self.view.window?.frame.height
+//        let collectionViewHeight = deviceHeight! - 176
+//        collectionHeight.constant = collectionViewHeight
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,9 +77,10 @@ extension MyTripsViewController: UICollectionViewDelegate {
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let deviceWidht = self.view.window?.frame.width
-        let cellWidth = deviceWidht! - 60
-        let size = CGSize.init(width: cellWidth, height: 165)
+        let deviceWidth = self.view.window?.frame.width
+        let cellWidth = deviceWidth! - 60
+        
+        let size = CGSize.init(width: cellWidth, height: 155)
         return size
     }
 }
