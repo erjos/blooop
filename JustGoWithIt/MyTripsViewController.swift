@@ -16,6 +16,7 @@ class MyTripsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collection.backgroundColor = UIColor.clear
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
         suggestionCollection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
         
@@ -66,7 +67,9 @@ extension MyTripsViewController: UICollectionViewDelegate {
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize.init(width: 240, height: 165)
+        let deviceWidht = self.view.window?.frame.width
+        let cellWidth = deviceWidht! - 60
+        let size = CGSize.init(width: cellWidth, height: 165)
         return size
     }
 }
