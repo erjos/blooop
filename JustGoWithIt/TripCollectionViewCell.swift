@@ -2,14 +2,22 @@ import UIKit
 
 class TripCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var city: UILabel!
     
     override func awakeFromNib() {
         dropShadow()
+        roundCorners()
+        bottomView.layer.cornerRadius = 5.0
     }
     
     func setLabel(name: String){
         label.text = name
+    }
+    
+    func roundCorners() {
+        self.layer.cornerRadius = 5.0
     }
     
     func dropShadow() {
