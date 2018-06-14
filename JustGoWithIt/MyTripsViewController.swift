@@ -44,20 +44,16 @@ class MyTripsViewController: UIViewController {
         floatingButton.setImage(plusImage, for: .normal)
         //floatingButton.imageView?.tintColor = UIColor.black
         createGradientLayer()
+        setCollectionPageCount()
+    }
+    
+    func setCollectionPageCount(){
         var pageCount = (trips?.count)! / 3
         let remainder = (trips?.count)! % 3
         if (remainder > 0){
             pageCount += 1
         }
         pageControl.numberOfPages = pageCount
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        //TODO: This is not gonna work for all devices - needs more specific logic
-//        let deviceHeight = self.view.window?.frame.height
-//        let collectionViewHeight = deviceHeight! - 176
-//        collectionHeight.constant = collectionViewHeight
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,13 +95,6 @@ extension MyTripsViewController: UICollectionViewDelegate {
 }
 
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //TODO: refine this method to correctly determine when to show and hide the button
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        //self.lastContentOffset = scrollView.contentOffset.x
-    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = round(self.collection.contentOffset.x/self.collection.frame.size.width)
@@ -114,11 +103,16 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let deviceWidth = self.view.window?.frame.width
-        let cellWidth = deviceWidth! - 60
-        
-        let size = CGSize.init(width: cellWidth, height: 155)
-        return size
+        if(collectionView == collection){
+            let deviceWidth = self.view.window?.frame.width
+            let cellWidth = deviceWidth! - 60
+            
+            let size = CGSize.init(width: cellWidth, height: 155)
+            return size
+        } else {
+          let size = CGSize.init(width: 150, height: 175)
+            return size
+        }
     }
 }
 
@@ -126,7 +120,7 @@ extension MyTripsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView == collection){
             //TODO: don't force unwrap this
-            
+            setCollectionPageCount()
             return (trips?.count)!
         } else {
             return 5
