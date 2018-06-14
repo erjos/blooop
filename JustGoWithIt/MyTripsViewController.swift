@@ -35,6 +35,7 @@ class MyTripsViewController: UIViewController {
         super.viewDidLoad()
         self.trips = RealmManager.fetchData()
         collection.backgroundColor = UIColor.clear
+        suggestionCollection.backgroundColor = UIColor.clear
 
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
         suggestionCollection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
