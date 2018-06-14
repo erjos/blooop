@@ -98,11 +98,15 @@ extension MyTripsViewController: UICollectionViewDelegate {
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10.0
+        if(collectionView == collection){
+            return 50.0
+        } else {
+            return 10.0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 5, 0, 5)
+        return UIEdgeInsetsMake(0, 25, 0, 25)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
