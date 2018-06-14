@@ -181,6 +181,7 @@
                         <outlet property="collectionHeight" destination="yHL-oa-V63" id="vlC-1o-tQQ"/>
                         <outlet property="contentView" destination="XEO-KJ-p49" id="aRs-Ta-SUB"/>
                         <outlet property="floatingButton" destination="dvM-63-US7" id="fhP-Re-DbV"/>
+                        <outlet property="pageControl" destination="kek-Ll-hDA" id="dDV-co-H0Z"/>
                         <outlet property="suggestionCollection" destination="kli-eX-zb1" id="Jia-BE-La3"/>
                         <segue destination="V1h-wF-zjm" kind="show" identifier="toMain" id="1Xb-kg-YGg"/>
                     </connections>

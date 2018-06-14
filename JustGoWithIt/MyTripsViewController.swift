@@ -4,11 +4,14 @@ import MaterialComponents.MaterialButtons
 
 class MyTripsViewController: UIViewController {
 
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var suggestionCollection: UICollectionView!
     @IBOutlet weak var floatingButton: MDCFloatingButton!
+    
+    //var lastContentOffset: CGFloat = 0
     
     @IBAction func pressFloatingAdd(_ sender: Any) {
         performSegue(withIdentifier: "toBuilder", sender: self)
@@ -30,6 +33,7 @@ class MyTripsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.trips = RealmManager.fetchData()
         collection.backgroundColor = UIColor.clear
 
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
@@ -40,6 +44,12 @@ class MyTripsViewController: UIViewController {
         floatingButton.setImage(plusImage, for: .normal)
         //floatingButton.imageView?.tintColor = UIColor.black
         createGradientLayer()
+        var pageCount = (trips?.count)! / 3
+        let remainder = (trips?.count)! % 3
+        if (remainder > 0){
+            pageCount += 1
+        }
+        pageControl.numberOfPages = pageCount
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,6 +99,19 @@ extension MyTripsViewController: UICollectionViewDelegate {
 }
 
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //TODO: refine this method to correctly determine when to show and hide the button
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        //self.lastContentOffset = scrollView.contentOffset.x
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = round(self.collection.contentOffset.x/self.collection.frame.size.width)
+        self.pageControl.currentPage = Int(pageNumber)
+        guard self.pageControl.currentPage < (self.trips?.count)! else {return}
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let deviceWidth = self.view.window?.frame.width
@@ -103,7 +126,7 @@ extension MyTripsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView == collection){
             //TODO: don't force unwrap this
-            self.trips = RealmManager.fetchData()
+            
             return (trips?.count)!
         } else {
             return 5
