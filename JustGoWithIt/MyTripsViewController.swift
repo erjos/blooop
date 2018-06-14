@@ -96,6 +96,14 @@ extension MyTripsViewController: UICollectionViewDelegate {
 
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 5, 0, 5)
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = round(self.collection.contentOffset.x/self.collection.frame.size.width)
         self.pageControl.currentPage = Int(pageNumber)
@@ -105,7 +113,8 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(collectionView == collection){
             let deviceWidth = self.view.window?.frame.width
-            let cellWidth = deviceWidth! - 60
+            //this number is 70 to give additional room inside the collection - constraints add to 60 outside the collection
+            let cellWidth = deviceWidth! - 70
             
             let size = CGSize.init(width: cellWidth, height: 155)
             return size
