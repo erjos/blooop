@@ -17,7 +17,9 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchText: UILabel!
     @IBOutlet weak var doneButton: UIButton!
-    @IBAction func tapDone(_ sender: Any) {
+    
+    @IBAction func saveTrip(_ sender: Any) {
+        saveNewTrip()
     }
     
     @IBAction func dismiss(_ sender: Any) {
@@ -156,10 +158,7 @@ class BuilderViewController: UIViewController {
                 //TODO: handle if nameField is left blank - remove cityIndex (no longer needed)
                 RealmManager.saveSublocationName(city: city, label: nameField.text)
             }
-            
             nameField.resignFirstResponder()
-            
-            //dateView.isHidden = false
         }
         
         if(dateField.isFirstResponder){
@@ -190,18 +189,6 @@ class BuilderViewController: UIViewController {
 }
 
 extension BuilderViewController: UITextFieldDelegate {
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if(locationField.isFirstResponder){
-//            //launch google place picker
-//            let autocompleteController = GMSAutocompleteViewController()
-//            if(isSubLocation){
-//                autocompleteController.autocompleteBoundsMode = .restrict
-//                autocompleteController.autocompleteBounds = self.coordinateBounds
-//            }
-//            autocompleteController.delegate = self
-//            present(autocompleteController, animated: true, completion: nil)
-//        }
-//    }
 }
 
 extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
@@ -253,8 +240,6 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
 
 extension BuilderViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        
-        //need to utilize shared map instance
         self.coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
     }
 }

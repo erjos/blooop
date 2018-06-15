@@ -196,7 +196,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="selectDone:" destination="G0m-Ch-JEk" eventType="touchUpInside" id="o1S-1E-wuD"/>
+                                            <action selector="saveTrip:" destination="G0m-Ch-JEk" eventType="touchUpInside" id="BBD-ou-jKz"/>
                                         </connections>
                                     </button>
                                 </subviews>
