@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		186C7225388DE9F244B17140 /* Pods_JustGoWithIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */; };
+		8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629CC8420D3EDB600ED49E1 /* Extensions.swift */; };
 		862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862EF6C1207D0BAC005D268B /* BuilderViewController.swift */; };
 		862FBB4020C80FA20078D689 /* MyTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 862FBB3F20C80FA20078D689 /* MyTrip.storyboard */; };
 		863C736220C7546F0054C49A /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863C736020C7546F0054C49A /* TripCollectionViewCell.swift */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		1F520DA6DB0379C82D7EF55A /* Pods-JustGoWithIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.release.xcconfig"; sourceTree = "<group>"; };
 		294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.debug.xcconfig"; sourceTree = "<group>"; };
+		8629CC8420D3EDB600ED49E1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		862EF6C1207D0BAC005D268B /* BuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderViewController.swift; sourceTree = "<group>"; };
 		862FBB3F20C80FA20078D689 /* MyTrip.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyTrip.storyboard; sourceTree = "<group>"; };
 		863C736020C7546F0054C49A /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				863E26E6207FFDBD00029FF4 /* LocationManager.swift */,
 				86B5A8D820C95F5C00B24F43 /* RealmManager.swift */,
 				86B5A8DA20CAB36C00B24F43 /* GoogleResourceManager.swift */,
+				8629CC8420D3EDB600ED49E1 /* Extensions.swift */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				86B7EB14208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift in Sources */,
 				86FC567D20A1E9A100D9BB00 /* PlaceModalViewController.swift in Sources */,
 				86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */,
+				8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */,
 				86B5D47420C74F8500A851DE /* MyTripsViewController.swift in Sources */,
 				863C736220C7546F0054C49A /* TripCollectionViewCell.swift in Sources */,
 			);
