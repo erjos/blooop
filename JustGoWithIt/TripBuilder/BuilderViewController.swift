@@ -16,6 +16,9 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var locationDivider: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchText: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
+    @IBAction func tapDone(_ sender: Any) {
+    }
     
     @IBAction func dismiss(_ sender: Any) {
         //Identify which view controller presented the builder
@@ -67,10 +70,14 @@ class BuilderViewController: UIViewController {
         super.viewDidLoad()
         self.title = "New Trip"
         
+        doneButton.layer.cornerRadius = 5.0
+        doneButton.isHidden = true
+        
         //setup drop shadows
         searchView.dropShadow()
         nameField.dropShadow()
         dateField.dropShadow()
+        
         //hide views on load
         nameView.isHidden = true
         dateView.isHidden = true
@@ -78,14 +85,11 @@ class BuilderViewController: UIViewController {
         
         //configure for place
         if(isSubLocation){
+            mapView.layer.borderColor = UIColor.gray.cgColor
+            mapView.layer.borderWidth = 2.0
+            
             locationLabel.text = "Choose a location"
             searchText.text = "Search places"
-            
-            //nameLabel.text = "Label"
-            //nameField.placeholder = "Add activity label"
-            
-            //dateLabel.text = "Date"
-            //dateField.placeholder = "Choose a Date"
         }
         
         //set field delegates
@@ -220,10 +224,11 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         searchText.text = place.name
         searchText.textColor = UIColor.black
         
-        //show the next field
+        //show the other fields
         locationDivider.isHidden = false
         nameView.isHidden = false
         dateView.isHidden = false
+        doneButton.isHidden = false
         
         dismiss(animated: true, completion: nil)
     }
