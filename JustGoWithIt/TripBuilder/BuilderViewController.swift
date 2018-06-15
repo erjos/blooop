@@ -11,11 +11,9 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var dateView: UIView!
-    //@IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var locationDivider: UIView!
-    @IBOutlet weak var nameDivider: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchText: UILabel!
     
@@ -68,22 +66,26 @@ class BuilderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "New Trip"
+        
+        //setup drop shadows
         searchView.dropShadow()
+        nameField.dropShadow()
+        dateField.dropShadow()
         //hide views on load
         nameView.isHidden = true
         dateView.isHidden = true
         locationDivider.isHidden = true
-        nameDivider.isHidden = true
+        
         //configure for place
         if(isSubLocation){
             locationLabel.text = "Choose a location"
             searchText.text = "Search places"
             
-            nameLabel.text = "What will you be doing?"
-            nameField.placeholder = "Add activity label"
+            //nameLabel.text = "Label"
+            //nameField.placeholder = "Add activity label"
             
-            dateLabel.text = "When is it?"
-            dateField.placeholder = "Choose a Date"
+            //dateLabel.text = "Date"
+            //dateField.placeholder = "Choose a Date"
         }
         
         //set field delegates
@@ -152,8 +154,8 @@ class BuilderViewController: UIViewController {
             }
             
             nameField.resignFirstResponder()
-            nameDivider.isHidden = false
-            dateView.isHidden = false
+            
+            //dateView.isHidden = false
         }
         
         if(dateField.isFirstResponder){
@@ -221,6 +223,8 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         //show the next field
         locationDivider.isHidden = false
         nameView.isHidden = false
+        dateView.isHidden = false
+        
         dismiss(animated: true, completion: nil)
     }
     
