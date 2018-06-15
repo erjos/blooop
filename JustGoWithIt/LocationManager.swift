@@ -18,6 +18,9 @@ class LocationManager {
         return GMSCoordinateBounds.init(coordinate: southWestCorner, coordinate: northEastCorner)
     }
     
+    //TODO: create function that will actually tell us what the radius or distance of the map is...
+    //Convert lattitude and longitude to distance?
+    
     static func getLocationBoundsFromMap(map: GMSMapView) -> GMSCoordinateBounds {
         let projection = map.projection.visibleRegion()
         let southwestBound = projection.nearLeft
@@ -25,5 +28,4 @@ class LocationManager {
         let coordinateBounds = GMSCoordinateBounds.init(coordinate: southwestBound, coordinate: northeastBound)
         return coordinateBounds
     }
-    
 }

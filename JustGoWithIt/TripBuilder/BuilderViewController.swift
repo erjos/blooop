@@ -104,7 +104,7 @@ class BuilderViewController: UIViewController {
             mapView.isHidden = false
             let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
             let target = gms?.coordinate
-            var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 6)
+            var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 10)
             
             map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
             map?.delegate = self
