@@ -12,8 +12,10 @@ class TripCollectionViewCell: UICollectionViewCell {
         //bottomView.layer.cornerRadius = 5.0
     }
     
-    func setLabel(name: String){
-        label.text = name
+    func setLabels(city: PrimaryLocation){
+        //change trip.name to trip.label
+        //city.text = trip.cities.
+        label.text = city.label
     }
     
     func roundCorners() {

@@ -4,61 +4,60 @@ import SwiftyJSON
 import Realm
 import RealmSwift
 
-class Trip: Object {
-    @objc dynamic var name: String = ""
-    @objc dynamic var startDate: Date?
-    @objc dynamic var endDate: Date?
-    let cities = List<City>()
+//PrimaryLocations are typically encouraged to be Cities, but allow for flexibility in this
+class PrimaryLocation: Object {
+    
+    let subLocations = List<SubLocation>()
+    @objc dynamic var placeID: String = ""
+    @objc dynamic var locationName: String = ""
+    @objc dynamic var locationId: String = ""
+    
+    //** User label - could be optional
+    @objc dynamic var label: String = ""
+    @objc dynamic var date: Date?
     
     override static func primaryKey() -> String {
-        return "name"
+        return "locationId"
+    }
+    
+    private func generateLocationId()->String{
+        let number = Int(arc4random_uniform(1000000))
+        let id = locationName + number.description
+        return id
+    }
+    
+    func setCity(place: GMSPlace){
+        placeID = place.placeID
+        locationName = place.name
+        locationId = generateLocationId()
+    }
+    
+    func getSubLocation(from indexPath: IndexPath)-> SubLocation{
+        return subLocations[indexPath.row]
     }
     
     func getSubLocationPlaceID(from indexPath: IndexPath) -> String{
-        return cities[indexPath.section].locations[indexPath.row].placeID
+        return subLocations[indexPath.row].placeID
     }
     
-    func getSubLocation(from indexPath: IndexPath)-> Location{
-        return cities[indexPath.section].locations[indexPath.row]
-    }
-    
-    //TODO: Improve this if possible...
-    func fetchGMSPlacesForTrip(complete: @escaping(Bool)->Void){
-        //probably don't need the IDs - but might be useful for identifying successes and failures?
-        //could just use a simple counter
+    func fetchGmsPlacesForCity(complete: @escaping(Bool)->Void){
         var fetchedPlaces = [String]()
-        
-        //TODO: make this a fetch method for places on a single city - eliminate this nested for loop
-        for city in cities {
-            city.fetchGMSPlace(success: { isSuccess in
-                if(city.locations.count > 0){
-                    for location in city.locations{
-                        location.fetchGMSPlace(success: { (id, isSuccess) in
-                            fetchedPlaces.append(id)
-                            if(fetchedPlaces.count == city.locations.count){
-                                complete(true)
-                            }
-                        })
-                    }
-                } else {
-                    //doesn't account for if there are multiple cities
-                    complete(true)
+        self.fetchGMSPlace { isSuccess in
+            if(self.subLocations.count > 0){
+                for location in self.subLocations{
+                    location.fetchGMSPlace(success: { (id, isSuccess) in
+                        fetchedPlaces.append(id)
+                        if(fetchedPlaces.count == self.subLocations.count){
+                            complete(true)
+                        }
+                    })
                 }
-            })
+            } else {
+                complete(true)
+            }
         }
     }
-}
-
-class City: Object {
-    let locations = List<Location>()
-    @objc dynamic var date: Date?
-    @objc dynamic var placeID: String = ""
     
-    override static func ignoredProperties() -> [String] {
-        return ["googlePlace"]
-    }
-    
-    //TODO: implement solution to fetch fresh resources when loading a trip from the main view controller
     func fetchGMSPlace(success: @escaping(Bool)->Void){
         GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
             guard let gms = place else {
@@ -70,7 +69,8 @@ class City: Object {
     }
 }
 
-class Location: Object {
+//Sublocations can be any place that you want stored under your primary location
+class SubLocation: Object {
     @objc dynamic var label: String?
     @objc dynamic var date: Date?
     @objc dynamic var placeID: String = ""

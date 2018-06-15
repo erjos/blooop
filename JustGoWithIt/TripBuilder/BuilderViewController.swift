@@ -19,23 +19,22 @@ class BuilderViewController: UIViewController {
     
     @IBAction func dismiss(_ sender: Any) {
         //Identify which view controller presented the builder
-        if let mainVC = self.presentingViewController as? MyTripsViewController {
+        if let _ = self.presentingViewController as? MyTripsViewController {
             self.dismiss(animated: true, completion: nil)
         }
         
-        //this isn't working - maybe it's the navigation controller?
-        if let tripVC = self.presentingViewController as? UINavigationController {
+        if let _ = self.presentingViewController as? UINavigationController {
             self.dismiss(animated: true, completion: nil)
         }
     }
     
     func saveNewTrip(){
-        RealmManager.storeData(object: self.trip)
+        RealmManager.storeData(object: self.city)
         if let navVC = self.presentingViewController as? UINavigationController {
             if let mainVC = navVC.viewControllers[0] as? MyTripsViewController {
                 dismiss(animated: true, completion: {
                     mainVC.collection.reloadData()
-                    mainVC.performSegue(withIdentifier: "toMain", sender: self.trip)
+                    mainVC.performSegue(withIdentifier: "toMain", sender: self.city)
                 })
             }
             if let tripVC = navVC.viewControllers[0] as? TripViewController {
@@ -45,9 +44,11 @@ class BuilderViewController: UIViewController {
     }
     
     let datePicker = UIDatePicker()
-    var trip = Trip()
-    var isSubLocation = false //flag used to identify if builder is used for Location or Place (Locations contain places)
-    var cityIndex = 0
+    
+    var city = PrimaryLocation()
+    
+    //** Flag used to identify if builder is used for Location or Place (Locations contain places)
+    var isSubLocation = false
     var coordinateBounds: GMSCoordinateBounds?
     var map: GMSMapView?
     
@@ -63,20 +64,6 @@ class BuilderViewController: UIViewController {
         nameDivider.isHidden = true
         //configure for place
         if(isSubLocation){
-
-//            let button = UIButton()
-//            button.setImage(#imageLiteral(resourceName: "close"), for: .normal)
-//            button.addTarget(self, action: #selector(dismissIt), for: .touchUpInside)
-//            let barItem = UIBarButtonItem(customView: button)
-//            //set constraints on barItem
-//            let width = barItem.customView?.widthAnchor.constraint(equalToConstant: 30)
-//            width?.isActive = true
-//            let height = barItem.customView?.heightAnchor.constraint(equalToConstant: 35)
-//            height?.isActive = true
-//            button.tintColor = UIColor.darkGray
-//            //set button on navigationItem
-//            self.navigationItem.leftBarButtonItem = barItem
-            
             locationLabel.text = "Choose a location"
             locationField.placeholder = "Search places"
             
@@ -96,7 +83,7 @@ class BuilderViewController: UIViewController {
         //handle map view
         if(isSubLocation){
             mapView.isHidden = false
-            let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: trip.cities[cityIndex].placeID)
+            let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
             let target = gms?.coordinate
             var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 6)
             
@@ -108,10 +95,6 @@ class BuilderViewController: UIViewController {
             self.mapView.addSubview(map!)
         }
     }
-    
-//    @objc private func dismissIt(){
-//        self.dismiss(animated: true, completion: nil)
-//    }
     
     private func setupNameField(){
         nameField.keyboardType = .alphabet
@@ -151,10 +134,10 @@ class BuilderViewController: UIViewController {
     @objc private func selectDone(){
         if(nameField.isFirstResponder){
             if(!isSubLocation){
-                trip.name = nameField.text ?? ""
+                city.label = nameField.text ?? ""
             } else {
-                //TODO: handle if nameField is left blank
-                RealmManager.saveSublocationName(trip: trip, cityIndex: cityIndex, label: nameField.text)
+                //TODO: handle if nameField is left blank - remove cityIndex (no longer needed)
+                RealmManager.saveSublocationName(city: city, label: nameField.text)
             }
             
             nameField.resignFirstResponder()
@@ -164,10 +147,10 @@ class BuilderViewController: UIViewController {
         
         if(dateField.isFirstResponder){
             if(!isSubLocation){
-                //Does not need to be done in write block because it is not a Realm "managed object" at this point. The first time it becomes a realm managed object is when the segue is triggered from the builder to the trip viewer
-                trip.cities.last?.date = datePicker.date
+                //NOTE: Does not need to be done in write block because it is NOT a Realm "managed object" at this point. It becomes a managed object is when the segue RealmManager.storeData method is called
+                city.date = datePicker.date
             } else {
-                RealmManager.saveSublocationDate(trip: trip, cityIndex: cityIndex, date: datePicker.date)
+                RealmManager.saveSublocationDate(city: city, date: datePicker.date)
             }
             
             dateField.text = datePicker.date.formatDateAsString()
@@ -184,10 +167,8 @@ class BuilderViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tripVC = segue.destination as? TripViewController
-        tripVC?.trip = self.trip
-        
-        //store trip data
-        RealmManager.storeData(object: self.trip)
+        tripVC?.city = self.city
+        RealmManager.storeData(object: self.city)
     }
 }
 
@@ -198,7 +179,7 @@ extension BuilderViewController: UITextFieldDelegate {
             let autocompleteController = GMSAutocompleteViewController()
             if(isSubLocation){
                 autocompleteController.autocompleteBoundsMode = .restrict
-                autocompleteController.autocompleteBounds = self.coordinateBounds//LocationManager.getLocationBounds(trip.cities[cityIndex].googlePlace.coordinate)
+                autocompleteController.autocompleteBounds = self.coordinateBounds
             }
             autocompleteController.delegate = self
             present(autocompleteController, animated: true, completion: nil)
@@ -209,19 +190,17 @@ extension BuilderViewController: UITextFieldDelegate {
 extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         if(!isSubLocation){
-            //create city
-            let city = City()
-            city.placeID = place.placeID
+            //set city data using place data
+            city.setCity(place: place)
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
-            //TODO: account for if the user selects a city multiple times from this page - it should clean the list or immediately allow them to enter multiple cities...
-            //TODO: add this method to the trip class and ensure no duplicates
-            trip.cities.append(city)
+            
+            //TODO: test what happens when a user selects a city multiple times from the builder - does it change or update the model correctly?
         } else {
-            let location = Location()
+            let location = SubLocation()
             location.placeID = place.placeID
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             //append the new location to the end of the list at the appropriate index
-            RealmManager.addSublocationsToTrip(trip: trip, cityIndex: cityIndex, location: location)
+            RealmManager.addSublocationsToCity(city: city, location: location)
             //trip.cities[cityIndex].locations.append(location)
         }
         //set the text field for location

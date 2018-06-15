@@ -19,7 +19,7 @@ class MyTripsViewController: UIViewController {
     
     var gradientLayer: CAGradientLayer!
     
-    var trips: Results<Trip>?
+    var cities: Results<PrimaryLocation>?
     
     func createGradientLayer() {
         gradientLayer = CAGradientLayer()
@@ -33,7 +33,7 @@ class MyTripsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.trips = RealmManager.fetchData()
+        self.cities = RealmManager.fetchData()
         collection.backgroundColor = UIColor.clear
         suggestionCollection.backgroundColor = UIColor.clear
 
@@ -49,8 +49,8 @@ class MyTripsViewController: UIViewController {
     }
     
     func setCollectionPageCount(){
-        var pageCount = (trips?.count)! / 3
-        let remainder = (trips?.count)! % 3
+        var pageCount = (cities?.count)! / 3
+        let remainder = (cities?.count)! % 3
         if (remainder > 0){
             pageCount += 1
         }
@@ -74,12 +74,12 @@ class MyTripsViewController: UIViewController {
             }
             
             if let indexPath = sender as? IndexPath {
-                let trip = trips?[indexPath.row]
-                tripVC.trip = trip
+                let city = cities?[indexPath.row]
+                tripVC.city = city
             }
             
-            if let trip = sender as? Trip {
-                tripVC.trip = trip
+            if let city = sender as? PrimaryLocation {
+                tripVC.city = city
             }
         }
     }
@@ -88,8 +88,8 @@ class MyTripsViewController: UIViewController {
 extension MyTripsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //fetch necessary data for the page
-        let trip = trips?[indexPath.row]
-        trip?.fetchGMSPlacesForTrip(complete: { (isComplete) in
+        let trip = cities?[indexPath.row]
+        trip?.fetchGmsPlacesForCity(complete: { (isComplete) in
             self.performSegue(withIdentifier: "toMain", sender: indexPath)
         })
     }
@@ -112,7 +112,7 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = round(self.collection.contentOffset.x/self.collection.frame.size.width)
         self.pageControl.currentPage = Int(pageNumber)
-        guard self.pageControl.currentPage < (self.trips?.count)! else {return}
+        guard self.pageControl.currentPage < (self.cities?.count)! else {return}
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -135,7 +135,7 @@ extension MyTripsViewController: UICollectionViewDataSource {
         if(collectionView == collection){
             //TODO: don't force unwrap this
             setCollectionPageCount()
-            return (trips?.count)!
+            return (cities?.count)!
         } else {
             return 5
         }
@@ -145,8 +145,11 @@ extension MyTripsViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Card",
                                                       for: indexPath) as! TripCollectionViewCell
         if(collectionView == collection){
-            let trip = trips?[indexPath.row]
-            cell.setLabel(name: (trip?.name)!)
+            guard let city = cities?[indexPath.row] else {
+                print("Failed to get city")
+                return cell
+            }
+            cell.setLabels(city: city)
         }
         return cell
     }

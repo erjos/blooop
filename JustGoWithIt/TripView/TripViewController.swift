@@ -5,7 +5,7 @@ import MaterialComponents.MaterialButtons
 class TripViewController: UIViewController {
 
     var collapsedSectionHeaders = [Int]()
-    var trip: Trip!
+    var city: PrimaryLocation!
     var lastContentOffset: CGFloat = 0
     
     @IBAction func addPlace(_ sender: Any) {
@@ -39,16 +39,10 @@ class TripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
-        self.title = trip?.name
-        //tripDate.text = trip?.startDate?.formatDateAsString()
-        
+        //TODO: might make this label optional - if so the title of this page should be consistent
+        self.title = city?.label
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         floatingButton.setImage(plusImage, for: .normal)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,13 +52,12 @@ class TripViewController: UIViewController {
                 return
             }
             builder.isSubLocation = true
-            builder.cityIndex = 0 // NOTE: This will always set the city to be the first on the trip !!! won't work for multi city
-            builder.trip = self.trip
+            builder.city = self.city
         }
         if(segue.identifier == "presentPlace"){
             let destination = segue.destination as! PlaceModalViewController
             let indexPath = sender as! IndexPath
-            destination.place = trip.getSubLocation(from: indexPath)
+            destination.place = city.getSubLocation(from: indexPath)
         }
     }
     
@@ -129,21 +122,14 @@ extension TripViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let placeCount = trip.cities[indexPath.section].locations.count
+        //TODO: maybe remove not sure why we need this
+        let placeCount = city.subLocations.count
         performSegue(withIdentifier: "presentPlace", sender: indexPath)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed("ListHeader", owner: self, options: nil)?.first as! ListHeader
-        //TODO: uncomment this code when enabling collapsable table view sections
-//        let isCollapsed = collapsedSectionHeaders.contains(section)
-//        if(!isCollapsed){
-//            //style collapsed headers
-//        }
-//        header.arrow.image = isCollapsed ? header.imageRotatedByDegrees(oldImage: header.arrow.image!, deg: -90.0) : header.arrow.image
-//        header.delegate = self
         header.section = section
-        let city = trip.cities[section]
         GooglePhotoManager.getFirstPhoto(placeID: city.placeID, success: { image, attributes in
             //SUCCESS
             header.headerImage.image = image
@@ -153,16 +139,6 @@ extension TripViewController: UITableViewDelegate{
         let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
         header.mainLabel.text = gms?.name
         header.dateLabel.text = city.date?.formatDateAsString()
-        
-//        let sectionCount = trip.cities.count
-//        if(section == sectionCount){
-//            //configure for last section
-//            header.dateLabel.isHidden = true
-//            //header.button.isHidden = true
-//            header.arrow.image = #imageLiteral(resourceName: "Add")
-//            header.arrow.contentMode = .scaleAspectFit
-//            header.mainLabel.text = "New Location"
-//        }
         return header
     }
     
@@ -173,26 +149,12 @@ extension TripViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 255.0
     }
-    
-    //might still want to use this at somepoint to improve performance
-    //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    //        //use this function to load the photos within the cells before they come onto the screen.
-    //        let f = indexPath.row
-    //        print(f)
-    //    }
 }
 
 extension TripViewController: UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        guard let cityCount = trip?.cities.count else{
-            return 0
-        }
-        return cityCount
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
-        let placeID = trip.getSubLocationPlaceID(from: indexPath)
+        let placeID = city.getSubLocationPlaceID(from: indexPath)
         
         GooglePhotoManager.loadMetaDataList(placeID: placeID, success: { list in
             GoogleResourceManager.sharedInstance.addPhotoMetaData(metaData: (placeID, list))
@@ -206,8 +168,8 @@ extension TripViewController: UITableViewDataSource{
             cell.handleFailedImage()
         }
         
-        cell.activityLabel.text = trip.getSubLocation(from: indexPath).label
-        cell.dateLabel.text = trip.getSubLocation(from: indexPath).date?.formatDateAsString()
+        cell.activityLabel.text = city.getSubLocation(from: indexPath).label
+        cell.dateLabel.text = city.getSubLocation(from: indexPath).date?.formatDateAsString()
         let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: placeID)
         cell.locationLabel.text = gms?.name
         cell.selectionStyle = .none
@@ -215,39 +177,7 @@ extension TripViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let shouldCollapse = self.collapsedSectionHeaders.contains(section)
-        let sectionCount = trip.cities.count
-        
-        //This should only happen if it is the last section in the table (used to add more sections)
-        if(section >= sectionCount){
-            return 0
-        }
-        
-        let placeCount = trip.cities[section].locations.count
-        if (shouldCollapse){
-            return 0
-        } else {
-            return placeCount
-        }
+        let placeCount = city.subLocations.count
+        return placeCount
     }
 }
-//TODO: save this for later - do not need expandable table view sections for the MVP
-//extension TripViewController: ListHeaderDelegate{
-//    func shouldExpandOrCollapse(section: Int) {
-//        let isExpanded = collapsedSectionHeaders.contains(section)
-//        if(isExpanded){
-//            //Collapse the cell
-//            collapsedSectionHeaders = collapsedSectionHeaders.filter({ expanded -> Bool in
-//                //will remove the expanded section from the list
-//                return expanded != section
-//            })
-//            tableView(self.tableView, numberOfRowsInSection: section)
-//        } else {
-//            //expand the section
-//            collapsedSectionHeaders.append(section)
-//            tableView(self.tableView, numberOfRowsInSection: section)
-//        }
-//        let set = IndexSet.init(integer: section)
-//        tableView.reloadSections(set, with: UITableViewRowAnimation.automatic)
-//    }
-//}

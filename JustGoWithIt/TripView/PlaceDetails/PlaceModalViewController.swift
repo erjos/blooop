@@ -12,7 +12,7 @@ class PlaceModalViewController: UIViewController {
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var photoCollection: UICollectionView!
     
-    var place : Location!
+    var place : SubLocation!
     
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

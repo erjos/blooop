@@ -5,11 +5,11 @@ class RealmManager {
     
     //TODO: create ENUM and return an error to be handled by the UI
     
-    static func fetchData() -> Results<Trip>? {
-        var results: Results<Trip>?
+    static func fetchData() -> Results<PrimaryLocation>? {
+        var results: Results<PrimaryLocation>?
         do {
             let realm = try Realm()
-            results = realm.objects(Trip.self)
+            results = realm.objects(PrimaryLocation.self)
             return results
         } catch let error as NSError {
             //handle error
@@ -18,11 +18,11 @@ class RealmManager {
         return results
     }
     
-    static func saveSublocationDate(trip: Trip, cityIndex: Int, date: Date){
+    static func saveSublocationDate(city: PrimaryLocation, date: Date){
         do {
             let realm = try Realm()
             try realm.write {
-                trip.cities[cityIndex].locations.last?.date = date
+                city.subLocations.last?.date = date
                 print("Added sublocation date")
             }
         } catch let error as NSError {
@@ -31,11 +31,11 @@ class RealmManager {
         }
     }
     
-    static func saveSublocationName(trip: Trip, cityIndex: Int, label: String?){
+    static func saveSublocationName(city: PrimaryLocation, label: String?){
         do {
             let realm = try Realm()
             try realm.write {
-                trip.cities[cityIndex].locations.last?.label = label
+                city.subLocations.last?.label = label
                 print("Added sublocation label")
             }
         } catch let error as NSError {
@@ -44,11 +44,11 @@ class RealmManager {
         }
     }
     
-    static func addSublocationsToTrip(trip: Trip, cityIndex: Int, location: Location){
+    static func addSublocationsToCity(city: PrimaryLocation, location: SubLocation){
         do {
             let realm = try Realm()
             try realm.write {
-                trip.cities[cityIndex].locations.append(location)
+                city.subLocations.append(location)
                 print("Added new sublocation")
             }
         } catch let error as NSError {
@@ -57,12 +57,11 @@ class RealmManager {
         }
     }
     
-    static func storeData(object: Trip) {
-        //var realm: Realm
+    static func storeData(object: PrimaryLocation) {
         do {
             let realm = try Realm()
             try realm.write {
-                realm.add(object, update: true) //realm.add(object)
+                realm.add(object, update: true)
                 print("Added new object")
             }
         } catch let error as NSError {
