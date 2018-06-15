@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0m-Ch-JEk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G0m-Ch-JEk">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
         <array key="HelveticaNeueLights.ttc">
             <string>HelveticaNeue-Light</string>
         </array>
@@ -36,17 +33,11 @@
                                                 <rect key="frame" x="0.0" y="50" width="414" height="150"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you going?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXy-K7-P1M">
-                                                        <rect key="frame" x="20" y="0.0" width="374" height="32"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                                        <rect key="frame" x="20" y="0.0" width="374" height="28.666666666666668"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose a location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpS-xA-Eqg">
-                                                        <rect key="frame" x="20" y="52" width="374" height="29"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="24"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ewk-8T-X5Q" userLabel="Divider">
                                                         <rect key="frame" x="0.0" y="119" width="414" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,19 +45,49 @@
                                                             <constraint firstAttribute="height" constant="1" id="Nre-0c-BSS"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JoY-Fu-A0X" userLabel="Search View">
+                                                        <rect key="frame" x="20" y="48.666666666666671" width="374" height="45"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="nwy-zh-B25">
+                                                                <rect key="frame" x="15" y="10.666666666666671" width="24" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="24" id="73K-AS-ugu"/>
+                                                                    <constraint firstAttribute="width" constant="24" id="Urj-Du-86F"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a city or place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laQ-RS-wXH">
+                                                                <rect key="frame" x="59" y="11.999999999999986" width="191" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.73725490199999999" green="0.73333333329999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <gestureRecognizers/>
+                                                        <constraints>
+                                                            <constraint firstItem="nwy-zh-B25" firstAttribute="leading" secondItem="JoY-Fu-A0X" secondAttribute="leading" constant="15" id="1XD-Oy-wyc"/>
+                                                            <constraint firstItem="nwy-zh-B25" firstAttribute="centerY" secondItem="JoY-Fu-A0X" secondAttribute="centerY" id="T3A-Wz-QA7"/>
+                                                            <constraint firstItem="laQ-RS-wXH" firstAttribute="centerY" secondItem="JoY-Fu-A0X" secondAttribute="centerY" id="Wb8-S4-gG1"/>
+                                                            <constraint firstItem="laQ-RS-wXH" firstAttribute="leading" secondItem="nwy-zh-B25" secondAttribute="trailing" constant="20" id="lOg-Wy-9QZ"/>
+                                                            <constraint firstAttribute="height" constant="45" id="rCj-Yf-CNy"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="ebc-Qu-zqE" appends="YES" id="Ucn-YO-cA8"/>
+                                                        </connections>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="zpS-xA-Eqg" firstAttribute="top" secondItem="HXy-K7-P1M" secondAttribute="bottom" constant="20" id="DNU-k6-2Ns"/>
                                                     <constraint firstAttribute="height" constant="150" id="ELp-3w-VWx"/>
                                                     <constraint firstItem="HXy-K7-P1M" firstAttribute="top" secondItem="cfu-TQ-bQg" secondAttribute="top" id="Htv-Yb-M0U"/>
                                                     <constraint firstAttribute="bottom" secondItem="Ewk-8T-X5Q" secondAttribute="bottom" constant="30" id="IxB-mO-iim"/>
                                                     <constraint firstItem="HXy-K7-P1M" firstAttribute="leading" secondItem="cfu-TQ-bQg" secondAttribute="leading" constant="20" id="J7Y-DD-1el"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ewk-8T-X5Q" secondAttribute="trailing" id="MXU-GY-7Gh"/>
                                                     <constraint firstAttribute="trailing" secondItem="HXy-K7-P1M" secondAttribute="trailing" constant="20" id="Mj8-lT-tbG"/>
-                                                    <constraint firstAttribute="trailing" secondItem="zpS-xA-Eqg" secondAttribute="trailing" constant="20" id="mEA-aA-qMP"/>
-                                                    <constraint firstItem="zpS-xA-Eqg" firstAttribute="leading" secondItem="cfu-TQ-bQg" secondAttribute="leading" constant="20" id="pyH-Np-jvU"/>
+                                                    <constraint firstAttribute="trailing" secondItem="JoY-Fu-A0X" secondAttribute="trailing" constant="20" id="Q4G-Bp-QRE"/>
+                                                    <constraint firstItem="JoY-Fu-A0X" firstAttribute="top" secondItem="HXy-K7-P1M" secondAttribute="bottom" constant="20" id="hxD-RG-EJP"/>
                                                     <constraint firstItem="Ewk-8T-X5Q" firstAttribute="leading" secondItem="cfu-TQ-bQg" secondAttribute="leading" id="rgs-co-irw"/>
+                                                    <constraint firstItem="JoY-Fu-A0X" firstAttribute="leading" secondItem="cfu-TQ-bQg" secondAttribute="leading" constant="20" id="uVy-NV-9MJ"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39W-VV-cCu" userLabel="Name View">
@@ -197,7 +218,6 @@
                         <outlet property="dateLabel" destination="yyt-dC-quB" id="Oyp-Df-Z9r"/>
                         <outlet property="dateView" destination="0eo-Hh-f0Z" id="KQ9-iK-EX0"/>
                         <outlet property="locationDivider" destination="Ewk-8T-X5Q" id="1cB-Wp-CaT"/>
-                        <outlet property="locationField" destination="zpS-xA-Eqg" id="rCq-hW-JNd"/>
                         <outlet property="locationLabel" destination="HXy-K7-P1M" id="f0C-vh-K4N"/>
                         <outlet property="locationView" destination="cfu-TQ-bQg" id="bzL-gv-ohl"/>
                         <outlet property="mapView" destination="rya-Fo-KRD" id="FTo-6V-Spe"/>
@@ -205,10 +225,17 @@
                         <outlet property="nameField" destination="PfM-WC-44R" id="SEx-Cv-TXf"/>
                         <outlet property="nameLabel" destination="ykY-HS-t4A" id="VHW-ft-NXj"/>
                         <outlet property="nameView" destination="39W-VV-cCu" id="O9b-O1-w7H"/>
+                        <outlet property="searchText" destination="laQ-RS-wXH" id="9MS-yV-4z5"/>
+                        <outlet property="searchView" destination="JoY-Fu-A0X" id="Pr8-u1-rKJ"/>
                         <segue destination="Kvy-Xg-HaM" kind="show" identifier="builderToTrip" id="Bgl-iS-w5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="olg-X0-qhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ebc-Qu-zqE">
+                    <connections>
+                        <action selector="tapSearch:" destination="G0m-Ch-JEk" id="VzI-42-N94"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1171.0144927536232" y="975.00000000000011"/>
         </scene>
@@ -223,5 +250,6 @@
     </scenes>
     <resources>
         <image name="close" width="24" height="24"/>
+        <image name="search" width="24" height="24"/>
     </resources>
 </document>

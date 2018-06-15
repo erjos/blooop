@@ -11,11 +11,13 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var dateView: UIView!
-    @IBOutlet weak var locationField: UITextField!
+    //@IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var locationDivider: UIView!
     @IBOutlet weak var nameDivider: UIView!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchText: UILabel!
     
     @IBAction func dismiss(_ sender: Any) {
         //Identify which view controller presented the builder
@@ -26,6 +28,16 @@ class BuilderViewController: UIViewController {
         if let _ = self.presentingViewController as? UINavigationController {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func tapSearch(_ sender: Any) {
+        let autocompleteController = GMSAutocompleteViewController()
+        if(isSubLocation){
+            autocompleteController.autocompleteBoundsMode = .restrict
+            autocompleteController.autocompleteBounds = self.coordinateBounds
+        }
+        autocompleteController.delegate = self
+        present(autocompleteController, animated: true, completion: nil)
     }
     
     func saveNewTrip(){
@@ -56,7 +68,7 @@ class BuilderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "New Trip"
-        
+        searchView.dropShadow()
         //hide views on load
         nameView.isHidden = true
         dateView.isHidden = true
@@ -65,7 +77,7 @@ class BuilderViewController: UIViewController {
         //configure for place
         if(isSubLocation){
             locationLabel.text = "Choose a location"
-            locationField.placeholder = "Search places"
+            searchText.text = "Search places"
             
             nameLabel.text = "What will you be doing?"
             nameField.placeholder = "Add activity label"
@@ -75,7 +87,6 @@ class BuilderViewController: UIViewController {
         }
         
         //set field delegates
-        locationField.delegate = self
         setupNameField()
         setupDatePicker(dateField, datePicker, nil)
         mapView.isHidden = true
@@ -173,18 +184,18 @@ class BuilderViewController: UIViewController {
 }
 
 extension BuilderViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if(locationField.isFirstResponder){
-            //launch google place picker
-            let autocompleteController = GMSAutocompleteViewController()
-            if(isSubLocation){
-                autocompleteController.autocompleteBoundsMode = .restrict
-                autocompleteController.autocompleteBounds = self.coordinateBounds
-            }
-            autocompleteController.delegate = self
-            present(autocompleteController, animated: true, completion: nil)
-        }
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        if(locationField.isFirstResponder){
+//            //launch google place picker
+//            let autocompleteController = GMSAutocompleteViewController()
+//            if(isSubLocation){
+//                autocompleteController.autocompleteBoundsMode = .restrict
+//                autocompleteController.autocompleteBounds = self.coordinateBounds
+//            }
+//            autocompleteController.delegate = self
+//            present(autocompleteController, animated: true, completion: nil)
+//        }
+//    }
 }
 
 extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
@@ -204,7 +215,9 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
             //trip.cities[cityIndex].locations.append(location)
         }
         //set the text field for location
-        locationField.text = place.name
+        searchText.text = place.name
+        searchText.textColor = UIColor.black
+        
         //show the next field
         locationDivider.isHidden = false
         nameView.isHidden = false
