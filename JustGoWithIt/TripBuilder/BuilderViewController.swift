@@ -17,6 +17,10 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchText: UILabel!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var nameViewHeight: NSLayoutConstraint! //120
+    @IBOutlet weak var dateViewHeight: NSLayoutConstraint! //100
+    
+    @IBOutlet weak var mapLabel: UILabel!
     
     @IBAction func saveTrip(_ sender: Any) {
         saveNewTrip()
@@ -67,7 +71,6 @@ class BuilderViewController: UIViewController {
     var coordinateBounds: GMSCoordinateBounds?
     var map: GMSMapView?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "New Trip"
@@ -79,11 +82,19 @@ class BuilderViewController: UIViewController {
         searchView.dropShadow()
         nameField.dropShadow()
         dateField.dropShadow()
+        mapView.dropShadow()
+        doneButton.dropShadow()
         
         //hide views on load
         nameView.isHidden = true
         dateView.isHidden = true
-        locationDivider.isHidden = true
+        nameViewHeight.constant = 0
+        dateViewHeight.constant = 0
+        //locationDivider.isHidden = true
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15 , height: nameField.frame.height))
+        nameField.leftViewMode = .always
+        nameField.leftView = paddingView
         
         //configure for place
         if(isSubLocation){
@@ -98,17 +109,19 @@ class BuilderViewController: UIViewController {
         setupNameField()
         setupDatePicker(dateField, datePicker, nil)
         mapView.isHidden = true
-        
-        //handle map view
+        mapLabel.isHidden = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         if(isSubLocation){
             mapView.isHidden = false
+            mapLabel.isHidden = false
             let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
             let target = gms?.coordinate
             var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 10)
             
             map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
             map?.delegate = self
-            //TODO: lets update these bounds when the map changes position
             coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
             //need to add it as a subview?
             self.mapView.addSubview(map!)
@@ -188,6 +201,15 @@ class BuilderViewController: UIViewController {
     }
 }
 
+extension BuilderViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        locationView.bottomScrollShadow()
+        if(scrollView.contentOffset.y <= 10){
+            locationView.layer.shadowOpacity = 0.0
+        }
+    }
+}
+
 extension BuilderViewController: UITextFieldDelegate {
 }
 
@@ -211,6 +233,7 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         searchText.text = place.name
         searchText.textColor = UIColor.black
         
+        
         //show the other fields
         locationDivider.isHidden = false
         nameView.isHidden = false
@@ -218,6 +241,13 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         doneButton.isHidden = false
         
         dismiss(animated: true, completion: nil)
+        UIView.animate(withDuration: 1.0 , animations: {
+            //
+            self.nameViewHeight.constant = 120
+            self.dateViewHeight.constant = 100
+        }) { (complete) in
+            //
+        }
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {

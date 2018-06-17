@@ -33,4 +33,11 @@ extension UIView {
         self.layer.shadowRadius = 4.0
         self.layer.cornerRadius = 5.0
     }
+    
+    func bottomScrollShadow() {
+        self.layer.masksToBounds = false
+        self.layer.shadowOffset = CGSize(width: 0, height: 3)
+        self.layer.shadowRadius = 5
+        self.layer.shadowOpacity = 0.5
+    }
 }
