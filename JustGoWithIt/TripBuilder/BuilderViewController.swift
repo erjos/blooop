@@ -90,17 +90,20 @@ class BuilderViewController: UIViewController {
         dateView.isHidden = true
         nameViewHeight.constant = 0
         dateViewHeight.constant = 0
-        //locationDivider.isHidden = true
         
+        //Add padding to the name and date fields
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15 , height: nameField.frame.height))
         nameField.leftViewMode = .always
         nameField.leftView = paddingView
         
+        let paddingView2 = UIView(frame: CGRect(x: 0, y: 0, width: 15 , height: dateField.frame.height))
+        dateField.leftViewMode = .always
+        dateField.leftView = paddingView2
+
         //configure for place
         if(isSubLocation){
             mapView.layer.borderColor = UIColor.gray.cgColor
             mapView.layer.borderWidth = 2.0
-            
             locationLabel.text = "Choose a location"
             searchText.text = "Search places"
         }
