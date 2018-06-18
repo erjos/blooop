@@ -20,6 +20,7 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var nameViewHeight: NSLayoutConstraint! //120
     @IBOutlet weak var dateViewHeight: NSLayoutConstraint! //100
     
+    @IBOutlet weak var mapLabelConstraint: NSLayoutConstraint!
     @IBOutlet weak var mapLabel: UILabel!
     
     @IBAction func saveTrip(_ sender: Any) {
@@ -90,6 +91,7 @@ class BuilderViewController: UIViewController {
         dateView.isHidden = true
         nameViewHeight.constant = 0
         dateViewHeight.constant = 0
+        mapLabelConstraint.constant = 10
         
         //Add padding to the name and date fields
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15 , height: nameField.frame.height))
@@ -248,6 +250,7 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
             //
             self.nameViewHeight.constant = 120
             self.dateViewHeight.constant = 100
+            self.mapLabelConstraint.constant = 60
         }) { (complete) in
             //
         }
