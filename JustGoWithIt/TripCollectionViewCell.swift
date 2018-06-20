@@ -2,6 +2,7 @@ import UIKit
 
 class TripCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var city: UILabel!

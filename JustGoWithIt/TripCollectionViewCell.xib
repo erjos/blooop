@@ -27,7 +27,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joP-YO-nxY">
                         <rect key="frame" x="0.0" y="72" width="315" height="87"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="3o0-le-Tbc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="city_3" translatesAutoresizingMaskIntoConstraints="NO" id="3o0-le-Tbc">
                                 <rect key="frame" x="-43" y="2" width="401" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="93" id="lpU-pr-dMi"/>
@@ -80,13 +80,14 @@
             <connections>
                 <outlet property="bottomView" destination="joP-YO-nxY" id="s8P-gy-4kl"/>
                 <outlet property="city" destination="nMS-gR-Lou" id="gbe-OO-08h"/>
+                <outlet property="image" destination="3o0-le-Tbc" id="YHj-QK-eQb"/>
                 <outlet property="label" destination="6hE-MP-88s" id="FFN-Sj-kv9"/>
             </connections>
             <point key="canvasLocation" x="121.5" y="137.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="city" width="5103" height="3320"/>
+        <image name="city_3" width="2654" height="1610"/>
         <image name="date_24" width="24" height="24"/>
     </resources>
 </document>

@@ -150,6 +150,15 @@ extension MyTripsViewController: UICollectionViewDataSource {
                 return cell
             }
             cell.setLabels(city: city)
+            let count = indexPath.row + 1
+            
+            if((count % 3) == 0){
+                cell.image.image = #imageLiteral(resourceName: "city")
+            }else if((count % 2) == 0){
+                cell.image.image = #imageLiteral(resourceName: "city_2")
+            } else {
+                cell.image.image = #imageLiteral(resourceName: "city_3")
+            }
         }
         return cell
     }
