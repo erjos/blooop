@@ -13,8 +13,13 @@ class ListTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func loadCollectionPhotos(){
-        
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnail.image = nil
+        thumbnail.layer.borderWidth = 0.0
+        dateLabel.text = ""
+        activityLabel.text = ""
+        locationLabel.text = ""
     }
     
     func setThumbnailImage(image: UIImage){
