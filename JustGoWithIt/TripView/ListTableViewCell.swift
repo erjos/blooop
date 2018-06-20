@@ -20,10 +20,16 @@ class ListTableViewCell: UITableViewCell {
     func setThumbnailImage(image: UIImage){
         imageContainer.isHidden = false
         thumbnail.image = image
+        thumbnail.contentMode = .scaleToFill
+        thumbnail.layer.borderWidth = 0.0
     }
     
     func handleFailedImage(){
-        imageContainer.isHidden = true
+        imageContainer.isHidden = false
+        thumbnail.image = #imageLiteral(resourceName: "picture_thumbnail")
+        thumbnail.contentMode = .scaleAspectFit
+        thumbnail.layer.borderColor = UIColor.gray.cgColor
+        thumbnail.layer.borderWidth = 2.0
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

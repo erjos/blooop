@@ -168,8 +168,8 @@ extension TripViewController: UITableViewDataSource{
             cell.handleFailedImage()
         }
         
-        cell.activityLabel.text = city.getSubLocation(from: indexPath).label
-        cell.dateLabel.text = city.getSubLocation(from: indexPath).date?.formatDateAsString()
+        cell.activityLabel.text = city.getSubLocation(from: indexPath).label ?? "Add label"
+        cell.dateLabel.text = (city.getSubLocation(from: indexPath).date == nil) ? "Add date" : city.getSubLocation(from: indexPath).date?.formatDateAsString()
         let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: placeID)
         cell.locationLabel.text = gms?.name
         cell.selectionStyle = .none

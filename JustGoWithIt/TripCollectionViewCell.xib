@@ -53,6 +53,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date_24" translatesAutoresizingMaskIntoConstraints="NO" id="oJ1-vW-1oM">
+                        <rect key="frame" x="281" y="10" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="1di-Cg-3hY"/>
+                            <constraint firstAttribute="height" constant="24" id="qBW-ip-4ba"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -62,8 +69,10 @@
                 <constraint firstItem="joP-YO-nxY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="72" id="JTC-48-1Cd"/>
                 <constraint firstItem="6hE-MP-88s" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="JqD-x2-xo8"/>
                 <constraint firstAttribute="trailing" secondItem="joP-YO-nxY" secondAttribute="trailing" id="NEa-MR-8E9"/>
+                <constraint firstItem="oJ1-vW-1oM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="QOV-Or-Egh"/>
                 <constraint firstItem="joP-YO-nxY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e0q-5S-0DS"/>
                 <constraint firstAttribute="bottom" secondItem="joP-YO-nxY" secondAttribute="bottom" id="nHA-LT-MGX"/>
+                <constraint firstAttribute="trailing" secondItem="oJ1-vW-1oM" secondAttribute="trailing" constant="10" id="utQ-Pw-11G"/>
                 <constraint firstItem="6hE-MP-88s" firstAttribute="top" secondItem="nMS-gR-Lou" secondAttribute="bottom" constant="10" id="vll-mI-mQY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -78,5 +87,6 @@
     </objects>
     <resources>
         <image name="city" width="5103" height="3320"/>
+        <image name="date_24" width="24" height="24"/>
     </resources>
 </document>
