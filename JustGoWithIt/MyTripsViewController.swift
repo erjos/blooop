@@ -4,6 +4,7 @@ import MaterialComponents.MaterialButtons
 
 class MyTripsViewController: UIViewController {
 
+    @IBOutlet weak var emptyStateLabel: UILabel!
     @IBOutlet weak var emptyCollectionState: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -30,6 +31,9 @@ class MyTripsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emptyStateLabel.shadowColor = UIColor.white
+        emptyStateLabel.shadowOffset = CGSize.init(width: 1, height: 1)
+        
         self.activityIndicator.isHidden = true
         self.emptyCollectionState.isHidden = true
         self.cities = RealmManager.fetchData()
