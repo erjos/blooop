@@ -22,11 +22,8 @@ class MyTripsViewController: UIViewController {
     
     func createGradientLayer() {
         gradientLayer = CAGradientLayer()
-        
         gradientLayer.frame = self.view.bounds
-        
         gradientLayer.colors = [UIColor.white.cgColor, UIColor.lightGray.cgColor]
-        
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
@@ -41,16 +38,9 @@ class MyTripsViewController: UIViewController {
         suggestionCollection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
         
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
-        //floatingButton.setBackgroundImage(plusImage, for: .normal)
         floatingButton.setImage(plusImage, for: .normal)
-        //floatingButton.imageView?.tintColor = UIColor.black
         createGradientLayer()
         setCollectionPageCount()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,12 +53,10 @@ class MyTripsViewController: UIViewController {
                 print("Wrong view controller")
                 return
             }
-            
             if let indexPath = sender as? IndexPath {
                 let city = cities?[indexPath.row]
                 tripVC.city = city
             }
-            
             if let city = sender as? PrimaryLocation {
                 tripVC.city = city
             }
@@ -85,7 +73,7 @@ class MyTripsViewController: UIViewController {
     }
     
     func getCollectionCellImage(indexPath: IndexPath)->UIImage{
-        let photoIndex = (indexPath.row + 1) % 4
+        let photoIndex = (indexPath.row + 1) % 5
         switch (photoIndex) {
         case 0 :
             return #imageLiteral(resourceName: "city")
@@ -95,6 +83,8 @@ class MyTripsViewController: UIViewController {
             return #imageLiteral(resourceName: "city_3")
         case 3 :
             return #imageLiteral(resourceName: "city_4")
+        case 4 :
+            return #imageLiteral(resourceName: "city_5")
         default:
             return #imageLiteral(resourceName: "city")
         }
@@ -140,7 +130,6 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
             let deviceWidth = self.view.window?.frame.width
             //this number is 70 to give additional room inside the collection - constraints add to 60 outside the collection
             let cellWidth = deviceWidth! - 70
-            
             let size = CGSize.init(width: cellWidth, height: 155)
             return size
         } else {
