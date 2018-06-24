@@ -4,6 +4,7 @@ import MaterialComponents.MaterialButtons
 
 class MyTripsViewController: UIViewController {
 
+    @IBOutlet weak var emptyCollectionState: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var contentView: UIView!
@@ -30,6 +31,7 @@ class MyTripsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.isHidden = true
+        self.emptyCollectionState.isHidden = true
         self.cities = RealmManager.fetchData()
         collection.backgroundColor = UIColor.clear
         suggestionCollection.backgroundColor = UIColor.clear
@@ -40,7 +42,7 @@ class MyTripsViewController: UIViewController {
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         floatingButton.setImage(plusImage, for: .normal)
         createGradientLayer()
-        setCollectionPageCount()
+        //setCollectionPageCount(items: <#T##Int#>)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,9 +65,9 @@ class MyTripsViewController: UIViewController {
         }
     }
     
-    func setCollectionPageCount(){
-        var pageCount = (cities?.count)! / 3
-        let remainder = (cities?.count)! % 3
+    func setCollectionPageCount(items: Int){
+        var pageCount = items / 3
+        let remainder = items % 3
         if (remainder > 0){
             pageCount += 1
         }
@@ -142,9 +144,18 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
 extension MyTripsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView == collection){
-            //TODO: don't force unwrap this
-            setCollectionPageCount()
-            return (cities?.count)!
+            guard let cityCount = cities?.count else {
+                self.pageControl.isHidden = true
+                //TODO: swap this out with an error state rather than an empty state
+                self.emptyCollectionState.isHidden = false
+                return 0
+            }
+            setCollectionPageCount(items: cityCount)
+            guard (cityCount != 0) else {
+                self.emptyCollectionState.isHidden = false
+                return 0
+            }
+            return cityCount
         } else {
             return 5
         }
