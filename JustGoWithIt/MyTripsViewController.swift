@@ -4,6 +4,7 @@ import MaterialComponents.MaterialButtons
 
 class MyTripsViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
@@ -31,6 +32,7 @@ class MyTripsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.activityIndicator.isHidden = true
         self.cities = RealmManager.fetchData()
         collection.backgroundColor = UIColor.clear
         suggestionCollection.backgroundColor = UIColor.clear
@@ -82,9 +84,9 @@ class MyTripsViewController: UIViewController {
         pageControl.numberOfPages = pageCount
     }
     
-    //doesn't really work because the collection is lazy loading
-    func getCollectionCellImage(index: Int)->UIImage{
-        switch (index) {
+    func getCollectionCellImage(indexPath: IndexPath)->UIImage{
+        let photoIndex = (indexPath.row + 1) % 4
+        switch (photoIndex) {
         case 0 :
             return #imageLiteral(resourceName: "city")
         case 1 :
@@ -103,7 +105,11 @@ extension MyTripsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //fetch necessary data for the page
         let trip = cities?[indexPath.row]
+        self.activityIndicator.isHidden = false
+        self.contentView.isUserInteractionEnabled = false
         trip?.fetchGmsPlacesForCity(complete: { (isComplete) in
+            self.activityIndicator.isHidden = true
+            self.contentView.isUserInteractionEnabled = true
             self.performSegue(withIdentifier: "toMain", sender: indexPath)
         })
     }
@@ -164,11 +170,7 @@ extension MyTripsViewController: UICollectionViewDataSource {
                 return cell
             }
             cell.setLabels(city: city)
-            
-            //need a way to tie the collection count to the row so that if you swipe back and forth this stays in sync
-            //set the collection count for every 4th (1,2,3,4 repeating)
-            let photoIndex = (indexPath.row + 1) % 4
-            cell.image.image = getCollectionCellImage(index: photoIndex)
+            cell.image.image = getCollectionCellImage(indexPath: indexPath)
         }
         return cell
     }

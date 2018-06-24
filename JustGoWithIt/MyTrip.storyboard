@@ -160,11 +160,17 @@
                                     <segue destination="Hih-11-Axb" kind="presentation" identifier="toBuilder" id="Fp6-dJ-l1p"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-hW-kGl">
+                                <rect key="frame" x="169" y="482" width="37" height="37"/>
+                                <color key="color" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.80216471349999996" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yxa-hW-kGl" firstAttribute="centerX" secondItem="wib-iy-o1c" secondAttribute="centerX" id="6Bi-dx-veo"/>
                             <constraint firstItem="zWA-qT-ehf" firstAttribute="top" secondItem="gDq-LD-Pbj" secondAttribute="top" id="7PW-5t-h4w"/>
                             <constraint firstItem="gDq-LD-Pbj" firstAttribute="trailing" secondItem="dvM-63-US7" secondAttribute="trailing" constant="20" id="8ns-ZC-RJk"/>
+                            <constraint firstItem="yxa-hW-kGl" firstAttribute="centerY" secondItem="wib-iy-o1c" secondAttribute="centerY" id="J5b-5e-FL7"/>
                             <constraint firstItem="gDq-LD-Pbj" firstAttribute="bottom" secondItem="dvM-63-US7" secondAttribute="bottom" constant="20" id="L2g-Hv-fw8"/>
                             <constraint firstItem="XEO-KJ-p49" firstAttribute="height" secondItem="wib-iy-o1c" secondAttribute="height" priority="250" id="Rqg-rY-1x7"/>
                             <constraint firstItem="XEO-KJ-p49" firstAttribute="width" secondItem="wib-iy-o1c" secondAttribute="width" id="Wxq-nI-JMd"/>
@@ -177,6 +183,7 @@
                     <navigationItem key="navigationItem" title="Something" id="9iK-mq-4Ka"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="yxa-hW-kGl" id="jeD-oZ-bqN"/>
                         <outlet property="collection" destination="Q6z-bx-BdT" id="g3x-Ac-5Vu"/>
                         <outlet property="collectionHeight" destination="yHL-oa-V63" id="vlC-1o-tQQ"/>
                         <outlet property="contentView" destination="XEO-KJ-p49" id="aRs-Ta-SUB"/>

@@ -87,7 +87,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="city_3" width="2654" height="1610"/>
+        <image name="city_3" width="3488" height="1715"/>
         <image name="date_24" width="24" height="24"/>
     </resources>
 </document>
