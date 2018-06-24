@@ -11,15 +11,13 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var suggestionCollection: UICollectionView!
     @IBOutlet weak var floatingButton: MDCFloatingButton!
     
-    //var lastContentOffset: CGFloat = 0
-    
     @IBAction func pressFloatingAdd(_ sender: Any) {
         performSegue(withIdentifier: "toBuilder", sender: self)
     }
     
     var gradientLayer: CAGradientLayer!
-    
     var cities: Results<PrimaryLocation>?
+    var collectionCount: Int = 0
     
     func createGradientLayer() {
         gradientLayer = CAGradientLayer()
@@ -47,15 +45,6 @@ class MyTripsViewController: UIViewController {
         createGradientLayer()
         setCollectionPageCount()
     }
-    
-    func setCollectionPageCount(){
-        var pageCount = (cities?.count)! / 3
-        let remainder = (cities?.count)! % 3
-        if (remainder > 0){
-            pageCount += 1
-        }
-        pageControl.numberOfPages = pageCount
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,6 +70,31 @@ class MyTripsViewController: UIViewController {
             if let city = sender as? PrimaryLocation {
                 tripVC.city = city
             }
+        }
+    }
+    
+    func setCollectionPageCount(){
+        var pageCount = (cities?.count)! / 3
+        let remainder = (cities?.count)! % 3
+        if (remainder > 0){
+            pageCount += 1
+        }
+        pageControl.numberOfPages = pageCount
+    }
+    
+    //doesn't really work because the collection is lazy loading
+    func getCollectionCellImage(index: Int)->UIImage{
+        switch (index) {
+        case 0 :
+            return #imageLiteral(resourceName: "city")
+        case 1 :
+            return #imageLiteral(resourceName: "city_2")
+        case 2 :
+            return #imageLiteral(resourceName: "city_3")
+        case 3 :
+            return #imageLiteral(resourceName: "city_4")
+        default:
+            return #imageLiteral(resourceName: "city")
         }
     }
 }
@@ -150,15 +164,11 @@ extension MyTripsViewController: UICollectionViewDataSource {
                 return cell
             }
             cell.setLabels(city: city)
-            let count = indexPath.row + 1
             
-            if((count % 3) == 0){
-                cell.image.image = #imageLiteral(resourceName: "city")
-            }else if((count % 2) == 0){
-                cell.image.image = #imageLiteral(resourceName: "city_2")
-            } else {
-                cell.image.image = #imageLiteral(resourceName: "city_3")
-            }
+            //need a way to tie the collection count to the row so that if you swipe back and forth this stays in sync
+            //set the collection count for every 4th (1,2,3,4 repeating)
+            let photoIndex = (indexPath.row + 1) % 4
+            cell.image.image = getCollectionCellImage(index: photoIndex)
         }
         return cell
     }
