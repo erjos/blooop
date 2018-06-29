@@ -6,6 +6,20 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.6.0):
     - GoogleMaps/Base (= 2.6.0)
+  - MaterialComponents/AppBar (54.4.0):
+    - MaterialComponents/FlexibleHeader
+    - MaterialComponents/HeaderStackView
+    - MaterialComponents/NavigationBar
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Icons/ic_arrow_back
+    - MaterialComponents/private/UIMetrics
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/ButtonBar (54.4.0):
+    - MaterialComponents/Buttons
+    - MDFInternationalization
   - MaterialComponents/Buttons (54.4.0):
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
@@ -20,16 +34,31 @@ PODS:
     - MaterialComponents/private/Math
     - MaterialComponents/private/Shapes
     - MaterialComponents/ShadowLayer
+  - MaterialComponents/FlexibleHeader (54.4.0):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/UIMetrics
+    - MDFTextAccessibility
+  - MaterialComponents/HeaderStackView (54.4.0)
   - MaterialComponents/Ink (54.4.0):
     - MaterialComponents/private/Math
+  - MaterialComponents/NavigationBar (54.4.0):
+    - MaterialComponents/ButtonBar
+    - MaterialComponents/private/Math
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
   - MaterialComponents/private/Application (54.4.0)
   - MaterialComponents/private/Icons/Base (54.4.0)
+  - MaterialComponents/private/Icons/ic_arrow_back (54.4.0):
+    - MaterialComponents/private/Icons/Base
   - MaterialComponents/private/Icons/ic_check_circle (54.4.0):
     - MaterialComponents/private/Icons/Base
   - MaterialComponents/private/Math (54.4.0)
   - MaterialComponents/private/Shapes (54.4.0):
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
+  - MaterialComponents/private/UIMetrics (54.4.0):
+    - MaterialComponents/private/Application
   - MaterialComponents/ShadowElevations (54.4.0)
   - MaterialComponents/ShadowLayer (54.4.0):
     - MaterialComponents/ShadowElevations
@@ -47,13 +76,15 @@ PODS:
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - MaterialComponents/AppBar
   - MaterialComponents/Buttons
   - MaterialComponents/Cards
+  - MaterialComponents/FlexibleHeader
   - RealmSwift
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - GoogleMaps
     - GooglePlaces
     - MaterialComponents
@@ -73,6 +104,6 @@ SPEC CHECKSUMS:
   RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 1e7769317044d48aee1e3c72f7c08ef6c970a60b
+PODFILE CHECKSUM: a686c2ac0063ed5e37236463da601204c80bcef6
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
