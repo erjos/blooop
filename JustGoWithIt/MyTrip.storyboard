@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Something-->
+        <!--Vaya-->
         <scene sceneID="2ke-2N-1cj">
             <objects>
                 <viewController id="ZBo-Jb-tVI" customClass="MyTripsViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,19 +22,21 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="936"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEO-KJ-p49" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="890"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="891"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLk-nV-1uC" userLabel="Trips">
-                                                <rect key="frame" x="0.0" y="20" width="375" height="570"/>
+                                                <rect key="frame" x="0.0" y="20" width="375" height="571"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Trips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMW-On-1BF">
-                                                        <rect key="frame" x="35" y="10" width="94" height="29"/>
+                                                        <rect key="frame" x="35" y="10" width="95" height="30"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <size key="shadowOffset" width="1" height="1"/>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q6z-bx-BdT">
-                                                        <rect key="frame" x="10" y="59" width="355" height="491"/>
+                                                        <rect key="frame" x="10" y="60" width="355" height="491"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="491" id="yHL-oa-V63"/>
@@ -61,19 +63,21 @@
                                                         </connections>
                                                     </collectionView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ts-En-RJL">
-                                                        <rect key="frame" x="67" y="221" width="240" height="128"/>
+                                                        <rect key="frame" x="67" y="221.5" width="240" height="128"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not added any trips." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHP-wT-HEj">
-                                                                <rect key="frame" x="-34.5" y="51.5" width="309.5" height="26.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new trip entry." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHP-wT-HEj">
+                                                                <rect key="frame" x="0.0" y="38" width="240" height="52.5"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="vHP-wT-HEj" secondAttribute="trailing" id="Fvh-FZ-bKX"/>
                                                             <constraint firstItem="vHP-wT-HEj" firstAttribute="centerY" secondItem="2Ts-En-RJL" secondAttribute="centerY" id="Pof-5m-JK0"/>
                                                             <constraint firstAttribute="height" constant="128" id="Vu8-fL-ruc"/>
                                                             <constraint firstAttribute="width" constant="240" id="aNn-IY-7u4"/>
+                                                            <constraint firstItem="vHP-wT-HEj" firstAttribute="leading" secondItem="2Ts-En-RJL" secondAttribute="leading" id="hun-Th-dbU"/>
                                                             <constraint firstItem="vHP-wT-HEj" firstAttribute="centerX" secondItem="2Ts-En-RJL" secondAttribute="centerX" id="x4M-fl-yn1"/>
                                                         </constraints>
                                                     </view>
@@ -90,7 +94,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3d-g1-p3l" userLabel="Other">
-                                                <rect key="frame" x="0.0" y="610" width="375" height="270"/>
+                                                <rect key="frame" x="0.0" y="611" width="375" height="270"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6k-et-moy" userLabel="Line">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -144,7 +148,7 @@
                                                 </constraints>
                                             </view>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="kek-Ll-hDA">
-                                                <rect key="frame" x="168" y="573" width="39" height="37"/>
+                                                <rect key="frame" x="168" y="574" width="39" height="37"/>
                                             </pageControl>
                                         </subviews>
                                         <constraints>
@@ -199,7 +203,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gDq-LD-Pbj"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Something" id="9iK-mq-4Ka"/>
+                    <navigationItem key="navigationItem" title="Vaya" id="9iK-mq-4Ka">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="menu" style="plain" id="2Qz-oA-maG">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="activityIndicator" destination="yxa-hW-kGl" id="jeD-oZ-bqN"/>
@@ -253,4 +261,7 @@
             <point key="canvasLocation" x="484" y="239"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="24" height="24"/>
+    </resources>
 </document>

@@ -13,6 +13,8 @@ target 'JustGoWithIt' do
   pod 'SwiftyJSON'
   pod 'MaterialComponents/Cards'
   pod 'MaterialComponents/Buttons'
+  pod 'MaterialComponents/AppBar'
+  pod 'MaterialComponents/FlexibleHeader'
   pod 'RealmSwift'
 
 end

@@ -46,7 +46,6 @@ class MyTripsViewController: UIViewController {
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         floatingButton.setImage(plusImage, for: .normal)
         createGradientLayer()
-        //setCollectionPageCount(items: <#T##Int#>)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
