@@ -8,6 +8,7 @@
 
 import UIKit
 
+//TODO: maybe create this as a nib and setup your label that way...?
 class HomeHeaderView: UIView {
     struct Constants {
         static let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
