@@ -203,7 +203,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gDq-LD-Pbj"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9iK-mq-4Ka"/>
+                    <navigationItem key="navigationItem" id="9iK-mq-4Ka">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="oTb-sk-4MI"/>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="activityIndicator" destination="yxa-hW-kGl" id="jeD-oZ-bqN"/>

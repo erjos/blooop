@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeroHeaderView: UIView {
+class HomeHeaderView: UIView {
     struct Constants {
         static let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
         static let minHeight: CGFloat = 44 + statusBarHeight
@@ -72,7 +72,7 @@ class HeroHeaderView: UIView {
         
         // 2
         let fontSize = scrollPhasePercentage.scaled(from: 0...1, to: 22.0...60.0)
-        let font = UIFont(name: "CourierNewPS-BoldMT", size: fontSize)
+        let font = UIFont(name: "HelveticaNeue-Medium", size: fontSize)
         titleLabel.font = font
     }
     
@@ -95,7 +95,6 @@ extension FloatingPoint {
         }
         return result
     }
-    
 }
 
 public extension Comparable {

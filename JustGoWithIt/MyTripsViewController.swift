@@ -27,7 +27,7 @@ class MyTripsViewController: UIViewController {
     
     //APP BAr
     let appBar = MDCAppBar()
-    let heroHeaderView = HeroHeaderView()
+    let heroHeaderView = HomeHeaderView()
     
     func createGradientLayer() {
         gradientLayer = CAGradientLayer()
@@ -36,11 +36,7 @@ class MyTripsViewController: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
-        
-        scrollView.delegate = self
+    func configureAppBar(){
         //configure app bar
         self.addChildViewController(appBar.headerViewController)
         appBar.navigationBar.backgroundColor = .clear
@@ -49,8 +45,8 @@ class MyTripsViewController: UIViewController {
         // 3
         let headerView = appBar.headerViewController.headerView
         headerView.backgroundColor = .clear
-        headerView.maximumHeight = HeroHeaderView.Constants.maxHeight
-        headerView.minimumHeight = HeroHeaderView.Constants.minHeight
+        headerView.maximumHeight = HomeHeaderView.Constants.maxHeight
+        headerView.minimumHeight = HomeHeaderView.Constants.minHeight
         
         // 4
         heroHeaderView.frame = headerView.bounds
@@ -58,9 +54,18 @@ class MyTripsViewController: UIViewController {
         
         // 5
         headerView.trackingScrollView = scrollView
+        //can add programmatically - justn need better color - can show/hide in delegate methods??
+        self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu"), style: .plain, target: self, action: nil), animated: false)
         
         // 6
         appBar.addSubviewsToParent()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
+        scrollView.delegate = self
+        configureAppBar()
         
         emptyStateLabel.shadowColor = UIColor.white
         emptyStateLabel.shadowOffset = CGSize.init(width: 1, height: 1)
@@ -132,6 +137,11 @@ extension MyTripsViewController: MDCFlexibleHeaderViewLayoutDelegate {
     public func flexibleHeaderViewController(_ flexibleHeaderViewController: MDCFlexibleHeaderViewController,
                                              flexibleHeaderViewFrameDidChange flexibleHeaderView: MDCFlexibleHeaderView) {
         heroHeaderView.update(withScrollPhasePercentage: flexibleHeaderView.scrollPhasePercentage)
+        let imageAlpha = min(flexibleHeaderView.scrollPhasePercentage.scaled(from: 0...0.8, to: 0...1), 1.0)
+        let alpha = 1 - imageAlpha
+        //TODO: there has to be abetter way to do this than to redraw the image every time
+        let image = #imageLiteral(resourceName: "menu").alpha(alpha)
+        self.navigationItem.rightBarButtonItem?.image = image
     }
 }
 
@@ -144,11 +154,10 @@ extension MyTripsViewController: UIScrollViewDelegate {
     }
     
      func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if(scrollView == self.scrollView){
-            let headerView = appBar.headerViewController.headerView
-            if scrollView == headerView.trackingScrollView {
-                headerView.trackingScrollDidEndDecelerating()
-            }
+        let headerView = appBar.headerViewController.headerView
+        if scrollView == headerView.trackingScrollView {
+            headerView.trackingScrollDidEndDecelerating()
+            
         }
         
         if(scrollView == collection){
@@ -255,5 +264,16 @@ extension MyTripsViewController: UICollectionViewDataSource {
             cell.image.image = getCollectionCellImage(indexPath: indexPath)
         }
         return cell
+    }
+}
+
+extension UIImage {
+    
+    func alpha(_ value:CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
     }
 }
