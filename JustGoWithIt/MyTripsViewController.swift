@@ -1,9 +1,12 @@
 import UIKit
 import RealmSwift
 import MaterialComponents.MaterialButtons
+import MaterialComponents.MaterialAppBar
+import MaterialComponents.MaterialFlexibleHeader
 
 class MyTripsViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var emptyStateLabel: UILabel!
     @IBOutlet weak var emptyCollectionState: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -22,6 +25,10 @@ class MyTripsViewController: UIViewController {
     var cities: Results<PrimaryLocation>?
     var collectionCount: Int = 0
     
+    //APP BAr
+    let appBar = MDCAppBar()
+    let heroHeaderView = HeroHeaderView()
+    
     func createGradientLayer() {
         gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
@@ -31,6 +38,30 @@ class MyTripsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
+        
+        scrollView.delegate = self
+        //configure app bar
+        self.addChildViewController(appBar.headerViewController)
+        appBar.navigationBar.backgroundColor = .clear
+        appBar.navigationBar.title = nil
+        appBar.headerViewController.layoutDelegate = self
+        // 3
+        let headerView = appBar.headerViewController.headerView
+        headerView.backgroundColor = .clear
+        headerView.maximumHeight = HeroHeaderView.Constants.maxHeight
+        headerView.minimumHeight = HeroHeaderView.Constants.minHeight
+        
+        // 4
+        heroHeaderView.frame = headerView.bounds
+        headerView.insertSubview(heroHeaderView, at: 0)
+        
+        // 5
+        headerView.trackingScrollView = scrollView
+        
+        // 6
+        appBar.addSubviewsToParent()
+        
         emptyStateLabel.shadowColor = UIColor.white
         emptyStateLabel.shadowOffset = CGSize.init(width: 1, height: 1)
         
@@ -96,6 +127,54 @@ class MyTripsViewController: UIViewController {
     }
 }
 
+extension MyTripsViewController: MDCFlexibleHeaderViewLayoutDelegate {
+    
+    public func flexibleHeaderViewController(_ flexibleHeaderViewController: MDCFlexibleHeaderViewController,
+                                             flexibleHeaderViewFrameDidChange flexibleHeaderView: MDCFlexibleHeaderView) {
+        heroHeaderView.update(withScrollPhasePercentage: flexibleHeaderView.scrollPhasePercentage)
+    }
+}
+
+extension MyTripsViewController: UIScrollViewDelegate {
+     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let headerView = appBar.headerViewController.headerView
+        if scrollView == headerView.trackingScrollView {
+            headerView.trackingScrollDidScroll()
+        }
+    }
+    
+     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if(scrollView == self.scrollView){
+            let headerView = appBar.headerViewController.headerView
+            if scrollView == headerView.trackingScrollView {
+                headerView.trackingScrollDidEndDecelerating()
+            }
+        }
+        
+        if(scrollView == collection){
+            let pageNumber = round(self.collection.contentOffset.x/self.collection.frame.size.width)
+            self.pageControl.currentPage = Int(pageNumber)
+            guard self.pageControl.currentPage < (self.cities?.count)! else {return}
+        }
+    }
+    
+     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let headerView = appBar.headerViewController.headerView
+        if scrollView == headerView.trackingScrollView {
+            headerView.trackingScrollDidEndDraggingWillDecelerate(decelerate)
+        }
+    }
+    
+     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
+                                            targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let headerView = appBar.headerViewController.headerView
+        if scrollView == headerView.trackingScrollView {
+            headerView.trackingScrollWillEndDragging(withVelocity: velocity,
+                                                     targetContentOffset: targetContentOffset)
+        }
+    }
+}
+
 extension MyTripsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //fetch necessary data for the page
@@ -124,11 +203,11 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsetsMake(0, 25, 0, 25)
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let pageNumber = round(self.collection.contentOffset.x/self.collection.frame.size.width)
-        self.pageControl.currentPage = Int(pageNumber)
-        guard self.pageControl.currentPage < (self.cities?.count)! else {return}
-    }
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        let pageNumber = round(self.collection.contentOffset.x/self.collection.frame.size.width)
+//        self.pageControl.currentPage = Int(pageNumber)
+//        guard self.pageControl.currentPage < (self.cities?.count)! else {return}
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(collectionView == collection){

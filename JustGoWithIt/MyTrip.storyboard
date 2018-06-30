@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Vaya-->
+        <!--My Trips View Controller-->
         <scene sceneID="2ke-2N-1cj">
             <objects>
                 <viewController id="ZBo-Jb-tVI" customClass="MyTripsViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
@@ -203,11 +203,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gDq-LD-Pbj"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Vaya" id="9iK-mq-4Ka">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="menu" style="plain" id="2Qz-oA-maG">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="9iK-mq-4Ka"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="activityIndicator" destination="yxa-hW-kGl" id="jeD-oZ-bqN"/>
@@ -218,6 +214,7 @@
                         <outlet property="emptyStateLabel" destination="vHP-wT-HEj" id="DBf-6P-L41"/>
                         <outlet property="floatingButton" destination="dvM-63-US7" id="fhP-Re-DbV"/>
                         <outlet property="pageControl" destination="kek-Ll-hDA" id="dDV-co-H0Z"/>
+                        <outlet property="scrollView" destination="zWA-qT-ehf" id="DGC-pc-SG8"/>
                         <outlet property="suggestionCollection" destination="kli-eX-zb1" id="Jia-BE-La3"/>
                         <segue destination="V1h-wF-zjm" kind="show" identifier="toMain" id="1Xb-kg-YGg"/>
                     </connections>
@@ -261,7 +258,4 @@
             <point key="canvasLocation" x="484" y="239"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="menu" width="24" height="24"/>
-    </resources>
 </document>
