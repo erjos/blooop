@@ -1,5 +1,5 @@
 //
-//  HeroHeaderView.swift
+//  HomeHeaderView.swift
 //  JustGoWithIt
 //
 //  Created by Joseph, Ethan on 6/30/18.
@@ -10,6 +10,8 @@ import UIKit
 
 //TODO: maybe create this as a nib and setup your label that way...?
 class HomeHeaderView: UIView {
+    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var headerLabel: UILabel!
     struct Constants {
         static let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
         static let minHeight: CGFloat = 44 + statusBarHeight
@@ -36,6 +38,15 @@ class HomeHeaderView: UIView {
     // 1
     init() {
         super.init(frame: .zero)
+        commonInit()
+    }
+    
+    func commonInit(){
+        Bundle.main.loadNibNamed("HomeHeaderView", owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         autoresizingMask = [.flexibleWidth, .flexibleHeight]
         clipsToBounds = true
         configureView()
@@ -43,7 +54,9 @@ class HomeHeaderView: UIView {
     
     // 2
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        commonInit()
+        //fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: View
@@ -51,7 +64,8 @@ class HomeHeaderView: UIView {
     // 3
     func configureView() {
         backgroundColor = .darkGray
-        addSubview(imageView)
+        contentView.addSubview(imageView)
+        contentView.bringSubview(toFront: headerLabel)
         addSubview(titleLabel)
     }
     
@@ -75,6 +89,7 @@ class HomeHeaderView: UIView {
         let fontSize = scrollPhasePercentage.scaled(from: 0...1, to: 22.0...60.0)
         let font = UIFont(name: "HelveticaNeue-Medium", size: fontSize)
         titleLabel.font = font
+        headerLabel.font = font
     }
     
 }

@@ -37,6 +37,7 @@ class MyTripsViewController: UIViewController {
     }
     
     func configureAppBar(){
+        //heroHeaderView.loadUpView()
         //configure app bar
         self.addChildViewController(appBar.headerViewController)
         appBar.navigationBar.backgroundColor = .clear
@@ -47,16 +48,13 @@ class MyTripsViewController: UIViewController {
         headerView.backgroundColor = .clear
         headerView.maximumHeight = HomeHeaderView.Constants.maxHeight
         headerView.minimumHeight = HomeHeaderView.Constants.minHeight
-        
         // 4
         heroHeaderView.frame = headerView.bounds
         headerView.insertSubview(heroHeaderView, at: 0)
-        
         // 5
         headerView.trackingScrollView = scrollView
         //can add programmatically - justn need better color - can show/hide in delegate methods??
         self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: nil), animated: false)
-        
         // 6
         appBar.addSubviewsToParent()
     }
@@ -139,7 +137,7 @@ extension MyTripsViewController: MDCFlexibleHeaderViewLayoutDelegate {
         heroHeaderView.update(withScrollPhasePercentage: flexibleHeaderView.scrollPhasePercentage)
         let imageAlpha = min(flexibleHeaderView.scrollPhasePercentage.scaled(from: 0...0.8, to: 0...1), 1.0)
         let alpha = 1 - imageAlpha
-        //TODO: there has to be abetter way to do this than to redraw the image every time
+        //TODO: there has to be abetter way to do this than to redraw the image every time we want to change the alpha
         let image = #imageLiteral(resourceName: "menu_white").alpha(alpha)
         self.navigationItem.rightBarButtonItem?.image = image
     }
