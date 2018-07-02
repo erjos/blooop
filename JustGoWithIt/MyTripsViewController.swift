@@ -55,7 +55,7 @@ class MyTripsViewController: UIViewController {
         // 4
         heroHeaderView.frame = headerView.bounds
         //TODO: improve function to handle this blend on its own
-        heroHeaderView.gradientView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.cgColor, headerbackground.cgColor])
+        heroHeaderView.gradientView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
         headerView.insertSubview(heroHeaderView, at: 0)
         // 5
         headerView.trackingScrollView = scrollView
@@ -86,8 +86,9 @@ class MyTripsViewController: UIViewController {
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         floatingButton.setImage(plusImage, for: .normal)
         
-        //createGradientLayer()
-        self.view.backgroundColor = headerbackground
+        //TODO: this applies to the entire view on the screen - if you want to get more specific with subviews we can do that
+        createGradientLayer() //or set Backgound to headerbackground
+//        self.view.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -153,7 +154,9 @@ extension MyTripsViewController: MDCFlexibleHeaderViewLayoutDelegate {
 
 extension MyTripsViewController: UIScrollViewDelegate {
      func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         let headerView = appBar.headerViewController.headerView
+     
         if scrollView == headerView.trackingScrollView {
             headerView.trackingScrollDidScroll()
         }
@@ -163,7 +166,6 @@ extension MyTripsViewController: UIScrollViewDelegate {
         let headerView = appBar.headerViewController.headerView
         if scrollView == headerView.trackingScrollView {
             headerView.trackingScrollDidEndDecelerating()
-            
         }
         
         if(scrollView == collection){
@@ -285,6 +287,9 @@ extension UIImage {
 }
 
 extension UIView {
+    func roundCorners() {
+        self.layer.cornerRadius = 5.0
+    }
     
     func createGradientLayer(colors: [CGColor]) {
         let gradientLayer = CAGradientLayer()

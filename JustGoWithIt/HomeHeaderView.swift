@@ -12,8 +12,9 @@ import UIKit
 class HomeHeaderView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var headerLabel: UILabel!
+    
     @IBOutlet weak var gradientView: UIView!
+    
     struct Constants {
         static let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
         static let minHeight: CGFloat = 44 + statusBarHeight
@@ -34,7 +35,7 @@ class HomeHeaderView: UIView {
         label.text = NSLocalizedString("My Trips", comment: "")
         label.textAlignment = .center
         label.textColor = .white
-        label.shadowOffset = CGSize(width: 1, height: 1)
+        label.shadowOffset = CGSize(width: 2, height: 2)
         label.shadowColor = .darkGray
         return label
     }()
@@ -69,14 +70,17 @@ class HomeHeaderView: UIView {
     func configureView() {
         backgroundColor = headerbackground //.darkGray
         contentView.backgroundColor = headerbackground
-        headerLabel.shadowOffset = CGSize(width: 1, height: 1)
-        headerLabel.shadowColor = .darkGray
+        
+//        headerLabel.isHidden = true
+//        headerLabel.shadowOffset = CGSize(width: 1, height: 1)
+//        headerLabel.shadowColor = .darkGray
+//        headerLabel.backgroundColor = headerbackground.withAlphaComponent(0.9)
         
         self.imageView.image = #imageLiteral(resourceName: "city_2")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        
-        contentView.bringSubview(toFront: headerLabel)
+        //contentView.bringSubview(toFront: headerLabel)
+        titleLabel.backgroundColor = headerbackground.withAlphaComponent(0.3)
         addSubview(titleLabel)
     }
     
@@ -84,6 +88,7 @@ class HomeHeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         //imageView.frame = bounds
+        
         contentView.frame = bounds
         titleLabel.frame = CGRect(
             x: 0,
@@ -100,11 +105,8 @@ class HomeHeaderView: UIView {
         let fontSize = scrollPhasePercentage.scaled(from: 0...1, to: 22.0...60.0)
         let font = UIFont(name: "HelveticaNeue-Medium", size: fontSize)
         titleLabel.font = font
-        headerLabel.font = font
-        
-        self.gradientView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.cgColor, headerbackground.cgColor])
+        //titleLabel.alpha = 1-imageAlpha
     }
-    
 }
 
 // MARK: Number Utilities - Based on code from https://github.com/raizlabs/swiftilities

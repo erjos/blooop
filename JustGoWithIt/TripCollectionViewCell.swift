@@ -9,7 +9,7 @@ class TripCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         dropShadow()
-        roundCorners()
+        self.roundCorners()
         //bottomView.layer.cornerRadius = 5.0
     }
     
@@ -17,9 +17,5 @@ class TripCollectionViewCell: UICollectionViewCell {
         //change trip.name to trip.label
         label.text = city.label
         self.city.text = city.locationName
-    }
-    
-    func roundCorners() {
-        self.layer.cornerRadius = 5.0
     }
 }
