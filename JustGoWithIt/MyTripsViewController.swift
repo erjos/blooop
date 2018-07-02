@@ -25,6 +25,8 @@ class MyTripsViewController: UIViewController {
     var cities: Results<PrimaryLocation>?
     var collectionCount: Int = 0
     
+    let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
+    
     //APP BAr
     let appBar = MDCAppBar()
     let heroHeaderView = HomeHeaderView()
@@ -32,7 +34,9 @@ class MyTripsViewController: UIViewController {
     func createGradientLayer() {
         gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [UIColor.white.cgColor, UIColor.lightGray.cgColor]
+        //colors go top to bottom
+        gradientLayer.colors = [headerbackground.cgColor, UIColor.white.cgColor]
+        
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
@@ -50,6 +54,8 @@ class MyTripsViewController: UIViewController {
         headerView.minimumHeight = HomeHeaderView.Constants.minHeight
         // 4
         heroHeaderView.frame = headerView.bounds
+        //TODO: improve function to handle this blend on its own
+        heroHeaderView.gradientView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.cgColor, headerbackground.cgColor])
         headerView.insertSubview(heroHeaderView, at: 0)
         // 5
         headerView.trackingScrollView = scrollView
@@ -79,7 +85,9 @@ class MyTripsViewController: UIViewController {
         
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         floatingButton.setImage(plusImage, for: .normal)
-        createGradientLayer()
+        
+        //createGradientLayer()
+        self.view.backgroundColor = headerbackground
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -136,10 +144,10 @@ extension MyTripsViewController: MDCFlexibleHeaderViewLayoutDelegate {
                                              flexibleHeaderViewFrameDidChange flexibleHeaderView: MDCFlexibleHeaderView) {
         heroHeaderView.update(withScrollPhasePercentage: flexibleHeaderView.scrollPhasePercentage)
         let imageAlpha = min(flexibleHeaderView.scrollPhasePercentage.scaled(from: 0...0.8, to: 0...1), 1.0)
-        let alpha = 1 - imageAlpha
-        //TODO: there has to be abetter way to do this than to redraw the image every time we want to change the alpha
-        let image = #imageLiteral(resourceName: "menu_white").alpha(alpha)
-        self.navigationItem.rightBarButtonItem?.image = image
+//        let alpha = 1 - imageAlpha
+//        //TODO: there has to be abetter way to do this than to redraw the image every time we want to change the alpha
+//        let image = #imageLiteral(resourceName: "menu_white").alpha(alpha)
+//        self.navigationItem.rightBarButtonItem?.image = image
     }
 }
 
@@ -274,4 +282,20 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return newImage!
     }
+}
+
+extension UIView {
+    
+    func createGradientLayer(colors: [CGColor]) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = colors
+        
+        if let current = self.layer.sublayers?[0] {
+            self.layer.replaceSublayer(current, with: gradientLayer)
+        } else {
+            self.layer.insertSublayer(gradientLayer, at: 0)
+        }
+    }
+    
 }

@@ -11,14 +11,18 @@ import UIKit
 //TODO: maybe create this as a nib and setup your label that way...?
 class HomeHeaderView: UIView {
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var gradientView: UIView!
     struct Constants {
         static let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
         static let minHeight: CGFloat = 44 + statusBarHeight
         static let maxHeight: CGFloat = 400.0
     }
     
-    let imageView: UIImageView = {
+    let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
+    
+    public var image: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "city_2"))
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -63,8 +67,15 @@ class HomeHeaderView: UIView {
     
     // 3
     func configureView() {
-        backgroundColor = .darkGray
-        contentView.addSubview(imageView)
+        backgroundColor = headerbackground //.darkGray
+        contentView.backgroundColor = headerbackground
+        headerLabel.shadowOffset = CGSize(width: 1, height: 1)
+        headerLabel.shadowColor = .darkGray
+        
+        self.imageView.image = #imageLiteral(resourceName: "city_2")
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
         contentView.bringSubview(toFront: headerLabel)
         addSubview(titleLabel)
     }
@@ -72,7 +83,8 @@ class HomeHeaderView: UIView {
     // 4
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.frame = bounds
+        //imageView.frame = bounds
+        contentView.frame = bounds
         titleLabel.frame = CGRect(
             x: 0,
             y: Constants.statusBarHeight,
@@ -84,12 +96,13 @@ class HomeHeaderView: UIView {
         // 1
         let imageAlpha = min(scrollPhasePercentage.scaled(from: 0...0.8, to: 0...1), 1.0)
         imageView.alpha = imageAlpha
-        
         // 2
         let fontSize = scrollPhasePercentage.scaled(from: 0...1, to: 22.0...60.0)
         let font = UIFont(name: "HelveticaNeue-Medium", size: fontSize)
         titleLabel.font = font
         headerLabel.font = font
+        
+        self.gradientView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.cgColor, headerbackground.cgColor])
     }
     
 }
