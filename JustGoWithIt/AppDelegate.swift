@@ -11,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSPlacesClient.provideAPIKey("AIzaSyAvA8y67CJp6On7q0VBNhXC32ObSrbs7WM")
         GMSServices.provideAPIKey("AIzaSyAvA8y67CJp6On7q0VBNhXC32ObSrbs7WM")
+        //UINavigationBar.styleTitle(with: UIColor.white)
         return true
     }
 

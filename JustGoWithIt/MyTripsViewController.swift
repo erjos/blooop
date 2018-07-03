@@ -61,6 +61,8 @@ class MyTripsViewController: UIViewController {
         headerView.trackingScrollView = scrollView
         //can add programmatically - justn need better color - can show/hide in delegate methods??
         self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: nil), animated: false)
+        //self.navigationController?.navigationBar.topItem?.title = "my Trips"
+       // self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         // 6
         appBar.addSubviewsToParent()
     }
@@ -303,4 +305,14 @@ extension UIView {
         }
     }
     
+}
+
+extension UINavigationBar {
+    static func styleTitle(with color: UIColor) {
+        let titleTextAttributes = [
+            NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 22)!,
+            NSAttributedStringKey.foregroundColor: color
+        ]
+        UINavigationBar.appearance().titleTextAttributes = titleTextAttributes
+    }
 }
