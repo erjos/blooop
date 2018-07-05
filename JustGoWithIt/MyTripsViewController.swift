@@ -54,17 +54,18 @@ class MyTripsViewController: UIViewController {
         headerView.minimumHeight = HomeHeaderView.Constants.minHeight
         // 4
         heroHeaderView.frame = headerView.bounds
-        //TODO: improve function to handle this blend on its own
-        heroHeaderView.gradientView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
         headerView.insertSubview(heroHeaderView, at: 0)
         // 5
         headerView.trackingScrollView = scrollView
         //can add programmatically - justn need better color - can show/hide in delegate methods??
         self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: nil), animated: false)
-        //self.navigationController?.navigationBar.topItem?.title = "my Trips"
-       // self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         // 6
         appBar.addSubviewsToParent()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //TODO: improve this function to handle a blend on its own
+        heroHeaderView.gradientView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
     }
     
     override func viewDidLoad() {
@@ -90,7 +91,6 @@ class MyTripsViewController: UIViewController {
         
         //TODO: this applies to the entire view on the screen - if you want to get more specific with subviews we can do that
         createGradientLayer() //or set Backgound to headerbackground
-//        self.view.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -82,7 +82,7 @@ class HomeHeaderView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         //contentView.bringSubview(toFront: headerLabel)
-        titleLabel.backgroundColor = headerbackground.withAlphaComponent(0.3)
+        gradientView.backgroundColor = headerbackground.withAlphaComponent(0.3)
         addSubview(titleLabel)
     }
     
