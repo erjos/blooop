@@ -10,7 +10,7 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var emptyStateLabel: UILabel!
     @IBOutlet weak var emptyCollectionState: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var pageControl: UIPageControl!
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var collection: UICollectionView!
@@ -113,15 +113,6 @@ class MyTripsViewController: UIViewController {
         }
     }
     
-    func setCollectionPageCount(items: Int){
-        var pageCount = items / 3
-        let remainder = items % 3
-        if (remainder > 0){
-            pageCount += 1
-        }
-        pageControl.numberOfPages = pageCount
-    }
-    
     func getCollectionCellImage(indexPath: IndexPath)->UIImage{
         let photoIndex = (indexPath.row + 1) % 5
         switch (photoIndex) {
@@ -168,12 +159,6 @@ extension MyTripsViewController: UIScrollViewDelegate {
         let headerView = appBar.headerViewController.headerView
         if scrollView == headerView.trackingScrollView {
             headerView.trackingScrollDidEndDecelerating()
-        }
-        
-        if(scrollView == collection){
-            let pageNumber = round(self.collection.contentOffset.x/self.collection.frame.size.width)
-            self.pageControl.currentPage = Int(pageNumber)
-            guard self.pageControl.currentPage < (self.cities?.count)! else {return}
         }
     }
     
@@ -246,12 +231,10 @@ extension MyTripsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView == collection){
             guard let cityCount = cities?.count else {
-                self.pageControl.isHidden = true
                 //TODO: swap this out with an error state rather than an empty state
                 self.emptyCollectionState.isHidden = false
                 return 0
             }
-            setCollectionPageCount(items: cityCount)
             guard (cityCount != 0) else {
                 self.emptyCollectionState.isHidden = false
                 return 0
