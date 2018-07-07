@@ -258,18 +258,16 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateField" destination="EPR-p3-VgO" id="ZeA-Sf-OxV"/>
-                        <outlet property="dateLabel" destination="yyt-dC-quB" id="Oyp-Df-Z9r"/>
                         <outlet property="dateView" destination="0eo-Hh-f0Z" id="KQ9-iK-EX0"/>
                         <outlet property="dateViewHeight" destination="xnb-qS-DP1" id="Hg6-8D-Yec"/>
                         <outlet property="doneButton" destination="Yr5-zY-Dha" id="ave-Hw-fnC"/>
+                        <outlet property="labelField" destination="PfM-WC-44R" id="pkK-c6-16W"/>
                         <outlet property="locationDivider" destination="Ewk-8T-X5Q" id="1cB-Wp-CaT"/>
                         <outlet property="locationLabel" destination="HXy-K7-P1M" id="f0C-vh-K4N"/>
                         <outlet property="locationView" destination="cfu-TQ-bQg" id="bzL-gv-ohl"/>
                         <outlet property="mapLabel" destination="qcP-XP-60a" id="NcQ-W5-2Dv"/>
                         <outlet property="mapLabelConstraint" destination="ESu-1O-51X" id="n3Y-Nf-nhO"/>
                         <outlet property="mapView" destination="rya-Fo-KRD" id="FTo-6V-Spe"/>
-                        <outlet property="nameField" destination="PfM-WC-44R" id="SEx-Cv-TXf"/>
-                        <outlet property="nameLabel" destination="ykY-HS-t4A" id="VHW-ft-NXj"/>
                         <outlet property="nameView" destination="39W-VV-cCu" id="O9b-O1-w7H"/>
                         <outlet property="nameViewHeight" destination="6o4-Jw-GD6" id="XMh-Fm-FbT"/>
                         <outlet property="searchText" destination="laQ-RS-wXH" id="9MS-yV-4z5"/>

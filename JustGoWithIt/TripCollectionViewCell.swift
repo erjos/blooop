@@ -14,7 +14,6 @@ class TripCollectionViewCell: UICollectionViewCell {
     }
     
     func setLabels(city: PrimaryLocation){
-        //change trip.name to trip.label
         label.text = city.label
         self.city.text = city.locationName
     }

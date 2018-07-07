@@ -5,13 +5,11 @@ import GoogleMaps
 class BuilderViewController: UIViewController {
     
     @IBOutlet weak var mapView: UIView!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationView: UIView!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var dateView: UIView!
-    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var labelField: UITextField!
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var locationDivider: UIView!
     @IBOutlet weak var searchView: UIView!
@@ -24,6 +22,8 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var mapLabel: UILabel!
     
     @IBAction func saveTrip(_ sender: Any) {
+        //calling select done here will ensure that any active fields will be saved first
+        self.selectDone()
         saveNewTrip()
     }
     
@@ -81,7 +81,7 @@ class BuilderViewController: UIViewController {
         
         //setup drop shadows
         searchView.dropShadow()
-        nameField.dropShadow()
+        labelField.dropShadow()
         dateField.dropShadow()
         mapView.dropShadow()
         doneButton.dropShadow()
@@ -94,9 +94,9 @@ class BuilderViewController: UIViewController {
         mapLabelConstraint.constant = 10
         
         //Add padding to the name and date fields
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15 , height: nameField.frame.height))
-        nameField.leftViewMode = .always
-        nameField.leftView = paddingView
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15 , height: labelField.frame.height))
+        labelField.leftViewMode = .always
+        labelField.leftView = paddingView
         
         let paddingView2 = UIView(frame: CGRect(x: 0, y: 0, width: 15 , height: dateField.frame.height))
         dateField.leftViewMode = .always
@@ -134,9 +134,9 @@ class BuilderViewController: UIViewController {
     }
     
     private func setupNameField(){
-        nameField.keyboardType = .alphabet
-        nameField.inputAccessoryView = setupPickerToolbar()
-        nameField.delegate = self
+        labelField.keyboardType = .alphabet
+        labelField.inputAccessoryView = setupPickerToolbar()
+        labelField.delegate = self
     }
     
     private func setupDatePicker(_ field: UITextField, _ datePicker: UIDatePicker, _ yearsToMax: Int?){
@@ -169,14 +169,14 @@ class BuilderViewController: UIViewController {
     }
     
     @objc private func selectDone(){
-        if(nameField.isFirstResponder){
+        if(labelField.isFirstResponder){
             if(!isSubLocation){
-                city.label = nameField.text ?? ""
+                city.label = labelField.text ?? ""
             } else {
                 //TODO: handle if nameField is left blank - remove cityIndex (no longer needed)
-                RealmManager.saveSublocationName(city: city, label: nameField.text)
+                RealmManager.saveSublocationName(city: city, label: labelField.text)
             }
-            nameField.resignFirstResponder()
+            labelField.resignFirstResponder()
         }
         
         if(dateField.isFirstResponder){
@@ -195,7 +195,7 @@ class BuilderViewController: UIViewController {
     }
     
     @objc private func selectCancel(){
-        nameField.resignFirstResponder()
+        labelField.resignFirstResponder()
         dateField.resignFirstResponder()
     }
     

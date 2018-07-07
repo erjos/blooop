@@ -25,13 +25,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joP-YO-nxY">
-                        <rect key="frame" x="0.0" y="72" width="315" height="87"/>
+                        <rect key="frame" x="0.0" y="51" width="315" height="108"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="city_3" translatesAutoresizingMaskIntoConstraints="NO" id="3o0-le-Tbc">
-                                <rect key="frame" x="-43" y="2" width="401" height="93"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="93" id="lpU-pr-dMi"/>
-                                </constraints>
+                                <rect key="frame" x="-43" y="0.0" width="401" height="116"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,41 +36,33 @@
                             <constraint firstAttribute="bottom" secondItem="3o0-le-Tbc" secondAttribute="bottom" constant="-8" id="LbR-og-vXw"/>
                             <constraint firstAttribute="trailing" secondItem="3o0-le-Tbc" secondAttribute="trailing" constant="-43" id="Ub0-3b-ZPu"/>
                             <constraint firstItem="3o0-le-Tbc" firstAttribute="leading" secondItem="joP-YO-nxY" secondAttribute="leading" constant="-43" id="Vz8-ZA-WF8"/>
+                            <constraint firstItem="3o0-le-Tbc" firstAttribute="top" secondItem="joP-YO-nxY" secondAttribute="top" id="tHn-M6-HLs"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMS-gR-Lou">
-                        <rect key="frame" x="10" y="10" width="77" height="20"/>
+                        <rect key="frame" x="10" y="15" width="77" height="21"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hE-MP-88s">
-                        <rect key="frame" x="10" y="40" width="71" height="21"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                        <rect key="frame" x="102" y="16" width="71" height="20"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date_24" translatesAutoresizingMaskIntoConstraints="NO" id="oJ1-vW-1oM">
-                        <rect key="frame" x="281" y="10" width="24" height="24"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="24" id="1di-Cg-3hY"/>
-                            <constraint firstAttribute="height" constant="24" id="qBW-ip-4ba"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="nMS-gR-Lou" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="00I-yG-zha"/>
+                <constraint firstItem="nMS-gR-Lou" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="00I-yG-zha"/>
+                <constraint firstItem="6hE-MP-88s" firstAttribute="bottom" secondItem="nMS-gR-Lou" secondAttribute="bottom" id="CTf-K6-Rwn"/>
                 <constraint firstItem="nMS-gR-Lou" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="IbH-Es-j7q"/>
-                <constraint firstItem="joP-YO-nxY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="72" id="JTC-48-1Cd"/>
-                <constraint firstItem="6hE-MP-88s" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="JqD-x2-xo8"/>
                 <constraint firstAttribute="trailing" secondItem="joP-YO-nxY" secondAttribute="trailing" id="NEa-MR-8E9"/>
-                <constraint firstItem="oJ1-vW-1oM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="QOV-Or-Egh"/>
                 <constraint firstItem="joP-YO-nxY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e0q-5S-0DS"/>
+                <constraint firstItem="joP-YO-nxY" firstAttribute="top" secondItem="nMS-gR-Lou" secondAttribute="bottom" constant="15" id="lhR-gB-acH"/>
                 <constraint firstAttribute="bottom" secondItem="joP-YO-nxY" secondAttribute="bottom" id="nHA-LT-MGX"/>
-                <constraint firstAttribute="trailing" secondItem="oJ1-vW-1oM" secondAttribute="trailing" constant="10" id="utQ-Pw-11G"/>
-                <constraint firstItem="6hE-MP-88s" firstAttribute="top" secondItem="nMS-gR-Lou" secondAttribute="bottom" constant="10" id="vll-mI-mQY"/>
+                <constraint firstItem="6hE-MP-88s" firstAttribute="leading" secondItem="nMS-gR-Lou" secondAttribute="trailing" constant="15" id="x3X-9x-kL5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="406" height="262"/>
@@ -88,6 +77,5 @@
     </objects>
     <resources>
         <image name="city_3" width="3488" height="1715"/>
-        <image name="date_24" width="24" height="24"/>
     </resources>
 </document>
