@@ -128,11 +128,6 @@ extension MyTripsViewController: MDCFlexibleHeaderViewLayoutDelegate {
     public func flexibleHeaderViewController(_ flexibleHeaderViewController: MDCFlexibleHeaderViewController,
                                              flexibleHeaderViewFrameDidChange flexibleHeaderView: MDCFlexibleHeaderView) {
         heroHeaderView.update(withScrollPhasePercentage: flexibleHeaderView.scrollPhasePercentage)
-        let imageAlpha = min(flexibleHeaderView.scrollPhasePercentage.scaled(from: 0...0.8, to: 0...1), 1.0)
-//        let alpha = 1 - imageAlpha
-//        //TODO: there has to be abetter way to do this than to redraw the image every time we want to change the alpha
-//        let image = #imageLiteral(resourceName: "menu_white").alpha(alpha)
-//        self.navigationItem.rightBarButtonItem?.image = image
     }
 }
 
@@ -187,11 +182,7 @@ extension MyTripsViewController: UICollectionViewDelegate {
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if(collectionView == collection){
-            return 50.0
-        } else {
-            return 10.0
-        }
+        return 20.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
