@@ -24,7 +24,7 @@ class HomeHeaderView: UIView {
     let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
     
     public var image: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "city"))
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "city_2"))
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -78,11 +78,10 @@ class HomeHeaderView: UIView {
         
         
         
-        self.imageView.image = #imageLiteral(resourceName: "city")
+        self.imageView.image = #imageLiteral(resourceName: "city_2")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        //contentView.bringSubview(toFront: headerLabel)
-        gradientView.backgroundColor = headerbackground.withAlphaComponent(0.3)
+        gradientView.backgroundColor = headerbackground.withAlphaComponent(0.1)
         addSubview(titleLabel)
     }
     
@@ -117,7 +116,7 @@ class HomeHeaderView: UIView {
         imageView.alpha = imageAlpha
         // 2
         let fontSize = scrollPhasePercentage.scaled(from: 0...1, to: 20.0...60.0)
-        let font = UIFont(name: "HelveticaNeue", size: fontSize)
+        let font = UIFont(name: "HelveticaNeue-Medium", size: fontSize)
         titleLabel.font = font
         
         if(bounds.height > Constants.minHeight){
@@ -125,6 +124,8 @@ class HomeHeaderView: UIView {
         }
         
         //titleLabel.alpha = 1-imageAlpha
+        
+        
     }
 }
 

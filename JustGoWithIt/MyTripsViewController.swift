@@ -6,15 +6,10 @@ import MaterialComponents.MaterialFlexibleHeader
 
 class MyTripsViewController: UIViewController {
 
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var emptyStateLabel: UILabel!
     @IBOutlet weak var emptyCollectionState: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var collection: UICollectionView!
-    @IBOutlet weak var suggestionCollection: UICollectionView!
     @IBOutlet weak var floatingButton: MDCFloatingButton!
     
     @IBAction func pressFloatingAdd(_ sender: Any) {
@@ -56,8 +51,7 @@ class MyTripsViewController: UIViewController {
         heroHeaderView.frame = headerView.bounds
         headerView.insertSubview(heroHeaderView, at: 0)
         // 5
-        headerView.trackingScrollView = scrollView
-        //can add programmatically - justn need better color - can show/hide in delegate methods??
+        headerView.trackingScrollView = collection//scrollView
         self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: nil), animated: false)
         // 6
         appBar.addSubviewsToParent()
@@ -71,7 +65,7 @@ class MyTripsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        scrollView.delegate = self
+
         configureAppBar()
         
         emptyStateLabel.shadowColor = UIColor.white
@@ -81,15 +75,12 @@ class MyTripsViewController: UIViewController {
         self.emptyCollectionState.isHidden = true
         self.cities = RealmManager.fetchData()
         collection.backgroundColor = UIColor.clear
-        suggestionCollection.backgroundColor = UIColor.clear
 
         collection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
-        suggestionCollection.register(UINib.init(nibName: "TripCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Card")
         
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         floatingButton.setImage(plusImage, for: .normal)
         
-        //TODO: this applies to the entire view on the screen - if you want to get more specific with subviews we can do that
         createGradientLayer() //or set Backgound to headerbackground
     }
     
@@ -184,10 +175,10 @@ extension MyTripsViewController: UICollectionViewDelegate {
         //fetch necessary data for the page
         let trip = cities?[indexPath.row]
         self.activityIndicator.isHidden = false
-        self.contentView.isUserInteractionEnabled = false
+        self.view.isUserInteractionEnabled = false
         trip?.fetchGmsPlacesForCity(complete: { (isComplete) in
             self.activityIndicator.isHidden = true
-            self.contentView.isUserInteractionEnabled = true
+            self.view.isUserInteractionEnabled = true
             self.performSegue(withIdentifier: "toMain", sender: indexPath)
         })
     }
@@ -206,12 +197,6 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 25, 0, 25)
     }
-    
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        let pageNumber = round(self.collection.contentOffset.x/self.collection.frame.size.width)
-//        self.pageControl.currentPage = Int(pageNumber)
-//        guard self.pageControl.currentPage < (self.cities?.count)! else {return}
-//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(collectionView == collection){
