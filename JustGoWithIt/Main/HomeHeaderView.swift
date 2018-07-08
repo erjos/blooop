@@ -8,11 +8,9 @@
 
 import UIKit
 
-//TODO: maybe create this as a nib and setup your label that way...?
 class HomeHeaderView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var gradientView: UIView!
     
     struct Constants {
@@ -51,7 +49,6 @@ class HomeHeaderView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
         autoresizingMask = [.flexibleWidth, .flexibleHeight]
         clipsToBounds = true
         configureView()
@@ -65,19 +62,10 @@ class HomeHeaderView: UIView {
     }
     
     // MARK: View
-    
     // 3
     func configureView() {
         backgroundColor = headerbackground //.darkGray
         contentView.backgroundColor = headerbackground
-        
-//        headerLabel.isHidden = true
-//        headerLabel.shadowOffset = CGSize(width: 1, height: 1)
-//        headerLabel.shadowColor = .darkGray
-//        headerLabel.backgroundColor = headerbackground.withAlphaComponent(0.9)
-        
-        
-        
         self.imageView.image = #imageLiteral(resourceName: "city_2")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -88,12 +76,8 @@ class HomeHeaderView: UIView {
     // 4
     override func layoutSubviews() {
         super.layoutSubviews()
-        //imageView.frame = bounds
-        //calculate the y position more intelligently
         contentView.frame = bounds
-        
         let labelHeight = titleLabel.bounds.height
-        
         let calcValue = bounds.height - labelHeight - Constants.statusBarHeight
         var yVal:CGFloat = 0
 
@@ -105,9 +89,9 @@ class HomeHeaderView: UIView {
         
         titleLabel.frame = CGRect(
             x: 0,
-            y: yVal,//Constants.statusBarHeight - 7,
+            y: yVal,
             width: frame.width,
-            height: labelHeight)//frame.height - Constants.statusBarHeight)
+            height: labelHeight)
     }
     
     func update(withScrollPhasePercentage scrollPhasePercentage: CGFloat) {
@@ -122,10 +106,6 @@ class HomeHeaderView: UIView {
         if(bounds.height > Constants.minHeight){
          titleLabel.sizeToFit()
         }
-        
-        //titleLabel.alpha = 1-imageAlpha
-        
-        
     }
 }
 

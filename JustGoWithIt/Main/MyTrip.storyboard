@@ -46,7 +46,7 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ts-En-RJL">
-                                        <rect key="frame" x="67" y="227.5" width="240" height="128"/>
+                                        <rect key="frame" x="67" y="420" width="240" height="128"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new trip entry." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHP-wT-HEj">
                                                 <rect key="frame" x="0.0" y="38" width="240" height="52.5"/>
@@ -70,8 +70,8 @@
                                     <constraint firstItem="Q6z-bx-BdT" firstAttribute="top" secondItem="xLk-nV-1uC" secondAttribute="top" id="CDc-fg-yvc"/>
                                     <constraint firstAttribute="trailing" secondItem="Q6z-bx-BdT" secondAttribute="trailing" id="FIF-31-d1v"/>
                                     <constraint firstItem="Q6z-bx-BdT" firstAttribute="leading" secondItem="xLk-nV-1uC" secondAttribute="leading" id="XeL-SB-hIZ"/>
-                                    <constraint firstItem="2Ts-En-RJL" firstAttribute="centerY" secondItem="xLk-nV-1uC" secondAttribute="centerY" id="aq3-gm-S2O"/>
                                     <constraint firstItem="2Ts-En-RJL" firstAttribute="centerX" secondItem="xLk-nV-1uC" secondAttribute="centerX" id="kB4-Uw-L9T"/>
+                                    <constraint firstItem="2Ts-En-RJL" firstAttribute="top" secondItem="xLk-nV-1uC" secondAttribute="top" constant="420" id="sZF-l4-Hov"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvM-63-US7" customClass="MDCFloatingButton">

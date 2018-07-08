@@ -51,8 +51,6 @@
 		86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */; };
 		86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */; };
 		86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */; };
-		86CA2C0D20226CB400A0D770 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */; };
-		86CA2C0E20226CB400A0D770 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */; };
 		86FC567D20A1E9A100D9BB00 /* PlaceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,8 +102,6 @@
 		86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
 		86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModalViewController.swift; sourceTree = "<group>"; };
 		FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustGoWithIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -139,6 +135,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		529F4EA320F283E500D1E965 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8604A87820E872CB00A28144 /* HomeHeaderView.xib */,
+				8604A87620E80F4700A28144 /* HomeHeaderView.swift */,
+				86B5D47320C74F8500A851DE /* MyTripsViewController.swift */,
+				862FBB3F20C80FA20078D689 /* MyTrip.storyboard */,
+				863C736120C7546F0054C49A /* TripCollectionViewCell.xib */,
+				863C736020C7546F0054C49A /* TripCollectionViewCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		529F4EA420F2841C00D1E965 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */,
+				863E26E6207FFDBD00029FF4 /* LocationManager.swift */,
+				86B5A8D820C95F5C00B24F43 /* RealmManager.swift */,
+				86B5A8DA20CAB36C00B24F43 /* GoogleResourceManager.swift */,
+				8629CC8420D3EDB600ED49E1 /* Extensions.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		86A895952019917D00CE3926 = {
 			isa = PBXGroup;
 			children = (
@@ -160,35 +181,23 @@
 		86A895A02019917D00CE3926 /* JustGoWithIt */ = {
 			isa = PBXGroup;
 			children = (
-				86A895A12019917D00CE3926 /* AppDelegate.swift */,
-				86A895A52019917D00CE3926 /* Trip.storyboard */,
-				862FBB3F20C80FA20078D689 /* MyTrip.storyboard */,
-				86B5D47320C74F8500A851DE /* MyTripsViewController.swift */,
-				8604A87620E80F4700A28144 /* HomeHeaderView.swift */,
-				863C736120C7546F0054C49A /* TripCollectionViewCell.xib */,
-				863C736020C7546F0054C49A /* TripCollectionViewCell.swift */,
-				8604A87820E872CB00A28144 /* HomeHeaderView.xib */,
+				529F4EA320F283E500D1E965 /* Main */,
+				86B5D47020C5BB0000A851DE /* Trip Details */,
 				86B5D47220C5E46600A851DE /* TripBuilder */,
-				86B5D47020C5BB0000A851DE /* TripView */,
-				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
-				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
+				529F4EA420F2841C00D1E965 /* Util */,
+				86A895A12019917D00CE3926 /* AppDelegate.swift */,
 				86A895A82019917D00CE3926 /* Assets.xcassets */,
 				86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */,
 				86A895AD2019917D00CE3926 /* Info.plist */,
-				86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */,
-				86CA2C0B20226CB400A0D770 /* CalendarViewController.swift */,
-				86CA2C0C20226CB400A0D770 /* CalendarViewController.xib */,
 				864F67E1207EACD500B6554B /* Models.swift */,
-				863E26E4207FA1C000029FF4 /* GooglePhotoManager.swift */,
-				863E26E6207FFDBD00029FF4 /* LocationManager.swift */,
-				86B5A8D820C95F5C00B24F43 /* RealmManager.swift */,
-				86B5A8DA20CAB36C00B24F43 /* GoogleResourceManager.swift */,
-				8629CC8420D3EDB600ED49E1 /* Extensions.swift */,
+				86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */,
+				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
+				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
 		};
-		86B5D47020C5BB0000A851DE /* TripView */ = {
+		86B5D47020C5BB0000A851DE /* Trip Details */ = {
 			isa = PBXGroup;
 			children = (
 				86B5D47120C5CEDA00A851DE /* PlaceDetails */,
@@ -197,8 +206,9 @@
 				86A895B5201992AE00CE3926 /* ListHeader.swift */,
 				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
 				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
+				86A895A52019917D00CE3926 /* Trip.storyboard */,
 			);
-			path = TripView;
+			path = "Trip Details";
 			sourceTree = "<group>";
 		};
 		86B5D47120C5CEDA00A851DE /* PlaceDetails */ = {
@@ -316,7 +326,6 @@
 			files = (
 				86A895B42019922E00CE3926 /* ListHeader.xib in Resources */,
 				86A895AC2019917D00CE3926 /* LaunchScreen.storyboard in Resources */,
-				86CA2C0E20226CB400A0D770 /* CalendarViewController.xib in Resources */,
 				86A895A92019917D00CE3926 /* Assets.xcassets in Resources */,
 				86A895A72019917D00CE3926 /* Trip.storyboard in Resources */,
 				862FBB4020C80FA20078D689 /* MyTrip.storyboard in Resources */,
@@ -404,7 +413,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86CA2C0D20226CB400A0D770 /* CalendarViewController.swift in Sources */,
 				86A895A42019917D00CE3926 /* TripViewController.swift in Sources */,
 				86B5A8D920C95F5C00B24F43 /* RealmManager.swift in Sources */,
 				863E26E7207FFDBD00029FF4 /* LocationManager.swift in Sources */,

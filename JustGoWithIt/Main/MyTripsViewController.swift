@@ -36,7 +36,6 @@ class MyTripsViewController: UIViewController {
     }
     
     func configureAppBar(){
-        //heroHeaderView.loadUpView()
         //configure app bar
         self.addChildViewController(appBar.headerViewController)
         appBar.navigationBar.backgroundColor = .clear
