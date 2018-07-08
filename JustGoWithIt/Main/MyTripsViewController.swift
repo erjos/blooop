@@ -24,14 +24,13 @@ class MyTripsViewController: UIViewController {
     
     //APP BAr
     let appBar = MDCAppBar()
-    let heroHeaderView = HomeHeaderView()
+    let headerView = HomeHeaderView()
     
     func createGradientLayer() {
         gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
         //colors go top to bottom
         gradientLayer.colors = [headerbackground.cgColor, UIColor.white.cgColor]
-        
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
@@ -42,15 +41,15 @@ class MyTripsViewController: UIViewController {
         appBar.navigationBar.title = nil
         appBar.headerViewController.layoutDelegate = self
         // 3
-        let headerView = appBar.headerViewController.headerView
-        headerView.backgroundColor = .clear
-        headerView.maximumHeight = HomeHeaderView.Constants.maxHeight
-        headerView.minimumHeight = HomeHeaderView.Constants.minHeight
+        let header = appBar.headerViewController.headerView
+        header.backgroundColor = .clear
+        header.maximumHeight = HomeHeaderView.Constants.maxHeight
+        header.minimumHeight = HomeHeaderView.Constants.minHeight
         // 4
-        heroHeaderView.frame = headerView.bounds
-        headerView.insertSubview(heroHeaderView, at: 0)
+        headerView.frame = header.bounds
+        header.insertSubview(headerView, at: 0)
         // 5
-        headerView.trackingScrollView = collection//scrollView
+        header.trackingScrollView = collection
         self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: nil), animated: false)
         // 6
         appBar.addSubviewsToParent()
@@ -58,7 +57,7 @@ class MyTripsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //TODO: improve this function to handle a blend on its own
-        heroHeaderView.gradientView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
+        headerView.gradientView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
     }
     
     override func viewDidLoad() {
@@ -126,7 +125,7 @@ extension MyTripsViewController: MDCFlexibleHeaderViewLayoutDelegate {
     
     public func flexibleHeaderViewController(_ flexibleHeaderViewController: MDCFlexibleHeaderViewController,
                                              flexibleHeaderViewFrameDidChange flexibleHeaderView: MDCFlexibleHeaderView) {
-        heroHeaderView.update(withScrollPhasePercentage: flexibleHeaderView.scrollPhasePercentage)
+        headerView.update(withScrollPhasePercentage: flexibleHeaderView.scrollPhasePercentage)
     }
 }
 
@@ -235,42 +234,4 @@ extension MyTripsViewController: UICollectionViewDataSource {
     }
 }
 
-extension UIImage {
-    
-    func alpha(_ value:CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
-}
 
-extension UIView {
-    func roundCorners() {
-        self.layer.cornerRadius = 5.0
-    }
-    
-    func createGradientLayer(colors: [CGColor]) {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bounds
-        gradientLayer.colors = colors
-        
-        if let current = self.layer.sublayers?[0] {
-            self.layer.replaceSublayer(current, with: gradientLayer)
-        } else {
-            self.layer.insertSublayer(gradientLayer, at: 0)
-        }
-    }
-    
-}
-
-extension UINavigationBar {
-    static func styleTitle(with color: UIColor) {
-        let titleTextAttributes = [
-            NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 22)!,
-            NSAttributedStringKey.foregroundColor: color
-        ]
-        UINavigationBar.appearance().titleTextAttributes = titleTextAttributes
-    }
-}

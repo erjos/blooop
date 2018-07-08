@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		186C7225388DE9F244B17140 /* Pods_JustGoWithIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */; };
+		529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F4EA520F287F800D1E965 /* TripHeaderView.swift */; };
 		8604A87720E80F4700A28144 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8604A87620E80F4700A28144 /* HomeHeaderView.swift */; };
 		8604A87920E872CB00A28144 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8604A87820E872CB00A28144 /* HomeHeaderView.xib */; };
 		8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629CC8420D3EDB600ED49E1 /* Extensions.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		1F520DA6DB0379C82D7EF55A /* Pods-JustGoWithIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.release.xcconfig"; sourceTree = "<group>"; };
 		294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.debug.xcconfig"; sourceTree = "<group>"; };
+		529F4EA520F287F800D1E965 /* TripHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHeaderView.swift; sourceTree = "<group>"; };
 		8604A87620E80F4700A28144 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		8604A87820E872CB00A28144 /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
 		8629CC8420D3EDB600ED49E1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
 				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
 				86A895A52019917D00CE3926 /* Trip.storyboard */,
+				529F4EA520F287F800D1E965 /* TripHeaderView.swift */,
 			);
 			path = "Trip Details";
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */,
 				8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */,
 				86B5D47420C74F8500A851DE /* MyTripsViewController.swift in Sources */,
+				529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */,
 				863C736220C7546F0054C49A /* TripCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

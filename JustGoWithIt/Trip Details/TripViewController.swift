@@ -28,6 +28,52 @@ class TripViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //APP BAr
+    let appBar = MDCAppBar()
+    let headerView = TripHeaderView()
+    
+    func configureAppBar(){
+        //configure app bar
+        self.addChildViewController(appBar.headerViewController)
+        appBar.navigationBar.backgroundColor = .clear
+        appBar.navigationBar.title = nil
+        appBar.headerViewController.layoutDelegate = self
+        
+        //Get the Photo
+        GooglePhotoManager.getFirstPhoto(placeID: city.placeID, success: { image, attributes in
+            //SUCCESS
+            let imageView = UIImageView.init(image: image)
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            self.headerView.imageView = imageView
+            self.headerView.addSubview(imageView)
+            self.headerView.bringSubview(toFront: self.headerView.titleLabel)
+        }) { (error) in
+            //ERROR
+        }
+        let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
+        headerView.titleLabel.text = gms?.name
+        //header.dateLabel.text = city.date?.formatDateAsString()
+        
+        // 3
+        let header = appBar.headerViewController.headerView
+        header.backgroundColor = .clear
+        header.maximumHeight = TripHeaderView.Constants.maxHeight
+        header.minimumHeight = TripHeaderView.Constants.minHeight
+        // 4
+        headerView.frame = header.bounds
+        header.insertSubview(headerView, at: 0)
+        // 5
+        header.trackingScrollView = tableView
+        
+        self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: #selector(rightBarAction(_:))), animated: false)
+        
+        self.navigationItem.setLeftBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "back_white"), style: .plain, target: self, action: #selector(backAction(_:))), animated: false)
+        
+        // 6
+        appBar.addSubviewsToParent()
+    }
+    
     func showHideButtonAnimate(shouldShow: Bool){
         let bottomViewValue: CGFloat = shouldShow ? 0.0 : 60.0
         self.view.layoutIfNeeded()
@@ -40,6 +86,9 @@ class TripViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
+        configureAppBar()
+        
         tableView.register(UINib.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
         //TODO: might make this label optional - if so the title of this page should be consistent
         self.title = city?.label
@@ -66,6 +115,67 @@ class TripViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         self.tableView.setEditing(editing, animated: animated)
+    }
+}
+
+extension TripViewController: MDCFlexibleHeaderViewLayoutDelegate {
+    
+    public func flexibleHeaderViewController(_ flexibleHeaderViewController: MDCFlexibleHeaderViewController,
+                                             flexibleHeaderViewFrameDidChange flexibleHeaderView: MDCFlexibleHeaderView) {
+        headerView.update(withScrollPhasePercentage: flexibleHeaderView.scrollPhasePercentage)
+    }
+}
+
+extension TripViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let headerView = appBar.headerViewController.headerView
+        
+        if scrollView == headerView.trackingScrollView {
+            headerView.trackingScrollDidScroll()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let headerView = appBar.headerViewController.headerView
+        if scrollView == headerView.trackingScrollView {
+            headerView.trackingScrollDidEndDecelerating()
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let headerView = appBar.headerViewController.headerView
+        if scrollView == headerView.trackingScrollView {
+            headerView.trackingScrollDidEndDraggingWillDecelerate(decelerate)
+        }
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let headerView = appBar.headerViewController.headerView
+        if scrollView == headerView.trackingScrollView {
+            headerView.trackingScrollWillEndDragging(withVelocity: velocity,
+                                                     targetContentOffset: targetContentOffset)
+        }
+    }
+    
+    //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    //        //TODO: refine this method to correctly determine when to show and hide the button
+    //        if (self.lastContentOffset < scrollView.contentOffset.y) {
+    //            // moved to top
+    //
+    //            //self.showHideButtonAnimate(shouldShow: true)
+    //        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+    //            // moved to bottom
+    //
+    //            //self.showHideButtonAnimate(shouldShow: false)
+    //        } else {
+    //            // didn't move
+    //        }
+    //    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
     }
 }
 
@@ -96,24 +206,6 @@ extension TripViewController: GMSAutocompleteViewControllerDelegate {
 }
 
 extension TripViewController: UITableViewDelegate{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //TODO: refine this method to correctly determine when to show and hide the button
-        if (self.lastContentOffset < scrollView.contentOffset.y) {
-            // moved to top
-            
-            //self.showHideButtonAnimate(shouldShow: true)
-        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
-            // moved to bottom
-            
-            //self.showHideButtonAnimate(shouldShow: false)
-        } else {
-            // didn't move
-        }
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.lastContentOffset = scrollView.contentOffset.y
-    }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.delete
@@ -129,27 +221,8 @@ extension TripViewController: UITableViewDelegate{
         performSegue(withIdentifier: "presentPlace", sender: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = Bundle.main.loadNibNamed("ListHeader", owner: self, options: nil)?.first as! ListHeader
-        header.section = section
-        GooglePhotoManager.getFirstPhoto(placeID: city.placeID, success: { image, attributes in
-            //SUCCESS
-            header.headerImage.image = image
-        }) { (error) in
-            //ERROR
-        }
-        let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
-        header.mainLabel.text = gms?.name
-        header.dateLabel.text = city.date?.formatDateAsString()
-        return header
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 255.0
     }
 }
 

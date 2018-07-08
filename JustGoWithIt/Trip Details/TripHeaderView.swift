@@ -1,36 +1,42 @@
 //
-//  HomeHeaderView.swift
+//  TripHeaderView.swift
 //  JustGoWithIt
 //
-//  Created by Joseph, Ethan on 6/30/18.
+//  Created by Ethan Joseph on 7/8/18.
 //  Copyright © 2018 Joseph, Ethan. All rights reserved.
 //
 
 import UIKit
 
-class HomeHeaderView: UIView {
-    @IBOutlet var contentView: UIView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var gradientView: UIView!
-    
+class TripHeaderView: UIView {
+
     struct Constants {
         static let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
         static let minHeight: CGFloat = 44 + statusBarHeight
-        static let maxHeight: CGFloat = 400.0
+        static let maxHeight: CGFloat = 300.0
     }
     
     let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
     
-    public var image: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "city_2"))
+    //this will need to get setupLater - expose a method to do this
+    public var imageView = UIImageView()
+//    {
+//        let imageView = UIImageView(image: #imageLiteral(resourceName: "city_2"))
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.clipsToBounds = true
+//        return imageView
+//    }()
+    
+    func setImage(image:UIImage){
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        return imageView
-    }()
+        imageView.image = image
+        addSubview(imageView)
+    }
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("My Trips", comment: "")
+        label.text = NSLocalizedString("", comment: "")
         label.textAlignment = .center
         label.textColor = .white
         label.shadowOffset = CGSize(width: 2, height: 2)
@@ -45,10 +51,10 @@ class HomeHeaderView: UIView {
     }
     
     func commonInit(){
-        Bundle.main.loadNibNamed("HomeHeaderView", owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        //Bundle.main.loadNibNamed("HomeHeaderView", owner: self, options: nil)
+        //addSubview(contentView)
+        //contentView.frame = self.bounds
+        //contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         autoresizingMask = [.flexibleWidth, .flexibleHeight]
         clipsToBounds = true
         configureView()
@@ -57,30 +63,31 @@ class HomeHeaderView: UIView {
     // 2
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
-        //fatalError("init(coder:) has not been implemented")
+        //commonInit()
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: View
     // 3
     func configureView() {
         backgroundColor = headerbackground //.darkGray
-        contentView.backgroundColor = headerbackground
-        self.imageView.image = #imageLiteral(resourceName: "city_2")
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        gradientView.backgroundColor = headerbackground.withAlphaComponent(0.1)
+        //contentView.backgroundColor = headerbackground
+        //self.imageView.image = #imageLiteral(resourceName: "city_2")
+        //imageView.contentMode = .scaleAspectFill
+        //imageView.clipsToBounds = true
+        //gradientView.backgroundColor = headerbackground.withAlphaComponent(0.1)
+        addSubview(imageView)
         addSubview(titleLabel)
     }
     
     // 4
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = bounds
+        imageView.frame = bounds
         let labelHeight = titleLabel.bounds.height
         let calcValue = bounds.height - labelHeight - Constants.statusBarHeight
         var yVal:CGFloat = 0
-
+        
         if (calcValue >= 20){
             yVal = calcValue
         } else {
@@ -104,9 +111,7 @@ class HomeHeaderView: UIView {
         titleLabel.font = font
         
         if(bounds.height > Constants.minHeight){
-         titleLabel.sizeToFit()
+            titleLabel.sizeToFit()
         }
     }
 }
-
-
