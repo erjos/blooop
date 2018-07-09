@@ -9,7 +9,7 @@ class TripCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         dropShadow()
-        self.roundCorners()
+        self.roundCorners(radius: 5.0)
         //bottomView.layer.cornerRadius = 5.0
     }
     

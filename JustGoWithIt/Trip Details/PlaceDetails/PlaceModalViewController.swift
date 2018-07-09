@@ -2,12 +2,10 @@ import UIKit
 import GooglePlaces
 
 class PlaceModalViewController: UIViewController {
-
-    @IBOutlet weak var phoneNumber: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var openStatus: UILabel!
+    @IBOutlet weak var notesIcon: UIButton!
+    @IBOutlet weak var placeIcon: UIButton!
+    @IBOutlet weak var phone: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var locationImage: UIImageView!
     @IBOutlet weak var photoCollection: UICollectionView!
     
     var place : SubLocation!
@@ -22,13 +20,18 @@ class PlaceModalViewController: UIViewController {
         photoCollection.dataSource = self
         photoCollection.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
         setLabels()
+        phone.roundCorners(radius: 22.0)
+        placeIcon.roundCorners(radius: 22.0)
+        notesIcon.roundCorners(radius: 22.0)
     }
     
     func setLabels(){
         let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
-        phoneNumber.text = gms?.phoneNumber
-        address.text = gms?.formattedAddress
-        openStatus.text = (gms?.openNowStatus == GMSPlacesOpenNowStatus.yes) ? "Open" : "Closed"
+        
+        //TODO: initiate either a tooltip to display this info or just direct them to a map or press to call function
+        //phoneNumber.text = gms?.phoneNumber
+        //address.text = gms?.formattedAddress
+        //openStatus.text = (gms?.openNowStatus == GMSPlacesOpenNowStatus.yes) ? "Open" : "Closed"
         locationLabel.text = gms?.name
     }
 

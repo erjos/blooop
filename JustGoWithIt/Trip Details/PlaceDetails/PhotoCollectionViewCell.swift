@@ -8,12 +8,15 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     var imageLoaded = false
     
-    //should probably be called after a new cell is dequed from the list?
     func resetCell(){
         self.imageView.image = nil
         self.activityIndicator.isHidden = false
         self.imageView.isHidden = true
         self.imageLoaded = false
+    }
+    
+    override func prepareForReuse() {
+        resetCell()
     }
     
     func setImage(image: UIImage){

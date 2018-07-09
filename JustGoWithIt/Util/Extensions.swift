@@ -42,8 +42,8 @@ extension UIView {
         self.layer.shadowOpacity = 0.5
     }
     
-    func roundCorners() {
-        self.layer.cornerRadius = 5.0
+    func roundCorners(radius: CGFloat) {
+        self.layer.cornerRadius = radius
     }
     
     func createGradientLayer(colors: [CGColor]) {
