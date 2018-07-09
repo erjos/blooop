@@ -18,14 +18,7 @@ class TripHeaderView: UIView {
     
     let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
     
-    //this will need to get setupLater - expose a method to do this
     public var imageView = UIImageView()
-//    {
-//        let imageView = UIImageView(image: #imageLiteral(resourceName: "city_2"))
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.clipsToBounds = true
-//        return imageView
-//    }()
     
     func setImage(image:UIImage){
         imageView.contentMode = .scaleAspectFill
@@ -113,5 +106,6 @@ class TripHeaderView: UIView {
         if(bounds.height > Constants.minHeight){
             titleLabel.sizeToFit()
         }
+//        self.imageView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
     }
 }
