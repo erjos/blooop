@@ -11,6 +11,7 @@ class TripViewController: UIViewController {
     var lastContentOffset: CGFloat = 0
     let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
     
+    
     @IBAction func addPlace(_ sender: Any) {
         performSegue(withIdentifier: "tripToBuilder", sender: self)
     }
@@ -47,7 +48,10 @@ class TripViewController: UIViewController {
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
             self.headerView.imageView = imageView
+            
             let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
+            
+            
             imageView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
             self.headerView.addSubview(imageView)
             self.headerView.bringSubview(toFront: self.headerView.titleLabel)

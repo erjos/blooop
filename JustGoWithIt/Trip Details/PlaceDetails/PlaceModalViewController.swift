@@ -6,10 +6,8 @@ class PlaceModalViewController: UIViewController {
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var openStatus: UILabel!
-    @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var locationImage: UIImageView!
-    @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var photoCollection: UICollectionView!
     
     var place : SubLocation!
@@ -31,7 +29,6 @@ class PlaceModalViewController: UIViewController {
         phoneNumber.text = gms?.phoneNumber
         address.text = gms?.formattedAddress
         openStatus.text = (gms?.openNowStatus == GMSPlacesOpenNowStatus.yes) ? "Open" : "Closed"
-        placeLabel.text = place.label
         locationLabel.text = gms?.name
     }
 
@@ -58,8 +55,20 @@ extension PlaceModalViewController: UICollectionViewDataSource {
 }
 
 extension PlaceModalViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 50.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 25, 0, 25)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: 200, height: 115)
+        let deviceWidth = self.view.window?.frame.width
+        //this number is 70 to give additional room inside the collection - constraints add to 60 outside the collection
+        let cellWidth = deviceWidth! - 70
+        let size = CGSize.init(width: cellWidth, height: 155)
+        return size
     }
 }
 

@@ -188,16 +188,11 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if(collectionView == collection){
-            let deviceWidth = self.view.window?.frame.width
-            //this number is 70 to give additional room inside the collection - constraints add to 60 outside the collection
-            let cellWidth = deviceWidth! - 70
-            let size = CGSize.init(width: cellWidth, height: 155)
-            return size
-        } else {
-          let size = CGSize.init(width: 150, height: 175)
-            return size
-        }
+        let deviceWidth = self.view.window?.frame.width
+        //this number is 70 to give additional room inside the collection - constraints add to 60 outside the collection
+        let cellWidth = deviceWidth! - 70
+        let size = CGSize.init(width: cellWidth, height: 155)
+        return size
     }
 }
 
