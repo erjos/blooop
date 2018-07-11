@@ -30,6 +30,14 @@ class TripViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func createGradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        //colors go top to bottom
+        gradientLayer.colors = [headerbackground.cgColor, UIColor.white.cgColor]
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     //APP BAr
     let appBar = MDCAppBar()
     let headerView = TripHeaderView()
@@ -105,6 +113,7 @@ class TripViewController: UIViewController {
         self.title = city?.label
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         floatingButton.setImage(plusImage, for: .normal)
+        createGradientLayer()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

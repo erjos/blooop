@@ -198,20 +198,17 @@ extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyTripsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(collectionView == collection){
-            guard let cityCount = cities?.count else {
+        guard let cityCount = cities?.count else {
                 //TODO: swap this out with an error state rather than an empty state
-                self.emptyCollectionState.isHidden = false
-                return 0
-            }
-            guard (cityCount != 0) else {
-                self.emptyCollectionState.isHidden = false
-                return 0
-            }
-            return cityCount
-        } else {
-            return 5
+            self.emptyCollectionState.isHidden = false
+            return 0
         }
+        guard (cityCount != 0) else {
+            self.emptyCollectionState.isHidden = false
+            return 0
+        }
+        emptyCollectionState.isHidden = true
+        return cityCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
