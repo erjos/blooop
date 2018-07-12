@@ -127,6 +127,7 @@
                         <outlet property="contentView" destination="3he-2A-4kO" id="pyQ-KH-660"/>
                         <outlet property="locationLabel" destination="r3d-OW-Ru8" id="xv4-cA-DVh"/>
                         <outlet property="notesIcon" destination="E1U-GM-xPS" id="4IB-jW-VSC"/>
+                        <outlet property="pageControl" destination="jPF-Gw-9JQ" id="QWl-ac-6wL"/>
                         <outlet property="phone" destination="4mP-8T-EVm" id="sLG-kB-dK1"/>
                         <outlet property="photoCollection" destination="EyM-Kc-JQB" id="4Yk-2T-Zlo"/>
                         <outlet property="placeIcon" destination="IrH-LN-LFw" id="yYT-Gy-cLD"/>

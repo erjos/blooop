@@ -2,6 +2,7 @@ import UIKit
 import GooglePlaces
 
 class PlaceModalViewController: UIViewController {
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var notesIcon: UIButton!
     @IBOutlet weak var placeIcon: UIButton!
@@ -10,6 +11,7 @@ class PlaceModalViewController: UIViewController {
     @IBOutlet weak var photoCollection: UICollectionView!
     
     var place : SubLocation!
+    var photoCount = 0
     
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -46,9 +48,11 @@ class PlaceModalViewController: UIViewController {
 extension PlaceModalViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        guard let photoCount = GoogleResourceManager.sharedInstance.getMetaDataListFor(placeId: place.placeID)?.count else {
-            return 1
+        guard let photos = GoogleResourceManager.sharedInstance.getMetaDataListFor(placeId: place.placeID)?.count else {
+            return 0
         }
+        self.photoCount = photos
+        self.pageControl.numberOfPages = photoCount
         return photoCount
     }
     
@@ -74,6 +78,13 @@ extension PlaceModalViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth = deviceWidth! - 70
         let size = CGSize.init(width: cellWidth, height: 155)
         return size
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = round(self.photoCollection.contentOffset.x/self.photoCollection.frame.size.width)
+        
+        self.pageControl.currentPage = Int(pageNumber)
+        guard self.pageControl.currentPage < self.photoCount else {return}
     }
 }
 
