@@ -12,6 +12,7 @@ class TripViewController: UIViewController {
     let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
     
     
+    @IBOutlet weak var emptyTableState: UIView!
     @IBAction func addPlace(_ sender: Any) {
         performSegue(withIdentifier: "tripToBuilder", sender: self)
     }
@@ -275,6 +276,8 @@ extension TripViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let placeCount = city.subLocations.count
+        let isTableEmpty = (placeCount == 0)
+        self.emptyTableState.isHidden = !isTableEmpty
         return placeCount
     }
 }

@@ -153,6 +153,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="b8K-Uk-P1q"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6N-eg-mom">
+                                <rect key="frame" x="67.5" y="504" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new trip entry." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDH-Tx-mZn">
+                                        <rect key="frame" x="0.0" y="38" width="240" height="52.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hDH-Tx-mZn" secondAttribute="trailing" id="IDa-yT-rwC"/>
+                                    <constraint firstAttribute="height" constant="128" id="KmF-1D-u1F"/>
+                                    <constraint firstItem="hDH-Tx-mZn" firstAttribute="leading" secondItem="b6N-eg-mom" secondAttribute="leading" id="OLj-3I-MuT"/>
+                                    <constraint firstItem="hDH-Tx-mZn" firstAttribute="centerX" secondItem="b6N-eg-mom" secondAttribute="centerX" id="RTD-LS-Mte"/>
+                                    <constraint firstAttribute="width" constant="240" id="Swc-69-mGA"/>
+                                    <constraint firstItem="hDH-Tx-mZn" firstAttribute="centerY" secondItem="b6N-eg-mom" secondAttribute="centerY" id="chw-Fu-Gn0"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i55-GR-l0O" customClass="MDCFloatingButton">
                                 <rect key="frame" x="310" y="602" width="45" height="45"/>
                                 <constraints>
@@ -166,12 +185,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="b6N-eg-mom" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E7B-8b-fJ8"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GAF-eY-Eno"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="GGz-qF-y8a"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LLy-1a-Lct"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fZj-xw-miw" secondAttribute="bottom" id="fhL-Qp-Ecx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i55-GR-l0O" secondAttribute="trailing" constant="20" id="lm5-N2-i2R"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="i55-GR-l0O" secondAttribute="bottom" constant="20" id="vQM-ww-Ofu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b6N-eg-mom" secondAttribute="bottom" constant="35" id="vfE-dI-JSa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -190,6 +211,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyTableState" destination="b6N-eg-mom" id="yXF-KD-f4e"/>
                         <outlet property="floatingButton" destination="i55-GR-l0O" id="4DD-YP-adU"/>
                         <outlet property="rightBarItem" destination="tOJ-1N-u5O" id="YkQ-Nq-PPG"/>
                         <outlet property="tableView" destination="fZj-xw-miw" id="OhB-nJ-pcx"/>

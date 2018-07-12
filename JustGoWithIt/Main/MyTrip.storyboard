@@ -71,6 +71,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Q6z-bx-BdT" secondAttribute="trailing" id="FIF-31-d1v"/>
                                     <constraint firstItem="Q6z-bx-BdT" firstAttribute="leading" secondItem="xLk-nV-1uC" secondAttribute="leading" id="XeL-SB-hIZ"/>
                                     <constraint firstItem="2Ts-En-RJL" firstAttribute="centerX" secondItem="xLk-nV-1uC" secondAttribute="centerX" id="kB4-Uw-L9T"/>
+                                    <constraint firstAttribute="bottom" secondItem="2Ts-En-RJL" secondAttribute="bottom" constant="35" id="mIF-Re-Z8p"/>
                                     <constraint firstItem="2Ts-En-RJL" firstAttribute="top" secondItem="xLk-nV-1uC" secondAttribute="top" constant="420" id="sZF-l4-Hov"/>
                                 </constraints>
                             </view>
