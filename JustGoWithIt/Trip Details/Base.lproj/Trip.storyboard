@@ -63,7 +63,7 @@
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EyM-Kc-JQB">
                                         <rect key="frame" x="10" y="91" width="355" height="200"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="sUA-1g-KXx"/>
                                         </constraints>
@@ -83,6 +83,14 @@
                                         </constraints>
                                         <state key="normal" image="phone_white"/>
                                     </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="jPF-Gw-9JQ">
+                                        <rect key="frame" x="152" y="291" width="71" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="6KD-on-Igc"/>
+                                        </constraints>
+                                        <color key="pageIndicatorTintColor" white="0.82963169642857137" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.33725490200000002" green="0.58039215690000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -91,8 +99,11 @@
                                     <constraint firstItem="IrH-LN-LFw" firstAttribute="leading" secondItem="4mP-8T-EVm" secondAttribute="trailing" constant="45" id="Das-uB-8wK"/>
                                     <constraint firstItem="EyM-Kc-JQB" firstAttribute="leading" secondItem="3he-2A-4kO" secondAttribute="leading" constant="10" id="Ion-ms-8uD"/>
                                     <constraint firstItem="4mP-8T-EVm" firstAttribute="leading" secondItem="E1U-GM-xPS" secondAttribute="trailing" constant="45" id="JYe-ez-Mfr"/>
+                                    <constraint firstItem="jPF-Gw-9JQ" firstAttribute="top" secondItem="EyM-Kc-JQB" secondAttribute="bottom" id="LdJ-1T-UKD"/>
+                                    <constraint firstItem="jPF-Gw-9JQ" firstAttribute="centerX" secondItem="3he-2A-4kO" secondAttribute="centerX" id="NFq-EW-Lf1"/>
                                     <constraint firstItem="IrH-LN-LFw" firstAttribute="bottom" secondItem="4mP-8T-EVm" secondAttribute="bottom" id="RKo-Vd-K5c"/>
                                     <constraint firstAttribute="bottom" secondItem="4mP-8T-EVm" secondAttribute="bottom" constant="32" id="Wbw-3L-tVy"/>
+                                    <constraint firstItem="4mP-8T-EVm" firstAttribute="top" secondItem="jPF-Gw-9JQ" secondAttribute="bottom" id="Wt4-UJ-Jm6"/>
                                     <constraint firstItem="E1U-GM-xPS" firstAttribute="bottom" secondItem="4mP-8T-EVm" secondAttribute="bottom" id="X6C-q0-Keo"/>
                                     <constraint firstItem="rwe-Y2-i7z" firstAttribute="top" secondItem="3he-2A-4kO" secondAttribute="top" constant="8" id="eGk-zi-JfB"/>
                                     <constraint firstItem="rwe-Y2-i7z" firstAttribute="leading" secondItem="3he-2A-4kO" secondAttribute="leading" constant="20" id="eId-gm-rRI"/>
