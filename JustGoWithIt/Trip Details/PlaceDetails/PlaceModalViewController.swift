@@ -2,6 +2,7 @@ import UIKit
 import GooglePlaces
 
 class PlaceModalViewController: UIViewController {
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var notesIcon: UIButton!
     @IBOutlet weak var placeIcon: UIButton!
     @IBOutlet weak var phone: UIButton!
@@ -23,6 +24,7 @@ class PlaceModalViewController: UIViewController {
         phone.roundCorners(radius: 22.0)
         placeIcon.roundCorners(radius: 22.0)
         notesIcon.roundCorners(radius: 22.0)
+        contentView.dropShadow()
     }
     
     func setLabels(){

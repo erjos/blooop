@@ -129,6 +129,8 @@ class TripViewController: UIViewController {
             let destination = segue.destination as! PlaceModalViewController
             let indexPath = sender as! IndexPath
             destination.place = city.getSubLocation(from: indexPath)
+            
+            destination.modalPresentationStyle = .overCurrentContext
         }
     }
     
