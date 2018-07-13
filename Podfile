@@ -16,5 +16,6 @@ target 'JustGoWithIt' do
   pod 'MaterialComponents/AppBar'
   pod 'MaterialComponents/FlexibleHeader'
   pod 'RealmSwift'
+  pod 'AMPopTip'
 
 end

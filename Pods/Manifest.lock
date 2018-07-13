@@ -1,4 +1,5 @@
 PODS:
+  - AMPopTip (3.2.1)
   - GoogleMaps (2.6.0):
     - GoogleMaps/Maps (= 2.6.0)
   - GoogleMaps/Base (2.6.0)
@@ -74,6 +75,7 @@ PODS:
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
+  - AMPopTip
   - GoogleMaps
   - GooglePlaces
   - MaterialComponents/AppBar
@@ -85,6 +87,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AMPopTip
     - GoogleMaps
     - GooglePlaces
     - MaterialComponents
@@ -95,6 +98,7 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
+  AMPopTip: 31251008f2c00cbc0a3d2b18520f277c5b5ab4da
   GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
   GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
   MaterialComponents: 5d4b39c4fcbd03417b7709a0458c869082983e2f
@@ -104,6 +108,6 @@ SPEC CHECKSUMS:
   RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: a686c2ac0063ed5e37236463da601204c80bcef6
+PODFILE CHECKSUM: 1c4cb5f16113ccb0929d0b7f4aeead71b8bf3b64
 
 COCOAPODS: 1.5.3

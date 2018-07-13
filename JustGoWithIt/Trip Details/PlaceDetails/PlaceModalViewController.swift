@@ -1,5 +1,6 @@
 import UIKit
 import GooglePlaces
+import AMPopTip
 
 class PlaceModalViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
@@ -27,6 +28,20 @@ class PlaceModalViewController: UIViewController {
         placeIcon.roundCorners(radius: 22.0)
         notesIcon.roundCorners(radius: 22.0)
         contentView.dropShadow()
+        
+//        let poptip = PopTip()
+//        poptip.shouldDismissOnTap = true
+//        let rect = phone.frame
+//        let new = rect.insetBy(dx: 1.0, dy: 0.0)
+//        poptip.show(text: "314-852-5644", direction: .down, maxWidth: 100, in: contentView, from: phone.frame)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let poptip = PopTip()
+        poptip.shouldDismissOnTap = true
+        let rect = phone.frame
+        let new = rect.insetBy(dx: 1.0, dy: 0.0)
+        poptip.show(text: "314-852-5644", direction: .down, maxWidth: 100, in: contentView, from: phone.frame)
     }
     
     func setLabels(){
