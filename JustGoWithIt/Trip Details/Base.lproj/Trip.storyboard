@@ -44,9 +44,9 @@
                                             <constraint firstAttribute="height" constant="45" id="Zgb-VV-P5i"/>
                                             <constraint firstAttribute="width" constant="45" id="xBs-Mt-3wW"/>
                                         </constraints>
-                                        <state key="normal" image="notes_white"/>
+                                        <state key="normal" image="website_white"/>
                                         <connections>
-                                            <action selector="tapNotes:" destination="Cw7-aV-B5g" eventType="touchUpInside" id="o4B-3h-3AM"/>
+                                            <action selector="tapWebsite:" destination="Cw7-aV-B5g" eventType="touchUpInside" id="eXk-LQ-wUT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrH-LN-LFw">
@@ -135,11 +135,11 @@
                     <connections>
                         <outlet property="contentView" destination="3he-2A-4kO" id="pyQ-KH-660"/>
                         <outlet property="locationLabel" destination="r3d-OW-Ru8" id="xv4-cA-DVh"/>
-                        <outlet property="notesIcon" destination="E1U-GM-xPS" id="4IB-jW-VSC"/>
                         <outlet property="pageControl" destination="jPF-Gw-9JQ" id="QWl-ac-6wL"/>
                         <outlet property="phone" destination="4mP-8T-EVm" id="sLG-kB-dK1"/>
                         <outlet property="photoCollection" destination="EyM-Kc-JQB" id="4Yk-2T-Zlo"/>
                         <outlet property="placeIcon" destination="IrH-LN-LFw" id="yYT-Gy-cLD"/>
+                        <outlet property="websiteIcon" destination="E1U-GM-xPS" id="JWp-uK-a2S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwG-go-mOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -484,8 +484,8 @@
         <image name="back" width="24" height="24"/>
         <image name="close" width="24" height="24"/>
         <image name="menu" width="24" height="24"/>
-        <image name="notes_white" width="36" height="36"/>
         <image name="phone_white" width="36" height="36"/>
         <image name="place_white" width="36" height="36"/>
+        <image name="website_white" width="36" height="36"/>
     </resources>
 </document>

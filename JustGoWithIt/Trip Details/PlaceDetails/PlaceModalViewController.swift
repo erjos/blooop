@@ -5,7 +5,7 @@ import AMPopTip
 class PlaceModalViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var notesIcon: UIButton!
+    @IBOutlet weak var websiteIcon: UIButton!
     @IBOutlet weak var placeIcon: UIButton!
     @IBOutlet weak var phone: UIButton!
     @IBOutlet weak var locationLabel: UILabel!
@@ -22,9 +22,8 @@ class PlaceModalViewController: UIViewController {
     }
     
     //TODO:
-    // 1) try adding a custom view to the notes poptip
-    // 2) tap to call for the phone poptip
-    // 3) figure out what the deal is with you map component bruh
+    // 1) tap to call for the phone poptip
+    // 2) replace notes with website for now - tap to open safari and go to website
     
     var poptip = PopTip()
     
@@ -37,7 +36,9 @@ class PlaceModalViewController: UIViewController {
     }
     
     @IBAction func tapPhone(_ sender: Any) {
-        let tipText = (gmsPlace?.phoneNumber)!
+        guard let tipText = gmsPlace?.phoneNumber else {
+            return
+        }
         if(poptip.text != tipText) {
             poptip.hide()
             setupPoptip()
@@ -49,7 +50,10 @@ class PlaceModalViewController: UIViewController {
     }
     
     @IBAction func tapLocation(_ sender: Any) {
-        let tipText = (gmsPlace?.formattedAddress)!
+        guard let tipText = gmsPlace?.formattedAddress else {
+            return
+        }
+        
         if(poptip.text != tipText) {
             poptip.hide()
             setupPoptip()
@@ -60,12 +64,13 @@ class PlaceModalViewController: UIViewController {
         }
     }
     
-    @IBAction func tapNotes(_ sender: Any) {
-        let tipText = "Notes"
+    @IBAction func tapWebsite(_ sender: Any) {
+        //let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        let tipText = gmsPlace?.website?.description ?? "No Website Available"
         if(poptip.text != tipText) {
             poptip.hide()
             setupPoptip()
-            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: notesIcon.frame)
+            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: websiteIcon.frame)
         } else {
             poptip.hide()
             poptip.text = ""
@@ -80,7 +85,7 @@ class PlaceModalViewController: UIViewController {
         locationLabel.text = gmsPlace?.name
         phone.roundCorners(radius: 22.0)
         placeIcon.roundCorners(radius: 22.0)
-        notesIcon.roundCorners(radius: 22.0)
+        websiteIcon.roundCorners(radius: 22.0)
         contentView.dropShadow()
         setupPoptip()
     }
