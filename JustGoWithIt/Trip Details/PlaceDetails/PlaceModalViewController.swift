@@ -15,26 +15,40 @@ class PlaceModalViewController: UIViewController {
     var photoCount = 0
     
     lazy var gmsPlace = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
+    let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
     
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //TODO: 1) Don't allow multiple versions of the same poptip to open
+    // 2) If user taps the button again close the first
+    // 3) if user taps another button close any other open ones
+    // 4) try adding a custom view to the notes poptip
+    // 5) tap to call for the phone poptip
+    // 6) figure out what the deal is with you map component bruh
+    
     @IBAction func tapPhone(_ sender: Any) {
         let poptip = PopTip()
         poptip.shouldDismissOnTap = true
+        poptip.bubbleColor = headerbackground
+        poptip.textColor = UIColor.white
         poptip.show(text: (gmsPlace?.phoneNumber)!, direction: .down, maxWidth: 200, in: contentView, from: phone.frame)
     }
     
     @IBAction func tapLocation(_ sender: Any) {
         let poptip = PopTip()
         poptip.shouldDismissOnTap = true
+        poptip.bubbleColor = headerbackground
+        poptip.textColor = UIColor.white
         poptip.show(text: (gmsPlace?.formattedAddress)!, direction: .down, maxWidth: 200, in: contentView, from: placeIcon.frame)
     }
     
     @IBAction func tapNotes(_ sender: Any) {
         let poptip = PopTip()
         poptip.shouldDismissOnTap = true
+        poptip.bubbleColor = headerbackground
+        poptip.textColor = UIColor.white
         poptip.show(text: "Notes", direction: .down, maxWidth: 200, in: contentView, from: notesIcon.frame)
     }
     
