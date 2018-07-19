@@ -21,35 +21,55 @@ class PlaceModalViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    //TODO: 1) Don't allow multiple versions of the same poptip to open
-    // 2) If user taps the button again close the first
-    // 3) if user taps another button close any other open ones
-    // 4) try adding a custom view to the notes poptip
-    // 5) tap to call for the phone poptip
-    // 6) figure out what the deal is with you map component bruh
+    //TODO:
+    // 1) try adding a custom view to the notes poptip
+    // 2) tap to call for the phone poptip
+    // 3) figure out what the deal is with you map component bruh
     
-    @IBAction func tapPhone(_ sender: Any) {
-        let poptip = PopTip()
+    var poptip = PopTip()
+    
+    func setupPoptip(){
+        poptip = PopTip()
         poptip.shouldDismissOnTap = true
+        poptip.dismissHandler = { poptip in }
         poptip.bubbleColor = headerbackground
         poptip.textColor = UIColor.white
-        poptip.show(text: (gmsPlace?.phoneNumber)!, direction: .down, maxWidth: 200, in: contentView, from: phone.frame)
+    }
+    
+    @IBAction func tapPhone(_ sender: Any) {
+        let tipText = (gmsPlace?.phoneNumber)!
+        if(poptip.text != tipText) {
+            poptip.hide()
+            setupPoptip()
+            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: phone.frame)
+        } else {
+            poptip.hide()
+            poptip.text = ""
+        }
     }
     
     @IBAction func tapLocation(_ sender: Any) {
-        let poptip = PopTip()
-        poptip.shouldDismissOnTap = true
-        poptip.bubbleColor = headerbackground
-        poptip.textColor = UIColor.white
-        poptip.show(text: (gmsPlace?.formattedAddress)!, direction: .down, maxWidth: 200, in: contentView, from: placeIcon.frame)
+        let tipText = (gmsPlace?.formattedAddress)!
+        if(poptip.text != tipText) {
+            poptip.hide()
+            setupPoptip()
+            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: placeIcon.frame)
+        } else {
+            poptip.hide()
+            poptip.text = ""
+        }
     }
     
     @IBAction func tapNotes(_ sender: Any) {
-        let poptip = PopTip()
-        poptip.shouldDismissOnTap = true
-        poptip.bubbleColor = headerbackground
-        poptip.textColor = UIColor.white
-        poptip.show(text: "Notes", direction: .down, maxWidth: 200, in: contentView, from: notesIcon.frame)
+        let tipText = "Notes"
+        if(poptip.text != tipText) {
+            poptip.hide()
+            setupPoptip()
+            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: notesIcon.frame)
+        } else {
+            poptip.hide()
+            poptip.text = ""
+        }
     }
     
     override func viewDidLoad() {
@@ -62,6 +82,7 @@ class PlaceModalViewController: UIViewController {
         placeIcon.roundCorners(radius: 22.0)
         notesIcon.roundCorners(radius: 22.0)
         contentView.dropShadow()
+        setupPoptip()
     }
 
     override func didReceiveMemoryWarning() {
