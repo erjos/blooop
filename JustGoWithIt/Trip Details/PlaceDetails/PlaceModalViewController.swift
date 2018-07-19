@@ -14,8 +14,28 @@ class PlaceModalViewController: UIViewController {
     var place : SubLocation!
     var photoCount = 0
     
+    lazy var gmsPlace = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
+    
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func tapPhone(_ sender: Any) {
+        let poptip = PopTip()
+        poptip.shouldDismissOnTap = true
+        poptip.show(text: (gmsPlace?.phoneNumber)!, direction: .down, maxWidth: 200, in: contentView, from: phone.frame)
+    }
+    
+    @IBAction func tapLocation(_ sender: Any) {
+        let poptip = PopTip()
+        poptip.shouldDismissOnTap = true
+        poptip.show(text: (gmsPlace?.formattedAddress)!, direction: .down, maxWidth: 200, in: contentView, from: placeIcon.frame)
+    }
+    
+    @IBAction func tapNotes(_ sender: Any) {
+        let poptip = PopTip()
+        poptip.shouldDismissOnTap = true
+        poptip.show(text: "Notes", direction: .down, maxWidth: 200, in: contentView, from: notesIcon.frame)
     }
     
     override func viewDidLoad() {
@@ -23,35 +43,11 @@ class PlaceModalViewController: UIViewController {
         photoCollection.delegate = self
         photoCollection.dataSource = self
         photoCollection.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
-        setLabels()
+        locationLabel.text = gmsPlace?.name
         phone.roundCorners(radius: 22.0)
         placeIcon.roundCorners(radius: 22.0)
         notesIcon.roundCorners(radius: 22.0)
         contentView.dropShadow()
-        
-//        let poptip = PopTip()
-//        poptip.shouldDismissOnTap = true
-//        let rect = phone.frame
-//        let new = rect.insetBy(dx: 1.0, dy: 0.0)
-//        poptip.show(text: "314-852-5644", direction: .down, maxWidth: 100, in: contentView, from: phone.frame)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        let poptip = PopTip()
-        poptip.shouldDismissOnTap = true
-        let rect = phone.frame
-        let new = rect.insetBy(dx: 1.0, dy: 0.0)
-        poptip.show(text: "314-852-5644", direction: .down, maxWidth: 100, in: contentView, from: phone.frame)
-    }
-    
-    func setLabels(){
-        let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
-        
-        //TODO: initiate either a tooltip to display this info or just direct them to a map or press to call function
-        //phoneNumber.text = gms?.phoneNumber
-        //address.text = gms?.formattedAddress
-        //openStatus.text = (gms?.openNowStatus == GMSPlacesOpenNowStatus.yes) ? "Open" : "Closed"
-        locationLabel.text = gms?.name
     }
 
     override func didReceiveMemoryWarning() {
