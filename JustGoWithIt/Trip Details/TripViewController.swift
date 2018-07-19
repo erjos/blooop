@@ -27,6 +27,7 @@ class TripViewController: UIViewController {
             performSegue(withIdentifier: "presentMenu", sender: self)
         }
     }
+    
     @IBAction func backAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -67,6 +68,7 @@ class TripViewController: UIViewController {
         }) { (error) in
             //ERROR
         }
+        
         let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
         headerView.titleLabel.text = gms?.name
         //header.dateLabel.text = city.date?.formatDateAsString()
