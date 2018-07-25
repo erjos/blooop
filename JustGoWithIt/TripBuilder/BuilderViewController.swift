@@ -48,6 +48,16 @@ class BuilderViewController: UIViewController {
         present(autocompleteController, animated: true, completion: nil)
     }
     
+    @IBAction func toggleSwitch(_ sender: Any) {
+        let toggle = sender as! UISwitch
+        let state = toggle.isOn
+        if(state){
+            createMapMarkers(for: city, map: map)
+        } else {
+            map?.clear()
+        }
+    }
+    
     func saveNewTrip(){
         RealmManager.storeData(object: self.city)
         if let navVC = self.presentingViewController as? UINavigationController {
@@ -64,7 +74,6 @@ class BuilderViewController: UIViewController {
     }
     
     let datePicker = UIDatePicker()
-    
     var city = PrimaryLocation()
     
     //** Flag used to identify if builder is used for Location or Place (Locations contain places)
@@ -255,7 +264,6 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
         //set the text field for location
         searchText.text = place.name
         searchText.textColor = UIColor.black
-        
         
         //show the other fields
         locationDivider.isHidden = false
