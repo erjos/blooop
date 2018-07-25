@@ -479,6 +479,63 @@
             </objects>
             <point key="canvasLocation" x="-335" y="133"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="fvS-QX-u7n">
+            <objects>
+                <viewController id="bRP-3f-awj" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Jv2-xZ-md8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8O-v9-Fgq">
+                                <rect key="frame" x="0.0" y="147" width="375" height="373"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKw-k2-1ON">
+                                        <rect key="frame" x="20" y="8" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="EAd-vt-rL6"/>
+                                            <constraint firstAttribute="width" constant="35" id="ylT-9h-k8n"/>
+                                        </constraints>
+                                        <state key="normal" image="close"/>
+                                        <connections>
+                                            <action selector="dismissAction:" destination="bRP-3f-awj" eventType="touchUpInside" id="Ym8-oC-QZE"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2Q-Mr-Crg">
+                                        <rect key="frame" x="20" y="53" width="335" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="yFJ-gc-lUB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="w2Q-Mr-Crg" firstAttribute="leading" secondItem="g8O-v9-Fgq" secondAttribute="leading" constant="20" id="CM3-qO-W42"/>
+                                    <constraint firstItem="w2Q-Mr-Crg" firstAttribute="top" secondItem="JKw-k2-1ON" secondAttribute="bottom" constant="10" id="HK2-ev-Fh2"/>
+                                    <constraint firstItem="JKw-k2-1ON" firstAttribute="top" secondItem="g8O-v9-Fgq" secondAttribute="top" constant="8" id="dY8-uY-hHd"/>
+                                    <constraint firstItem="JKw-k2-1ON" firstAttribute="leading" secondItem="g8O-v9-Fgq" secondAttribute="leading" constant="20" id="f7d-Xa-Yhy"/>
+                                    <constraint firstAttribute="trailing" secondItem="w2Q-Mr-Crg" secondAttribute="trailing" constant="20" id="hJ1-WD-kaL"/>
+                                    <constraint firstAttribute="bottom" secondItem="w2Q-Mr-Crg" secondAttribute="bottom" constant="20" id="r0l-5E-Da6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.4789007482" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="g8O-v9-Fgq" firstAttribute="leading" secondItem="fs2-4A-HZa" secondAttribute="leading" id="Gdq-Vl-MXu"/>
+                            <constraint firstItem="g8O-v9-Fgq" firstAttribute="centerY" secondItem="Jv2-xZ-md8" secondAttribute="centerY" id="VWU-nG-1a3"/>
+                            <constraint firstItem="g8O-v9-Fgq" firstAttribute="trailing" secondItem="fs2-4A-HZa" secondAttribute="trailing" id="YGU-iT-F7a"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fs2-4A-HZa"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="g8O-v9-Fgq" id="QDU-2h-zmN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MSy-LZ-qE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1448.8" y="-618.44077961019491"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="24" height="24"/>
