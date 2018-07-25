@@ -68,6 +68,7 @@ class BuilderViewController: UIViewController {
     var city = PrimaryLocation()
     
     //** Flag used to identify if builder is used for Location or Place (Locations contain places)
+    //TODO: consider changing this to an ENUM to be more explicit
     var isSubLocation = false
     var coordinateBounds: GMSCoordinateBounds?
     var map: GMSMapView?
@@ -130,6 +131,20 @@ class BuilderViewController: UIViewController {
             coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
             //need to add it as a subview?
             self.mapView.addSubview(map!)
+            
+            let places = city.subLocations
+            
+            //create markers if any exist
+            for place in places {
+                guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
+                    return
+                }
+                let coordinate = gms.coordinate
+                let marker = GMSMarker(position: coordinate)
+                marker.title = gms.name
+                marker.snippet = place.label
+                marker.map = map
+            }
         }
     }
     
