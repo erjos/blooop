@@ -120,32 +120,35 @@ class BuilderViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if(isSubLocation){
-            mapView.isHidden = false
-            mapLabel.isHidden = false
-            let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
-            let target = gms?.coordinate
-            var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 10)
-            
-            map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
-            map?.delegate = self
-            coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
-            //need to add it as a subview?
-            self.mapView.addSubview(map!)
-            
-            let places = city.subLocations
-            
-            //create markers if any exist
-            for place in places {
-                guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
-                    return
-                }
-                let coordinate = gms.coordinate
-                let marker = GMSMarker(position: coordinate)
-                marker.title = gms.name
-                marker.snippet = place.label
-                marker.map = map
-            }
+            setupMapView()
         }
+    }
+    
+    private func createMapMarkers(for city: PrimaryLocation, map: GMSMapView?){
+        let places = city.subLocations
+        for place in places {
+            guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
+                return
+            }
+            let coordinate = gms.coordinate
+            let marker = GMSMarker(position: coordinate)
+            marker.title = gms.name
+            marker.snippet = place.label
+            marker.map = map
+        }
+    }
+    
+    private func setupMapView(){
+        mapView.isHidden = false
+        mapLabel.isHidden = false
+        let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
+        let target = gms?.coordinate
+        var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 10)
+        map = GMSMapView.map(withFrame: mapView.bounds, camera: camera)
+        map?.delegate = self
+        coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
+        self.mapView.addSubview(map!)
+        createMapMarkers(for: self.city, map: map)
     }
     
     private func setupNameField(){
