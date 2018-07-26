@@ -13,14 +13,18 @@ class MenuViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func viewMap(_ sender: Any) {
+        if let navVC = presentingViewController as? UINavigationController {
+            if let tripVC = navVC.viewControllers[0] as? TripViewController {
+                self.dismiss(animated: true) {
+                    tripVC.performSegue(withIdentifier: "presentMap", sender: self)
+                }
+            }
+        }
     }
     
-    @IBAction func add(_ sender: Any) {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        present(autocompleteController, animated: true, completion: nil)
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

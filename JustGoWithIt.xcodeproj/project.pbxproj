@@ -194,7 +194,6 @@
 				86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */,
 				86A895AD2019917D00CE3926 /* Info.plist */,
 				864F67E1207EACD500B6554B /* Models.swift */,
-				86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 			);
@@ -212,6 +211,7 @@
 				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
 				86A895A52019917D00CE3926 /* Trip.storyboard */,
 				529F4EA520F287F800D1E965 /* TripHeaderView.swift */,
+				86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */,
 			);
 			path = "Trip Details";
 			sourceTree = "<group>";

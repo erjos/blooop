@@ -135,6 +135,10 @@ class TripViewController: UIViewController {
             // this is necessary to make sure the view Controller underneath doesn't get cleaned up
             destination.modalPresentationStyle = .overCurrentContext
         }
+        if(segue.identifier == "presentMap"){
+            let destination = segue.destination
+            destination.modalPresentationStyle = .overCurrentContext
+        }
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {

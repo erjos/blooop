@@ -227,6 +227,7 @@
                         <segue destination="CCD-B3-gX2" kind="presentation" identifier="presentMenu" modalPresentationStyle="overFullScreen" id="NRS-tL-je8"/>
                         <segue destination="Qoe-hB-Oom" kind="presentation" identifier="tripToBuilder" id="In4-AL-NdR"/>
                         <segue destination="Cw7-aV-B5g" kind="presentation" identifier="presentPlace" id="8ht-7x-Bo9"/>
+                        <segue destination="bRP-3f-awj" kind="presentation" identifier="presentMap" id="4YF-4W-n9t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -255,11 +256,11 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIM-v7-ltK">
                                         <rect key="frame" x="30" y="8.5" width="315" height="33"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Add City">
+                                        <state key="normal" title="View Map">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="add:" destination="CCD-B3-gX2" eventType="touchUpInside" id="SGu-1k-Etl"/>
+                                            <action selector="viewMap:" destination="CCD-B3-gX2" eventType="touchUpInside" id="ncS-jH-Hqf"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYQ-v1-Bkr" userLabel="Divider">
@@ -497,9 +498,6 @@
                                             <constraint firstAttribute="width" constant="35" id="ylT-9h-k8n"/>
                                         </constraints>
                                         <state key="normal" image="close"/>
-                                        <connections>
-                                            <action selector="dismissAction:" destination="bRP-3f-awj" eventType="touchUpInside" id="Ym8-oC-QZE"/>
-                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2Q-Mr-Crg">
                                         <rect key="frame" x="20" y="53" width="335" height="300"/>
@@ -528,13 +526,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fs2-4A-HZa"/>
                     </view>
-                    <connections>
-                        <outlet property="contentView" destination="g8O-v9-Fgq" id="QDU-2h-zmN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSy-LZ-qE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1448.8" y="-618.44077961019491"/>
+            <point key="canvasLocation" x="1414" y="-600"/>
         </scene>
     </scenes>
     <resources>
