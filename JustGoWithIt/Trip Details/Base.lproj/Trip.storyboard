@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YwG-go-mOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="477.60000000000002" y="-600.44977511244383"/>
+            <point key="canvasLocation" x="946" y="-631"/>
         </scene>
         <!--Trip View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -460,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QEF-8r-GXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="133"/>
+            <point key="canvasLocation" x="999" y="869"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XsN-NO-WOz">
@@ -480,10 +480,10 @@
             </objects>
             <point key="canvasLocation" x="-335" y="133"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="fvS-QX-u7n">
             <objects>
-                <viewController id="bRP-3f-awj" sceneMemberID="viewController">
+                <viewController id="bRP-3f-awj" customClass="MapViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Jv2-xZ-md8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -498,6 +498,9 @@
                                             <constraint firstAttribute="width" constant="35" id="ylT-9h-k8n"/>
                                         </constraints>
                                         <state key="normal" image="close"/>
+                                        <connections>
+                                            <action selector="cancel:" destination="bRP-3f-awj" eventType="touchUpInside" id="br5-dP-Gf2"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2Q-Mr-Crg">
                                         <rect key="frame" x="20" y="53" width="335" height="300"/>
@@ -529,7 +532,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSy-LZ-qE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="-600"/>
+            <point key="canvasLocation" x="1466" y="133"/>
         </scene>
     </scenes>
     <resources>
