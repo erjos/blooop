@@ -25,17 +25,32 @@ class MapViewController: UIViewController {
     private func setupMapView(){
         //mapView.isHidden = false
         //mapLabel.isHidden = false
-        guard let id = city?.placeID else {
+        guard let trip = city else {
             return
         }
-        let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: id)
+        let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: trip.placeID)
         let target = gms?.coordinate
         var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 10)
         map = GMSMapView.map(withFrame: mapContainer.bounds, camera: camera)
         map?.delegate = self
         //coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
         self.mapContainer.addSubview(map!)
-        //createMapMarkers(for: self.city, map: map)
+        createMapMarkers(for: trip, map: map)
+    }
+    
+    //TODO: this method lives on this class and the builder - can we either make it static or an extension on the mapView object to allow easier access?
+    private func createMapMarkers(for city: PrimaryLocation, map: GMSMapView?){
+        let places = city.subLocations
+        for place in places {
+            guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
+                return
+            }
+            let coordinate = gms.coordinate
+            let marker = GMSMarker(position: coordinate)
+            marker.title = gms.name
+            marker.snippet = place.label
+            marker.map = map
+        }
     }
 }
 
