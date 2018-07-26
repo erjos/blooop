@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GoogleMaps
 
 extension Date {
     var day: Int { return Calendar.current.component(.day, from:self) }
@@ -108,5 +109,21 @@ extension UINavigationBar {
             NSAttributedStringKey.foregroundColor: color
         ]
         UINavigationBar.appearance().titleTextAttributes = titleTextAttributes
+    }
+}
+
+extension GMSMapView {
+    func createMapMarkers(for city: PrimaryLocation, map: GMSMapView?){
+        let places = city.subLocations
+        for place in places {
+            guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
+                return
+            }
+            let coordinate = gms.coordinate
+            let marker = GMSMarker(position: coordinate)
+            marker.title = gms.name
+            marker.snippet = place.label
+            marker.map = map
+        }
     }
 }

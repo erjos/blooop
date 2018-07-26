@@ -52,7 +52,7 @@ class BuilderViewController: UIViewController {
         let toggle = sender as! UISwitch
         let state = toggle.isOn
         if(state){
-            createMapMarkers(for: city, map: map)
+            map?.createMapMarkers(for: city, map: map)
         } else {
             map?.clear()
         }
@@ -133,20 +133,6 @@ class BuilderViewController: UIViewController {
         }
     }
     
-    private func createMapMarkers(for city: PrimaryLocation, map: GMSMapView?){
-        let places = city.subLocations
-        for place in places {
-            guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
-                return
-            }
-            let coordinate = gms.coordinate
-            let marker = GMSMarker(position: coordinate)
-            marker.title = gms.name
-            marker.snippet = place.label
-            marker.map = map
-        }
-    }
-    
     private func setupMapView(){
         mapView.isHidden = false
         mapLabel.isHidden = false
@@ -157,7 +143,7 @@ class BuilderViewController: UIViewController {
         map?.delegate = self
         coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
         self.mapView.addSubview(map!)
-        createMapMarkers(for: self.city, map: map)
+        map?.createMapMarkers(for: self.city, map: map)
     }
     
     private func setupNameField(){
