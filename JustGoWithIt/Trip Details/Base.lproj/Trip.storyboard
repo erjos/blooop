@@ -529,6 +529,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fs2-4A-HZa"/>
                     </view>
+                    <connections>
+                        <outlet property="mapContainer" destination="w2Q-Mr-Crg" id="JyB-D1-Lla"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSy-LZ-qE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

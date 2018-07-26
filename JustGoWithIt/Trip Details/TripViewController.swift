@@ -136,7 +136,8 @@ class TripViewController: UIViewController {
             destination.modalPresentationStyle = .overCurrentContext
         }
         if(segue.identifier == "presentMap"){
-            let destination = segue.destination
+            let destination = segue.destination as! MapViewController
+            destination.city = self.city
             destination.modalPresentationStyle = .overCurrentContext
         }
     }
