@@ -28,8 +28,6 @@ class MapViewController: UIViewController {
     }
     
     private func setupMapView(){
-        //mapView.isHidden = false
-        //mapLabel.isHidden = false
         guard let trip = city else {
             return
         }
@@ -38,13 +36,9 @@ class MapViewController: UIViewController {
         var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 10)
         map = GMSMapView.map(withFrame: mapContainer.bounds, camera: camera)
         map?.delegate = self
-        //coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
         self.mapContainer.addSubview(map!)
         map?.createMapMarkers(for: trip, map: map)
     }
-    
-    //TODO: this method lives on this class and the builder - can we either make it static or an extension on the mapView object to allow easier access?
-    
 }
 
 extension MapViewController: GMSMapViewDelegate {

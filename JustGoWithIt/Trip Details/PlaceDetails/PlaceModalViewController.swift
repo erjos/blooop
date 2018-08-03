@@ -43,6 +43,11 @@ class PlaceModalViewController: UIViewController {
             poptip.hide()
             setupPoptip()
             poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: phone.frame)
+            poptip.tapHandler = { poptip in
+                if let telephoneUrl = URL(string: "tel://\(tipText)"), UIApplication.shared.canOpenURL(telephoneUrl){
+                    UIApplication.shared.open(telephoneUrl, options: [:], completionHandler: nil)
+                }
+            }
         } else {
             poptip.hide()
             poptip.text = ""
@@ -53,15 +58,12 @@ class PlaceModalViewController: UIViewController {
         guard let tipText = gmsPlace?.formattedAddress else {
             return
         }
-        
+//        let attributes = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+//        let attributedText = NSAttributedString(string: tipText, attributes: attributes)
         if(poptip.text != tipText) {
             poptip.hide()
             setupPoptip()
             poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: placeIcon.frame)
-//            guard let view = Bundle.main.loadNibNamed("CustomTipsView", owner: self, options: nil)?.first as? CustomTipsView else {
-//                return
-//            }
-            //poptip.show(customView: view, direction: .down, in: contentView, from: placeIcon.frame)
             poptip.tapHandler = { poptip in
                 if let navVC = self.presentingViewController as? UINavigationController {
                     if let tripVC = navVC.viewControllers[0] as? TripViewController {
@@ -84,6 +86,11 @@ class PlaceModalViewController: UIViewController {
             poptip.hide()
             setupPoptip()
             poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: websiteIcon.frame)
+            poptip.tapHandler = { poptip in
+                if let websiteUrl = self.gmsPlace?.website {
+                    UIApplication.shared.open(websiteUrl, options: [:], completionHandler: nil)
+                }
+            }
         } else {
             poptip.hide()
             poptip.text = ""
