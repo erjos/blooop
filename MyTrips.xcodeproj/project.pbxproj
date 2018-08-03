@@ -316,7 +316,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 86A895992019917D00CE3926 /* Build configuration list for PBXProject "JustGoWithIt" */;
+			buildConfigurationList = 86A895992019917D00CE3926 /* Build configuration list for PBXProject "MyTrips" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -599,7 +599,7 @@
 				);
 				INFOPLIST_FILE = JustGoWithIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = erj.JustGoWithIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erj.MyTrips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -619,7 +619,7 @@
 				);
 				INFOPLIST_FILE = JustGoWithIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = erj.JustGoWithIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erj.MyTrips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -629,7 +629,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		86A895992019917D00CE3926 /* Build configuration list for PBXProject "JustGoWithIt" */ = {
+		86A895992019917D00CE3926 /* Build configuration list for PBXProject "MyTrips" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				86A895AE2019917D00CE3926 /* Debug */,
