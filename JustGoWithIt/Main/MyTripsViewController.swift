@@ -50,7 +50,8 @@ class MyTripsViewController: UIViewController {
         header.insertSubview(headerView, at: 0)
         // 5
         header.trackingScrollView = collection
-        self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: nil), animated: false)
+//        //may need to setup and item on storyboard as well to wire up actions with the following button
+//        self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: nil), animated: false)
         // 6
         appBar.addSubviewsToParent()
     }
