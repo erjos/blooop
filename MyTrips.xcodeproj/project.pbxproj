@@ -78,7 +78,7 @@
 		863E26E6207FFDBD00029FF4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		864F67DF207E823200B6554B /* Builder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Builder.storyboard; sourceTree = "<group>"; };
 		864F67E1207EACD500B6554B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		86A8959E2019917D00CE3926 /* JustGoWithIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustGoWithIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		86A8959E2019917D00CE3926 /* MyTrips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTrips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A895A12019917D00CE3926 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A895A32019917D00CE3926 /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		86A895A62019917D00CE3926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trip.storyboard; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		86A8959F2019917D00CE3926 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				86A8959E2019917D00CE3926 /* JustGoWithIt.app */,
+				86A8959E2019917D00CE3926 /* MyTrips.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,9 +280,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		86A8959D2019917D00CE3926 /* JustGoWithIt */ = {
+		86A8959D2019917D00CE3926 /* MyTrips */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 86A895B02019917D00CE3926 /* Build configuration list for PBXNativeTarget "JustGoWithIt" */;
+			buildConfigurationList = 86A895B02019917D00CE3926 /* Build configuration list for PBXNativeTarget "MyTrips" */;
 			buildPhases = (
 				D13B7BFCF694F97C890BD4F2 /* [CP] Check Pods Manifest.lock */,
 				86A8959A2019917D00CE3926 /* Sources */,
@@ -295,9 +295,9 @@
 			);
 			dependencies = (
 			);
-			name = JustGoWithIt;
+			name = MyTrips;
 			productName = JustGoWithIt;
-			productReference = 86A8959E2019917D00CE3926 /* JustGoWithIt.app */;
+			productReference = 86A8959E2019917D00CE3926 /* MyTrips.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -329,7 +329,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				86A8959D2019917D00CE3926 /* JustGoWithIt */,
+				86A8959D2019917D00CE3926 /* MyTrips */,
 			);
 		};
 /* End PBXProject section */
@@ -638,7 +638,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		86A895B02019917D00CE3926 /* Build configuration list for PBXNativeTarget "JustGoWithIt" */ = {
+		86A895B02019917D00CE3926 /* Build configuration list for PBXNativeTarget "MyTrips" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				86A895B12019917D00CE3926 /* Debug */,
