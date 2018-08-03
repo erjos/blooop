@@ -12,7 +12,7 @@ import GoogleMaps
 class MapViewController: UIViewController {
     var city: PrimaryLocation?
     var map: GMSMapView?
-
+    
     @IBOutlet weak var mapContainer: UIView!
     
     @IBAction func cancel(_ sender: Any) {
@@ -20,6 +20,11 @@ class MapViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //TODO: try this again in the view did load method
+        setupMapView()
     }
     
     private func setupMapView(){

@@ -29,7 +29,7 @@ class PlaceModalViewController: UIViewController {
     
     func setupPoptip(){
         poptip = PopTip()
-        poptip.shouldDismissOnTap = true
+        //poptip.shouldDismissOnTap = true
         poptip.dismissHandler = { poptip in }
         poptip.bubbleColor = headerbackground
         poptip.textColor = UIColor.white
@@ -58,6 +58,19 @@ class PlaceModalViewController: UIViewController {
             poptip.hide()
             setupPoptip()
             poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: placeIcon.frame)
+//            guard let view = Bundle.main.loadNibNamed("CustomTipsView", owner: self, options: nil)?.first as? CustomTipsView else {
+//                return
+//            }
+            //poptip.show(customView: view, direction: .down, in: contentView, from: placeIcon.frame)
+            poptip.tapHandler = { poptip in
+                if let navVC = self.presentingViewController as? UINavigationController {
+                    if let tripVC = navVC.viewControllers[0] as? TripViewController {
+                        self.dismiss(animated: true) {
+                            tripVC.performSegue(withIdentifier: "presentMap", sender: self)
+                        }
+                    }
+                }
+            }
         } else {
             poptip.hide()
             poptip.text = ""
