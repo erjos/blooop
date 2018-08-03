@@ -21,15 +21,11 @@ class PlaceModalViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    //TODO:
-    // 1) tap to call for the phone poptip
-    // 2) replace notes with website for now - tap to open safari and go to website
-    
     var poptip = PopTip()
     
     func setupPoptip(){
         poptip = PopTip()
-        //poptip.shouldDismissOnTap = true
+        poptip.shouldDismissOnTap = true
         poptip.dismissHandler = { poptip in }
         poptip.bubbleColor = headerbackground
         poptip.textColor = UIColor.white
@@ -58,8 +54,6 @@ class PlaceModalViewController: UIViewController {
         guard let tipText = gmsPlace?.formattedAddress else {
             return
         }
-//        let attributes = [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
-//        let attributedText = NSAttributedString(string: tipText, attributes: attributes)
         if(poptip.text != tipText) {
             poptip.hide()
             setupPoptip()
