@@ -10,6 +10,7 @@
 		186C7225388DE9F244B17140 /* Pods_JustGoWithIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */; };
 		52137A252114AA1B008F3052 /* CustomTipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52137A242114AA1B008F3052 /* CustomTipsView.xib */; };
 		52137A272114ACC4008F3052 /* CustomTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A262114ACC4008F3052 /* CustomTipsView.swift */; };
+		52137A292114CA12008F3052 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A282114CA12008F3052 /* ApiKeys.swift */; };
 		529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F4EA520F287F800D1E965 /* TripHeaderView.swift */; };
 		52CDAD8D210A1DA500449CFF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CDAD8C210A1DA500449CFF /* MapViewController.swift */; };
 		8604A87720E80F4700A28144 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8604A87620E80F4700A28144 /* HomeHeaderView.swift */; };
@@ -63,6 +64,7 @@
 		294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.debug.xcconfig"; sourceTree = "<group>"; };
 		52137A242114AA1B008F3052 /* CustomTipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTipsView.xib; sourceTree = "<group>"; };
 		52137A262114ACC4008F3052 /* CustomTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTipsView.swift; sourceTree = "<group>"; };
+		52137A282114CA12008F3052 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		529F4EA520F287F800D1E965 /* TripHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHeaderView.swift; sourceTree = "<group>"; };
 		52CDAD8C210A1DA500449CFF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8604A87620E80F4700A28144 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				864F67E1207EACD500B6554B /* Models.swift */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
+				52137A282114CA12008F3052 /* ApiKeys.swift */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */,
 				86B7EB14208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift in Sources */,
 				86FC567D20A1E9A100D9BB00 /* PlaceModalViewController.swift in Sources */,
+				52137A292114CA12008F3052 /* ApiKeys.swift in Sources */,
 				8604A87720E80F4700A28144 /* HomeHeaderView.swift in Sources */,
 				86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */,
 				8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */,
