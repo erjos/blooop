@@ -8,8 +8,12 @@ class MenuViewController: UIViewController {
             if let vc = presentingVC.viewControllers.first as? TripViewController {
                 let alert = UIAlertController(title: "Delete Trip", message: "Are you sure you want to delete this trip? All associated data will be erased.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction.init(title: "Delete", style: .default, handler: { deleteAction in
-                    //delete the trip
-                    //do we want this logic to live on this page or the trip vc??
+                    RealmManager.deleteData(object: vc.city)
+                    if let navVC = vc.presentingViewController as? UINavigationController {
+                        if let mainVC = navVC.viewControllers.first as? MyTripsViewController {
+                            vc.dismiss(animated: true, completion: mainVC.collection.reloadData)
+                        }
+                    }
                 }))
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 self.dismiss(animated: true) {
