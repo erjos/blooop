@@ -4,6 +4,7 @@ import GoogleMaps
 
 class BuilderViewController: UIViewController {
     
+    @IBOutlet weak var mapContainer: UIView!
     @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var locationLabel: UILabel!
@@ -18,7 +19,7 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var nameViewHeight: NSLayoutConstraint! //120
     @IBOutlet weak var dateViewHeight: NSLayoutConstraint! //100
     
-    @IBOutlet weak var mapLabelConstraint: NSLayoutConstraint!
+    //@IBOutlet weak var mapLabelConstraint: NSLayoutConstraint!
     @IBOutlet weak var mapLabel: UILabel!
     
     @IBAction func saveTrip(_ sender: Any) {
@@ -101,7 +102,7 @@ class BuilderViewController: UIViewController {
         dateView.isHidden = true
         nameViewHeight.constant = 0
         dateViewHeight.constant = 0
-        mapLabelConstraint.constant = 10
+        //TODO: maybe collapse height of done button?
         
         //Add padding to the name and date fields
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15 , height: labelField.frame.height))
@@ -123,8 +124,8 @@ class BuilderViewController: UIViewController {
         //set field delegates
         setupNameField()
         setupDatePicker(dateField, datePicker, nil)
-        mapView.isHidden = true
-        mapLabel.isHidden = true
+        
+        mapContainer.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -134,8 +135,7 @@ class BuilderViewController: UIViewController {
     }
     
     private func setupMapView(){
-        mapView.isHidden = false
-        mapLabel.isHidden = false
+        mapContainer.isHidden = false
         let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
         let target = gms?.coordinate
         var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 10)
@@ -262,7 +262,7 @@ extension BuilderViewController: GMSAutocompleteViewControllerDelegate {
             //
             self.nameViewHeight.constant = 120
             self.dateViewHeight.constant = 100
-            self.mapLabelConstraint.constant = 60
+            //TODO: set height of done button back to normal, if it is collapsed
         }) { (complete) in
             //
         }
