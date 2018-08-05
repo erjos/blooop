@@ -5,6 +5,20 @@ class RealmManager {
     
     //TODO: create ENUM and return an error to be handled by the UI
     
+    //Might be a better way to accomplish this realm manager. - what if we create an enum for each possible action to take on a primary location... then we just execute that block inside of a switch statement...
+    
+    static func deleteSubLocation(city: PrimaryLocation, indexPath: IndexPath) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                city.subLocations.remove(at: indexPath.row)
+            }
+        } catch let error as NSError {
+            //handle error
+            print(error)
+        }
+    }
+    
     static func fetchData() -> Results<PrimaryLocation>? {
         var results: Results<PrimaryLocation>?
         do {

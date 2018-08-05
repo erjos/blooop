@@ -239,7 +239,10 @@ extension TripViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //TODO: this is the callback after delete is pressed, use this to remove the cells from the table
+        if(editingStyle == .delete){
+            RealmManager.deleteSubLocation(city: self.city, indexPath: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
