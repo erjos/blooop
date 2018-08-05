@@ -206,32 +206,6 @@ extension TripViewController: UIScrollViewDelegate {
     }
 }
 
-//TODO: not sure if we need this here right now
-extension TripViewController: GMSAutocompleteViewControllerDelegate {
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        //Sub location selected by user (contained by main city) - new cities are added via the menu
-        //let selectedLocation = place
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        //TODO: Handle error
-        print(error.localizedDescription)
-    }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    
-    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-}
-
 extension TripViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
@@ -273,8 +247,16 @@ extension TripViewController: UITableViewDataSource{
             cell.handleFailedImage()
         }
         
-        cell.activityLabel.text = city.getSubLocation(from: indexPath).label ?? "Add label"
-        cell.dateLabel.text = (city.getSubLocation(from: indexPath).date == nil) ? "Add date" : city.getSubLocation(from: indexPath).date?.formatDateAsString()
+        cell.activityLabel.isHidden = true
+        cell.dateLabel.isHidden = true
+        if let label = city.getSubLocation(from: indexPath).label {
+            cell.activityLabel.isHidden = false
+            cell.activityLabel.text = label
+        }
+        if let date = city.getSubLocation(from: indexPath).date?.formatDateAsString() {
+            cell.dateLabel.isHidden = false
+            cell.dateLabel.text = date
+        }
         let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: placeID)
         cell.locationLabel.text = gms?.name
         cell.selectionStyle = .none
