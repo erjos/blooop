@@ -3,6 +3,22 @@ import GooglePlaces
 
 class MenuViewController: UIViewController {
 
+    @IBAction func deleteTrip(_ sender: Any) {
+        if let presentingVC = presentingViewController as? UINavigationController {
+            if let vc = presentingVC.viewControllers.first as? TripViewController {
+                let alert = UIAlertController(title: "Delete Trip", message: "Are you sure you want to delete this trip? All associated data will be erased.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction.init(title: "Delete", style: .default, handler: { deleteAction in
+                    //delete the trip
+                    //do we want this logic to live on this page or the trip vc??
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.dismiss(animated: true) {
+                    vc.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
     @IBAction func edit(_ sender: Any) {
         if let presentingVC = presentingViewController as? UINavigationController {
             if let vc = presentingVC.viewControllers.first as? TripViewController {

@@ -18,7 +18,7 @@
         <!--Place Modal View Controller-->
         <scene sceneID="uL3-Gb-9dV">
             <objects>
-                <viewController id="Cw7-aV-B5g" customClass="PlaceModalViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Cw7-aV-B5g" customClass="PlaceModalViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="uXO-fL-4mp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,7 +149,7 @@
         <!--Trip View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="tripView" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="TripViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tripView" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="TripViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,7 +245,7 @@
         <!--Menu View Controller-->
         <scene sceneID="blb-zq-5B5">
             <objects>
-                <viewController id="CCD-B3-gX2" customClass="MenuViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CCD-B3-gX2" customClass="MenuViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hj1-xc-eOc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,6 +381,9 @@
                                         <state key="normal" title="Delete Trip">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteTrip:" destination="CCD-B3-gX2" eventType="touchUpInside" id="sFQ-RP-6ee"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6y-nt-aZv" userLabel="Divider">
                                         <rect key="frame" x="0.0" y="49" width="375" height="1"/>
@@ -483,7 +486,7 @@
         <!--Map View Controller-->
         <scene sceneID="fvS-QX-u7n">
             <objects>
-                <viewController id="bRP-3f-awj" customClass="MapViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bRP-3f-awj" customClass="MapViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Jv2-xZ-md8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
