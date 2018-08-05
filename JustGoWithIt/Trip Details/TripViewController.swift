@@ -71,7 +71,6 @@ class TripViewController: UIViewController {
         
         let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
         headerView.titleLabel.text = gms?.name
-        //header.dateLabel.text = city.date?.formatDateAsString()
         
         // 3
         let header = appBar.headerViewController.headerView
@@ -112,8 +111,6 @@ class TripViewController: UIViewController {
         configureAppBar()
         
         tableView.register(UINib.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "listCell")
-        //TODO: might make this label optional - if so the title of this page should be consistent
-        self.title = city?.label
         let plusImage = UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal)
         floatingButton.setImage(plusImage, for: .normal)
         createGradientLayer()

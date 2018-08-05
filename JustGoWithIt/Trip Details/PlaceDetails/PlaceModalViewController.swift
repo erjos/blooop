@@ -32,9 +32,8 @@ class PlaceModalViewController: UIViewController {
     }
     
     @IBAction func tapPhone(_ sender: Any) {
-        guard let tipText = gmsPlace?.phoneNumber else {
-            return
-        }
+        let tipText = gmsPlace?.phoneNumber ?? "No Phone Available"
+        
         if(poptip.text != tipText) {
             poptip.hide()
             setupPoptip()
@@ -51,9 +50,7 @@ class PlaceModalViewController: UIViewController {
     }
     
     @IBAction func tapLocation(_ sender: Any) {
-        guard let tipText = gmsPlace?.formattedAddress else {
-            return
-        }
+        let tipText = gmsPlace?.formattedAddress ?? "No Location Available"
         if(poptip.text != tipText) {
             poptip.hide()
             setupPoptip()

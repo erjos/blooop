@@ -18,9 +18,14 @@ class BuilderViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var nameViewHeight: NSLayoutConstraint! //120
     @IBOutlet weak var dateViewHeight: NSLayoutConstraint! //100
-    
-    //@IBOutlet weak var mapLabelConstraint: NSLayoutConstraint!
     @IBOutlet weak var mapLabel: UILabel!
+    
+    let datePicker = UIDatePicker()
+    var city = PrimaryLocation()
+    //TODO: consider changing this to an ENUM represent explicit state of this page
+    var isSubLocation = false
+    var coordinateBounds: GMSCoordinateBounds?
+    var map: GMSMapView?
     
     @IBAction func saveTrip(_ sender: Any) {
         //calling select done here will ensure that any active fields will be saved first
@@ -58,30 +63,6 @@ class BuilderViewController: UIViewController {
             map?.clear()
         }
     }
-    
-    func saveNewTrip(){
-        RealmManager.storeData(object: self.city)
-        if let navVC = self.presentingViewController as? UINavigationController {
-            if let mainVC = navVC.viewControllers[0] as? MyTripsViewController {
-                dismiss(animated: true, completion: {
-                    mainVC.collection.reloadData()
-                    mainVC.performSegue(withIdentifier: "toMain", sender: self.city)
-                })
-            }
-            if let tripVC = navVC.viewControllers[0] as? TripViewController {
-                self.dismiss(animated: true, completion: tripVC.tableView.reloadData)
-            }
-        }
-    }
-    
-    let datePicker = UIDatePicker()
-    var city = PrimaryLocation()
-    
-    //** Flag used to identify if builder is used for Location or Place (Locations contain places)
-    //TODO: consider changing this to an ENUM to be more explicit
-    var isSubLocation = false
-    var coordinateBounds: GMSCoordinateBounds?
-    var map: GMSMapView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +112,21 @@ class BuilderViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if(isSubLocation){
             setupMapView()
+        }
+    }
+    
+    func saveNewTrip(){
+        RealmManager.storeData(object: self.city)
+        if let navVC = self.presentingViewController as? UINavigationController {
+            if let mainVC = navVC.viewControllers[0] as? MyTripsViewController {
+                dismiss(animated: true, completion: {
+                    mainVC.collection.reloadData()
+                    mainVC.performSegue(withIdentifier: "toMain", sender: self.city)
+                })
+            }
+            if let tripVC = navVC.viewControllers[0] as? TripViewController {
+                self.dismiss(animated: true, completion: tripVC.tableView.reloadData)
+            }
         }
     }
     
