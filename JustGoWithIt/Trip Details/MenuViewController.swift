@@ -6,7 +6,7 @@ class MenuViewController: UIViewController {
     @IBAction func edit(_ sender: Any) {
         if let presentingVC = presentingViewController as? UINavigationController {
             if let vc = presentingVC.viewControllers.first as? TripViewController {
-                vc.rightBarItem.title = "Done"
+                vc.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "done_white"), style: .plain, target: self, action: #selector(vc.rightBarAction(_:)))
             }
             presentingVC.setEditing(true, animated: true)
         }

@@ -22,7 +22,7 @@ class TripViewController: UIViewController {
     @IBAction func rightBarAction(_ sender: Any) {
         if(isEditing){
             setEditing(false, animated: true)
-            rightBarItem.title = "•••"
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: #selector(rightBarAction(_:)))
         }else {
             performSegue(withIdentifier: "presentMenu", sender: self)
         }
