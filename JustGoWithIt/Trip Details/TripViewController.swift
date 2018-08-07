@@ -220,9 +220,9 @@ extension TripViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: maybe remove not sure why we need this
-        let placeCount = city.subLocations.count
-        performSegue(withIdentifier: "presentPlace", sender: indexPath)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "presentPlace", sender: indexPath)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
