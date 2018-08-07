@@ -19,9 +19,9 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         resetCell()
     }
     
-    func setImage(image: UIImage){
+    func setImage(image: UIImage, mode: UIViewContentMode = .scaleAspectFill){
         self.imageView.image = image
-        self.imageView.contentMode = .scaleAspectFill //.scaleAspectFit
+        self.imageView.contentMode = mode //.scaleAspectFit
         self.activityIndicator.isHidden = true
         self.imageView.isHidden = false
         self.imageLoaded = true

@@ -109,12 +109,14 @@ class PlaceModalViewController: UIViewController {
 
 extension PlaceModalViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         guard let photos = GoogleResourceManager.sharedInstance.getMetaDataListFor(placeId: place.placeID)?.count else {
             return 0
         }
         self.photoCount = photos
         self.pageControl.numberOfPages = photoCount
+        if(photoCount == 0) {
+            return 1
+        }
         return photoCount
     }
     
@@ -158,9 +160,16 @@ extension PlaceModalViewController : UICollectionViewDelegate {
         }
         
         guard let metaDataList = GoogleResourceManager.sharedInstance.getMetaDataListFor(placeId: place.placeID) else {
+            //this actually indicates an error
+            photoCell.setImage(image: #imageLiteral(resourceName: "picture_thumbnail"))
             return
         }
         
+        guard metaDataList.count > 0 else {
+            //this is setting the thumbnail
+            photoCell.setImage(image: #imageLiteral(resourceName: "picture_thumbnail"), mode: UIViewContentMode.scaleAspectFit)
+            return
+        }
         let metaData = metaDataList[indexPath.row]
         
         //should this be called by a method on the cell like "setFirstImage" ?
