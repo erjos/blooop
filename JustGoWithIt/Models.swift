@@ -26,6 +26,13 @@ class PrimaryLocation: Object {
         return id
     }
     
+    //used when generating sample data for the app
+    func setCity(name: String, placeID: String){
+        self.placeID = placeID
+        self.locationName = name
+        locationId = generateLocationId()
+    }
+    
     func setCity(place: GMSPlace){
         placeID = place.placeID
         locationName = place.name

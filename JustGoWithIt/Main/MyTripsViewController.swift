@@ -19,12 +19,15 @@ class MyTripsViewController: UIViewController {
     var gradientLayer: CAGradientLayer!
     var cities: Results<PrimaryLocation>?
     var collectionCount: Int = 0
+    let userDefaults = UserDefaults.standard
     
     let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
     
     //APP BAr
     let appBar = MDCAppBar()
     let headerView = HomeHeaderView()
+    
+    //we want to generate trips and add them to Realm only on the first launch. - will have to use the User defaults storage probably.
     
     func createGradientLayer() {
         gradientLayer = CAGradientLayer()
@@ -81,6 +84,52 @@ class MyTripsViewController: UIViewController {
         floatingButton.setImage(plusImage, for: .normal)
         
         createGradientLayer() //or set Backgound to headerbackground
+        handleFirstLaunch()
+    }
+    
+    func handleFirstLaunch(){
+        let didCompleteFirstLaunch = userDefaults.bool(forKey: "firstLaunch")
+        guard !didCompleteFirstLaunch else {
+            return
+        }
+        // generate sample data
+        generateSampleData()
+        
+        // set finishedFirstLaunch flag to true
+        userDefaults.set(true, forKey: "firstLaunch")
+    }
+    
+    func createCity(name: String, id: String)->PrimaryLocation{
+        let city = PrimaryLocation()
+    
+        return city
+    }
+    
+    func generateSampleData(){
+        let city1 = PrimaryLocation()
+        city1.setCity(name: "San Francisco", placeID: "ChIJIQBpAG2ahYAR_6128GcTUEo")
+        
+        let subLocationIDs = ["placIDs"]
+        city1.subLocations.append(objectsIn: createSubLocations(placeIDs: subLocationIDs))
+        
+        let city2 = PrimaryLocation()
+        city2.setCity(name: "Amsterdam", placeID: "ChIJVXealLU_xkcRja_At0z9AGY")
+        
+        let city3 = PrimaryLocation()
+        city3.setCity(name: "Copenhagen", placeID: "ChIJIz2AXDxTUkYRuGeU5t1-3QQ")
+        
+        let city4 = PrimaryLocation()
+        city4.setCity(name: "Sydney", placeID: "ChIJP5iLHkCuEmsRwMwyFmh9AQU")
+    }
+    
+    func createSubLocations(placeIDs: [String])->[SubLocation]{
+        var subLocations = [SubLocation]()
+        for ids in placeIDs{
+            let sublocation = SubLocation()
+            sublocation.placeID = ids
+            subLocations.append(sublocation)
+        }
+        return subLocations
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
