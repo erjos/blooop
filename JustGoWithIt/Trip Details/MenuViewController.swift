@@ -23,6 +23,16 @@ class MenuViewController: UIViewController {
         }
     }
     
+    @IBAction func about(_ sender: Any) {
+        if let navVC = presentingViewController as? UINavigationController {
+            if let tripVC = navVC.viewControllers[0] as? TripViewController {
+                self.dismiss(animated: true) {
+                    tripVC.performSegue(withIdentifier: "showAbout", sender: self)
+                }
+            }
+        }
+    }
+    
     @IBAction func edit(_ sender: Any) {
         if let presentingVC = presentingViewController as? UINavigationController {
             if let vc = presentingVC.viewControllers.first as? TripViewController {
