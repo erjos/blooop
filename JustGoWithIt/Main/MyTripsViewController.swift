@@ -17,9 +17,11 @@ class MyTripsViewController: UIViewController {
     }
     
     var gradientLayer: CAGradientLayer!
-    var cities: Results<PrimaryLocation>?
+    var cities : Results<PrimaryLocation>?
     var collectionCount: Int = 0
     let userDefaults = UserDefaults.standard
+    
+    var collectionImages = [UIImage]()
     
     let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
     
@@ -77,6 +79,7 @@ class MyTripsViewController: UIViewController {
         self.activityIndicator.isHidden = true
         self.emptyCollectionState.isHidden = true
         self.cities = RealmManager.fetchData()
+        generateCollectionImages()
         
         collection.backgroundColor = UIColor.clear
 
@@ -132,21 +135,25 @@ class MyTripsViewController: UIViewController {
         }
     }
     
-    func getCollectionCellImage(indexPath: IndexPath)->UIImage{
-        let photoIndex = (indexPath.row + 1) % 5
-        switch (photoIndex) {
-        case 0 :
-            return #imageLiteral(resourceName: "city")
-        case 1 :
-            return #imageLiteral(resourceName: "city_2")
-        case 2 :
-            return #imageLiteral(resourceName: "city_3")
-        case 3 :
-            return #imageLiteral(resourceName: "city_4")
-        case 4 :
-            return #imageLiteral(resourceName: "city_5")
-        default:
-            return #imageLiteral(resourceName: "city")
+    func generateCollectionImages(){
+        guard let cityList = cities else {return}
+        for city in cityList {
+            guard let cityIndex = cityList.index(of: city) else {return}
+            let photoIndex = ( cityIndex + 1) % 5
+            switch (photoIndex) {
+            case 0 :
+                self.collectionImages.append(#imageLiteral(resourceName: "city"))
+            case 1 :
+                self.collectionImages.append(#imageLiteral(resourceName: "city_2"))
+            case 2 :
+                self.collectionImages.append(#imageLiteral(resourceName: "city_3"))
+            case 3 :
+                self.collectionImages.append(#imageLiteral(resourceName: "city_4"))
+            case 4 :
+                self.collectionImages.append(#imageLiteral(resourceName: "city_5"))
+            default:
+                self.collectionImages.append(#imageLiteral(resourceName: "city"))
+            }
         }
     }
 }
@@ -205,6 +212,16 @@ extension MyTripsViewController: UICollectionViewDelegate {
             self.performSegue(withIdentifier: "toMain", sender: indexPath)
         })
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let theCell = cell as! TripCollectionViewCell
+        DispatchQueue.global().async {
+            let image = self.collectionImages[indexPath.row]
+            DispatchQueue.main.async {
+                theCell.image.image = image
+            }
+        }
+    }
 }
 
 extension MyTripsViewController: UICollectionViewDelegateFlowLayout {
@@ -250,7 +267,8 @@ extension MyTripsViewController: UICollectionViewDataSource {
                 return cell
             }
             cell.setLabels(city: city)
-            cell.image.image = getCollectionCellImage(indexPath: indexPath)
+//            cell.layer.shouldRasterize = true
+//            cell.layer.rasterizationScale = UIScreen.main.scale
         }
         return cell
     }

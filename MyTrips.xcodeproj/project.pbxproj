@@ -169,6 +169,8 @@
 				86B5A8DA20CAB36C00B24F43 /* GoogleResourceManager.swift */,
 				8629CC8420D3EDB600ED49E1 /* Extensions.swift */,
 				52E5F61C213626E700672DE2 /* Mock.swift */,
+				864F67E1207EACD500B6554B /* Models.swift */,
+				52137A282114CA12008F3052 /* ApiKeys.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -202,10 +204,8 @@
 				86A895A82019917D00CE3926 /* Assets.xcassets */,
 				86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */,
 				86A895AD2019917D00CE3926 /* Info.plist */,
-				864F67E1207EACD500B6554B /* Models.swift */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
-				52137A282114CA12008F3052 /* ApiKeys.swift */,
 			);
 			path = JustGoWithIt;
 			sourceTree = "<group>";
