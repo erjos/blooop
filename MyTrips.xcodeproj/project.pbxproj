@@ -13,6 +13,7 @@
 		52137A292114CA12008F3052 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A282114CA12008F3052 /* ApiKeys.swift */; };
 		529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F4EA520F287F800D1E965 /* TripHeaderView.swift */; };
 		52CDAD8D210A1DA500449CFF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CDAD8C210A1DA500449CFF /* MapViewController.swift */; };
+		52E5F61D213626E700672DE2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5F61C213626E700672DE2 /* Mock.swift */; };
 		8604A87720E80F4700A28144 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8604A87620E80F4700A28144 /* HomeHeaderView.swift */; };
 		8604A87920E872CB00A28144 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8604A87820E872CB00A28144 /* HomeHeaderView.xib */; };
 		8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629CC8420D3EDB600ED49E1 /* Extensions.swift */; };
@@ -67,6 +68,7 @@
 		52137A282114CA12008F3052 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		529F4EA520F287F800D1E965 /* TripHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHeaderView.swift; sourceTree = "<group>"; };
 		52CDAD8C210A1DA500449CFF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		52E5F61C213626E700672DE2 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		8604A87620E80F4700A28144 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		8604A87820E872CB00A28144 /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
 		8629CC8420D3EDB600ED49E1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				86B5A8D820C95F5C00B24F43 /* RealmManager.swift */,
 				86B5A8DA20CAB36C00B24F43 /* GoogleResourceManager.swift */,
 				8629CC8420D3EDB600ED49E1 /* Extensions.swift */,
+				52E5F61C213626E700672DE2 /* Mock.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */,
 				52137A272114ACC4008F3052 /* CustomTipsView.swift in Sources */,
 				86A895B6201992AE00CE3926 /* ListHeader.swift in Sources */,
+				52E5F61D213626E700672DE2 /* Mock.swift in Sources */,
 				863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */,
 				86B7EB14208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift in Sources */,
 				86FC567D20A1E9A100D9BB00 /* PlaceModalViewController.swift in Sources */,
