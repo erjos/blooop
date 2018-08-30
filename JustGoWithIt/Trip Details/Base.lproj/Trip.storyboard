@@ -191,13 +191,22 @@
                                     <action selector="addPlace:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pJl-TR-nFJ"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poweredByGoogle" translatesAutoresizingMaskIntoConstraints="NO" id="7rn-Ax-FH5">
+                                <rect key="frame" x="5" y="649" width="98" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="LJe-0Y-l4f"/>
+                                    <constraint firstAttribute="width" constant="98" id="uez-hT-01Y"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7rn-Ax-FH5" secondAttribute="bottom" id="0ee-Ux-H4W"/>
                             <constraint firstItem="b6N-eg-mom" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E7B-8b-fJ8"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GAF-eY-Eno"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="GGz-qF-y8a"/>
                             <constraint firstItem="fZj-xw-miw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LLy-1a-Lct"/>
+                            <constraint firstItem="7rn-Ax-FH5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="U1r-jk-uli"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fZj-xw-miw" secondAttribute="bottom" id="fhL-Qp-Ecx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i55-GR-l0O" secondAttribute="trailing" constant="20" id="lm5-N2-i2R"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="i55-GR-l0O" secondAttribute="bottom" constant="20" id="vQM-ww-Ofu"/>
@@ -1234,6 +1243,7 @@ Cgo
         <image name="menu" width="24" height="24"/>
         <image name="phone_white" width="36" height="36"/>
         <image name="place_white" width="36" height="36"/>
+        <image name="poweredByGoogle" width="144" height="18"/>
         <image name="website_white" width="36" height="36"/>
     </resources>
 </document>
