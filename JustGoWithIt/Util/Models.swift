@@ -1,6 +1,6 @@
 import Foundation
 import GooglePlaces
-import SwiftyJSON
+
 import Realm
 import RealmSwift
 
