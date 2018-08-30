@@ -10,10 +10,15 @@ import UIKit
 
 class AboutAppViewController: UIViewController {
 
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         // Do any additional setup after loading the view.
+    }
+    override func viewDidLayoutSubviews() {
+        textView.setContentOffset(.zero, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

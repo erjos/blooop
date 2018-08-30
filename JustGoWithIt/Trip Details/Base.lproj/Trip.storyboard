@@ -1144,6 +1144,9 @@ Cgo
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jJr-5e-Wmw"/>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="7yy-IJ-0sY" id="OGd-cU-WVw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CB3-Vf-6Ch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
