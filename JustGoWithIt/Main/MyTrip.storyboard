@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sjn-Kw-Pfz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sjn-Kw-Pfz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--My Trips View Controller-->
         <scene sceneID="2ke-2N-1cj">
             <objects>
-                <viewController id="ZBo-Jb-tVI" customClass="MyTripsViewController" customModule="JustGoWithIt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZBo-Jb-tVI" customClass="MyTripsViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wib-iy-o1c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ts-En-RJL">
-                                        <rect key="frame" x="67" y="420" width="240" height="128"/>
+                                        <rect key="frame" x="67.5" y="420" width="240" height="128"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new trip entry." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHP-wT-HEj">
                                                 <rect key="frame" x="0.0" y="38" width="240" height="52.5"/>
@@ -152,5 +152,75 @@
             </objects>
             <point key="canvasLocation" x="484" y="239"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="1tY-ud-cvm">
+            <objects>
+                <viewController id="mC5-5t-aKE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3CE-en-Fu1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaZ-WO-CL0" userLabel="Map Container">
+                                <rect key="frame" x="15" y="95" width="345" height="250"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="p8Q-So-SB4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYJ-NP-s7u" userLabel="Search View">
+                                <rect key="frame" x="15" y="35" width="345" height="45"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="xxe-Gj-MDC">
+                                        <rect key="frame" x="15" y="10.5" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="9iO-3P-JeL"/>
+                                            <constraint firstAttribute="width" constant="24" id="iEZ-O4-UTT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a city or place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1f-XA-T0Z">
+                                        <rect key="frame" x="59" y="12.5" width="190" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.73725490199999999" green="0.73333333329999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="xxe-Gj-MDC" firstAttribute="centerY" secondItem="SYJ-NP-s7u" secondAttribute="centerY" id="A28-Sn-7FH"/>
+                                    <constraint firstItem="k1f-XA-T0Z" firstAttribute="centerY" secondItem="SYJ-NP-s7u" secondAttribute="centerY" id="BQb-Z6-vmc"/>
+                                    <constraint firstItem="k1f-XA-T0Z" firstAttribute="leading" secondItem="xxe-Gj-MDC" secondAttribute="trailing" constant="20" id="D7C-gY-rOA"/>
+                                    <constraint firstAttribute="height" constant="45" id="Y6o-qr-GR6"/>
+                                    <constraint firstItem="xxe-Gj-MDC" firstAttribute="leading" secondItem="SYJ-NP-s7u" secondAttribute="leading" constant="15" id="hCW-I5-lDE"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qd9-r8-GX3">
+                                <rect key="frame" x="16" y="361" width="343" height="290"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qd9-r8-GX3" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" constant="16" id="4gE-1i-bgp"/>
+                            <constraint firstItem="SmU-B9-bFQ" firstAttribute="trailing" secondItem="aaZ-WO-CL0" secondAttribute="trailing" constant="15" id="6an-R9-6Vu"/>
+                            <constraint firstItem="SmU-B9-bFQ" firstAttribute="trailing" secondItem="Qd9-r8-GX3" secondAttribute="trailing" constant="16" id="74p-Zm-s9K"/>
+                            <constraint firstItem="SmU-B9-bFQ" firstAttribute="bottom" secondItem="Qd9-r8-GX3" secondAttribute="bottom" constant="16" id="9ki-sx-tK6"/>
+                            <constraint firstItem="Qd9-r8-GX3" firstAttribute="top" secondItem="aaZ-WO-CL0" secondAttribute="bottom" constant="16" id="gL5-Rq-zrO"/>
+                            <constraint firstItem="SYJ-NP-s7u" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" constant="15" id="gkS-T2-H3I"/>
+                            <constraint firstItem="aaZ-WO-CL0" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" constant="15" id="hZQ-q2-hTw"/>
+                            <constraint firstItem="aaZ-WO-CL0" firstAttribute="top" secondItem="SYJ-NP-s7u" secondAttribute="bottom" constant="15" id="iPO-4p-ts5"/>
+                            <constraint firstItem="SmU-B9-bFQ" firstAttribute="trailing" secondItem="SYJ-NP-s7u" secondAttribute="trailing" constant="15" id="iXl-jQ-Ult"/>
+                            <constraint firstItem="SYJ-NP-s7u" firstAttribute="top" secondItem="SmU-B9-bFQ" secondAttribute="top" constant="15" id="ofc-23-B3t"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SmU-B9-bFQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nlH-yg-XOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="764" y="960.2698650674663"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="search" width="24" height="24"/>
+    </resources>
 </document>
