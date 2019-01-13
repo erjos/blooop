@@ -1,113 +1,39 @@
 PODS:
-  - AMPopTip (3.2.1)
-  - GoogleMaps (2.6.0):
-    - GoogleMaps/Maps (= 2.6.0)
-  - GoogleMaps/Base (2.6.0)
-  - GoogleMaps/Maps (2.6.0):
+  - AMPopTip (3.5.0)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
     - GoogleMaps/Base
-  - GooglePlaces (2.6.0):
-    - GoogleMaps/Base (= 2.6.0)
-  - MaterialComponents/AppBar (54.4.0):
-    - MaterialComponents/FlexibleHeader
-    - MaterialComponents/HeaderStackView
-    - MaterialComponents/NavigationBar
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/Icons/ic_arrow_back
-    - MaterialComponents/private/UIMetrics
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Typography
-    - MDFInternationalization
-  - MaterialComponents/ButtonBar (54.4.0):
-    - MaterialComponents/Buttons
-    - MDFInternationalization
-  - MaterialComponents/Buttons (54.4.0):
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Math
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Typography
-    - MDFInternationalization
-    - MDFTextAccessibility
-  - MaterialComponents/Cards (54.4.0):
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Icons/ic_check_circle
-    - MaterialComponents/private/Math
-    - MaterialComponents/private/Shapes
-    - MaterialComponents/ShadowLayer
-  - MaterialComponents/FlexibleHeader (54.4.0):
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/UIMetrics
-    - MDFTextAccessibility
-  - MaterialComponents/HeaderStackView (54.4.0)
-  - MaterialComponents/Ink (54.4.0):
-    - MaterialComponents/private/Math
-  - MaterialComponents/NavigationBar (54.4.0):
-    - MaterialComponents/ButtonBar
-    - MaterialComponents/private/Math
-    - MaterialComponents/Typography
-    - MDFInternationalization
-    - MDFTextAccessibility
-  - MaterialComponents/private/Application (54.4.0)
-  - MaterialComponents/private/Icons/Base (54.4.0)
-  - MaterialComponents/private/Icons/ic_arrow_back (54.4.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Icons/ic_check_circle (54.4.0):
-    - MaterialComponents/private/Icons/Base
-  - MaterialComponents/private/Math (54.4.0)
-  - MaterialComponents/private/Shapes (54.4.0):
-    - MaterialComponents/private/Math
-    - MaterialComponents/ShadowLayer
-  - MaterialComponents/private/UIMetrics (54.4.0):
-    - MaterialComponents/private/Application
-  - MaterialComponents/ShadowElevations (54.4.0)
-  - MaterialComponents/ShadowLayer (54.4.0):
-    - MaterialComponents/ShadowElevations
-  - MaterialComponents/Typography (54.4.0):
-    - MaterialComponents/private/Application
-  - MDFInternationalization (1.0.4)
-  - MDFTextAccessibility (1.2.0)
-  - Realm (3.3.2):
-    - Realm/Headers (= 3.3.2)
-  - Realm/Headers (3.3.2)
-  - RealmSwift (3.3.2):
-    - Realm (= 3.3.2)
-  - SwiftyJSON (4.0.0)
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
 
 DEPENDENCIES:
   - AMPopTip
   - GoogleMaps
   - GooglePlaces
-  - MaterialComponents/AppBar
-  - MaterialComponents/Buttons
-  - MaterialComponents/Cards
-  - MaterialComponents/FlexibleHeader
   - RealmSwift
-  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AMPopTip
     - GoogleMaps
     - GooglePlaces
-    - MaterialComponents
-    - MDFInternationalization
-    - MDFTextAccessibility
     - Realm
     - RealmSwift
-    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  AMPopTip: 31251008f2c00cbc0a3d2b18520f277c5b5ab4da
-  GoogleMaps: 42f91c68b7fa2f84d5c86597b18ceb99f5414c7f
-  GooglePlaces: f6ddf33b75cef69e888907d9947c57198ed845f3
-  MaterialComponents: 5d4b39c4fcbd03417b7709a0458c869082983e2f
-  MDFInternationalization: e355b0cebecf53d60233bd267084e49366c82513
-  MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
-  Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
-  RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  AMPopTip: 871ae0570b68fe396e714922b3f7d8ed6a36bb71
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
 
-PODFILE CHECKSUM: 1c4cb5f16113ccb0929d0b7f4aeead71b8bf3b64
+PODFILE CHECKSUM: fbda08451e37eb11715eae88926eb4003c4cb5db
 
 COCOAPODS: 1.5.3

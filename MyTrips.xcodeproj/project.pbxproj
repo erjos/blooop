@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		186C7225388DE9F244B17140 /* Pods_JustGoWithIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */; };
 		52137A252114AA1B008F3052 /* CustomTipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52137A242114AA1B008F3052 /* CustomTipsView.xib */; };
 		52137A272114ACC4008F3052 /* CustomTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A262114ACC4008F3052 /* CustomTipsView.swift */; };
 		52137A292114CA12008F3052 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A282114CA12008F3052 /* ApiKeys.swift */; };
 		525011332137684700A40DAB /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525011322137684700A40DAB /* AboutAppViewController.swift */; };
 		529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F4EA520F287F800D1E965 /* TripHeaderView.swift */; };
+		52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1922F21EBC2B4004F073A /* MainViewController.swift */; };
 		52CDAD8D210A1DA500449CFF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CDAD8C210A1DA500449CFF /* MapViewController.swift */; };
 		52E5F61D213626E700672DE2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5F61C213626E700672DE2 /* Mock.swift */; };
+		7F6A610A476A4EC69C9A8559 /* Pods_MyTrips.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C3FFBBA9A114229E56F47A /* Pods_MyTrips.framework */; };
 		8604A87720E80F4700A28144 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8604A87620E80F4700A28144 /* HomeHeaderView.swift */; };
 		8604A87920E872CB00A28144 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8604A87820E872CB00A28144 /* HomeHeaderView.xib */; };
 		8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629CC8420D3EDB600ED49E1 /* Extensions.swift */; };
@@ -62,15 +63,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F520DA6DB0379C82D7EF55A /* Pods-JustGoWithIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.release.xcconfig"; sourceTree = "<group>"; };
-		294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustGoWithIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt.debug.xcconfig"; sourceTree = "<group>"; };
 		52137A242114AA1B008F3052 /* CustomTipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTipsView.xib; sourceTree = "<group>"; };
 		52137A262114ACC4008F3052 /* CustomTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTipsView.swift; sourceTree = "<group>"; };
 		52137A282114CA12008F3052 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		525011322137684700A40DAB /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		529F4EA520F287F800D1E965 /* TripHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHeaderView.swift; sourceTree = "<group>"; };
+		52C1922F21EBC2B4004F073A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		52CDAD8C210A1DA500449CFF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52E5F61C213626E700672DE2 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		7769DFD202A8607815CAFBCD /* Pods-MyTrips.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTrips.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips.debug.xcconfig"; sourceTree = "<group>"; };
+		7B015411419C5B7B261BECB1 /* Pods-MyTrips.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTrips.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips.release.xcconfig"; sourceTree = "<group>"; };
 		8604A87620E80F4700A28144 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		8604A87820E872CB00A28144 /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
 		8629CC8420D3EDB600ED49E1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -117,7 +119,7 @@
 		86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		86CA2C07201D0FFC00A0D770 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModalViewController.swift; sourceTree = "<group>"; };
-		FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JustGoWithIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5C3FFBBA9A114229E56F47A /* Pods_MyTrips.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTrips.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,13 +144,22 @@
 				86B75C452059511700D53F90 /* Accelerate.framework in Frameworks */,
 				86B75C40205950A200D53F90 /* GooglePlaces.framework in Frameworks */,
 				86B75C42205950B200D53F90 /* GoogleMapsBase.framework in Frameworks */,
-				186C7225388DE9F244B17140 /* Pods_JustGoWithIt.framework in Frameworks */,
+				7F6A610A476A4EC69C9A8559 /* Pods_MyTrips.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09D5EFF83269AD02388F3EE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7769DFD202A8607815CAFBCD /* Pods-MyTrips.debug.xcconfig */,
+				7B015411419C5B7B261BECB1 /* Pods-MyTrips.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		529F4EA320F283E500D1E965 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +169,7 @@
 				862FBB3F20C80FA20078D689 /* MyTrip.storyboard */,
 				863C736120C7546F0054C49A /* TripCollectionViewCell.xib */,
 				863C736020C7546F0054C49A /* TripCollectionViewCell.swift */,
+				52C1922F21EBC2B4004F073A /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -180,10 +192,10 @@
 		86A895952019917D00CE3926 = {
 			isa = PBXGroup;
 			children = (
-				86A895A02019917D00CE3926 /* JustGoWithIt */,
+				86A895A02019917D00CE3926 /* MyTrips */,
 				86A8959F2019917D00CE3926 /* Products */,
 				86B75C432059511700D53F90 /* Frameworks */,
-				A7FC76D481DC4DB99073EB0B /* Pods */,
+				09D5EFF83269AD02388F3EE3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,7 +207,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		86A895A02019917D00CE3926 /* JustGoWithIt */ = {
+		86A895A02019917D00CE3926 /* MyTrips */ = {
 			isa = PBXGroup;
 			children = (
 				529F4EA320F283E500D1E965 /* Main */,
@@ -209,7 +221,7 @@
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 			);
-			path = JustGoWithIt;
+			path = MyTrips;
 			sourceTree = "<group>";
 		};
 		86B5D47020C5BB0000A851DE /* Trip Details */ = {
@@ -269,18 +281,9 @@
 				86B75C482059512A00D53F90 /* CoreGraphics.framework */,
 				86B75C462059512300D53F90 /* CoreData.framework */,
 				86B75C442059511700D53F90 /* Accelerate.framework */,
-				FF09C4512D91544814CFB45D /* Pods_JustGoWithIt.framework */,
+				E5C3FFBBA9A114229E56F47A /* Pods_MyTrips.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A7FC76D481DC4DB99073EB0B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */,
-				1F520DA6DB0379C82D7EF55A /* Pods-JustGoWithIt.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,7 +371,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
@@ -379,7 +382,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D13B7BFCF694F97C890BD4F2 /* [CP] Check Pods Manifest.lock */ = {
@@ -393,7 +396,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JustGoWithIt-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MyTrips-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -406,28 +409,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMPopTip.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JustGoWithIt/Pods-JustGoWithIt-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -452,6 +447,7 @@
 				863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */,
 				86B7EB14208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift in Sources */,
 				86FC567D20A1E9A100D9BB00 /* PlaceModalViewController.swift in Sources */,
+				52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */,
 				52137A292114CA12008F3052 /* ApiKeys.swift in Sources */,
 				8604A87720E80F4700A28144 /* HomeHeaderView.swift in Sources */,
 				86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */,
@@ -533,9 +529,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -585,7 +581,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -596,7 +592,7 @@
 		};
 		86A895B12019917D00CE3926 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 294D1F28DC78E5ED9B495AB9 /* Pods-JustGoWithIt.debug.xcconfig */;
+			baseConfigurationReference = 7769DFD202A8607815CAFBCD /* Pods-MyTrips.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -605,7 +601,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/JustGoWithIt",
 				);
-				INFOPLIST_FILE = JustGoWithIt/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MyTrips/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erjDev.MyTrips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -616,7 +612,7 @@
 		};
 		86A895B22019917D00CE3926 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F520DA6DB0379C82D7EF55A /* Pods-JustGoWithIt.release.xcconfig */;
+			baseConfigurationReference = 7B015411419C5B7B261BECB1 /* Pods-MyTrips.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -625,7 +621,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/JustGoWithIt",
 				);
-				INFOPLIST_FILE = JustGoWithIt/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MyTrips/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.erjDev.MyTrips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
