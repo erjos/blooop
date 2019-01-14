@@ -13,7 +13,7 @@ import GoogleMaps
 class MainViewController: UIViewController {
     @IBOutlet weak var drawerView: UIView!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
-    @IBOutlet weak var mapContainer: UIView!
+    @IBOutlet weak var mapContainer: GMSMapView!
     var locationManager: CLLocationManager!
     
     var map: GMSMapView?
@@ -21,7 +21,6 @@ class MainViewController: UIViewController {
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
         UIView.animate(withDuration: 0.3) {
-            
             //TODO: remove these hardcoded values and derive from screen width
             self.menuWidth.constant = (self.menuWidth.constant == 0) ? 300 : 0
             self.view.layoutIfNeeded()
@@ -52,8 +51,9 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         #if DEBUG
-        let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
-        setupMapView(target: coordinate)
+        //Vancouver coordinate - good for test
+        //let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
+        //setupMapView(target: coordinate)
         #endif
     }
     
@@ -65,13 +65,16 @@ class MainViewController: UIViewController {
         locationManager.delegate = self
     }
     
-    private func setupMapView(target: CLLocationCoordinate2D){
+    private func setupMapView(coordinate: CLLocationCoordinate2D?){
         //TODO: add method to load trips for when adding trips from storage
+        if let target = coordinate {
+            let camera = GMSCameraPosition.camera(withTarget: target, zoom: 10)
+            mapContainer.camera = camera
+            locationManager.stopUpdatingLocation()
+        }
         
-        var camera = GMSCameraPosition.camera(withTarget: target, zoom: 10)
-        map = GMSMapView.map(withFrame: mapContainer.bounds, camera: camera)
         //map?.delegate = self
-        self.mapContainer.addSubview(map!)
+        //self.mapContainer.addSubview(map!)
         
         //map?.createMapMarkers(for: trip, map: map)
     }
@@ -80,14 +83,8 @@ class MainViewController: UIViewController {
 extension MainViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //set map with the intial location
-        if let coordinate = locations.last?.coordinate {
-            setupMapView(target: coordinate)
-        } else {
-            //provides default map location of
-            let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
-            setupMapView(target: coordinate)
-        }
-        //stop updating location after that
-        //provide a refresh to start it up again
+        setupMapView(coordinate: locations.last?.coordinate)
+        
+        //TODO: provide a location refresh mechanism on the page
     }
 }
