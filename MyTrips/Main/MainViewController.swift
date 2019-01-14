@@ -11,16 +11,50 @@ import GoogleMaps
 
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var drawerView: UIView!
+    @IBOutlet weak var menuWidth: NSLayoutConstraint!
     @IBOutlet weak var mapContainer: UIView!
     var locationManager: CLLocationManager!
     
     var map: GMSMapView?
 
+    @IBAction func menuButton(_ sender: Any) {
+        view.bringSubview(toFront: drawerView)
+        UIView.animate(withDuration: 0.3) {
+            
+            //TODO: remove these hardcoded values and derive from screen width
+            self.menuWidth.constant = (self.menuWidth.constant == 0) ? 300 : 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLocationManager()
         locationManager.startUpdatingLocation()
+        menuWidth.constant = 0
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenu))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func toggleMenu(isHidden: Bool){
+        
+    }
+    
+    @objc func closeMenu(){
+        UIView.animate(withDuration: 0.3) {
+            self.menuWidth.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        #if DEBUG
+        let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
+        setupMapView(target: coordinate)
+        #endif
     }
     
     private func setupLocationManager(){
@@ -29,9 +63,6 @@ class MainViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
-        locationManager.startUpdatingLocation()
-        
-        
     }
     
     private func setupMapView(target: CLLocationCoordinate2D){
@@ -51,9 +82,8 @@ extension MainViewController: CLLocationManagerDelegate{
         //set map with the intial location
         if let coordinate = locations.last?.coordinate {
             setupMapView(target: coordinate)
-        }
-        //call this when running on simulator from view did load
-        else {
+        } else {
+            //provides default map location of
             let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
             setupMapView(target: coordinate)
         }
