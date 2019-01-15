@@ -14,8 +14,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var drawerView: UIView!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
     @IBOutlet weak var mapContainer: GMSMapView!
-    var locationManager: CLLocationManager!
     
+    var locationManager: CLLocationManager!
     var map: GMSMapView?
 
     @IBAction func menuButton(_ sender: Any) {
@@ -51,9 +51,9 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         #if DEBUG
-        //Vancouver coordinate - good for test
-        //let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
-        //setupMapView(target: coordinate)
+        //Portland coordinate - good for test
+        let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
+        setupMapView(coordinate: coordinate)
         #endif
     }
     
@@ -83,8 +83,7 @@ class MainViewController: UIViewController {
 extension MainViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //set map with the intial location
-        setupMapView(coordinate: locations.last?.coordinate)
-        
+        setupMapView(coordinate: locations.last?.coordinate)        
         //TODO: provide a location refresh mechanism on the page
     }
 }
