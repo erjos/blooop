@@ -13,6 +13,7 @@ import GooglePlaces
 
 class MainViewController: UIViewController {
     @IBOutlet weak var drawerView: UIView!
+    @IBOutlet weak var menuCoverWidth: NSLayoutConstraint!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
     @IBOutlet weak var mapContainer: GMSMapView!
     @IBOutlet weak var placeTableView: UITableView!
@@ -106,6 +107,10 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceListTableViewCell
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
     }
 }
 

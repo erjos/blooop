@@ -246,12 +246,16 @@
                                     <action selector="menuButton:" destination="mC5-5t-aKE" eventType="touchUpInside" id="fIN-zh-PIq"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpj-qZ-DAL" userLabel="Drawer View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpj-qZ-DAL" userLabel="Menu Drawer View">
                                 <rect key="frame" x="0.0" y="0.0" width="5" height="320"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="5" id="zyx-lc-QZh"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvV-zJ-qbj" userLabel="Clear Drawer View">
+                                <rect key="frame" x="5" y="0.0" width="0.0" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaZ-WO-CL0" userLabel="Map Container" customClass="GMSMapView">
                                 <rect key="frame" x="230" y="75" width="235" height="230"/>
@@ -263,10 +267,13 @@
                             <constraint firstItem="SmU-B9-bFQ" firstAttribute="trailing" secondItem="aaZ-WO-CL0" secondAttribute="trailing" constant="15" id="6an-R9-6Vu"/>
                             <constraint firstItem="aaZ-WO-CL0" firstAttribute="height" secondItem="ddJ-Gs-ct6" secondAttribute="height" id="FhF-z1-2Mf"/>
                             <constraint firstItem="SYJ-NP-s7u" firstAttribute="leading" secondItem="TKg-ia-jKm" secondAttribute="trailing" id="IkG-mm-F60"/>
+                            <constraint firstItem="XvV-zJ-qbj" firstAttribute="leading" secondItem="hpj-qZ-DAL" secondAttribute="trailing" id="JV0-cq-kC6"/>
                             <constraint firstItem="ddJ-Gs-ct6" firstAttribute="top" secondItem="SYJ-NP-s7u" secondAttribute="bottom" constant="15" id="QyB-Lv-fgy"/>
                             <constraint firstItem="aaZ-WO-CL0" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" constant="15" id="ULS-hU-a0e"/>
                             <constraint firstItem="hpj-qZ-DAL" firstAttribute="top" secondItem="3CE-en-Fu1" secondAttribute="top" id="XgS-nm-vt2"/>
+                            <constraint firstItem="SmU-B9-bFQ" firstAttribute="trailing" secondItem="XvV-zJ-qbj" secondAttribute="trailing" constant="475" id="c19-jW-7Lq"/>
                             <constraint firstAttribute="trailing" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" constant="15" id="ccP-Gl-giA"/>
+                            <constraint firstItem="XvV-zJ-qbj" firstAttribute="top" secondItem="3CE-en-Fu1" secondAttribute="top" id="fx5-Ly-Bdi"/>
                             <constraint firstItem="TKg-ia-jKm" firstAttribute="top" secondItem="SYJ-NP-s7u" secondAttribute="top" id="hIp-L9-WVR"/>
                             <constraint firstItem="aaZ-WO-CL0" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" constant="15" id="hZQ-q2-hTw"/>
                             <constraint firstItem="SmU-B9-bFQ" firstAttribute="bottom" secondItem="ddJ-Gs-ct6" secondAttribute="bottom" constant="15" id="hxa-ti-tvg">
@@ -281,6 +288,7 @@
                             </constraint>
                             <constraint firstItem="SYJ-NP-s7u" firstAttribute="top" secondItem="SmU-B9-bFQ" secondAttribute="top" constant="15" id="ofc-23-B3t"/>
                             <constraint firstItem="TKg-ia-jKm" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" constant="15" id="pxr-lN-cpd"/>
+                            <constraint firstAttribute="bottom" secondItem="XvV-zJ-qbj" secondAttribute="bottom" id="vr7-ZY-c5K"/>
                             <constraint firstItem="SmU-B9-bFQ" firstAttribute="bottom" secondItem="aaZ-WO-CL0" secondAttribute="bottom" constant="15" id="wvn-FJ-nzw"/>
                             <constraint firstAttribute="bottom" secondItem="hpj-qZ-DAL" secondAttribute="bottom" id="ypu-P7-w0u"/>
                             <constraint firstItem="hpj-qZ-DAL" firstAttribute="leading" secondItem="3CE-en-Fu1" secondAttribute="leading" id="ysC-Cf-aaE">
@@ -313,6 +321,7 @@
                     <connections>
                         <outlet property="drawerView" destination="hpj-qZ-DAL" id="mlA-9v-lbo"/>
                         <outlet property="mapContainer" destination="aaZ-WO-CL0" id="ZqY-cc-L1x"/>
+                        <outlet property="menuCoverWidth" destination="c19-jW-7Lq" id="qjA-Xb-Rbw"/>
                         <outlet property="menuWidth" destination="zyx-lc-QZh" id="t4A-Xl-mxm"/>
                         <outlet property="placeTableView" destination="Qd9-r8-GX3" id="NEf-5r-zuy"/>
                     </connections>
@@ -324,7 +333,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="784.72906403940885" y="984.79999999999995"/>
+            <point key="canvasLocation" x="783.75" y="984.375"/>
         </scene>
     </scenes>
     <resources>

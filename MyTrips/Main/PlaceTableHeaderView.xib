@@ -17,13 +17,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-1A-Djt">
-                    <rect key="frame" x="0.0" y="14.5" width="137.5" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="0.0" y="13" width="160" height="24"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7G-Cq-8uS">
-                    <rect key="frame" x="336" y="13" width="24" height="24"/>
+                    <rect key="frame" x="351" y="13" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="Rt5-cb-PYc"/>
                         <constraint firstAttribute="width" constant="24" id="vk4-BQ-gZQ"/>
@@ -31,11 +31,11 @@
                     <state key="normal" title="Close" image="close"/>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="2Dc-1A-Djt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="WqE-Vd-pMB"/>
                 <constraint firstItem="2Dc-1A-Djt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jwC-Mc-JKp"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="o7G-Cq-8uS" secondAttribute="trailing" constant="15" id="oxO-JR-qxd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="o7G-Cq-8uS" secondAttribute="trailing" id="oxO-JR-qxd"/>
                 <constraint firstItem="o7G-Cq-8uS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xNp-II-LdQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
