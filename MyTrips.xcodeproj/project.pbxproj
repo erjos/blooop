@@ -16,6 +16,8 @@
 		52CDAD8D210A1DA500449CFF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CDAD8C210A1DA500449CFF /* MapViewController.swift */; };
 		52E5F61D213626E700672DE2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5F61C213626E700672DE2 /* Mock.swift */; };
 		52FDB33321F143F600FB6153 /* PlaceTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */; };
+		52FDB33621F148DF00FB6153 /* PlaceListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FDB33421F148DF00FB6153 /* PlaceListTableViewCell.swift */; };
+		52FDB33721F148DF00FB6153 /* PlaceListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDB33521F148DF00FB6153 /* PlaceListTableViewCell.xib */; };
 		7F6A610A476A4EC69C9A8559 /* Pods_MyTrips.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C3FFBBA9A114229E56F47A /* Pods_MyTrips.framework */; };
 		8604A87720E80F4700A28144 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8604A87620E80F4700A28144 /* HomeHeaderView.swift */; };
 		8604A87920E872CB00A28144 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8604A87820E872CB00A28144 /* HomeHeaderView.xib */; };
@@ -73,6 +75,8 @@
 		52CDAD8C210A1DA500449CFF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52E5F61C213626E700672DE2 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableHeaderView.xib; sourceTree = "<group>"; };
+		52FDB33421F148DF00FB6153 /* PlaceListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListTableViewCell.swift; sourceTree = "<group>"; };
+		52FDB33521F148DF00FB6153 /* PlaceListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceListTableViewCell.xib; sourceTree = "<group>"; };
 		7769DFD202A8607815CAFBCD /* Pods-MyTrips.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTrips.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips.debug.xcconfig"; sourceTree = "<group>"; };
 		7B015411419C5B7B261BECB1 /* Pods-MyTrips.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTrips.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips.release.xcconfig"; sourceTree = "<group>"; };
 		8604A87620E80F4700A28144 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				863C736020C7546F0054C49A /* TripCollectionViewCell.swift */,
 				52C1922F21EBC2B4004F073A /* MainViewController.swift */,
 				52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */,
+				52FDB33421F148DF00FB6153 /* PlaceListTableViewCell.swift */,
+				52FDB33521F148DF00FB6153 /* PlaceListTableViewCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				864F67E0207E823200B6554B /* Builder.storyboard in Resources */,
 				863C736320C7546F0054C49A /* TripCollectionViewCell.xib in Resources */,
 				86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */,
+				52FDB33721F148DF00FB6153 /* PlaceListTableViewCell.xib in Resources */,
 				52FDB33321F143F600FB6153 /* PlaceTableHeaderView.xib in Resources */,
 				8604A87920E872CB00A28144 /* HomeHeaderView.xib in Resources */,
 			);
@@ -459,6 +466,7 @@
 				8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */,
 				86B5D47420C74F8500A851DE /* MyTripsViewController.swift in Sources */,
 				529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */,
+				52FDB33621F148DF00FB6153 /* PlaceListTableViewCell.swift in Sources */,
 				863C736220C7546F0054C49A /* TripCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

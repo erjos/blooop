@@ -48,6 +48,9 @@ class MainViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenu))
         self.view.addGestureRecognizer(tapGesture)
+        
+        let nib = UINib(nibName: "PlaceListTableViewCell", bundle: Bundle.main)
+        self.placeTableView.register(nib, forCellReuseIdentifier: "placeCell")
     }
     
     func toggleMenu(isHidden: Bool){
@@ -97,11 +100,12 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceListTableViewCell
+        return cell
     }
 }
 
