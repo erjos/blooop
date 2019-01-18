@@ -22,28 +22,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7G-Cq-8uS">
-                    <rect key="frame" x="351" y="13" width="24" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="24" id="Rt5-cb-PYc"/>
-                        <constraint firstAttribute="width" constant="24" id="vk4-BQ-gZQ"/>
-                    </constraints>
-                    <state key="normal" title="Close" image="more_horizontal"/>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="2Dc-1A-Djt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="WqE-Vd-pMB"/>
                 <constraint firstItem="2Dc-1A-Djt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jwC-Mc-JKp"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="o7G-Cq-8uS" secondAttribute="trailing" id="oxO-JR-qxd"/>
-                <constraint firstItem="o7G-Cq-8uS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xNp-II-LdQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-50.399999999999999" y="-53.973013493253376"/>
         </view>
     </objects>
-    <resources>
-        <image name="more_horizontal" width="24" height="24"/>
-    </resources>
 </document>

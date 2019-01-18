@@ -34,6 +34,12 @@ class MainViewController: UIViewController {
         }
     }
     
+    @IBAction func tapMenu(_ sender: Any) {
+        closeMenu()
+    }
+    @IBAction func tapMenuCover(_ sender: Any) {
+        closeMenu()
+    }
     @IBAction func tapSearch(_ sender: Any) {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.autocompleteBoundsMode = .restrict
@@ -52,8 +58,8 @@ class MainViewController: UIViewController {
         menuWidth.constant = 0
         menuCoverWidth.constant = 0
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenu))
-        self.clearDrawerView.addGestureRecognizer(tapGesture)
+        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenu))
+        //self.clearDrawerView.addGestureRecognizer(tapGesture)
         
         let nib = UINib(nibName: "PlaceListTableViewCell", bundle: Bundle.main)
         self.placeTableView.register(nib, forCellReuseIdentifier: "placeCell")
