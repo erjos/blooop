@@ -28,7 +28,7 @@
                         <constraint firstAttribute="height" constant="24" id="Rt5-cb-PYc"/>
                         <constraint firstAttribute="width" constant="24" id="vk4-BQ-gZQ"/>
                     </constraints>
-                    <state key="normal" title="Close" image="close"/>
+                    <state key="normal" title="Close" image="more_horizontal"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,6 +44,6 @@
         </view>
     </objects>
     <resources>
-        <image name="close" width="24" height="24"/>
+        <image name="more_horizontal" width="24" height="24"/>
     </resources>
 </document>

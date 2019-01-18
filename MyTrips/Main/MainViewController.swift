@@ -12,6 +12,7 @@ import GooglePlaces
 
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var clearDrawerView: UIView!
     @IBOutlet weak var drawerView: UIView!
     @IBOutlet weak var menuCoverWidth: NSLayoutConstraint!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
@@ -20,12 +21,15 @@ class MainViewController: UIViewController {
     
     var locationManager: CLLocationManager!
     var map: GMSMapView?
-
+    
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
+        view.bringSubview(toFront: clearDrawerView)
         UIView.animate(withDuration: 0.3) {
             //TODO: remove these hardcoded values and derive from screen width
             self.menuWidth.constant = (self.menuWidth.constant == 0) ? 300 : 0
+            let constant = UIScreen.main.bounds.width - 300
+            self.menuCoverWidth.constant = (self.menuCoverWidth.constant == 0) ? constant : 0
             self.view.layoutIfNeeded()
         }
     }
@@ -46,9 +50,10 @@ class MainViewController: UIViewController {
         setupLocationManager()
         locationManager.startUpdatingLocation()
         menuWidth.constant = 0
+        menuCoverWidth.constant = 0
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenu))
-        self.view.addGestureRecognizer(tapGesture)
+        self.clearDrawerView.addGestureRecognizer(tapGesture)
         
         let nib = UINib(nibName: "PlaceListTableViewCell", bundle: Bundle.main)
         self.placeTableView.register(nib, forCellReuseIdentifier: "placeCell")
@@ -61,6 +66,7 @@ class MainViewController: UIViewController {
     @objc func closeMenu(){
         UIView.animate(withDuration: 0.3) {
             self.menuWidth.constant = 0
+            self.menuCoverWidth.constant = 0
             self.view.layoutIfNeeded()
         }
     }

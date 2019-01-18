@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mC5-5t-aKE">
-    <device id="retina3_5" orientation="landscape">
+    <device id="retina6_1" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController id="ZBo-Jb-tVI" customClass="MyTripsViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wib-iy-o1c">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLk-nV-1uC" userLabel="Trips">
-                                <rect key="frame" x="0.0" y="32" width="480" height="268"/>
+                                <rect key="frame" x="44" y="44" width="808" height="329"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q6z-bx-BdT">
-                                        <rect key="frame" x="0.0" y="0.0" width="480" height="268"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="808" height="329"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="raH-1C-whM">
                                             <size key="itemSize" width="50" height="50"/>
@@ -46,7 +46,7 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ts-En-RJL">
-                                        <rect key="frame" x="120" y="420" width="240" height="128"/>
+                                        <rect key="frame" x="284" y="420" width="240" height="128"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new trip entry." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHP-wT-HEj">
                                                 <rect key="frame" x="0.0" y="38" width="240" height="52.5"/>
@@ -76,7 +76,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvM-63-US7" customClass="MDCFloatingButton">
-                                <rect key="frame" x="415" y="255" width="45" height="45"/>
+                                <rect key="frame" x="787" y="328" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="aVd-Yz-u4h"/>
                                     <constraint firstAttribute="width" constant="45" id="osG-FB-1V1"/>
@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-hW-kGl">
-                                <rect key="frame" x="221.5" y="141.5" width="37" height="37"/>
+                                <rect key="frame" x="429.5" y="188.5" width="37" height="37"/>
                                 <color key="color" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -140,7 +140,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sjn-Kw-Pfz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rZy-cV-WjY">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -157,14 +157,14 @@
             <objects>
                 <viewController id="mC5-5t-aKE" customClass="MainViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3CE-en-Fu1">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYJ-NP-s7u" userLabel="Search View">
-                                <rect key="frame" x="60" y="15" width="405" height="45"/>
+                                <rect key="frame" x="104" y="15" width="733" height="45"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="xxe-Gj-MDC">
-                                        <rect key="frame" x="366" y="10.5" width="24" height="24"/>
+                                        <rect key="frame" x="694" y="10.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="9iO-3P-JeL"/>
                                             <constraint firstAttribute="width" constant="24" id="iEZ-O4-UTT"/>
@@ -191,10 +191,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddJ-Gs-ct6" userLabel="Table Container">
-                                <rect key="frame" x="15" y="75" width="200" height="230"/>
+                                <rect key="frame" x="59" y="75" width="200" height="303"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qd9-r8-GX3">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="230"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="303"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="mHe-MO-Z5r"/>
@@ -235,7 +235,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKg-ia-jKm">
-                                <rect key="frame" x="15" y="15" width="45" height="45"/>
+                                <rect key="frame" x="59" y="15" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="efl-4l-Cje"/>
@@ -247,18 +247,20 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpj-qZ-DAL" userLabel="Menu Drawer View">
-                                <rect key="frame" x="0.0" y="0.0" width="5" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="5" height="414"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="5" id="zyx-lc-QZh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvV-zJ-qbj" userLabel="Clear Drawer View">
-                                <rect key="frame" x="5" y="0.0" width="0.0" height="320"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="5" y="0.0" width="0.0" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" id="y4y-fX-lTj"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaZ-WO-CL0" userLabel="Map Container" customClass="GMSMapView">
-                                <rect key="frame" x="230" y="75" width="235" height="230"/>
+                                <rect key="frame" x="274" y="75" width="563" height="303"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -271,7 +273,6 @@
                             <constraint firstItem="ddJ-Gs-ct6" firstAttribute="top" secondItem="SYJ-NP-s7u" secondAttribute="bottom" constant="15" id="QyB-Lv-fgy"/>
                             <constraint firstItem="aaZ-WO-CL0" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" constant="15" id="ULS-hU-a0e"/>
                             <constraint firstItem="hpj-qZ-DAL" firstAttribute="top" secondItem="3CE-en-Fu1" secondAttribute="top" id="XgS-nm-vt2"/>
-                            <constraint firstItem="SmU-B9-bFQ" firstAttribute="trailing" secondItem="XvV-zJ-qbj" secondAttribute="trailing" constant="475" id="c19-jW-7Lq"/>
                             <constraint firstAttribute="trailing" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" constant="15" id="ccP-Gl-giA"/>
                             <constraint firstItem="XvV-zJ-qbj" firstAttribute="top" secondItem="3CE-en-Fu1" secondAttribute="top" id="fx5-Ly-Bdi"/>
                             <constraint firstItem="TKg-ia-jKm" firstAttribute="top" secondItem="SYJ-NP-s7u" secondAttribute="top" id="hIp-L9-WVR"/>
@@ -319,9 +320,10 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="clearDrawerView" destination="XvV-zJ-qbj" id="eKR-K7-ve4"/>
                         <outlet property="drawerView" destination="hpj-qZ-DAL" id="mlA-9v-lbo"/>
                         <outlet property="mapContainer" destination="aaZ-WO-CL0" id="ZqY-cc-L1x"/>
-                        <outlet property="menuCoverWidth" destination="c19-jW-7Lq" id="qjA-Xb-Rbw"/>
+                        <outlet property="menuCoverWidth" destination="y4y-fX-lTj" id="B1a-7B-eDU"/>
                         <outlet property="menuWidth" destination="zyx-lc-QZh" id="t4A-Xl-mxm"/>
                         <outlet property="placeTableView" destination="Qd9-r8-GX3" id="NEf-5r-zuy"/>
                     </connections>
