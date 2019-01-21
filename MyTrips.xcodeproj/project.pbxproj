@@ -11,6 +11,7 @@
 		52137A272114ACC4008F3052 /* CustomTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A262114ACC4008F3052 /* CustomTipsView.swift */; };
 		52137A292114CA12008F3052 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A282114CA12008F3052 /* ApiKeys.swift */; };
 		525011332137684700A40DAB /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525011322137684700A40DAB /* AboutAppViewController.swift */; };
+		5262DF9E21F664E900A2E918 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DF9D21F664E900A2E918 /* MenuTableViewController.swift */; };
 		529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F4EA520F287F800D1E965 /* TripHeaderView.swift */; };
 		52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1922F21EBC2B4004F073A /* MainViewController.swift */; };
 		52CDAD8D210A1DA500449CFF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CDAD8C210A1DA500449CFF /* MapViewController.swift */; };
@@ -71,6 +72,7 @@
 		52137A262114ACC4008F3052 /* CustomTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTipsView.swift; sourceTree = "<group>"; };
 		52137A282114CA12008F3052 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		525011322137684700A40DAB /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
+		5262DF9D21F664E900A2E918 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		529F4EA520F287F800D1E965 /* TripHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHeaderView.swift; sourceTree = "<group>"; };
 		52C1922F21EBC2B4004F073A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		52CDAD8C210A1DA500449CFF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				52FDB33421F148DF00FB6153 /* PlaceListTableViewCell.swift */,
 				52FDB33521F148DF00FB6153 /* PlaceListTableViewCell.xib */,
 				52FDB33821F63C1B00FB6153 /* PlaceTableHeaderView.swift */,
+				5262DF9D21F664E900A2E918 /* MenuTableViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				86B5A8D920C95F5C00B24F43 /* RealmManager.swift in Sources */,
 				863E26E7207FFDBD00029FF4 /* LocationManager.swift in Sources */,
 				86CA2C08201D0FFC00A0D770 /* MenuViewController.swift in Sources */,
+				5262DF9E21F664E900A2E918 /* MenuTableViewController.swift in Sources */,
 				864F67E2207EACD500B6554B /* Models.swift in Sources */,
 				86B5A8DB20CAB36C00B24F43 /* GoogleResourceManager.swift in Sources */,
 				86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */,
