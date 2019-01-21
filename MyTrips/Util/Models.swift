@@ -47,6 +47,7 @@ class PrimaryLocation: Object {
         return subLocations[indexPath.row].placeID
     }
     
+    //TODO: move this method to delegate/protocol
     func fetchGmsPlacesForCity(complete: @escaping(Bool)->Void){
         var fetchedPlaces = [String]()
         self.fetchGMSPlace { isSuccess in

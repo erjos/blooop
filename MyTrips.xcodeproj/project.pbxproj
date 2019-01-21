@@ -18,6 +18,7 @@
 		52FDB33321F143F600FB6153 /* PlaceTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */; };
 		52FDB33621F148DF00FB6153 /* PlaceListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FDB33421F148DF00FB6153 /* PlaceListTableViewCell.swift */; };
 		52FDB33721F148DF00FB6153 /* PlaceListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDB33521F148DF00FB6153 /* PlaceListTableViewCell.xib */; };
+		52FDB33921F63C1B00FB6153 /* PlaceTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FDB33821F63C1B00FB6153 /* PlaceTableHeaderView.swift */; };
 		7F6A610A476A4EC69C9A8559 /* Pods_MyTrips.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C3FFBBA9A114229E56F47A /* Pods_MyTrips.framework */; };
 		8604A87720E80F4700A28144 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8604A87620E80F4700A28144 /* HomeHeaderView.swift */; };
 		8604A87920E872CB00A28144 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8604A87820E872CB00A28144 /* HomeHeaderView.xib */; };
@@ -77,6 +78,7 @@
 		52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableHeaderView.xib; sourceTree = "<group>"; };
 		52FDB33421F148DF00FB6153 /* PlaceListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListTableViewCell.swift; sourceTree = "<group>"; };
 		52FDB33521F148DF00FB6153 /* PlaceListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceListTableViewCell.xib; sourceTree = "<group>"; };
+		52FDB33821F63C1B00FB6153 /* PlaceTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableHeaderView.swift; sourceTree = "<group>"; };
 		7769DFD202A8607815CAFBCD /* Pods-MyTrips.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTrips.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips.debug.xcconfig"; sourceTree = "<group>"; };
 		7B015411419C5B7B261BECB1 /* Pods-MyTrips.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTrips.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips.release.xcconfig"; sourceTree = "<group>"; };
 		8604A87620E80F4700A28144 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */,
 				52FDB33421F148DF00FB6153 /* PlaceListTableViewCell.swift */,
 				52FDB33521F148DF00FB6153 /* PlaceListTableViewCell.xib */,
+				52FDB33821F63C1B00FB6153 /* PlaceTableHeaderView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FDB33921F63C1B00FB6153 /* PlaceTableHeaderView.swift in Sources */,
 				86A895A42019917D00CE3926 /* TripViewController.swift in Sources */,
 				86B5A8D920C95F5C00B24F43 /* RealmManager.swift in Sources */,
 				863E26E7207FFDBD00029FF4 /* LocationManager.swift in Sources */,

@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
     var locationManager: CLLocationManager!
     var map: GMSMapView?
     
+    var trip: PrimaryLocation?
+    
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
         view.bringSubview(toFront: clearDrawerView)
@@ -80,8 +82,11 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         #if DEBUG
         //Portland coordinate - good for test
-        let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
-        setupMapView(coordinate: coordinate)
+        guard let _ = trip else {
+            let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
+            setupMapView(coordinate: coordinate)
+            return
+        }
         #endif
     }
     
@@ -113,11 +118,13 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return trip?.subLocations.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceListTableViewCell
+        
+        cell.placeNameLabel.text = trip?.getSubLocation(from: indexPath).label
         return cell
     }
     
@@ -129,7 +136,13 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = Bundle.main.loadNibNamed("PlaceTableHeaderView", owner: self, options: nil)?.first as?
-        UIView
+        PlaceTableHeaderView
+        
+        guard let name = trip?.locationName else {
+            view?.setLabel(name: "Search for a place")
+            return view
+        }
+        view?.setLabel(name: name)
         return view
     }
 }
@@ -144,17 +157,29 @@ extension MainViewController: CLLocationManagerDelegate {
 
 extension MainViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        //if(!isSubLocation){
-            //set city data using place data
-            //city.setCity(place: place)
-            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
-            
-            //TODO: test what happens when a user selects a city multiple times from the builder - does it change or update the model correctly?
-        //} else {
+        if let _ = self.trip {
+            //we already have a primary
             let location = SubLocation()
+            //do we want to use a similar setPlace method that we use for Primary?
             location.placeID = place.placeID
+            location.label = place.name
+            //need to add this to the trip object
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
-            //append the new location to the end of the list at the appropriate index
+            self.trip?.subLocations.append(location)
+            placeTableView.reloadData()
+        } else {
+            //create the trip
+            self.trip = PrimaryLocation()
+            self.trip?.setCity(place: place)
+            //could we just move the implementation of setCity tp add the GmsPlace to the resource manager?
+            //Also why did I need the resource manager to begin with?
+            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
+            placeTableView.reloadData()
+            setupMapView(coordinate: place.coordinate)
+        }
+        
+        //Gonna need to add this in there when we fix the realm interactions
+        //append the new location to the end of the list at the appropriate index
             //RealmManager.addSublocationsToCity(city: city, location: location)
             //trip.cities[cityIndex].locations.append(location)
         //}

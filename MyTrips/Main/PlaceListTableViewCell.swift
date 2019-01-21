@@ -10,6 +10,7 @@ import UIKit
 
 class PlaceListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var placeNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
