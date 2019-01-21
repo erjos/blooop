@@ -134,6 +134,17 @@ extension UINavigationBar {
 }
 
 extension GMSMapView {
+    func addMapMarker(for place: SubLocation, map: GMSMapView?){
+        guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
+            return
+        }
+        let coordinate = gms.coordinate
+        let marker = GMSMarker(position: coordinate)
+        marker.title = gms.name
+        marker.snippet = place.label
+        marker.map = map
+    }
+    
     func createMapMarkers(for city: PrimaryLocation, map: GMSMapView?){
         let places = city.subLocations
         for place in places {

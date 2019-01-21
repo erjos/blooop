@@ -20,9 +20,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var placeTableView: UITableView!
     
     var locationManager: CLLocationManager!
-    var map: GMSMapView?
+    //var map: GMSMapView?
     
     var trip: PrimaryLocation?
+    var coordinateBounds: GMSCoordinateBounds?
     
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
@@ -46,8 +47,9 @@ class MainViewController: UIViewController {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.autocompleteBoundsMode = .restrict
         
-        //TODO: this should only be set if the user has already chosen a main location
-        //autocompleteController.autocompleteBounds = self.coordinateBounds
+        if let _ = trip {
+            autocompleteController.autocompleteBounds = self.coordinateBounds
+        }
         autocompleteController.delegate = self
         present(autocompleteController, animated: true, completion: nil)
     }
@@ -59,9 +61,6 @@ class MainViewController: UIViewController {
         locationManager.startUpdatingLocation()
         menuWidth.constant = 0
         menuCoverWidth.constant = 0
-        
-        //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeMenu))
-        //self.clearDrawerView.addGestureRecognizer(tapGesture)
         
         let nib = UINib(nibName: "PlaceListTableViewCell", bundle: Bundle.main)
         self.placeTableView.register(nib, forCellReuseIdentifier: "placeCell")
@@ -106,13 +105,10 @@ class MainViewController: UIViewController {
             locationManager.stopUpdatingLocation()
         }
         
-        ///TODO: we only want to set the coordinate bounds after the user chooses a central location
-        //coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
-        
-        //map?.delegate = self
-        //self.mapContainer.addSubview(map!)
-        
-        //map?.createMapMarkers(for: trip, map: map)
+        if let _ = trip {
+            coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapContainer)
+            mapContainer?.delegate = self
+        }
     }
 }
 
@@ -155,6 +151,14 @@ extension MainViewController: CLLocationManagerDelegate {
     }
 }
 
+extension MainViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        if let _ = trip {
+            self.coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapView)
+        }
+    }
+}
+
 extension MainViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         if let _ = self.trip {
@@ -166,6 +170,7 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
             //need to add this to the trip object
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             self.trip?.subLocations.append(location)
+            mapContainer.addMapMarker(for: location, map: mapContainer)
             placeTableView.reloadData()
         } else {
             //create the trip
@@ -183,24 +188,10 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
             //RealmManager.addSublocationsToCity(city: city, location: location)
             //trip.cities[cityIndex].locations.append(location)
         //}
-        //set the text field for location
-        //searchText.text = place.name
-        //searchText.textColor = UIColor.black
-        
-        //show the other fields
-        //locationDivider.isHidden = false
-        //nameView.isHidden = false
-        //dateView.isHidden = false
-        //doneButton.isHidden = false
-        
         dismiss(animated: true, completion: nil)
         UIView.animate(withDuration: 1.0 , animations: {
-            //
-            //self.nameViewHeight.constant = 120
-            //self.dateViewHeight.constant = 100
-            //TODO: set height of done button back to normal, if it is collapsed
+           
         }) { (complete) in
-            //
         }
     }
     
