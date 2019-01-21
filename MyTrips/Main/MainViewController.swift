@@ -20,7 +20,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var placeTableView: UITableView!
     
     var locationManager: CLLocationManager!
-    //var map: GMSMapView?
     
     var trip: PrimaryLocation?
     var coordinateBounds: GMSCoordinateBounds?
@@ -80,8 +79,8 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         #if DEBUG
-        //Portland coordinate - good for test
         guard let _ = trip else {
+            //Portland coordinate - good for test
             let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
             setupMapView(coordinate: coordinate)
             return
@@ -145,9 +144,8 @@ extension MainViewController: UITableViewDelegate {
 
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //set map with the intial location
         setupMapView(coordinate: locations.last?.coordinate)
-        //TODO: provide a location refresh mechanism on the page
+        //TODO: consider providing a location refresh mechanism on the page
     }
 }
 
@@ -162,12 +160,10 @@ extension MainViewController: GMSMapViewDelegate {
 extension MainViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         if let _ = self.trip {
-            //we already have a primary
             let location = SubLocation()
             //do we want to use a similar setPlace method that we use for Primary?
             location.placeID = place.placeID
             location.label = place.name
-            //need to add this to the trip object
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             self.trip?.subLocations.append(location)
             mapContainer.addMapMarker(for: location, map: mapContainer)
@@ -183,16 +179,14 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
             setupMapView(coordinate: place.coordinate)
         }
         
+        //TODO: consdier rewriting how the RealmManager works
         //Gonna need to add this in there when we fix the realm interactions
         //append the new location to the end of the list at the appropriate index
             //RealmManager.addSublocationsToCity(city: city, location: location)
             //trip.cities[cityIndex].locations.append(location)
         //}
+        
         dismiss(animated: true, completion: nil)
-        UIView.animate(withDuration: 1.0 , animations: {
-           
-        }) { (complete) in
-        }
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
