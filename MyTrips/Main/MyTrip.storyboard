@@ -252,7 +252,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-B7-dZM">
                                         <rect key="frame" x="0.0" y="0.0" width="5" height="896"/>
                                         <connections>
-                                            <segue destination="2hB-m7-uCQ" kind="embed" id="C6A-U3-dNK"/>
+                                            <segue destination="2hB-m7-uCQ" kind="embed" identifier="drawerEmbedSegue" id="C6A-U3-dNK"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -265,9 +265,6 @@
                                     <constraint firstItem="sVT-B7-dZM" firstAttribute="leading" secondItem="hpj-qZ-DAL" secondAttribute="leading" id="ZXA-wq-jhQ"/>
                                     <constraint firstAttribute="width" constant="5" id="zyx-lc-QZh"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="EKS-lR-bfE" appends="YES" id="1dR-Qf-d5r"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvV-zJ-qbj" userLabel="Clear Drawer View">
                                 <rect key="frame" x="5" y="0.0" width="0.0" height="896"/>
@@ -354,11 +351,6 @@
                         <action selector="tapSearch:" destination="mC5-5t-aKE" id="U8t-Br-j9l"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="EKS-lR-bfE">
-                    <connections>
-                        <action selector="tapMenu:" destination="mC5-5t-aKE" id="JRb-be-3En"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="ANu-G6-EeD">
                     <connections>
                         <action selector="tapMenuCover:" destination="mC5-5t-aKE" id="KcA-Tr-HPR"/>
@@ -387,6 +379,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="n3G-E1-ivO" firstAttribute="bottom" secondItem="odN-Uu-sFH" secondAttribute="bottom" id="DU2-ri-cxB"/>
                             <constraint firstItem="odN-Uu-sFH" firstAttribute="top" secondItem="n3G-E1-ivO" secondAttribute="top" constant="100" id="H7H-Cf-JTC"/>
@@ -407,12 +400,21 @@
                                 <include reference="zly-yQ-M1b"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="02q-9v-fdU" appends="YES" id="YhF-D1-wbw"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="menuTableView" destination="odN-Uu-sFH" id="YQn-Bg-LJ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQu-Yo-hWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="02q-9v-fdU">
+                    <connections>
+                        <action selector="tapMenu:" destination="2hB-m7-uCQ" id="O3U-9C-8zt"/>
+                        <outlet property="delegate" destination="2hB-m7-uCQ" id="WxV-Z5-Qyh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1578" y="984"/>
         </scene>

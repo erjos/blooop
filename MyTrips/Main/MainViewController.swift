@@ -5,7 +5,6 @@
 //  Created by Ethan Joseph on 1/13/19.
 //  Copyright © 2019 Joseph, Ethan. All rights reserved.
 //
-
 import UIKit
 import GoogleMaps
 import GooglePlaces
@@ -65,7 +64,7 @@ class MainViewController: UIViewController {
         self.placeTableView.register(nib, forCellReuseIdentifier: "placeCell")
     }
     
-    func toggleMenu(isHidden: Bool){
+    func toggleMenu(isHidden: Bool) {
         
     }
     
@@ -109,6 +108,19 @@ class MainViewController: UIViewController {
             mapContainer?.delegate = self
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "drawerEmbedSegue"){
+            let drawerVC = segue.destination as! DrawerViewController
+            drawerVC.menuDelegate = self
+        }
+    }
+}
+
+extension MainViewController: MenuDelegate{
+    func didCloseMenu() {
+        self.closeMenu()
+    }
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -137,6 +149,7 @@ extension MainViewController: UITableViewDelegate {
             view?.setLabel(name: "Search for a place")
             return view
         }
+        
         view?.setLabel(name: name)
         return view
     }
