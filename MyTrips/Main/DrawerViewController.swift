@@ -12,6 +12,7 @@ enum DrawerTableState {
     case Menu
     case TripList
 }
+
 class DrawerViewController: UIViewController {
 
     @IBOutlet weak var menuTableView: UITableView!
@@ -23,7 +24,7 @@ class DrawerViewController: UIViewController {
     weak var menuDelegate: MenuDelegate?
     
     @IBAction func tapMenu(_ sender: Any) {
-        self.menuDelegate?.didCloseMenu()
+        self.menuDelegate?.shouldCloseMenu()
     }
     
     override func viewDidLoad() {
@@ -37,6 +38,14 @@ class DrawerViewController: UIViewController {
         //Move this to a switch statement
         if selection == menuItems[2] {
             self.trips = RealmManager.fetchData()
+            //TODO: create method to handle UI switch to display these trips?
+            //table refresh - just encapsulate it
+        }
+        if selection == menuItems[0] {
+            self.menuDelegate?.shouldSaveTrip()
+        }
+        if selection == menuItems[1] {
+            self.menuDelegate?.shouldClearMap()
         }
     }
 }
@@ -88,6 +97,8 @@ extension DrawerViewController: UITableViewDataSource {
     }
 }
 
-protocol MenuDelegate:class {
-    func didCloseMenu()
+protocol MenuDelegate: class {
+    func shouldCloseMenu()
+    func shouldSaveTrip()
+    func shouldClearMap()
 }

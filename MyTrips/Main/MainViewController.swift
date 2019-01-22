@@ -118,8 +118,17 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: MenuDelegate{
-    func didCloseMenu() {
+    func shouldCloseMenu() {
         self.closeMenu()
+    }
+    func shouldClearMap() {
+        //clear the map
+    }
+    func shouldSaveTrip() {
+        if let primaryLocation = trip {
+            RealmManager.storeData(object: primaryLocation)
+        }
+        //TODO:else -- display a message indicating the user must choose a location first
     }
 }
 
