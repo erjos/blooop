@@ -134,6 +134,7 @@ extension UINavigationBar {
 }
 
 extension GMSMapView {
+    //TODO: can we remove the map object from these methods and just refer to self?
     func addMapMarker(for place: SubLocation, map: GMSMapView?){
         guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
             return

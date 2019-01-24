@@ -13,10 +13,16 @@ enum DrawerTableState {
     case TripList
 }
 
+//TODO:
+//Need to provide some user guardrails for the menu
+//Provide backbutton on trip list view to get back to main menu
+//Provide warning if user selects to view a saved trip while there is unsaved data on the page
+
 class DrawerViewController: UIViewController {
 
     @IBOutlet weak var menuTableView: UITableView!
     
+    //viewModel items
     var menuItems = ["Save trip", "Clear map", "My trips"]
     var trips: Results<PrimaryLocation>?
     var tableState = DrawerTableState.Menu
@@ -38,8 +44,8 @@ class DrawerViewController: UIViewController {
         //Move this to a switch statement
         if selection == menuItems[2] {
             self.trips = RealmManager.fetchData()
-            //TODO: create method to handle UI switch to display these trips?
-            //table refresh - just encapsulate it
+            self.tableState = .TripList
+            self.menuTableView.reloadData()
         }
         if selection == menuItems[0] {
             self.menuDelegate?.shouldSaveTrip()
@@ -78,21 +84,25 @@ extension DrawerViewController: UITableViewDelegate {
 
 extension DrawerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableState == .Menu {
+        switch tableState {
+        case .Menu:
             return menuItems.count
-        } else {
-            return 0
+        case .TripList:
+            return trips?.count ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableState == .Menu {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell")
+        switch tableState {
+        case .Menu:
             cell?.textLabel?.text = menuItems[indexPath.row]
             cell?.backgroundColor = UIColor.lightGray
             return cell!
-        } else {
-            return UITableViewCell()
+        case .TripList:
+            cell?.textLabel?.text = trips?[indexPath.row].locationName
+            cell?.backgroundColor = UIColor.lightGray
+            return cell!
         }
     }
 }

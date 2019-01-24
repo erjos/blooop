@@ -18,8 +18,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mapContainer: GMSMapView!
     @IBOutlet weak var placeTableView: UITableView!
     
+    //prob want to pull this out and manage the location via a delegate
     var locationManager: CLLocationManager!
     
+    //viewModel variables (move to an object a little later)
     var trip: PrimaryLocation?
     var coordinateBounds: GMSCoordinateBounds?
     
@@ -35,9 +37,11 @@ class MainViewController: UIViewController {
         }
     }
     
+    //TODO: migt be able to remove this
     @IBAction func tapMenu(_ sender: Any) {
         closeMenu()
     }
+    
     @IBAction func tapMenuCover(_ sender: Any) {
         closeMenu()
     }
@@ -68,7 +72,7 @@ class MainViewController: UIViewController {
         
     }
     
-    @objc func closeMenu(){
+    @objc func closeMenu() {
         UIView.animate(withDuration: 0.3) {
             self.menuWidth.constant = 0
             self.menuCoverWidth.constant = 0
@@ -95,7 +99,7 @@ class MainViewController: UIViewController {
         locationManager.delegate = self
     }
     
-    private func setupMapView(coordinate: CLLocationCoordinate2D?){
+    private func setupMapView(coordinate: CLLocationCoordinate2D?) {
         //TODO: add method to load trips for when adding trips from storage
         if let target = coordinate {
             let camera = GMSCameraPosition.camera(withTarget: target, zoom: 10)
@@ -117,13 +121,20 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: MenuDelegate{
+extension MainViewController: MenuDelegate {
     func shouldCloseMenu() {
         self.closeMenu()
     }
+    
     func shouldClearMap() {
-        //clear the map
+        //TODO: add an are you sure alert if there is unsaved data on the map
+        //1)check if the city is saved in realm? How do we want to validate this
+        self.mapContainer.clear()
+        self.trip = nil
+        placeTableView.reloadData()
+        closeMenu()
     }
+    
     func shouldSaveTrip() {
         if let primaryLocation = trip {
             RealmManager.storeData(object: primaryLocation)
