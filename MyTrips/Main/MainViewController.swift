@@ -107,7 +107,7 @@ class MainViewController: UIViewController {
             locationManager.stopUpdatingLocation()
         }
         
-        if let _ = trip {
+        if trip != nil {
             coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapContainer)
             mapContainer?.delegate = self
         }
@@ -128,7 +128,7 @@ extension MainViewController: MenuDelegate {
     
     func shouldClearMap() {
         //TODO: add an are you sure alert if there is unsaved data on the map
-        //1)check if the city is saved in realm? How do we want to validate this
+        
         self.mapContainer.clear()
         self.trip = nil
         placeTableView.reloadData()
@@ -139,7 +139,26 @@ extension MainViewController: MenuDelegate {
         if let primaryLocation = trip {
             RealmManager.storeData(object: primaryLocation)
         }
+        
         //TODO:else -- display a message indicating the user must choose a location first
+    }
+    
+    func shouldLoadTrip(trip: PrimaryLocation) {
+        self.trip = trip
+        
+        //fetches the place and adds it to the resource cache - I hate how this works
+        trip.fetchGMSPlace { complete in }
+        
+        trip.fetchGmsPlacesForCity { complete in
+            if complete {
+                self.placeTableView.reloadData()
+                self.mapContainer.createMapMarkers(for: trip, map: self.mapContainer)
+                //TODO: get rid of this singleton shit and fix how this works
+                let place = GoogleResourceManager.sharedInstance.getPlaceForId(ID: trip.placeID)
+                self.setupMapView(coordinate:place?.coordinate)
+                self.closeMenu()
+            }
+        }
     }
 }
 

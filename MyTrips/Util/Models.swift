@@ -47,6 +47,7 @@ class PrimaryLocation: Object {
         return subLocations[indexPath.row].placeID
     }
     
+    //this is confusing and I need to reevaluate how I make this work
     //TODO: move this method to delegate/protocol
     func fetchGmsPlacesForCity(complete: @escaping(Bool)->Void){
         var fetchedPlaces = [String]()

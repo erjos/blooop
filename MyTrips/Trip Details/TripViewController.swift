@@ -37,56 +37,7 @@ class TripViewController: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    //APP BAr
-    //let appBar = MDCAppBar()
-//    let headerView = TripHeaderView()
-//
-//    func configureAppBar(){
-//        //configure app bar
-//        self.addChildViewController(appBar.headerViewController)
-//        appBar.navigationBar.backgroundColor = .clear
-//        appBar.navigationBar.title = nil
-//        appBar.headerViewController.layoutDelegate = self
-//
-//        //Get the Photo
-//        GooglePhotoManager.getFirstPhoto(placeID: city.placeID, success: { image, attributes in
-//            //SUCCESS
-//            let imageView = UIImageView.init(image: image)
-//            imageView.contentMode = .scaleAspectFill
-//            imageView.clipsToBounds = true
-//            self.headerView.imageView = imageView
-//
-//            let headerbackground = UIColor.init(red: 86/255, green: 148/255, blue: 217/255, alpha: 1.0)
-//
-//
-//            imageView.createGradientLayer(colors: [headerbackground.cgColor, headerbackground.cgColor, headerbackground.withAlphaComponent(0.60).cgColor, headerbackground.withAlphaComponent(0.30).cgColor, headerbackground.withAlphaComponent(0.20).cgColor, headerbackground.withAlphaComponent(0.10).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor, headerbackground.withAlphaComponent(0.0).cgColor])
-//            self.headerView.addSubview(imageView)
-//            self.headerView.bringSubview(toFront: self.headerView.titleLabel)
-//        }) { (error) in
-//            //ERROR
-//        }
-//
-//        let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: city.placeID)
-//        headerView.titleLabel.text = gms?.name
-//
-//        // 3
-//        let header = appBar.headerViewController.headerView
-//        header.backgroundColor = .clear
-//        header.maximumHeight = TripHeaderView.Constants.maxHeight
-//        header.minimumHeight = TripHeaderView.Constants.minHeight
-//        // 4
-//        headerView.frame = header.bounds
-//        header.insertSubview(headerView, at: 0)
-//        // 5
-//        header.trackingScrollView = tableView
-//
-//        self.navigationItem.setRightBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "menu_white"), style: .plain, target: self, action: #selector(rightBarAction(_:))), animated: false)
-//
-//        self.navigationItem.setLeftBarButton(UIBarButtonItem.init(image: #imageLiteral(resourceName: "back_white"), style: .plain, target: self, action: #selector(backAction(_:))), animated: false)
-//
-//        // 6
-//        appBar.addSubviewsToParent()
-//    }
+  
     
     func showHideButtonAnimate(shouldShow: Bool){
         let bottomViewValue: CGFloat = shouldShow ? 0.0 : 60.0
@@ -229,6 +180,7 @@ extension TripViewController: UITableViewDelegate{
 extension TripViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
+        
         let placeID = city.getSubLocationPlaceID(from: indexPath)
         
         GooglePhotoManager.loadMetaDataList(placeID: placeID, success: { list in

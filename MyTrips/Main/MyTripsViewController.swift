@@ -203,6 +203,8 @@ extension MyTripsViewController: UICollectionViewDelegate {
         let trip = cities?[indexPath.row]
         self.activityIndicator.isHidden = false
         self.view.isUserInteractionEnabled = false
+        
+        //Need to call this method when we load trips!!!! otherwise we dont have the place data cached:(
         trip?.fetchGmsPlacesForCity(complete: { (isComplete) in
             self.activityIndicator.isHidden = true
             self.view.isUserInteractionEnabled = true

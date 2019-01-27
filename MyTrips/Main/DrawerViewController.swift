@@ -27,6 +27,7 @@ class DrawerViewController: UIViewController {
     var trips: Results<PrimaryLocation>?
     var tableState = DrawerTableState.Menu
     
+    //delegate
     weak var menuDelegate: MenuDelegate?
     
     @IBAction func tapMenu(_ sender: Any) {
@@ -54,6 +55,13 @@ class DrawerViewController: UIViewController {
             self.menuDelegate?.shouldClearMap()
         }
     }
+    
+    func handleTripSelection(indexPath: IndexPath) {
+        guard let selection = trips?[indexPath.row] else {
+            return
+        }
+        self.menuDelegate?.shouldLoadTrip(trip: selection)
+    }
 }
 
 extension DrawerViewController: UIGestureRecognizerDelegate {
@@ -74,10 +82,11 @@ extension DrawerViewController: UIGestureRecognizerDelegate {
 extension DrawerViewController: UITableViewDelegate {
     //handle tapping of specific items in the menu - for some we want to close the drawer for others we want to keep it open and change the state of the page
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableState == .Menu{
+        switch tableState {
+        case .Menu:
             handleMenuSelection(indexPath: indexPath)
-        }else {
-            
+        case .TripList:
+            handleTripSelection(indexPath: indexPath)
         }
     }
 }
@@ -111,4 +120,5 @@ protocol MenuDelegate: class {
     func shouldCloseMenu()
     func shouldSaveTrip()
     func shouldClearMap()
+    func shouldLoadTrip(trip: PrimaryLocation)
 }
