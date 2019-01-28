@@ -124,11 +124,11 @@ class MainViewController: UIViewController {
 extension MainViewController: MenuDelegate {
     func shouldCloseMenu() {
         self.closeMenu()
+        //menu.tableState = .Menu
     }
     
     func shouldClearMap() {
         //TODO: add an are you sure alert if there is unsaved data on the map
-        
         self.mapContainer.clear()
         self.trip = nil
         placeTableView.reloadData()

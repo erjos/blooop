@@ -14,9 +14,8 @@ enum DrawerTableState {
 }
 
 //TODO:
-//Need to provide some user guardrails for the menu
-//Provide backbutton on trip list view to get back to main menu
 //Provide warning if user selects to view a saved trip while there is unsaved data on the page
+//create a protocol that can abstract out the mechanism of saving the realm data
 
 class DrawerViewController: UIViewController {
 
@@ -32,6 +31,9 @@ class DrawerViewController: UIViewController {
     
     @IBAction func tapMenu(_ sender: Any) {
         self.menuDelegate?.shouldCloseMenu()
+        
+        self.tableState = .Menu
+        self.menuTableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -45,14 +47,22 @@ class DrawerViewController: UIViewController {
         //Move this to a switch statement
         if selection == menuItems[2] {
             self.trips = RealmManager.fetchData()
+            
+            //TODO: encapsulate in change table state method - where we reload the table everytime
             self.tableState = .TripList
             self.menuTableView.reloadData()
         }
         if selection == menuItems[0] {
             self.menuDelegate?.shouldSaveTrip()
+            
+            tableState = .Menu
+            menuTableView.reloadData()
+            
+            menuDelegate?.shouldCloseMenu()
         }
         if selection == menuItems[1] {
             self.menuDelegate?.shouldClearMap()
+            menuDelegate?.shouldCloseMenu()
         }
     }
     
@@ -61,6 +71,11 @@ class DrawerViewController: UIViewController {
             return
         }
         self.menuDelegate?.shouldLoadTrip(trip: selection)
+        
+        tableState = .Menu
+        menuTableView.reloadData()
+        
+        menuDelegate?.shouldCloseMenu()
     }
 }
 
@@ -108,7 +123,7 @@ extension DrawerViewController: UITableViewDelegate {
             return UIView()
         }
         
-        header.backgroundColor = UIColor.darkGray
+        header.backgroundColor = UIColor.lightGray
         header.delegate = self
         
         //Hide the back button if the table is in the Menu state
@@ -123,15 +138,6 @@ extension DrawerViewController: UITableViewDelegate {
         
         return header
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch tableState {
-        case .Menu:
-            return "   Menu"
-        case .TripList:
-            return "   My Trips"
-        }
-    }
 }
 
 extension DrawerViewController: UITableViewDataSource {
@@ -145,16 +151,18 @@ extension DrawerViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") else {
+            return UITableViewCell()
+        }
         switch tableState {
         case .Menu:
-            cell?.textLabel?.text = menuItems[indexPath.row]
-            cell?.backgroundColor = UIColor.lightGray
-            return cell!
+            cell.textLabel?.text = menuItems[indexPath.row]
+            cell.backgroundColor = UIColor.lightGray
+            return cell
         case .TripList:
-            cell?.textLabel?.text = trips?[indexPath.row].locationName
-            cell?.backgroundColor = UIColor.lightGray
-            return cell!
+            cell.textLabel?.text = trips?[indexPath.row].locationName
+            cell.backgroundColor = UIColor.lightGray
+            return cell
         }
     }
 }
