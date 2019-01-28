@@ -89,6 +89,37 @@ extension DrawerViewController: UITableViewDelegate {
             handleTripSelection(indexPath: indexPath)
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 75.00
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = Bundle.main.loadNibNamed("DrawerHeaderView", owner: self, options: nil)?.first as? DrawerHeaderView else {
+            print("Failed to load and cast view")
+            return UIView()
+        }
+        
+        header.backgroundColor = UIColor.darkGray
+        
+        switch tableState {
+        case .Menu:
+            header.headerLabel.text = "Menu"
+        case .TripList:
+            header.headerLabel.text = "My Trips"
+        }
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch tableState {
+        case .Menu:
+            return "   Menu"
+        case .TripList:
+            return "   My Trips"
+        }
+    }
 }
 
 extension DrawerViewController: UITableViewDataSource {

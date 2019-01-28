@@ -203,6 +203,7 @@ extension MainViewController: CLLocationManagerDelegate {
 
 extension MainViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        //TODO: Improve coordinate bounds to only expand past the initial zoom if we zoom out - dont want to shrink the search space, because users might zoom in and not know where things are they want to search for are - keep the initial bounds though as a good starting point
         if let _ = trip {
             self.coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapView)
         }

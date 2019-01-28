@@ -12,6 +12,8 @@
 		52137A292114CA12008F3052 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A282114CA12008F3052 /* ApiKeys.swift */; };
 		525011332137684700A40DAB /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525011322137684700A40DAB /* AboutAppViewController.swift */; };
 		5262DFA021F6731400A2E918 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DF9F21F6731400A2E918 /* DrawerViewController.swift */; };
+		5262DFA221FE74BF00A2E918 /* DrawerHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */; };
+		5262DFA421FE9BA400A2E918 /* DrawerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */; };
 		529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F4EA520F287F800D1E965 /* TripHeaderView.swift */; };
 		52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1922F21EBC2B4004F073A /* MainViewController.swift */; };
 		52CDAD8D210A1DA500449CFF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CDAD8C210A1DA500449CFF /* MapViewController.swift */; };
@@ -73,6 +75,8 @@
 		52137A282114CA12008F3052 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		525011322137684700A40DAB /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		5262DF9F21F6731400A2E918 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerHeaderView.xib; sourceTree = "<group>"; };
+		5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHeaderView.swift; sourceTree = "<group>"; };
 		529F4EA520F287F800D1E965 /* TripHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHeaderView.swift; sourceTree = "<group>"; };
 		52C1922F21EBC2B4004F073A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		52CDAD8C210A1DA500449CFF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				52FDB33521F148DF00FB6153 /* PlaceListTableViewCell.xib */,
 				52FDB33821F63C1B00FB6153 /* PlaceTableHeaderView.swift */,
 				5262DF9F21F6731400A2E918 /* DrawerViewController.swift */,
+				5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */,
+				5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				86A895A72019917D00CE3926 /* Trip.storyboard in Resources */,
 				52137A252114AA1B008F3052 /* CustomTipsView.xib in Resources */,
 				862FBB4020C80FA20078D689 /* MyTrip.storyboard in Resources */,
+				5262DFA221FE74BF00A2E918 /* DrawerHeaderView.xib in Resources */,
 				86B7EB15208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib in Resources */,
 				864F67E0207E823200B6554B /* Builder.storyboard in Resources */,
 				863C736320C7546F0054C49A /* TripCollectionViewCell.xib in Resources */,
@@ -459,6 +466,7 @@
 				86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */,
 				52CDAD8D210A1DA500449CFF /* MapViewController.swift in Sources */,
 				862EF6C2207D0BAC005D268B /* BuilderViewController.swift in Sources */,
+				5262DFA421FE9BA400A2E918 /* DrawerHeaderView.swift in Sources */,
 				52137A272114ACC4008F3052 /* CustomTipsView.swift in Sources */,
 				86A895B6201992AE00CE3926 /* ListHeader.swift in Sources */,
 				52E5F61D213626E700672DE2 /* Mock.swift in Sources */,
