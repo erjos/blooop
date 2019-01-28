@@ -13,16 +13,13 @@ class DrawerHeaderView: UIView {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
+    weak var delegate: HeaderViewDelegate?
+    
     @IBAction func backButtonPressed(_ sender: Any) {
-    
+        delegate?.didPressBack()
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+}
 
+protocol HeaderViewDelegate: class {
+    func didPressBack()
 }

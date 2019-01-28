@@ -64,6 +64,14 @@ class DrawerViewController: UIViewController {
     }
 }
 
+extension DrawerViewController: HeaderViewDelegate {
+    //This may need to become more complicated if we add more navigation possibilities
+    func didPressBack() {
+        self.tableState = .Menu
+        self.menuTableView.reloadData()
+    }
+}
+
 extension DrawerViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         
@@ -101,6 +109,10 @@ extension DrawerViewController: UITableViewDelegate {
         }
         
         header.backgroundColor = UIColor.darkGray
+        header.delegate = self
+        
+        //Hide the back button if the table is in the Menu state
+        header.backButton.isHidden = (tableState == .Menu)
         
         switch tableState {
         case .Menu:
