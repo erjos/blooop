@@ -129,9 +129,10 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: MenuDelegate {
-    func shouldCloseMenu() {
+    func shouldCloseMenu(menu: DrawerViewController) {
         self.closeMenu()
-        //menu.tableState = .Menu
+        menu.tableState = .Menu
+        menu.menuTableView.reloadData()
     }
     
     func shouldClearMap() {

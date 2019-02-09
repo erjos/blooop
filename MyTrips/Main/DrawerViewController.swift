@@ -31,9 +31,7 @@ class DrawerViewController: UIViewController {
     weak var menuDelegate: MenuDelegate?
     
     @IBAction func tapMenu(_ sender: Any) {
-        self.menuDelegate?.shouldCloseMenu()
-        self.tableState = .Menu
-        self.menuTableView.reloadData()
+        self.menuDelegate?.shouldCloseMenu(menu: self)
     }
     
     override func viewDidLoad() {
@@ -54,10 +52,10 @@ class DrawerViewController: UIViewController {
         case menuItems[0]:
             self.menuDelegate?.shouldSaveTrip()
             changeTableState(state: .Menu)
-            menuDelegate?.shouldCloseMenu()
+            menuDelegate?.shouldCloseMenu(menu: self)
         case menuItems[1]:
             self.menuDelegate?.shouldClearMap()
-            menuDelegate?.shouldCloseMenu()
+            menuDelegate?.shouldCloseMenu(menu: self)
         case menuItems[2]:
             self.trips = RealmManager.fetchData()
             changeTableState(state: .TripList)
@@ -72,7 +70,7 @@ class DrawerViewController: UIViewController {
         }
         self.menuDelegate?.shouldLoadTrip(trip: selection)
         changeTableState(state: .Menu)
-        menuDelegate?.shouldCloseMenu()
+        menuDelegate?.shouldCloseMenu(menu: self)
     }
     
     func adjustTableHeight(count:Int){
@@ -154,7 +152,7 @@ extension DrawerViewController: UITableViewDataSource {
 }
 
 protocol MenuDelegate: class {
-    func shouldCloseMenu()
+    func shouldCloseMenu(menu: DrawerViewController)
     func shouldSaveTrip()
     func shouldClearMap()
     func shouldLoadTrip(trip: PrimaryLocation)
