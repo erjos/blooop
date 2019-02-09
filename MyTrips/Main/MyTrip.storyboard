@@ -367,9 +367,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odN-Uu-sFH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odN-Uu-sFH">
                                 <rect key="frame" x="0.0" y="144" width="200" height="718"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="718" id="4Pt-8h-BzM"/>
+                                </constraints>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -381,7 +384,7 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="n3G-E1-ivO" firstAttribute="bottom" secondItem="odN-Uu-sFH" secondAttribute="bottom" id="DU2-ri-cxB"/>
+                            <constraint firstItem="n3G-E1-ivO" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="odN-Uu-sFH" secondAttribute="bottom" id="DU2-ri-cxB"/>
                             <constraint firstItem="odN-Uu-sFH" firstAttribute="top" secondItem="n3G-E1-ivO" secondAttribute="top" constant="100" id="H7H-Cf-JTC"/>
                             <constraint firstItem="odN-Uu-sFH" firstAttribute="trailing" secondItem="dgO-Qu-Izv" secondAttribute="trailing" id="JDG-h3-z6S"/>
                             <constraint firstItem="odN-Uu-sFH" firstAttribute="leading" secondItem="dgO-Qu-Izv" secondAttribute="leading" id="St2-01-RrJ">
@@ -406,6 +409,7 @@
                     </view>
                     <connections>
                         <outlet property="menuTableView" destination="odN-Uu-sFH" id="YQn-Bg-LJ1"/>
+                        <outlet property="tableHeighConstraint" destination="4Pt-8h-BzM" id="yAF-mf-JbD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQu-Yo-hWv" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -15,6 +15,8 @@ class DrawerHeaderView: UIView {
     @IBOutlet weak var backButton: UIButton!
     
     weak var delegate: HeaderViewDelegate?
+    let MENU_LABEL = "Menu"
+    let TRIPS_LABEL = "My Trips"
     
     @IBAction func backButtonPressed(_ sender: Any) {
         delegate?.didPressBack()
@@ -23,6 +25,18 @@ class DrawerHeaderView: UIView {
     func hideBackButton(shouldHide: Bool){
         self.backButton.isHidden = shouldHide
         self.headerLeadingConstraint.constant = shouldHide ? 15 : 39
+    }
+    
+    func setupHeaderView(tableState: DrawerTableState){
+        self.backgroundColor = UIColor.lightGray
+        self.hideBackButton(shouldHide: (tableState == .Menu))
+        
+        switch tableState {
+        case .Menu:
+            self.headerLabel.text = MENU_LABEL
+        case .TripList:
+            self.headerLabel.text = TRIPS_LABEL
+        }
     }
 }
 

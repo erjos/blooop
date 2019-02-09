@@ -13,15 +13,12 @@ enum DrawerTableState {
     case TripList
 }
 
-//TODO:
-//Provide warning if user selects to view a saved trip while there is unsaved data on the page
-//create a protocol that can abstract out the mechanism of saving the realm data
-
 class DrawerViewController: UIViewController {
 
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var tableHeighConstraint: NSLayoutConstraint!
     
-    //viewModel items
+    //viewModel stuff
     var menuItems = ["Save trip", "Clear map", "My trips"]
     var trips: Results<PrimaryLocation>?
     var tableState = DrawerTableState.Menu
@@ -42,27 +39,27 @@ class DrawerViewController: UIViewController {
         menuTableView.separatorColor = UIColor.darkGray
     }
     
+    func changeTableState(state: DrawerTableState){
+        self.tableState = state
+        self.menuTableView.reloadData()
+    }
+    
     func handleMenuSelection(indexPath: IndexPath) {
         let selection = menuItems[indexPath.row]
-        //Move this to a switch statement
-        if selection == menuItems[2] {
-            self.trips = RealmManager.fetchData()
-            
-            //TODO: encapsulate in change table state method - where we reload the table everytime
-            self.tableState = .TripList
-            self.menuTableView.reloadData()
-        }
-        if selection == menuItems[0] {
+        
+        switch selection {
+        case menuItems[0]:
             self.menuDelegate?.shouldSaveTrip()
-            
-            tableState = .Menu
-            menuTableView.reloadData()
-            
+            changeTableState(state: .Menu)
             menuDelegate?.shouldCloseMenu()
-        }
-        if selection == menuItems[1] {
+        case menuItems[1]:
             self.menuDelegate?.shouldClearMap()
             menuDelegate?.shouldCloseMenu()
+        case menuItems[2]:
+            self.trips = RealmManager.fetchData()
+            changeTableState(state: .TripList)
+        default:
+            return
         }
     }
     
@@ -71,39 +68,30 @@ class DrawerViewController: UIViewController {
             return
         }
         self.menuDelegate?.shouldLoadTrip(trip: selection)
-        
-        tableState = .Menu
-        menuTableView.reloadData()
-        
+        changeTableState(state: .Menu)
         menuDelegate?.shouldCloseMenu()
     }
 }
 
 extension DrawerViewController: HeaderViewDelegate {
-    //This may need to become more complicated if we add more navigation possibilities
     func didPressBack() {
-        self.tableState = .Menu
-        self.menuTableView.reloadData()
+        changeTableState(state: .Menu)
     }
 }
 
 extension DrawerViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        
         guard let touchView = touch.view else {
             return true
         }
-        
         if touchView.isDescendant(of: self.menuTableView) {
             return false
         }
-        
         return true
     }
 }
 
 extension DrawerViewController: UITableViewDelegate {
-    //handle tapping of specific items in the menu - for some we want to close the drawer for others we want to keep it open and change the state of the page
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch tableState {
         case .Menu:
@@ -122,18 +110,9 @@ extension DrawerViewController: UITableViewDelegate {
             print("Failed to load and cast view")
             return UIView()
         }
-        
-        header.backgroundColor = UIColor.lightGray
         header.delegate = self
         
-        header.hideBackButton(shouldHide: (tableState == .Menu))
-        
-        switch tableState {
-        case .Menu:
-            header.headerLabel.text = "Menu"
-        case .TripList:
-            header.headerLabel.text = "My Trips"
-        }
+        header.setupHeaderView(tableState: tableState)
         
         return header
     }
