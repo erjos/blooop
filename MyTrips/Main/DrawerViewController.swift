@@ -18,24 +18,27 @@ class DrawerViewController: UIViewController {
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var tableHeighConstraint: NSLayoutConstraint!
     
-    //viewModel stuff
+    //stuff
     var menuItems = ["Save trip", "Clear map", "My trips"]
     var trips: Results<PrimaryLocation>?
     var tableState = DrawerTableState.Menu
+    let HEADER_HEIGHT = 75
+    let CELL_HEIGHT = 44
+    let HEADER_VIEW = "DrawerHeaderView"
+    let CELL_REUSE_ID = "menuCell"
     
     //delegate
     weak var menuDelegate: MenuDelegate?
     
     @IBAction func tapMenu(_ sender: Any) {
         self.menuDelegate?.shouldCloseMenu()
-        
         self.tableState = .Menu
         self.menuTableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuTableView.register(UITableViewCell.self, forCellReuseIdentifier: "menuCell")
+        menuTableView.register(UITableViewCell.self, forCellReuseIdentifier: CELL_REUSE_ID)
         menuTableView.separatorColor = UIColor.darkGray
     }
     
@@ -71,6 +74,10 @@ class DrawerViewController: UIViewController {
         changeTableState(state: .Menu)
         menuDelegate?.shouldCloseMenu()
     }
+    
+    func adjustTableHeight(count:Int){
+        self.tableHeighConstraint.constant = CGFloat((CELL_HEIGHT * count) + HEADER_HEIGHT)
+    }
 }
 
 extension DrawerViewController: HeaderViewDelegate {
@@ -102,18 +109,16 @@ extension DrawerViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 75.00
+        return CGFloat(HEADER_HEIGHT)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = Bundle.main.loadNibNamed("DrawerHeaderView", owner: self, options: nil)?.first as? DrawerHeaderView else {
+        guard let header = Bundle.main.loadNibNamed(HEADER_VIEW, owner: self, options: nil)?.first as? DrawerHeaderView else {
             print("Failed to load and cast view")
             return UIView()
         }
         header.delegate = self
-        
         header.setupHeaderView(tableState: tableState)
-        
         return header
     }
 }
@@ -122,14 +127,17 @@ extension DrawerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableState {
         case .Menu:
+            self.adjustTableHeight(count: menuItems.count)
             return menuItems.count
         case .TripList:
-            return trips?.count ?? 0
+            let count = trips?.count ?? 0
+            self.adjustTableHeight(count: count)
+            return count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CELL_REUSE_ID) else {
             return UITableViewCell()
         }
         switch tableState {
