@@ -11,11 +11,23 @@ import GooglePlaces
 
 //TODO:
 
-//> Need to do something when we click on a place after we start planning - open a new screen or initiate a way to input more data specific to that place (notes, dates times, etc.) - start simple
+//> Feature: Need to do something when we click on a place after we start planning - open a new screen or initiate a way to input more data specific to that place (notes, dates times, etc.) - start simple
 
 //> Create a protocol that can abstract out the mechanism of saving the realm data
 
 //> Provide warning if user selects to view a saved trip while there is unsaved data on the page
+
+//figure out when we want to write to realm - how do update saved trips?
+
+//could use this enum to help the view controller know whether to save, add or write to realm on the existing trip
+enum TripSaveStatus {
+    //trip exists and is saved
+    case Saved
+    //trip exists, but not saved
+    case New
+    //trip doesnt exist
+    case Empty
+}
 
 class MainViewController: UIViewController {
     @IBOutlet weak var clearDrawerView: UIView!
@@ -28,8 +40,9 @@ class MainViewController: UIViewController {
     //prob want to pull this out and manage the location via a delegate
     var locationManager: CLLocationManager!
     
-    //viewModel variables (move to an object a little later)
+    //viewModel stuff
     var trip: PrimaryLocation?
+    var currentTripStatus: TripSaveStatus = .Empty
     var coordinateBounds: GMSCoordinateBounds?
     
     @IBAction func menuButton(_ sender: Any) {
@@ -107,13 +120,11 @@ class MainViewController: UIViewController {
     }
     
     private func setupMapView(coordinate: CLLocationCoordinate2D?) {
-        //TODO: add method to load trips for when adding trips from storage
         if let target = coordinate {
             let camera = GMSCameraPosition.camera(withTarget: target, zoom: 10)
             mapContainer.camera = camera
             locationManager.stopUpdatingLocation()
         }
-        
         if trip != nil {
             coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapContainer)
             mapContainer?.delegate = self
@@ -124,6 +135,41 @@ class MainViewController: UIViewController {
         if(segue.identifier == "drawerEmbedSegue"){
             let drawerVC = segue.destination as! DrawerViewController
             drawerVC.menuDelegate = self
+        }
+    }
+    
+    func handlePlaceResultReturned(place: GMSPlace, tripState: TripSaveStatus){
+        switch tripState {
+        case .Empty:
+            //create the trip
+            self.trip = PrimaryLocation()
+            self.trip?.setCity(place: place)
+            //could we just move the implementation of setCity tp add the GmsPlace to the resource manager?
+            //Also why did I need the resource manager to begin with?
+            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
+            placeTableView.reloadData()
+            setupMapView(coordinate: place.coordinate)
+            self.currentTripStatus = .New
+        case .New:
+            let location = SubLocation()
+            //do we want to use a similar setPlace method that we use for Primary?
+            location.placeID = place.placeID
+            location.label = place.name
+            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
+            self.trip?.subLocations.append(location)
+            mapContainer.addMapMarker(for: location, map: mapContainer)
+            placeTableView.reloadData()
+        case .Saved:
+            guard let savedTrip = trip else {
+                return
+            }
+            let location = SubLocation()
+            location.placeID = place.placeID
+            location.label = place.name
+            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
+            RealmManager.addSublocationsToCity(city: savedTrip, location: location)
+            mapContainer.addMapMarker(for: location, map: mapContainer)
+            placeTableView.reloadData()
         }
     }
 }
@@ -146,13 +192,18 @@ extension MainViewController: MenuDelegate {
     func shouldSaveTrip() {
         if let primaryLocation = trip {
             RealmManager.storeData(object: primaryLocation)
+            
+            self.currentTripStatus = .Saved
         }
+        
+        //what happens if we save then add in the same instance?
         
         //TODO:else -- display a message indicating the user must choose a location first
     }
     
     func shouldLoadTrip(trip: PrimaryLocation) {
         self.trip = trip
+        self.currentTripStatus = .Saved
         
         //fetches the place and adds it to the resource cache - I hate how this works
         trip.fetchGMSPlace { complete in }
@@ -161,6 +212,7 @@ extension MainViewController: MenuDelegate {
             if complete {
                 self.placeTableView.reloadData()
                 self.mapContainer.createMapMarkers(for: trip, map: self.mapContainer)
+                
                 //TODO: get rid of this singleton shit and fix how this works
                 let place = GoogleResourceManager.sharedInstance.getPlaceForId(ID: trip.placeID)
                 self.setupMapView(coordinate:place?.coordinate)
@@ -220,33 +272,7 @@ extension MainViewController: GMSMapViewDelegate {
 
 extension MainViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        if let _ = self.trip {
-            let location = SubLocation()
-            //do we want to use a similar setPlace method that we use for Primary?
-            location.placeID = place.placeID
-            location.label = place.name
-            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
-            self.trip?.subLocations.append(location)
-            mapContainer.addMapMarker(for: location, map: mapContainer)
-            placeTableView.reloadData()
-        } else {
-            //create the trip
-            self.trip = PrimaryLocation()
-            self.trip?.setCity(place: place)
-            //could we just move the implementation of setCity tp add the GmsPlace to the resource manager?
-            //Also why did I need the resource manager to begin with?
-            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
-            placeTableView.reloadData()
-            setupMapView(coordinate: place.coordinate)
-        }
-        
-        //TODO: consdier rewriting how the RealmManager works
-        //Gonna need to add this in there when we fix the realm interactions
-        //append the new location to the end of the list at the appropriate index
-            //RealmManager.addSublocationsToCity(city: city, location: location)
-            //trip.cities[cityIndex].locations.append(location)
-        //}
-        
+        handlePlaceResultReturned(place: place, tripState: self.currentTripStatus)
         dismiss(animated: true, completion: nil)
     }
     

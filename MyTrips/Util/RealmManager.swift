@@ -54,6 +54,7 @@ class RealmManager {
         }
     }
     
+    //todo: rename city to trip I think :/
     static func addSublocationsToCity(city: PrimaryLocation, location: SubLocation){
         do {
             let realm = try Realm()
