@@ -9,6 +9,9 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
+//1. Need to do something when we click on a place after we start planning - open a new screen or initiate a way to input more data specific to that place (notes, dates times, etc.) - start simple
+
+//2. fix menu header and styling - move the menu label if the arrow isnt hidden or move the arrow somewhere esle
 
 class MainViewController: UIViewController {
     @IBOutlet weak var clearDrawerView: UIView!

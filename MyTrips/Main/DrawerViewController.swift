@@ -126,8 +126,7 @@ extension DrawerViewController: UITableViewDelegate {
         header.backgroundColor = UIColor.lightGray
         header.delegate = self
         
-        //Hide the back button if the table is in the Menu state
-        header.backButton.isHidden = (tableState == .Menu)
+        header.hideBackButton(shouldHide: (tableState == .Menu))
         
         switch tableState {
         case .Menu:

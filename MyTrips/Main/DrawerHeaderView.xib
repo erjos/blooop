@@ -24,8 +24,8 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRr-no-qKv">
-                    <rect key="frame" x="39" y="22.5" width="43" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="39" y="18.5" width="59" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -35,13 +35,14 @@
                 <constraint firstItem="bab-wx-PmR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2NX-LP-gXJ"/>
                 <constraint firstItem="VRr-no-qKv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2pK-Kl-hba"/>
                 <constraint firstItem="bab-wx-PmR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="5Pq-Q9-tV0"/>
-                <constraint firstItem="VRr-no-qKv" firstAttribute="leading" secondItem="bab-wx-PmR" secondAttribute="trailing" constant="10" id="NhW-zq-yD5"/>
+                <constraint firstItem="VRr-no-qKv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="39" id="mTM-cY-LBk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="backButton" destination="bab-wx-PmR" id="QVf-Ld-Nmc"/>
                 <outlet property="headerLabel" destination="VRr-no-qKv" id="cY7-su-5pW"/>
+                <outlet property="headerLeadingConstraint" destination="mTM-cY-LBk" id="LHl-mo-jbi"/>
             </connections>
             <point key="canvasLocation" x="132" y="64.767616191904054"/>
         </view>

@@ -10,6 +10,7 @@ import UIKit
 
 class DrawerHeaderView: UIView {
 
+    @IBOutlet weak var headerLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
@@ -17,6 +18,11 @@ class DrawerHeaderView: UIView {
     
     @IBAction func backButtonPressed(_ sender: Any) {
         delegate?.didPressBack()
+    }
+    
+    func hideBackButton(shouldHide: Bool){
+        self.backButton.isHidden = shouldHide
+        self.headerLeadingConstraint.constant = shouldHide ? 15 : 39
     }
 }
 
