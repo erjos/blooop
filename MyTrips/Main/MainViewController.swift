@@ -11,15 +11,16 @@ import GooglePlaces
 
 //TODO:
 
-//> Feature: Need to do something when we click on a place after we start planning - open a new screen or initiate a way to input more data specific to that place (notes, dates times, etc.) - start simple
+//> allow users to delete individual places on the list - add an edit trip function to the menu if the trip is already saved to the realm
 
-//> Create a protocol that can abstract out the mechanism of saving the realm data
+//> Feature: Need to do something when we click on a place after we start planning - open a new screen or initiate a way to input more data specific to that place (notes, dates times, etc.) - start simple
 
 //> Provide warning if user selects to view a saved trip while there is unsaved data on the page
 
-//figure out when we want to write to realm - how do update saved trips?
+//> Provide warning if user opts to clear the map - will we allow this to save?
 
-//could use this enum to help the view controller know whether to save, add or write to realm on the existing trip
+//> Create a protocol that can abstract out the mechanism of saving the realm data
+
 enum TripSaveStatus {
     //trip exists and is saved
     case Saved
@@ -195,9 +196,6 @@ extension MainViewController: MenuDelegate {
             
             self.currentTripStatus = .Saved
         }
-        
-        //what happens if we save then add in the same instance?
-        
         //TODO:else -- display a message indicating the user must choose a location first
     }
     
