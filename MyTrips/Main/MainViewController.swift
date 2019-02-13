@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
     @IBOutlet weak var mapContainer: GMSMapView!
     @IBOutlet weak var placeTableView: UITableView!
+    @IBOutlet weak var resetMap: UIButton!
     
     //prob want to pull this out and manage the location via a delegate
     var locationManager: CLLocationManager!
@@ -58,14 +59,19 @@ class MainViewController: UIViewController {
         }
     }
     
-    //TODO: migt be able to remove this
-    @IBAction func tapMenu(_ sender: Any) {
-        closeMenu()
+    @IBAction func tapReset(_ sender: Any) {
+        //get place for id
+        guard let id = self.trip?.placeID else {
+            return
+        }
+        let place = GoogleResourceManager.sharedInstance.getPlaceForId(ID: id)
+        setupMapView(coordinate: place?.coordinate)
     }
     
     @IBAction func tapMenuCover(_ sender: Any) {
         closeMenu()
     }
+    
     @IBAction func tapSearch(_ sender: Any) {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.autocompleteBoundsMode = .restrict
@@ -87,10 +93,7 @@ class MainViewController: UIViewController {
         
         let nib = UINib(nibName: "PlaceListTableViewCell", bundle: Bundle.main)
         self.placeTableView.register(nib, forCellReuseIdentifier: "placeCell")
-    }
-    
-    func toggleMenu(isHidden: Bool) {
-        
+        self.resetMap.isHidden = true
     }
     
     @objc func closeMenu() {
@@ -142,11 +145,12 @@ class MainViewController: UIViewController {
     func handlePlaceResultReturned(place: GMSPlace, tripState: TripSaveStatus){
         switch tripState {
         case .Empty:
-            //create the trip
             self.trip = PrimaryLocation()
             self.trip?.setCity(place: place)
+            
             //could we just move the implementation of setCity tp add the GmsPlace to the resource manager?
-            //Also why did I need the resource manager to begin with?
+            
+            //GoogleResourceManager caches the places when we fetch them so we only have to get them once per session
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             placeTableView.reloadData()
             setupMapView(coordinate: place.coordinate)
@@ -264,6 +268,7 @@ extension MainViewController: GMSMapViewDelegate {
         //TODO: Improve coordinate bounds to only expand past the initial zoom if we zoom out - dont want to shrink the search space, because users might zoom in and not know where things are they want to search for are - keep the initial bounds though as a good starting point
         if let _ = trip {
             self.coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapView)
+            self.resetMap.isHidden = false
         }
     }
 }

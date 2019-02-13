@@ -4,9 +4,8 @@ import GooglePlaces
 import Realm
 import RealmSwift
 
-//PrimaryLocations are typically encouraged to be Cities, but allow for flexibility in this
 class PrimaryLocation: Object {
-    
+    //probably should just add the place here so that if we need that data again we dont have to fetch it again
     let subLocations = List<SubLocation>()
     @objc dynamic var placeID: String = ""
     @objc dynamic var locationName: String = ""

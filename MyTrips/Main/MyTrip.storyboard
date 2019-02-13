@@ -214,11 +214,20 @@
                                             <outlet property="delegate" destination="mC5-5t-aKE" id="l5X-vH-ByW"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ce1-14-DYb">
+                                        <rect key="frame" x="360" y="0.0" width="24" height="24"/>
+                                        <state key="normal" image="refresh"/>
+                                        <connections>
+                                            <action selector="tapReset:" destination="mC5-5t-aKE" eventType="touchUpInside" id="rpb-2G-WkP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Ce1-14-DYb" firstAttribute="top" secondItem="ddJ-Gs-ct6" secondAttribute="top" id="07m-7O-Dyi"/>
                                     <constraint firstAttribute="bottom" secondItem="Qd9-r8-GX3" secondAttribute="bottom" id="Hm5-rr-YNX"/>
                                     <constraint firstAttribute="trailing" secondItem="Qd9-r8-GX3" secondAttribute="trailing" id="LDg-ZZ-ptu"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ce1-14-DYb" secondAttribute="trailing" id="Qd1-Xq-oPH"/>
                                     <constraint firstItem="Qd9-r8-GX3" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="leading" id="eyA-dY-t0f"/>
                                     <constraint firstAttribute="width" constant="200" id="gSz-Kx-oeY"/>
                                     <constraint firstItem="Qd9-r8-GX3" firstAttribute="top" secondItem="ddJ-Gs-ct6" secondAttribute="top" id="kCR-BJ-xnL"/>
@@ -343,6 +352,7 @@
                         <outlet property="menuCoverWidth" destination="y4y-fX-lTj" id="B1a-7B-eDU"/>
                         <outlet property="menuWidth" destination="zyx-lc-QZh" id="t4A-Xl-mxm"/>
                         <outlet property="placeTableView" destination="Qd9-r8-GX3" id="NEf-5r-zuy"/>
+                        <outlet property="resetMap" destination="Ce1-14-DYb" id="Sla-qt-qe1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nlH-yg-XOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -357,7 +367,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="783.75" y="984.375"/>
+            <point key="canvasLocation" x="782.60869565217399" y="984.375"/>
         </scene>
         <!--Drawer View Controller-->
         <scene sceneID="1r9-Ch-s1T">
@@ -425,6 +435,7 @@
     </scenes>
     <resources>
         <image name="menu" width="24" height="24"/>
+        <image name="refresh" width="24" height="24"/>
         <image name="search" width="24" height="24"/>
     </resources>
 </document>
