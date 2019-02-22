@@ -13,13 +13,60 @@ enum DrawerTableState {
     case TripList
 }
 
+protocol MenuDataProtocol {
+    mutating func showItem(item: MenuItem)
+    mutating func hideItem(item: MenuItem)
+    func getVisibleItems()->[MenuItem]
+    func getItemFor(indexPath: IndexPath)->MenuItem
+}
+
+struct MenuData {
+    var itemsList = [(item: MenuItem.SaveTrip, isVisible: true), (item: MenuItem.ClearMap, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.EditTrip, isVisible: false)]
+}
+
+extension MenuData : MenuDataProtocol {
+    func getItemFor(indexPath: IndexPath)->MenuItem{
+        let items = getVisibleItems()
+        return items[indexPath.row]
+    }
+    
+    mutating func showItem(item: MenuItem) {
+        toggleItemVisibility(item: item, isVisble: true)
+    }
+    
+    mutating func hideItem(item: MenuItem) {
+        toggleItemVisibility(item: item, isVisble: false)
+    }
+    
+    func getVisibleItems() -> [MenuItem] {
+        return itemsList.filter{$0.isVisible}
+            .map{$0.item}
+    }
+    
+    private mutating func toggleItemVisibility(item: MenuItem, isVisble: Bool){
+        itemsList = itemsList.map{
+            if($0.item == item){
+                return (item, isVisble)
+            }
+            return $0
+        }
+    }
+}
+
+enum MenuItem: String {
+    case SaveTrip = "Save trip"
+    case ClearMap = "Clear map"
+    case MyTrips = "My trips"
+    case EditTrip = "Edit trip"
+}
+
 class DrawerViewController: UIViewController {
 
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var tableHeighConstraint: NSLayoutConstraint!
     
     //stuff
-    var menuItems = ["Save trip", "Clear map", "My trips"]
+    var menuItems = MenuData()
     var trips: Results<PrimaryLocation>?
     var tableState = DrawerTableState.Menu
     let HEADER_HEIGHT = 75
@@ -46,17 +93,18 @@ class DrawerViewController: UIViewController {
     }
     
     func handleMenuSelection(indexPath: IndexPath) {
-        let selection = menuItems[indexPath.row]
+        let selection: MenuItem = menuItems.getItemFor(indexPath: indexPath)
         
         switch selection {
-        case menuItems[0]:
+        case .SaveTrip:
             self.menuDelegate?.shouldSaveTrip()
             changeTableState(state: .Menu)
             menuDelegate?.shouldCloseMenu(menu: self)
-        case menuItems[1]:
+        case .ClearMap:
             self.menuDelegate?.shouldClearMap()
             menuDelegate?.shouldCloseMenu(menu: self)
-        case menuItems[2]:
+            self.menuItems.hideItem(item: .EditTrip)
+        case .MyTrips:
             self.trips = RealmManager.fetchData()
             changeTableState(state: .TripList)
         default:
@@ -71,6 +119,7 @@ class DrawerViewController: UIViewController {
         self.menuDelegate?.shouldLoadTrip(trip: selection)
         changeTableState(state: .Menu)
         menuDelegate?.shouldCloseMenu(menu: self)
+        self.menuItems.showItem(item: .EditTrip)
     }
     
     func adjustTableHeight(count:Int){
@@ -125,8 +174,9 @@ extension DrawerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableState {
         case .Menu:
-            self.adjustTableHeight(count: menuItems.count)
-            return menuItems.count
+            let items = menuItems.getVisibleItems()
+            self.adjustTableHeight(count: items.count)
+            return items.count
         case .TripList:
             let count = trips?.count ?? 0
             self.adjustTableHeight(count: count)
@@ -138,14 +188,13 @@ extension DrawerViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CELL_REUSE_ID) else {
             return UITableViewCell()
         }
+        cell.backgroundColor = UIColor.lightGray
         switch tableState {
         case .Menu:
-            cell.textLabel?.text = menuItems[indexPath.row]
-            cell.backgroundColor = UIColor.lightGray
+            cell.textLabel?.text = menuItems.getItemFor(indexPath: indexPath).rawValue
             return cell
         case .TripList:
             cell.textLabel?.text = trips?[indexPath.row].locationName
-            cell.backgroundColor = UIColor.lightGray
             return cell
         }
     }

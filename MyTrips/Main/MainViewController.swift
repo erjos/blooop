@@ -21,6 +21,8 @@ import GooglePlaces
 
 //> Create a protocol that can abstract out the mechanism of saving the realm data
 
+//> Maybe "clear map" should have a different name, like new map or something
+
 enum TripSaveStatus {
     //trip exists and is saved
     case Saved
@@ -192,6 +194,7 @@ extension MainViewController: MenuDelegate {
         self.trip = nil
         placeTableView.reloadData()
         closeMenu()
+        resetMap.isHidden = true
     }
     
     func shouldSaveTrip() {
