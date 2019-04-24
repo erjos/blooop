@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //TODO: try this again in the view did load method
+        //TODO: try this again in the view did load method?
         setupMapView()
     }
     
@@ -33,7 +33,7 @@ class MapViewController: UIViewController {
         }
         let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: trip.placeID)
         let target = gms?.coordinate
-        var camera = GMSCameraPosition.camera(withTarget: target!, zoom: 10)
+        let camera = GMSCameraPosition.camera(withTarget: target!, zoom: 10)
         map = GMSMapView.map(withFrame: mapContainer.bounds, camera: camera)
         map?.delegate = self
         self.mapContainer.addSubview(map!)

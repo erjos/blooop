@@ -11,23 +11,23 @@ import GooglePlaces
 
 //TODO:
 
-//> allow users to delete individual places on the list - add an edit trip function to the menu if the trip is already saved to the realm
+//Next Release:
+//Theme: Clean functionality
+//> When you delete an item from the list we also have to remove the map marker
+//> Clear map is confusing - I dont know what it does and it shouldnt show up in the menu unless you need it
+//> Maybe we only show existing trips in the menu for this first version - not sure if we have any other needed functionality
+//> Image or animation or something to put in the table when theres no items listed
 
+//Stretch goals
 //> Feature: Need to do something when we click on a place after we start planning - open a new screen or initiate a way to input more data specific to that place (notes, dates times, etc.) - start simple
-
-//> Provide warning if user selects to view a saved trip while there is unsaved data on the page
-
-//> Provide warning if user opts to clear the map - will we allow this to save?
 
 //> Create a protocol that can abstract out the mechanism of saving the realm data
 
-//> Maybe "clear map" should have a different name, like new map or something
-
 enum TripSaveStatus {
+    
     //trip exists and is saved
     case Saved
-    //trip exists, but not saved
-    case New
+    
     //trip doesnt exist
     case Empty
 }
@@ -147,28 +147,27 @@ class MainViewController: UIViewController {
         }
     }
     
+    func saveTrip(){
+        if let primaryLocation = trip {
+            RealmManager.storeData(object: primaryLocation)
+            self.currentTripStatus = .Saved
+        }
+    }
+    
     func handlePlaceResultReturned(place: GMSPlace, tripState: TripSaveStatus){
         switch tripState {
         case .Empty:
             self.trip = PrimaryLocation()
+            
+            //TODO:could we just move the implementation of adding the place to the resource manager  to the setCity method or would this couple things together too much?
             self.trip?.setCity(place: place)
-            
-            //could we just move the implementation of setCity tp add the GmsPlace to the resource manager?
-            
-            //GoogleResourceManager caches the places when we fetch them so we only have to get them once per session
+            //save the trip automatically
+            self.saveTrip()
+            //caches the places when we fetch them so we only have to get them once per session
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
+            
             placeTableView.reloadData()
             setupMapView(coordinate: place.coordinate)
-            self.currentTripStatus = .New
-        case .New:
-            let location = SubLocation()
-            //do we want to use a similar setPlace method that we use for Primary?
-            location.placeID = place.placeID
-            location.label = place.name
-            GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
-            self.trip?.subLocations.append(location)
-            mapContainer.addMapMarker(for: location, map: mapContainer)
-            placeTableView.reloadData()
         case .Saved:
             guard let savedTrip = trip else {
                 return
@@ -204,16 +203,6 @@ extension MainViewController: MenuDelegate {
         placeTableView.reloadData()
         closeMenu()
         resetMap.isHidden = true
-    }
-    
-    func shouldSaveTrip() {
-        //This is really only necessary if we dont have a trip already
-        if let primaryLocation = trip {
-            RealmManager.storeData(object: primaryLocation)
-            
-            self.currentTripStatus = .Saved
-        }
-        //TODO:else -- display a message indicating the user must choose a location first
     }
     
     func shouldLoadTrip(trip: PrimaryLocation) {
@@ -279,6 +268,8 @@ extension MainViewController: UITableViewDelegate {
             }
             RealmManager.deleteSubLocation(city: location, indexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            //remove marker from the map
         }
     }
 }
