@@ -69,6 +69,7 @@ class DrawerViewController: UIViewController {
     var menuItems = MenuData()
     var trips: Results<PrimaryLocation>?
     var tableState = DrawerTableState.Menu
+    
     let HEADER_HEIGHT = 75
     let CELL_HEIGHT = 44
     let HEADER_VIEW = "DrawerHeaderView"
@@ -97,18 +98,22 @@ class DrawerViewController: UIViewController {
         
         switch selection {
         case .SaveTrip:
-            self.menuDelegate?.shouldSaveTrip()
+            menuDelegate?.shouldSaveTrip()
             changeTableState(state: .Menu)
             menuDelegate?.shouldCloseMenu(menu: self)
+
+            menuItems.hideItem(item: .SaveTrip)
+            menuItems.showItem(item: .EditTrip)
         case .ClearMap:
-            self.menuDelegate?.shouldClearMap()
+            menuDelegate?.shouldClearMap()
             menuDelegate?.shouldCloseMenu(menu: self)
-            self.menuItems.hideItem(item: .EditTrip)
+            menuItems.hideItem(item: .EditTrip)
         case .MyTrips:
-            self.trips = RealmManager.fetchData()
+            trips = RealmManager.fetchData()
             changeTableState(state: .TripList)
-        default:
-            return
+        case .EditTrip:
+            menuDelegate?.shouldEditTrip()
+            menuDelegate?.shouldCloseMenu(menu: self)
         }
     }
     
@@ -205,4 +210,5 @@ protocol MenuDelegate: class {
     func shouldSaveTrip()
     func shouldClearMap()
     func shouldLoadTrip(trip: PrimaryLocation)
+    func shouldEditTrip()
 }

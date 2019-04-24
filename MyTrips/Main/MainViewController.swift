@@ -179,9 +179,19 @@ class MainViewController: UIViewController {
             placeTableView.reloadData()
         }
     }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.placeTableView.setEditing(editing, animated: animated)
+    }
 }
 
 extension MainViewController: MenuDelegate {
+    func shouldEditTrip() {
+        //set the table state to edit and call delegate function to delete the place items saved to the trip
+        setEditing(true, animated: true)
+    }
+    
     func shouldCloseMenu(menu: DrawerViewController) {
         self.closeMenu()
         menu.tableState = .Menu
@@ -198,6 +208,7 @@ extension MainViewController: MenuDelegate {
     }
     
     func shouldSaveTrip() {
+        //This is really only necessary if we dont have a trip already
         if let primaryLocation = trip {
             RealmManager.storeData(object: primaryLocation)
             
@@ -256,6 +267,16 @@ extension MainViewController: UITableViewDelegate {
         
         view?.setLabel(name: name)
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete){
+            guard let location = trip else {
+                return
+            }
+            RealmManager.deleteSubLocation(city: location, indexPath: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
 
