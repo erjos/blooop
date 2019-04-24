@@ -190,11 +190,6 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: MenuDelegate {
-    //remove this to replace with button on the screen
-    func shouldEditTrip() {
-        //set the table state to edit and call delegate function to delete the place items saved to the trip
-        setEditing(true, animated: true)
-    }
     
     func shouldCloseMenu(menu: DrawerViewController) {
         self.closeMenu()

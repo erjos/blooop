@@ -21,7 +21,7 @@ protocol MenuDataProtocol {
 }
 
 struct MenuData {
-    var itemsList = [(item: MenuItem.SaveTrip, isVisible: true), (item: MenuItem.ClearMap, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.EditTrip, isVisible: false)]
+    var itemsList = [(item: MenuItem.SaveTrip, isVisible: true), (item: MenuItem.ClearMap, isVisible: true), (item: MenuItem.MyTrips, isVisible: true)]
 }
 
 extension MenuData : MenuDataProtocol {
@@ -57,7 +57,6 @@ enum MenuItem: String {
     case SaveTrip = "Save trip"
     case ClearMap = "Clear map"
     case MyTrips = "My trips"
-    case EditTrip = "Edit trip"
 }
 
 class DrawerViewController: UIViewController {
@@ -101,19 +100,13 @@ class DrawerViewController: UIViewController {
             menuDelegate?.shouldSaveTrip()
             changeTableState(state: .Menu)
             menuDelegate?.shouldCloseMenu(menu: self)
-
             menuItems.hideItem(item: .SaveTrip)
-            menuItems.showItem(item: .EditTrip)
         case .ClearMap:
             menuDelegate?.shouldClearMap()
             menuDelegate?.shouldCloseMenu(menu: self)
-            menuItems.hideItem(item: .EditTrip)
         case .MyTrips:
             trips = RealmManager.fetchData()
             changeTableState(state: .TripList)
-        case .EditTrip:
-            menuDelegate?.shouldEditTrip()
-            menuDelegate?.shouldCloseMenu(menu: self)
         }
     }
     
@@ -124,7 +117,6 @@ class DrawerViewController: UIViewController {
         self.menuDelegate?.shouldLoadTrip(trip: selection)
         changeTableState(state: .Menu)
         menuDelegate?.shouldCloseMenu(menu: self)
-        self.menuItems.showItem(item: .EditTrip)
     }
     
     func adjustTableHeight(count:Int){
@@ -210,5 +202,4 @@ protocol MenuDelegate: class {
     func shouldSaveTrip()
     func shouldClearMap()
     func shouldLoadTrip(trip: PrimaryLocation)
-    func shouldEditTrip()
 }
