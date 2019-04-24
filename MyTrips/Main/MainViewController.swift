@@ -190,6 +190,7 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: MenuDelegate {
+    //remove this to replace with button on the screen
     func shouldEditTrip() {
         //set the table state to edit and call delegate function to delete the place items saved to the trip
         setEditing(true, animated: true)
@@ -270,7 +271,8 @@ extension MainViewController: UITableViewDelegate {
         
         //Setup for existing trip
         view?.setLabel(name: name)
-        view?.rightButton.isHidden = false
+        view?.editButton.isHidden = false
+        view?.delegate = self
         
         return view
     }
@@ -283,6 +285,12 @@ extension MainViewController: UITableViewDelegate {
             RealmManager.deleteSubLocation(city: location, indexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+}
+
+extension MainViewController: PlaceTableHeaderDelegate {
+    func didSelectEdit(shouldEdit: Bool) {
+        setEditing(shouldEdit, animated: true)
     }
 }
 

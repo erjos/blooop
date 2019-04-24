@@ -11,15 +11,30 @@ import UIKit
 class PlaceTableHeaderView: UIView {
 
     @IBOutlet weak var placeLabel: UILabel!
-    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
+    
+    let EDIT_LABEL = "Edit"
+    let DONE_LABEL = "Done"
+    
+    weak var delegate: PlaceTableHeaderDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.rightButton.isHidden = true
+        self.editButton.isHidden = true
     }
     
     func setLabel(name: String){
         self.placeLabel.text = name
+    }
+    
+    @IBAction func tapEdit(_ sender: Any) {
+        //Handle button title change
+        let isEdit = self.editButton.currentTitle == EDIT_LABEL
+        let title = isEdit ? DONE_LABEL : EDIT_LABEL
+        self.editButton.setTitle(title, for: .normal)
+        
+        //Handle button delegate action
+        self.delegate?.didSelectEdit(shouldEdit: isEdit)
     }
     
     /*
@@ -30,4 +45,8 @@ class PlaceTableHeaderView: UIView {
     }
     */
 
+}
+
+protocol PlaceTableHeaderDelegate: class {
+    func didSelectEdit(shouldEdit: Bool)
 }

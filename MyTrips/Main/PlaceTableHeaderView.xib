@@ -25,6 +25,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-30-zSe">
                     <rect key="frame" x="381" y="10" width="30" height="30"/>
                     <state key="normal" title="Edit"/>
+                    <connections>
+                        <action selector="tapEdit:" destination="iN0-l3-epB" eventType="touchUpInside" id="YRx-4F-bZz"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,8 +40,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="editButton" destination="G6d-30-zSe" id="Nss-Ax-gwr"/>
                 <outlet property="placeLabel" destination="2Dc-1A-Djt" id="NAh-zm-LVm"/>
-                <outlet property="rightButton" destination="G6d-30-zSe" id="Nss-Ax-gwr"/>
             </connections>
             <point key="canvasLocation" x="-8.8000000000000007" y="-53.973013493253376"/>
         </view>
