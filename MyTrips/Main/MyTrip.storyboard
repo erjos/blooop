@@ -214,20 +214,11 @@
                                             <outlet property="delegate" destination="mC5-5t-aKE" id="l5X-vH-ByW"/>
                                         </connections>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ce1-14-DYb">
-                                        <rect key="frame" x="360" y="0.0" width="24" height="24"/>
-                                        <state key="normal" image="refresh"/>
-                                        <connections>
-                                            <action selector="tapReset:" destination="mC5-5t-aKE" eventType="touchUpInside" id="rpb-2G-WkP"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Ce1-14-DYb" firstAttribute="top" secondItem="ddJ-Gs-ct6" secondAttribute="top" id="07m-7O-Dyi"/>
                                     <constraint firstAttribute="bottom" secondItem="Qd9-r8-GX3" secondAttribute="bottom" id="Hm5-rr-YNX"/>
                                     <constraint firstAttribute="trailing" secondItem="Qd9-r8-GX3" secondAttribute="trailing" id="LDg-ZZ-ptu"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ce1-14-DYb" secondAttribute="trailing" id="Qd1-Xq-oPH"/>
                                     <constraint firstItem="Qd9-r8-GX3" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="leading" id="eyA-dY-t0f"/>
                                     <constraint firstAttribute="width" constant="200" id="gSz-Kx-oeY"/>
                                     <constraint firstItem="Qd9-r8-GX3" firstAttribute="top" secondItem="ddJ-Gs-ct6" secondAttribute="top" id="kCR-BJ-xnL"/>
@@ -287,7 +278,20 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaZ-WO-CL0" userLabel="Map Container" customClass="GMSMapView">
                                 <rect key="frame" x="15" y="119" width="384" height="356.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ce1-14-DYb">
+                                        <rect key="frame" x="355" y="327.5" width="24" height="24"/>
+                                        <state key="normal" image="refresh"/>
+                                        <connections>
+                                            <action selector="tapReset:" destination="mC5-5t-aKE" eventType="touchUpInside" id="rpb-2G-WkP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Ce1-14-DYb" secondAttribute="trailing" constant="5" id="MAo-xL-ahj"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ce1-14-DYb" secondAttribute="bottom" constant="5" id="XVN-16-aXL"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

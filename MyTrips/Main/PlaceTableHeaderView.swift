@@ -11,6 +11,12 @@ import UIKit
 class PlaceTableHeaderView: UIView {
 
     @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var rightButton: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.rightButton.isHidden = true
+    }
     
     func setLabel(name: String){
         self.placeLabel.text = name

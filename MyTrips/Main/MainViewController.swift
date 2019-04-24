@@ -47,6 +47,8 @@ class MainViewController: UIViewController {
     //viewModel stuff
     var trip: PrimaryLocation?
     var currentTripStatus: TripSaveStatus = .Empty
+    
+    //used to restrict search results
     var coordinateBounds: GMSCoordinateBounds?
     
     @IBAction func menuButton(_ sender: Any) {
@@ -135,6 +137,7 @@ class MainViewController: UIViewController {
             coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapContainer)
             mapContainer?.delegate = self
         }
+        self.mapContainer.bringSubview(toFront: self.resetMap)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -265,7 +268,10 @@ extension MainViewController: UITableViewDelegate {
             return view
         }
         
+        //Setup for existing trip
         view?.setLabel(name: name)
+        view?.rightButton.isHidden = false
+        
         return view
     }
     
