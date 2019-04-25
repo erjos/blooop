@@ -13,6 +13,9 @@ import GooglePlaces
 
 //Next Release:
 //Theme: Clean functionality
+//> Fix menu - doesnt do anything right now - either have it display only trips or other stuff
+//> Create ability to click on individual places and view/add more data
+
 //> Currently user is allowed to add multiple of the same location to the trip - would be nice to have an alert asking if this is intentional... but not necessarily a requirement
 //> Maybe we only show existing trips in the menu for this first version - not sure if we have any other needed functionality
 //> Image or animation or something to put in the table when theres no items listed

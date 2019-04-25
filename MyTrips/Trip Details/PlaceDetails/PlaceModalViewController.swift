@@ -57,11 +57,11 @@ class PlaceModalViewController: UIViewController {
             poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: placeIcon.frame)
             poptip.tapHandler = { poptip in
                 if let navVC = self.presentingViewController as? UINavigationController {
-                    if let tripVC = navVC.viewControllers[0] as? TripViewController {
-                        self.dismiss(animated: true) {
-                            tripVC.performSegue(withIdentifier: "presentMap", sender: self)
-                        }
-                    }
+//                    if let tripVC = navVC.viewControllers[0] as? TripViewController {
+//                        self.dismiss(animated: true) {
+//                            tripVC.performSegue(withIdentifier: "presentMap", sender: self)
+//                        }
+//                    }
                 }
             }
         } else {

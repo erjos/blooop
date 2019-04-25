@@ -1,5 +1,6 @@
 import UIKit
 
+//May want to reuse this class as an alternative view option for the main table -> see implementation on the older version of the app and deleted tripViewController
 class ListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imageContainer: UIView!
