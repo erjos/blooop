@@ -2,6 +2,7 @@ import UIKit
 import GooglePlaces
 import GoogleMaps
 
+//TODO: I think this class can go
 class BuilderViewController: UIViewController {
     
     @IBOutlet weak var mapContainer: UIView!
@@ -58,7 +59,7 @@ class BuilderViewController: UIViewController {
         let toggle = sender as! UISwitch
         let state = toggle.isOn
         if(state){
-            map?.createMapMarkers(for: city, map: map)
+            map?.createMapMarkers(for: city)
         } else {
             map?.clear()
         }
@@ -139,7 +140,7 @@ class BuilderViewController: UIViewController {
         map?.delegate = self
         coordinateBounds = LocationManager.getLocationBoundsFromMap(map: map!)
         self.mapView.addSubview(map!)
-        map?.createMapMarkers(for: self.city, map: map)
+        map?.createMapMarkers(for: self.city)
     }
     
     private func setupNameField(){

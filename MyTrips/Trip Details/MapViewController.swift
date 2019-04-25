@@ -9,9 +9,11 @@
 import UIKit
 import GoogleMaps
 
+//TODO: determine if this class is even in use anymore
 class MapViewController: UIViewController {
     var city: PrimaryLocation?
     var map: GMSMapView?
+    var markers: [GMSMarker]?
     
     @IBOutlet weak var mapContainer: UIView!
     
@@ -27,7 +29,14 @@ class MapViewController: UIViewController {
         setupMapView()
     }
     
-    private func setupMapView(){
+    //figure out what information we need to pass to delete the marker
+    //they will be in the same order as the places
+    //more accurate to use the coordinate on the marker perhaps
+    func removeMarker(){
+        
+    }
+    
+    private func setupMapView() {
         guard let trip = city else {
             return
         }
@@ -37,9 +46,10 @@ class MapViewController: UIViewController {
         map = GMSMapView.map(withFrame: mapContainer.bounds, camera: camera)
         map?.delegate = self
         self.mapContainer.addSubview(map!)
-        map?.createMapMarkers(for: trip, map: map)
+        self.markers = map?.createMapMarkers(for: trip)
     }
 }
 
+//no idea why I created this
 extension MapViewController: GMSMapViewDelegate {
 }

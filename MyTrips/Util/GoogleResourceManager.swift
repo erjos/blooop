@@ -9,6 +9,8 @@
 import Foundation
 import GooglePlaces
 
+//TODO: need to implement some single source of truth cleanup here - if we use this to get the place for ID - we should also fetch that place from here if it doesnt exist already
+//- also rename this class to reflect what its actually doing, way too confusing right now
 class GoogleResourceManager {
     //** This class should be created and destroyed for every trip that is opened OR the data needs to be wiped **//
     //TODO: write a function that disposes of this data

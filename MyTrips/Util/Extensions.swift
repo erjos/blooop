@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import GoogleMaps
+import GooglePlaces
 
 extension Date {
     var day: Int { return Calendar.current.component(.day, from:self) }
@@ -134,29 +135,28 @@ extension UINavigationBar {
 }
 
 extension GMSMapView {
-    //TODO: can we remove the map object from these methods and just refer to self?
-    func addMapMarker(for place: SubLocation, map: GMSMapView?){
-        guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
-            return
-        }
-        let coordinate = gms.coordinate
+    func addMapMarker(for place: GMSPlace, label: String?)->GMSMarker{
+        let coordinate = place.coordinate
         let marker = GMSMarker(position: coordinate)
-        marker.title = gms.name
-        marker.snippet = place.label
-        marker.map = map
+        marker.title = place.name
+        marker.snippet = label
+        marker.map = self
+        return marker
     }
     
-    func createMapMarkers(for city: PrimaryLocation, map: GMSMapView?){
+    func createMapMarkers(for city: PrimaryLocation)->[GMSMarker] {
         let places = city.subLocations
+        var markers = [GMSMarker]()
         for place in places {
-            guard let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) else {
-                return
+            if let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID) {
+                let coordinate = gms.coordinate
+                let marker = GMSMarker(position: coordinate)
+                marker.title = gms.name
+                marker.snippet = place.label
+                marker.map = self
+                markers.append(marker)
             }
-            let coordinate = gms.coordinate
-            let marker = GMSMarker(position: coordinate)
-            marker.title = gms.name
-            marker.snippet = place.label
-            marker.map = map
         }
+        return markers
     }
 }

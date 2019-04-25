@@ -51,6 +51,9 @@ class MainViewController: UIViewController {
     //used to restrict search results
     var coordinateBounds: GMSCoordinateBounds?
     
+    //Do we want to create a class to handle all the map stuff or keep in on this viewController? - could embed one using a child view controller
+    var mapMarkers:[GMSMarker]?
+    
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
         view.bringSubview(toFront: clearDrawerView)
@@ -177,7 +180,10 @@ class MainViewController: UIViewController {
             location.label = place.name
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             RealmManager.addSublocationsToCity(city: savedTrip, location: location)
-            mapContainer.addMapMarker(for: location, map: mapContainer)
+            
+            let marker = mapContainer.addMapMarker(for: place, label: place.name)
+            //add new marker to the list
+            mapMarkers?.append(marker)
             placeTableView.reloadData()
         }
     }
@@ -185,6 +191,11 @@ class MainViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         self.placeTableView.setEditing(editing, animated: animated)
+    }
+    
+    func deleteMapMarker(indexPath: IndexPath){
+        let marker = mapMarkers?.remove(at: indexPath.row)
+        marker?.map = nil
     }
 }
 
@@ -215,8 +226,8 @@ extension MainViewController: MenuDelegate {
         trip.fetchGmsPlacesForCity { complete in
             if complete {
                 self.placeTableView.reloadData()
-                self.mapContainer.createMapMarkers(for: trip, map: self.mapContainer)
-                
+                //create and set map markers
+                self.mapMarkers = self.mapContainer.createMapMarkers(for: trip)
                 //TODO: get rid of this singleton shit and fix how this works
                 let place = GoogleResourceManager.sharedInstance.getPlaceForId(ID: trip.placeID)
                 self.setupMapView(coordinate:place?.coordinate)
@@ -266,10 +277,14 @@ extension MainViewController: UITableViewDelegate {
             guard let location = trip else {
                 return
             }
+            
+            //get coordinate for corresponding location
+            let sublocation = location.getSubLocation(from: indexPath)
+            //remove marker from the map
+            self.deleteMapMarker(indexPath: indexPath)
+            
             RealmManager.deleteSubLocation(city: location, indexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            
-            //remove marker from the map
         }
     }
 }
