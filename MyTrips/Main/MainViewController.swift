@@ -13,7 +13,7 @@ import GooglePlaces
 
 //Next Release:
 //Theme: Clean functionality
-//> When you delete an item from the list we also have to remove the map marker
+//> Currently user is allowed to add multiple of the same location to the trip - would be nice to have an alert asking if this is intentional... but not necessarily a requirement
 //> Clear map is confusing - I dont know what it does and it shouldnt show up in the menu unless you need it
 //> Maybe we only show existing trips in the menu for this first version - not sure if we have any other needed functionality
 //> Image or animation or something to put in the table when theres no items listed
@@ -190,6 +190,9 @@ class MainViewController: UIViewController {
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        
+        //checks to make sure editing is off - keeps edit button working if user swipes to delete
+        self.placeTableView.setEditing(false, animated: animated)
         self.placeTableView.setEditing(editing, animated: animated)
     }
     
@@ -277,12 +280,7 @@ extension MainViewController: UITableViewDelegate {
             guard let location = trip else {
                 return
             }
-            
-            //get coordinate for corresponding location
-            let sublocation = location.getSubLocation(from: indexPath)
-            //remove marker from the map
             self.deleteMapMarker(indexPath: indexPath)
-            
             RealmManager.deleteSubLocation(city: location, indexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
