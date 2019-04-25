@@ -14,9 +14,9 @@ import GooglePlaces
 //Next Release:
 //Theme: Clean functionality
 //> Currently user is allowed to add multiple of the same location to the trip - would be nice to have an alert asking if this is intentional... but not necessarily a requirement
-//> Clear map is confusing - I dont know what it does and it shouldnt show up in the menu unless you need it
 //> Maybe we only show existing trips in the menu for this first version - not sure if we have any other needed functionality
 //> Image or animation or something to put in the table when theres no items listed
+//> Add a loading state to the main page for loading trips and loading the autocomplete vc
 
 //Stretch goals
 //> Feature: Need to do something when we click on a place after we start planning - open a new screen or initiate a way to input more data specific to that place (notes, dates times, etc.) - start simple
@@ -213,7 +213,12 @@ extension MainViewController: MenuDelegate {
     func shouldClearMap() {
         //TODO: add an are you sure alert if there is unsaved data on the map
         self.mapContainer.clear()
+        
+        //maybe combine these into a method so that they occur at the same time?
+        //would be the benefit of moving them to a viewModel object so that we can make these private and only accessible via methods that make sense
         self.trip = nil
+        self.currentTripStatus = .Empty
+        
         placeTableView.reloadData()
         closeMenu()
         resetMap.isHidden = true

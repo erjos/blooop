@@ -21,7 +21,7 @@ protocol MenuDataProtocol {
 }
 
 struct MenuData {
-    var itemsList = [(item: MenuItem.ClearMap, isVisible: true), (item: MenuItem.MyTrips, isVisible: true)]
+    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true)]
 }
 
 extension MenuData : MenuDataProtocol {
@@ -54,7 +54,7 @@ extension MenuData : MenuDataProtocol {
 }
 
 enum MenuItem: String {
-    case ClearMap = "Clear map"
+    case NewTrip = "New trip"
     case MyTrips = "My trips"
 }
 
@@ -95,7 +95,7 @@ class DrawerViewController: UIViewController {
         let selection: MenuItem = menuItems.getItemFor(indexPath: indexPath)
         
         switch selection {
-        case .ClearMap:
+        case .NewTrip:
             menuDelegate?.shouldClearMap()
             menuDelegate?.shouldCloseMenu(menu: self)
         case .MyTrips:
