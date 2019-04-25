@@ -2,6 +2,7 @@ import Foundation
 import GooglePlaces
 import GoogleMaps
 
+//Should rename this class, its confusing and redundant with one that exists inthe google sdk
 class LocationManager {
     
     static func getLocationBounds(_ locationCoordinate: CLLocationCoordinate2D) -> GMSCoordinateBounds{

@@ -17,6 +17,7 @@ import GooglePlaces
 //> Maybe we only show existing trips in the menu for this first version - not sure if we have any other needed functionality
 //> Image or animation or something to put in the table when theres no items listed
 //> Add a loading state to the main page for loading trips and loading the autocomplete vc
+//> Do we want to add zoom buttons to the map?
 
 //Stretch goals
 //> Feature: Need to do something when we click on a place after we start planning - open a new screen or initiate a way to input more data specific to that place (notes, dates times, etc.) - start simple
@@ -24,7 +25,6 @@ import GooglePlaces
 //> Create a protocol that can abstract out the mechanism of saving the realm data
 
 enum TripSaveStatus {
-    
     //trip exists and is saved
     case Saved
     
@@ -210,8 +210,8 @@ extension MainViewController: MenuDelegate {
         menu.menuTableView.reloadData()
     }
     
+    //Used to clear the map when user wants to create a new trip
     func shouldClearMap() {
-        //TODO: add an are you sure alert if there is unsaved data on the map
         self.mapContainer.clear()
         
         //maybe combine these into a method so that they occur at the same time?
@@ -236,9 +236,15 @@ extension MainViewController: MenuDelegate {
                 self.placeTableView.reloadData()
                 //create and set map markers
                 self.mapMarkers = self.mapContainer.createMapMarkers(for: trip)
-                //TODO: get rid of this singleton shit and fix how this works
+                //TODO: get rid of this singleton, improve how this works
                 let place = GoogleResourceManager.sharedInstance.getPlaceForId(ID: trip.placeID)
-                self.setupMapView(coordinate:place?.coordinate)
+                //sets the view of the map
+                //check to see if a marker exists - make sure we use the existing marker to setup the view so its more relevant to the user
+                if let firstMarker = self.mapMarkers?.first {
+                    self.setupMapView(coordinate: firstMarker.position)
+                } else {
+                    self.setupMapView(coordinate:place?.coordinate)
+                }
                 self.closeMenu()
             }
         }
@@ -301,7 +307,6 @@ extension MainViewController: PlaceTableHeaderDelegate {
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         setupMapView(coordinate: locations.last?.coordinate)
-        //TODO: consider providing a location refresh mechanism on the page
     }
 }
 
