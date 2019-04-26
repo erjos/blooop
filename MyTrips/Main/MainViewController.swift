@@ -75,7 +75,8 @@ class MainViewController: UIViewController {
             return
         }
         let place = GoogleResourceManager.sharedInstance.getPlaceForId(ID: id)
-        setupMapView(coordinate: place?.coordinate)
+        
+        handleMapSetup(for: place)
     }
     
     @IBAction func tapMenuCover(_ sender: Any) {
@@ -117,9 +118,9 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         #if DEBUG
         guard let _ = trip else {
-            //Portland coordinate - good for test
+            //Portland coordinate - test location
             let coordinate = CLLocationCoordinate2D(latitude: 45.523450, longitude: -122.678897)
-            setupMapView(coordinate: coordinate)
+            setupMapView(for: coordinate)
             return
         }
         #endif
@@ -133,7 +134,17 @@ class MainViewController: UIViewController {
         locationManager.delegate = self
     }
     
-    private func setupMapView(coordinate: CLLocationCoordinate2D?) {
+    
+    private func handleMapSetup(for place: GMSPlace?){
+        //check to see if a marker exists - make sure we use the existing marker to setup the view so its more relevant to the user
+        if let firstMarker = self.mapMarkers?.first {
+            self.setupMapView(for: firstMarker.position)
+        } else {
+            self.setupMapView(for:place?.coordinate)
+        }
+    }
+    
+    private func setupMapView(for coordinate: CLLocationCoordinate2D?) {
         if let target = coordinate {
             let camera = GMSCameraPosition.camera(withTarget: target, zoom: 10)
             mapContainer.camera = camera
@@ -173,7 +184,7 @@ class MainViewController: UIViewController {
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             
             placeTableView.reloadData()
-            setupMapView(coordinate: place.coordinate)
+            setupMapView(for: place.coordinate)
         case .Saved:
             guard let savedTrip = trip else {
                 return
@@ -242,12 +253,10 @@ extension MainViewController: MenuDelegate {
                 //TODO: get rid of this singleton, improve how this works
                 let place = GoogleResourceManager.sharedInstance.getPlaceForId(ID: trip.placeID)
                 //sets the view of the map
-                //check to see if a marker exists - make sure we use the existing marker to setup the view so its more relevant to the user
-                if let firstMarker = self.mapMarkers?.first {
-                    self.setupMapView(coordinate: firstMarker.position)
-                } else {
-                    self.setupMapView(coordinate:place?.coordinate)
-                }
+                
+                self.handleMapSetup(for: place)
+                
+                
                 self.closeMenu()
             }
         }
@@ -308,8 +317,9 @@ extension MainViewController: PlaceTableHeaderDelegate {
 }
 
 extension MainViewController: CLLocationManagerDelegate {
+    //TODO: test this on physical device - I think it is used to determine the starting location when a user first loads the map
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        setupMapView(coordinate: locations.last?.coordinate)
+        setupMapView(for: locations.last?.coordinate)
     }
 }
 
