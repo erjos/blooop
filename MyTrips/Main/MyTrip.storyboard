@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mC5-5t-aKE">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController id="mC5-5t-aKE" customClass="MainViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3CE-en-Fu1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYJ-NP-s7u" userLabel="Search View">
-                                <rect key="frame" x="60" y="59" width="339" height="45"/>
+                                <rect key="frame" x="60" y="35" width="300" height="45"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="xxe-Gj-MDC">
-                                        <rect key="frame" x="300" y="10.5" width="24" height="24"/>
+                                        <rect key="frame" x="261" y="10.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="9iO-3P-JeL"/>
                                             <constraint firstAttribute="width" constant="24" id="iEZ-O4-UTT"/>
@@ -49,10 +49,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddJ-Gs-ct6" userLabel="Table Container">
-                                <rect key="frame" x="15" y="490.5" width="384" height="356.5"/>
+                                <rect key="frame" x="15" y="381" width="345" height="271"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qd9-r8-GX3">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="356.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="271"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="mHe-MO-Z5r"/>
@@ -78,7 +78,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Qd9-r8-GX3" secondAttribute="bottom" id="Hm5-rr-YNX"/>
                                     <constraint firstAttribute="trailing" secondItem="Qd9-r8-GX3" secondAttribute="trailing" id="LDg-ZZ-ptu"/>
                                     <constraint firstItem="Qd9-r8-GX3" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="leading" id="eyA-dY-t0f"/>
-                                    <constraint firstAttribute="width" constant="200" id="gSz-Kx-oeY"/>
+                                    <constraint firstAttribute="width" constant="300" id="gSz-Kx-oeY"/>
                                     <constraint firstItem="Qd9-r8-GX3" firstAttribute="top" secondItem="ddJ-Gs-ct6" secondAttribute="top" id="kCR-BJ-xnL"/>
                                 </constraints>
                                 <variation key="default">
@@ -93,7 +93,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKg-ia-jKm">
-                                <rect key="frame" x="15" y="59" width="45" height="45"/>
+                                <rect key="frame" x="15" y="35" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="efl-4l-Cje"/>
@@ -105,10 +105,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpj-qZ-DAL" userLabel="Menu Drawer View">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-B7-dZM">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                                         <connections>
                                             <segue destination="2hB-m7-uCQ" kind="embed" identifier="drawerEmbedSegue" id="C6A-U3-dNK"/>
                                         </connections>
@@ -125,7 +125,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvV-zJ-qbj" userLabel="Clear Drawer View">
-                                <rect key="frame" x="200" y="0.0" width="0.0" height="896"/>
+                                <rect key="frame" x="200" y="0.0" width="0.0" height="667"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="y4y-fX-lTj"/>
@@ -135,10 +135,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaZ-WO-CL0" userLabel="Map Container" customClass="GMSMapView">
-                                <rect key="frame" x="15" y="119" width="384" height="356.5"/>
+                                <rect key="frame" x="15" y="95" width="345" height="271"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ce1-14-DYb">
-                                        <rect key="frame" x="355" y="327.5" width="24" height="24"/>
+                                        <rect key="frame" x="316" y="242" width="24" height="24"/>
                                         <state key="normal" image="refresh"/>
                                         <connections>
                                             <action selector="tapReset:" destination="mC5-5t-aKE" eventType="touchUpInside" id="rpb-2G-WkP"/>
@@ -236,11 +236,11 @@
             <objects>
                 <viewController id="2hB-m7-uCQ" customClass="DrawerViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dgO-Qu-Izv">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odN-Uu-sFH">
-                                <rect key="frame" x="0.0" y="144" width="200" height="718"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odN-Uu-sFH">
+                                <rect key="frame" x="0.0" y="100" width="200" height="718"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="718" id="4Pt-8h-BzM"/>
