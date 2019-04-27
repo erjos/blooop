@@ -22,12 +22,12 @@ class DrawerHeaderView: UIView {
         delegate?.didPressBack()
     }
     
-    func hideBackButton(shouldHide: Bool){
+    func hideBackButton(shouldHide: Bool) {
         self.backButton.isHidden = shouldHide
         self.headerLeadingConstraint.constant = shouldHide ? 15 : 39
     }
     
-    func setupHeaderView(tableState: DrawerTableState){
+    func setupHeaderView(tableState: DrawerTableState) {
         self.backgroundColor = UIColor.lightGray
         self.hideBackButton(shouldHide: (tableState == .Menu))
         

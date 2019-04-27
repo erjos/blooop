@@ -14,6 +14,7 @@ import GooglePlaces
 //Next Release:
 //Theme: Clean functionality
 //> Fix menu - doesnt do anything right now - either have it display only trips or other stuff
+//> Let menu close when we pan swipe it
 //> Create ability to click on individual places and view/add more data
 
 //> Currently user is allowed to add multiple of the same location to the trip - would be nice to have an alert asking if this is intentional... but not necessarily a requirement

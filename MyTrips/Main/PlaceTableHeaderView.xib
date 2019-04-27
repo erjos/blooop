@@ -22,8 +22,16 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pb-ug-waJ">
+                    <rect key="frame" x="403" y="13" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="4lE-6b-KmK"/>
+                        <constraint firstAttribute="width" constant="24" id="xc8-an-XfE"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="list"/>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-30-zSe">
-                    <rect key="frame" x="381" y="10" width="30" height="30"/>
+                    <rect key="frame" x="363" y="10" width="30" height="30"/>
                     <state key="normal" title="Edit"/>
                     <connections>
                         <action selector="tapEdit:" destination="iN0-l3-epB" eventType="touchUpInside" id="YRx-4F-bZz"/>
@@ -32,9 +40,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="G6d-30-zSe" secondAttribute="trailing" constant="16" id="WV0-ws-yo8"/>
+                <constraint firstItem="1pb-ug-waJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2J7-oV-l0x"/>
                 <constraint firstItem="2Dc-1A-Djt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="WqE-Vd-pMB"/>
                 <constraint firstItem="G6d-30-zSe" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Yvt-GP-ZFY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1pb-ug-waJ" secondAttribute="trailing" id="iBt-u3-xG9"/>
+                <constraint firstItem="1pb-ug-waJ" firstAttribute="leading" secondItem="G6d-30-zSe" secondAttribute="trailing" constant="10" id="iHx-Nz-YbM"/>
                 <constraint firstItem="2Dc-1A-Djt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jwC-Mc-JKp"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -46,4 +56,7 @@
             <point key="canvasLocation" x="-8.8000000000000007" y="-53.973013493253376"/>
         </view>
     </objects>
+    <resources>
+        <image name="list" width="24" height="24"/>
+    </resources>
 </document>
