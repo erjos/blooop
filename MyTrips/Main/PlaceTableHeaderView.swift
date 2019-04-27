@@ -12,6 +12,7 @@ class PlaceTableHeaderView: UIView {
 
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var listButton: UIButton!
     
     let EDIT_LABEL = "Edit"
     let DONE_LABEL = "Done"
@@ -37,6 +38,11 @@ class PlaceTableHeaderView: UIView {
         self.delegate?.didSelectEdit(shouldEdit: isEdit)
     }
     
+    @IBAction func tapViewList(_ sender: Any) {
+        //TODO: do we need anything else here?
+        self.delegate?.didChangeListView()
+    }
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -49,4 +55,7 @@ class PlaceTableHeaderView: UIView {
 
 protocol PlaceTableHeaderDelegate: class {
     func didSelectEdit(shouldEdit: Bool)
+    
+    //TODO:pass in an enum to define the list views
+    func didChangeListView()
 }

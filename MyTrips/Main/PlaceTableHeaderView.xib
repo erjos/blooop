@@ -29,6 +29,9 @@
                         <constraint firstAttribute="width" constant="24" id="xc8-an-XfE"/>
                     </constraints>
                     <state key="normal" title="Button" image="list"/>
+                    <connections>
+                        <action selector="tapViewList:" destination="iN0-l3-epB" eventType="touchUpInside" id="0hi-vz-QEs"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-30-zSe">
                     <rect key="frame" x="363" y="10" width="30" height="30"/>
@@ -51,6 +54,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="editButton" destination="G6d-30-zSe" id="Nss-Ax-gwr"/>
+                <outlet property="listButton" destination="1pb-ug-waJ" id="znL-jd-Xcg"/>
                 <outlet property="placeLabel" destination="2Dc-1A-Djt" id="NAh-zm-LVm"/>
             </connections>
             <point key="canvasLocation" x="-8.8000000000000007" y="-53.973013493253376"/>

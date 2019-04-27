@@ -36,6 +36,14 @@ enum TripSaveStatus {
     case Empty
 }
 
+enum TableListView {
+    //simple just the name
+    case Compact
+    
+    //expanded with photo and additional info
+    case Expanded
+}
+
 class MainViewController: UIViewController {
     @IBOutlet weak var clearDrawerView: UIView!
     @IBOutlet weak var drawerView: UIView!
@@ -48,14 +56,13 @@ class MainViewController: UIViewController {
     //prob want to pull this out and manage the location via a delegate
     var locationManager: CLLocationManager!
     
-    //viewModel stuff
+    //**ViewModel stuff**
     var trip: PrimaryLocation?
     var currentTripStatus: TripSaveStatus = .Empty
-    
+    var tableListState: TableListView = .Compact
     //used to restrict search results
     var coordinateBounds: GMSCoordinateBounds?
-    
-    //Do we want to create a class to handle all the map stuff or keep in on this viewController? - could embed one using a child view controller
+    //TODO: do we want to create a class to handle all the map stuff or keep in on this viewController? - could embed one using a child view controller
     var mapMarkers:[GMSMarker]?
     
     @IBAction func menuButton(_ sender: Any) {
@@ -105,6 +112,8 @@ class MainViewController: UIViewController {
         
         let nib = UINib(nibName: "PlaceListTableViewCell", bundle: Bundle.main)
         self.placeTableView.register(nib, forCellReuseIdentifier: "placeCell")
+        let expandedNib = UINib(nibName: "ListTableViewCell", bundle: Bundle.main)
+        self.placeTableView.register(expandedNib, forCellReuseIdentifier: "listCell")
         self.resetMap.isHidden = true
     }
     
@@ -127,7 +136,7 @@ class MainViewController: UIViewController {
         #endif
     }
     
-    private func setupLocationManager(){
+    private func setupLocationManager() {
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.requestAlwaysAuthorization()
@@ -270,10 +279,45 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceListTableViewCell
-        
-        cell.placeNameLabel.text = trip?.getSubLocation(from: indexPath).label
-        return cell
+        if(tableListState == .Compact){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceListTableViewCell
+            
+            cell.placeNameLabel.text = trip?.getSubLocation(from: indexPath).label
+            return cell
+        } else {
+            //Not registered with the table
+            let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
+            guard let placeID = trip?.getSubLocationPlaceID(from: indexPath) else {
+                return cell
+            }
+            
+            GooglePhotoManager.loadMetaDataList(placeID: placeID, success: { list in
+                GoogleResourceManager.sharedInstance.addPhotoMetaData(metaData: (placeID, list))
+            }) { error in
+                //TODO: ERROR
+            }
+            
+            GooglePhotoManager.getFirstPhoto(placeID: placeID, success: { (image, attr) in
+                cell.setThumbnailImage(image: image)
+            }) { error in
+                cell.handleFailedImage()
+            }
+            
+            cell.activityLabel.isHidden = true
+            cell.dateLabel.isHidden = true
+            if let label = trip?.getSubLocation(from: indexPath).label {
+                cell.activityLabel.isHidden = false
+                cell.activityLabel.text = label
+            }
+//            if let date = city.getSubLocation(from: indexPath).date?.formatDateAsString() {
+//                cell.dateLabel.isHidden = false
+//                cell.dateLabel.text = date
+//            }
+            let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: placeID)
+            cell.locationLabel.text = gms?.name
+            cell.selectionStyle = .none
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -309,11 +353,25 @@ extension MainViewController: UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(tableListState == .Expanded){
+            return 130.00
+        } else {
+            return 44.00
+        }
+    }
 }
 
 extension MainViewController: PlaceTableHeaderDelegate {
     func didSelectEdit(shouldEdit: Bool) {
         setEditing(shouldEdit, animated: true)
+    }
+    
+    func didChangeListView() {
+        //switch the table state
+        self.tableListState = (self.tableListState == .Compact) ? .Expanded : .Compact
+        self.placeTableView.reloadData()
     }
 }
 
