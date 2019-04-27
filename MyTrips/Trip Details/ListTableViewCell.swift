@@ -18,8 +18,8 @@ class ListTableViewCell: UITableViewCell {
         super.prepareForReuse()
         thumbnail.image = nil
         thumbnail.layer.borderWidth = 0.0
-        dateLabel.text = ""
-        activityLabel.text = ""
+        //dateLabel.text = ""
+        //activityLabel.text = ""
         locationLabel.text = ""
     }
     

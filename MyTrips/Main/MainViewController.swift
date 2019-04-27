@@ -13,6 +13,9 @@ import GooglePlaces
 
 //Next Release:
 //Theme: Clean functionality
+//> Fix expanded cell layout - doesnt work in landscape - also constraints are incomplete in portrait - can we do adaptive layout for tableview cells??
+//> Make sure table view scrolls smoothly when in expanded view
+//> Compact cells also need constraints for landscape
 //> Fix menu - doesnt do anything right now - either have it display only trips or other stuff
 //> Let menu close when we pan swipe it
 //> Create ability to click on individual places and view/add more data
@@ -303,12 +306,12 @@ extension MainViewController: UITableViewDataSource {
                 cell.handleFailedImage()
             }
             
-            cell.activityLabel.isHidden = true
-            cell.dateLabel.isHidden = true
-            if let label = trip?.getSubLocation(from: indexPath).label {
-                cell.activityLabel.isHidden = false
-                cell.activityLabel.text = label
-            }
+            //cell.activityLabel.isHidden = true
+            //cell.dateLabel.isHidden = true
+            //if let label = trip?.getSubLocation(from: indexPath).label {
+                //cell.activityLabel.isHidden = false
+                //cell.activityLabel.text = label
+            //}
 //            if let date = city.getSubLocation(from: indexPath).date?.formatDateAsString() {
 //                cell.dateLabel.isHidden = false
 //                cell.dateLabel.text = date

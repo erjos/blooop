@@ -28,6 +28,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="TMa-2h-Ohi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oa4-VH-ieM"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TMa-2h-Ohi" secondAttribute="trailing" id="q22-sN-McI"/>
                     <constraint firstItem="TMa-2h-Ohi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zaU-Qa-UVm"/>
                 </constraints>
             </tableViewCellContentView>
