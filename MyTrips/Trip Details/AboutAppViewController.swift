@@ -12,6 +12,10 @@ class AboutAppViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     
+    @IBAction func pressBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false

@@ -21,7 +21,7 @@ protocol MenuDataProtocol {
 }
 
 struct MenuData {
-    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true)]
+    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.AboutApp, isVisible: true)]
 }
 
 extension MenuData : MenuDataProtocol {
@@ -56,6 +56,7 @@ extension MenuData : MenuDataProtocol {
 enum MenuItem: String {
     case NewTrip = "New trip"
     case MyTrips = "My trips"
+    case AboutApp = "About the app"
 }
 
 class DrawerViewController: UIViewController {
@@ -101,6 +102,9 @@ class DrawerViewController: UIViewController {
         case .MyTrips:
             trips = RealmManager.fetchData()
             changeTableState(state: .TripList)
+        case .AboutApp:
+            menuDelegate?.shouldCloseMenu(menu: self)
+            menuDelegate?.shouldShowAboutApp()
         }
     }
     
@@ -195,4 +199,5 @@ protocol MenuDelegate: class {
     func shouldCloseMenu(menu: DrawerViewController)
     func shouldClearMap()
     func shouldLoadTrip(trip: PrimaryLocation)
+    func shouldShowAboutApp()
 }

@@ -251,6 +251,10 @@ extension MainViewController: MenuDelegate {
         resetMap.isHidden = true
     }
     
+    func shouldShowAboutApp() {
+        self.performSegue(withIdentifier: "showAboutApp", sender: self)
+    }
+    
     func shouldLoadTrip(trip: PrimaryLocation) {
         self.trip = trip
         self.currentTripStatus = .Saved
