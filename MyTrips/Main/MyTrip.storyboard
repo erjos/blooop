@@ -256,6 +256,10 @@
                                         <exclude reference="kpa-l3-7pp"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="ezm-Lf-kf6" id="HPV-fM-KeC"/>
+                                    <outlet property="delegate" destination="ezm-Lf-kf6" id="ueu-J8-qZF"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

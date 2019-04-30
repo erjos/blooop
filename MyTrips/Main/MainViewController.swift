@@ -217,6 +217,7 @@ class MainViewController: UIViewController {
         }
     }
     
+    // will need to update this for new view controller
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
@@ -282,6 +283,7 @@ extension MainViewController: MenuDelegate {
     }
 }
 
+//table view stuff - pull out when ready
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trip?.subLocations.count ?? 0
@@ -334,6 +336,7 @@ extension MainViewController: UITableViewDataSource {
     }
 }
 
+//remove
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = Bundle.main.loadNibNamed("PlaceTableHeaderView", owner: self, options: nil)?.first as?
@@ -372,6 +375,7 @@ extension MainViewController: UITableViewDelegate {
     }
 }
 
+//remove
 extension MainViewController: PlaceTableHeaderDelegate {
     func didSelectEdit(shouldEdit: Bool) {
         setEditing(shouldEdit, animated: true)
