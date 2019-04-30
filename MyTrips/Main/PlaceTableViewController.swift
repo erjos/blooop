@@ -8,6 +8,14 @@
 
 import UIKit
 
+enum TableListView {
+    //simple just the name
+    case Compact
+    
+    //expanded with photo and additional info
+    case Expanded
+}
+
 class PlaceTableViewController: UIViewController {
 
     @IBOutlet weak var placeTableView: UITableView!
@@ -25,17 +33,13 @@ class PlaceTableViewController: UIViewController {
         self.placeTableView.register(expandedNib, forCellReuseIdentifier: "listCell")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        //checks to make sure editing is off - keeps edit button working if user swipes to delete
+        self.placeTableView.setEditing(false, animated: animated)
+        self.placeTableView.setEditing(editing, animated: animated)
     }
-    */
-
 }
 
 extension PlaceTableViewController: UITableViewDataSource {
@@ -114,7 +118,13 @@ extension PlaceTableViewController: UITableViewDelegate {
             guard let location = trip else {
                 return
             }
-            self.deleteMapMarker(indexPath: indexPath)
+            
+            //TODO: should we use a delegate here?
+            guard let mainVC = self.parent as? MainViewController else {
+                fatalError("You messed up the tables parent View Controller")
+            }
+            mainVC.deleteMapMarker(indexPath: indexPath)
+            
             RealmManager.deleteSubLocation(city: location, indexPath: indexPath)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }

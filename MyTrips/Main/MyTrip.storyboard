@@ -51,35 +51,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddJ-Gs-ct6" userLabel="Table Container">
                                 <rect key="frame" x="0.0" y="388.5" width="375" height="278.5"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qd9-r8-GX3">
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPI-BJ-1yl">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="278.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="mHe-MO-Z5r"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="mHe-MO-Z5r"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=compact">
-                                            <mask key="constraints">
-                                                <exclude reference="mHe-MO-Z5r"/>
-                                            </mask>
-                                        </variation>
                                         <connections>
-                                            <outlet property="dataSource" destination="mC5-5t-aKE" id="XZs-Wd-fjA"/>
-                                            <outlet property="delegate" destination="mC5-5t-aKE" id="l5X-vH-ByW"/>
+                                            <segue destination="ezm-Lf-kf6" kind="embed" identifier="placeTableEmbed" id="MIe-ah-61a"/>
                                         </connections>
-                                    </tableView>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Qd9-r8-GX3" secondAttribute="bottom" id="Hm5-rr-YNX"/>
-                                    <constraint firstAttribute="trailing" secondItem="Qd9-r8-GX3" secondAttribute="trailing" id="LDg-ZZ-ptu"/>
-                                    <constraint firstItem="Qd9-r8-GX3" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="leading" id="eyA-dY-t0f"/>
+                                    <constraint firstAttribute="bottom" secondItem="aPI-BJ-1yl" secondAttribute="bottom" id="TVv-pa-Wcr"/>
+                                    <constraint firstItem="aPI-BJ-1yl" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="leading" id="a5T-3N-6dY"/>
+                                    <constraint firstAttribute="trailing" secondItem="aPI-BJ-1yl" secondAttribute="trailing" id="ah9-IL-GwO"/>
+                                    <constraint firstItem="aPI-BJ-1yl" firstAttribute="top" secondItem="ddJ-Gs-ct6" secondAttribute="top" id="bf0-c9-tbD"/>
                                     <constraint firstAttribute="width" constant="300" id="gSz-Kx-oeY"/>
-                                    <constraint firstItem="Qd9-r8-GX3" firstAttribute="top" secondItem="ddJ-Gs-ct6" secondAttribute="top" id="kCR-BJ-xnL"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -209,11 +194,11 @@
                     </view>
                     <connections>
                         <outlet property="clearDrawerView" destination="XvV-zJ-qbj" id="eKR-K7-ve4"/>
+                        <outlet property="containerView" destination="aPI-BJ-1yl" id="60T-tx-XTV"/>
                         <outlet property="drawerView" destination="hpj-qZ-DAL" id="mlA-9v-lbo"/>
                         <outlet property="mapContainer" destination="aaZ-WO-CL0" id="ZqY-cc-L1x"/>
                         <outlet property="menuCoverWidth" destination="y4y-fX-lTj" id="B1a-7B-eDU"/>
                         <outlet property="menuWidth" destination="zyx-lc-QZh" id="t4A-Xl-mxm"/>
-                        <outlet property="placeTableView" destination="Qd9-r8-GX3" id="NEf-5r-zuy"/>
                         <outlet property="resetMap" destination="Ce1-14-DYb" id="Sla-qt-qe1"/>
                         <segue destination="i0A-4U-c9d" kind="show" identifier="showAboutApp" id="dgA-j1-bwg"/>
                     </connections>
@@ -1060,6 +1045,19 @@ Cgo
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4Y-dO-mn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="782" y="1854"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="FH7-dR-h6u">
+            <objects>
+                <viewController id="g2N-4w-nMr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QMn-Pz-f7s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGZ-IL-yzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
