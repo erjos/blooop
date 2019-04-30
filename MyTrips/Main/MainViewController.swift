@@ -45,7 +45,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var menuCoverWidth: NSLayoutConstraint!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
     @IBOutlet weak var mapContainer: GMSMapView!
-    //@IBOutlet weak var placeTableView: UITableView!
     @IBOutlet weak var resetMap: UIButton!
     
     //not sure that we need this - doesnt do what we want
@@ -58,9 +57,7 @@ class MainViewController: UIViewController {
     var trip: PrimaryLocation? {
         didSet { self.placeTableViewController?.trip = self.trip }
     }
-    
     var currentTripStatus: TripSaveStatus = .Empty
-    //var tableListState: TableListView = .Compact
     //used to restrict search results
     var coordinateBounds: GMSCoordinateBounds?
     //TODO: do we want to create a class to handle all the map stuff or keep in on this viewController? - could embed one using a child view controller
@@ -112,21 +109,6 @@ class MainViewController: UIViewController {
         locationManager.startUpdatingLocation()
         menuWidth.constant = 0
         menuCoverWidth.constant = 0
-        
-        let childViewControllers = self.childViewControllers
-        
-        guard let placeTableController = self.childViewControllers.first as? PlaceTableViewController else {
-            fatalError("You did this wrong")
-        }
-        
-        self.placeTableViewController = placeTableController
-        
-        //Table view setup
-//        let nib = UINib(nibName: "PlaceListTableViewCell", bundle: Bundle.main)
-//        self.placeTableView.register(nib, forCellReuseIdentifier: "placeCell")
-//        let expandedNib = UINib(nibName: "ListTableViewCell", bundle: Bundle.main)
-//        self.placeTableView.register(expandedNib, forCellReuseIdentifier: "listCell")
-        
         self.resetMap.isHidden = true
     }
     
@@ -189,7 +171,8 @@ class MainViewController: UIViewController {
             guard let placeTableVC = segue.destination as? PlaceTableViewController else {
                 fatalError("You messed up casting this view controller")
             }
-            placeTableVC.trip = self.trip
+            self.placeTableViewController = placeTableVC
+            placeTableViewController?.trip = self.trip
         }
     }
     
@@ -212,10 +195,7 @@ class MainViewController: UIViewController {
             //caches the places when we fetch them so we only have to get them once per session
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             
-            //TODO: remove comment - also need to update the trip on the place viewController...SSOT or maybe realm managed objects handle this
-            //placeTableView.reloadData()
             placeTableViewController?.placeTableView.reloadData()
-            
             setupMapView(for: place.coordinate)
         case .Saved:
             guard let savedTrip = trip else {
@@ -230,21 +210,9 @@ class MainViewController: UIViewController {
             let marker = mapContainer.addMapMarker(for: place, label: place.name)
             //add new marker to the list
             mapMarkers?.append(marker)
-            
-            //TODO: same as above case
             placeTableViewController?.placeTableView.reloadData()
-            //placeTableView.reloadData()
         }
     }
-    
-    // remove
-//    override func setEditing(_ editing: Bool, animated: Bool) {
-//        super.setEditing(editing, animated: animated)
-//
-//        //checks to make sure editing is off - keeps edit button working if user swipes to delete
-//        self.placeTableView.setEditing(false, animated: animated)
-//        self.placeTableView.setEditing(editing, animated: animated)
-//    }
     
     func deleteMapMarker(indexPath: IndexPath){
         let marker = mapMarkers?.remove(at: indexPath.row)
@@ -300,113 +268,6 @@ extension MainViewController: MenuDelegate {
         }
     }
 }
-
-
-
-//table view stuff - pull out when ready
-//extension MainViewController: UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return trip?.subLocations.count ?? 0
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if(tableListState == .Compact){
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceListTableViewCell
-//
-//            cell.placeNameLabel.text = trip?.getSubLocation(from: indexPath).label
-//            return cell
-//        } else {
-//            //Not registered with the table
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
-//            guard let placeID = trip?.getSubLocationPlaceID(from: indexPath) else {
-//                return cell
-//            }
-//
-//            GooglePhotoManager.loadMetaDataList(placeID: placeID, success: { list in
-//                GoogleResourceManager.sharedInstance.addPhotoMetaData(metaData: (placeID, list))
-//            }) { error in
-//                //TODO: ERROR
-//            }
-//
-//            GooglePhotoManager.getFirstPhoto(placeID: placeID, success: { (image, attr) in
-//                cell.setThumbnailImage(image: image)
-//            }) { error in
-//                cell.handleFailedImage()
-//            }
-//
-//            //cell.activityLabel.isHidden = true
-//            //cell.dateLabel.isHidden = true
-//            //if let label = trip?.getSubLocation(from: indexPath).label {
-//                //cell.activityLabel.isHidden = false
-//                //cell.activityLabel.text = label
-//            //}
-////            if let date = city.getSubLocation(from: indexPath).date?.formatDateAsString() {
-////                cell.dateLabel.isHidden = false
-////                cell.dateLabel.text = date
-////            }
-//            let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: placeID)
-//            cell.locationLabel.text = gms?.name
-//            cell.selectionStyle = .none
-//            return cell
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 50.0
-//    }
-//}
-
-//remove
-//extension MainViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = Bundle.main.loadNibNamed("PlaceTableHeaderView", owner: self, options: nil)?.first as?
-//        PlaceTableHeaderView
-//
-//        guard let name = trip?.locationName else {
-//            view?.setLabel(name: "Search for a place")
-//            return view
-//        }
-//
-//        //Setup for existing trip
-//        view?.setLabel(name: name)
-//        view?.editButton.isHidden = false
-//        view?.delegate = self
-//
-//        return view
-//    }
-//
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if(editingStyle == .delete){
-//            guard let location = trip else {
-//                return
-//            }
-//            self.deleteMapMarker(indexPath: indexPath)
-//            RealmManager.deleteSubLocation(city: location, indexPath: indexPath)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if(tableListState == .Expanded){
-//            return 130.00
-//        } else {
-//            return 44.00
-//        }
-//    }
-//}
-
-//remove
-//extension MainViewController: PlaceTableHeaderDelegate {
-//    func didSelectEdit(shouldEdit: Bool) {
-//        setEditing(shouldEdit, animated: true)
-//    }
-//
-//    func didChangeListView() {
-//        //switch the table state
-//        self.tableListState = (self.tableListState == .Compact) ? .Expanded : .Compact
-//        self.placeTableView.reloadData()
-//    }
-//}
 
 extension MainViewController: CLLocationManagerDelegate {
     //TODO: test this on physical device - I think it is used to determine the starting location when a user first loads the map
