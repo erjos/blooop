@@ -49,10 +49,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddJ-Gs-ct6" userLabel="Table Container">
-                                <rect key="frame" x="15" y="381" width="345" height="271"/>
+                                <rect key="frame" x="0.0" y="388.5" width="375" height="278.5"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qd9-r8-GX3">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="271"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="278.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="mHe-MO-Z5r"/>
@@ -135,10 +135,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaZ-WO-CL0" userLabel="Map Container" customClass="GMSMapView">
-                                <rect key="frame" x="15" y="95" width="345" height="271"/>
+                                <rect key="frame" x="15" y="95" width="345" height="278.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ce1-14-DYb">
-                                        <rect key="frame" x="316" y="242" width="24" height="24"/>
+                                        <rect key="frame" x="316" y="249.5" width="24" height="24"/>
                                         <state key="normal" image="refresh"/>
                                         <connections>
                                             <action selector="tapReset:" destination="mC5-5t-aKE" eventType="touchUpInside" id="rpb-2G-WkP"/>
@@ -159,21 +159,21 @@
                             <constraint firstItem="SYJ-NP-s7u" firstAttribute="leading" secondItem="TKg-ia-jKm" secondAttribute="trailing" id="IkG-mm-F60"/>
                             <constraint firstItem="XvV-zJ-qbj" firstAttribute="leading" secondItem="hpj-qZ-DAL" secondAttribute="trailing" id="JV0-cq-kC6"/>
                             <constraint firstItem="ddJ-Gs-ct6" firstAttribute="top" secondItem="SYJ-NP-s7u" secondAttribute="bottom" constant="15" id="QyB-Lv-fgy"/>
-                            <constraint firstItem="aaZ-WO-CL0" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" constant="15" id="ULS-hU-a0e"/>
+                            <constraint firstItem="aaZ-WO-CL0" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" id="ULS-hU-a0e"/>
                             <constraint firstItem="hpj-qZ-DAL" firstAttribute="top" secondItem="3CE-en-Fu1" secondAttribute="top" id="XgS-nm-vt2"/>
-                            <constraint firstAttribute="trailing" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" constant="15" id="ccP-Gl-giA"/>
+                            <constraint firstAttribute="trailing" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" id="ccP-Gl-giA"/>
                             <constraint firstItem="XvV-zJ-qbj" firstAttribute="top" secondItem="3CE-en-Fu1" secondAttribute="top" id="fx5-Ly-Bdi"/>
                             <constraint firstItem="TKg-ia-jKm" firstAttribute="top" secondItem="SYJ-NP-s7u" secondAttribute="top" id="hIp-L9-WVR"/>
                             <constraint firstItem="aaZ-WO-CL0" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" constant="15" id="hZQ-q2-hTw"/>
-                            <constraint firstItem="SmU-B9-bFQ" firstAttribute="bottom" secondItem="ddJ-Gs-ct6" secondAttribute="bottom" constant="15" id="hxa-ti-tvg">
-                                <variation key="heightClass=compact" constant="15"/>
+                            <constraint firstItem="SmU-B9-bFQ" firstAttribute="bottom" secondItem="ddJ-Gs-ct6" secondAttribute="bottom" id="hxa-ti-tvg">
+                                <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="aaZ-WO-CL0" firstAttribute="top" secondItem="SYJ-NP-s7u" secondAttribute="bottom" constant="15" id="iPO-4p-ts5"/>
                             <constraint firstItem="SmU-B9-bFQ" firstAttribute="trailing" secondItem="SYJ-NP-s7u" secondAttribute="trailing" constant="15" id="iXl-jQ-Ult"/>
                             <constraint firstItem="SmU-B9-bFQ" firstAttribute="trailing" secondItem="aaZ-WO-CL0" secondAttribute="trailing" constant="15" id="l70-zp-Wid"/>
                             <constraint firstItem="ddJ-Gs-ct6" firstAttribute="top" secondItem="aaZ-WO-CL0" secondAttribute="bottom" constant="15" id="nCR-lC-1Fy"/>
-                            <constraint firstItem="ddJ-Gs-ct6" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" constant="15" id="nb8-wm-SKF">
-                                <variation key="heightClass=compact" constant="15"/>
+                            <constraint firstItem="ddJ-Gs-ct6" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" id="nb8-wm-SKF">
+                                <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="SYJ-NP-s7u" firstAttribute="top" secondItem="SmU-B9-bFQ" secondAttribute="top" constant="15" id="ofc-23-B3t"/>
                             <constraint firstItem="TKg-ia-jKm" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" constant="15" id="pxr-lN-cpd"/>
@@ -232,6 +232,50 @@
             </objects>
             <point key="canvasLocation" x="782.60869565217399" y="984.375"/>
         </scene>
+        <!--Place Table View Controller-->
+        <scene sceneID="t94-9a-W2p">
+            <objects>
+                <viewController id="ezm-Lf-kf6" customClass="PlaceTableViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ixl-g4-1jZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="279"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FGf-eb-KRg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="279"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="kpa-l3-7pp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kpa-l3-7pp"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="kpa-l3-7pp"/>
+                                    </mask>
+                                </variation>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xLm-CZ-zBT" firstAttribute="bottom" secondItem="FGf-eb-KRg" secondAttribute="bottom" id="7Gl-1o-hPR"/>
+                            <constraint firstItem="FGf-eb-KRg" firstAttribute="leading" secondItem="Ixl-g4-1jZ" secondAttribute="leading" id="CqN-3q-Y54"/>
+                            <constraint firstItem="xLm-CZ-zBT" firstAttribute="trailing" secondItem="FGf-eb-KRg" secondAttribute="trailing" id="S6W-to-w4e"/>
+                            <constraint firstItem="FGf-eb-KRg" firstAttribute="top" secondItem="Ixl-g4-1jZ" secondAttribute="top" id="weW-dX-WQx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xLm-CZ-zBT"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="279"/>
+                    <connections>
+                        <outlet property="placeTableView" destination="FGf-eb-KRg" id="j1M-hT-Ibd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fb3-Na-Wr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1714" y="1158"/>
+        </scene>
         <!--Drawer View Controller-->
         <scene sceneID="1r9-Ch-s1T">
             <objects>
@@ -240,12 +284,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odN-Uu-sFH">
-                                <rect key="frame" x="0.0" y="100" width="200" height="718"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odN-Uu-sFH">
+                                <rect key="frame" x="0.0" y="20" width="200" height="647"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="718" id="4Pt-8h-BzM"/>
-                                </constraints>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -257,12 +298,12 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="n3G-E1-ivO" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="odN-Uu-sFH" secondAttribute="bottom" id="DU2-ri-cxB"/>
-                            <constraint firstItem="odN-Uu-sFH" firstAttribute="top" secondItem="n3G-E1-ivO" secondAttribute="top" constant="100" id="H7H-Cf-JTC"/>
+                            <constraint firstItem="odN-Uu-sFH" firstAttribute="top" secondItem="n3G-E1-ivO" secondAttribute="top" id="H7H-Cf-JTC"/>
                             <constraint firstItem="odN-Uu-sFH" firstAttribute="trailing" secondItem="dgO-Qu-Izv" secondAttribute="trailing" id="JDG-h3-z6S"/>
                             <constraint firstItem="odN-Uu-sFH" firstAttribute="leading" secondItem="dgO-Qu-Izv" secondAttribute="leading" id="St2-01-RrJ">
                                 <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
+                            <constraint firstAttribute="bottom" secondItem="odN-Uu-sFH" secondAttribute="bottom" id="iKW-zz-88A"/>
                             <constraint firstAttribute="trailing" secondItem="odN-Uu-sFH" secondAttribute="trailing" id="zly-yQ-M1b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n3G-E1-ivO"/>
@@ -282,7 +323,6 @@
                     </view>
                     <connections>
                         <outlet property="menuTableView" destination="odN-Uu-sFH" id="YQn-Bg-LJ1"/>
-                        <outlet property="tableHeighConstraint" destination="4Pt-8h-BzM" id="yAF-mf-JbD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQu-Yo-hWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,7 +333,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1578" y="984"/>
+            <point key="canvasLocation" x="1429" y="581"/>
         </scene>
         <!--About the App-->
         <scene sceneID="ARh-gA-pA1">
@@ -1015,7 +1055,7 @@ Cgo
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4Y-dO-mn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="781.60000000000002" y="1705.9970014992505"/>
+            <point key="canvasLocation" x="782" y="1854"/>
         </scene>
     </scenes>
     <resources>

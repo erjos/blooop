@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMa-2h-Ohi" userLabel="Place Name Label">
-                        <rect key="frame" x="0.0" y="11.5" width="137.5" height="21"/>
+                        <rect key="frame" x="15" y="11.5" width="137.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,7 +29,7 @@
                 <constraints>
                     <constraint firstItem="TMa-2h-Ohi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oa4-VH-ieM"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TMa-2h-Ohi" secondAttribute="trailing" id="q22-sN-McI"/>
-                    <constraint firstItem="TMa-2h-Ohi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zaU-Qa-UVm"/>
+                    <constraint firstItem="TMa-2h-Ohi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="zaU-Qa-UVm"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

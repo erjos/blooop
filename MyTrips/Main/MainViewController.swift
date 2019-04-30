@@ -13,12 +13,12 @@ import GooglePlaces
 
 //Next Release:
 //Theme: Clean functionality
-//> Fix expanded cell layout - doesnt work in landscape - also constraints are incomplete in portrait - can we do adaptive layout for tableview cells??
-//> Make sure table view scrolls smoothly when in expanded view
-//> Compact cells also need constraints for landscape
-//> Fix menu - doesnt do anything right now - either have it display only trips or other stuff
+
+//>change scroll indicator insets
+//> When click on a place - highlight it on the map and open the new place controller below the map where the table is
 //> Let menu close when we pan swipe it
-//> Create ability to click on individual places and view/add more data
+//> make menu prettier
+//> could put a pop out button on the map so users can view the map as a full screen if they want
 
 //> Currently user is allowed to add multiple of the same location to the trip - would be nice to have an alert asking if this is intentional... but not necessarily a requirement
 //> Maybe we only show existing trips in the menu for this first version - not sure if we have any other needed functionality
@@ -113,10 +113,12 @@ class MainViewController: UIViewController {
         menuWidth.constant = 0
         menuCoverWidth.constant = 0
         
+        //Table view setup
         let nib = UINib(nibName: "PlaceListTableViewCell", bundle: Bundle.main)
         self.placeTableView.register(nib, forCellReuseIdentifier: "placeCell")
         let expandedNib = UINib(nibName: "ListTableViewCell", bundle: Bundle.main)
         self.placeTableView.register(expandedNib, forCellReuseIdentifier: "listCell")
+        
         self.resetMap.isHidden = true
     }
     
