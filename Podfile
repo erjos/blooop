@@ -9,6 +9,5 @@ target 'MyTrips' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'RealmSwift'
-  pod 'AMPopTip'
 
 end

@@ -1,6 +1,5 @@
 import UIKit
 import GooglePlaces
-import AMPopTip
 
 class PlaceModalViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
@@ -21,71 +20,71 @@ class PlaceModalViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    var poptip = PopTip()
+    //var poptip = PopTip()
     
     func setupPoptip(){
-        poptip = PopTip()
-        poptip.shouldDismissOnTap = true
-        poptip.dismissHandler = { poptip in }
-        poptip.bubbleColor = headerbackground
-        poptip.textColor = UIColor.white
+//        poptip = PopTip()
+//        poptip.shouldDismissOnTap = true
+//        poptip.dismissHandler = { poptip in }
+//        poptip.bubbleColor = headerbackground
+//        poptip.textColor = UIColor.white
     }
     
     @IBAction func tapPhone(_ sender: Any) {
         let tipText = gmsPlace?.phoneNumber ?? "No Phone Available"
         
-        if(poptip.text != tipText) {
-            poptip.hide()
-            setupPoptip()
-            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: phone.frame)
-            poptip.tapHandler = { poptip in
-                if let telephoneUrl = URL(string: "tel://\(tipText)"), UIApplication.shared.canOpenURL(telephoneUrl){
-                    UIApplication.shared.open(telephoneUrl, options: [:], completionHandler: nil)
-                }
-            }
-        } else {
-            poptip.hide()
-            poptip.text = ""
-        }
+//        if(poptip.text != tipText) {
+//            poptip.hide()
+//            setupPoptip()
+//            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: phone.frame)
+//            poptip.tapHandler = { poptip in
+//                if let telephoneUrl = URL(string: "tel://\(tipText)"), UIApplication.shared.canOpenURL(telephoneUrl){
+//                    UIApplication.shared.open(telephoneUrl, options: [:], completionHandler: nil)
+//                }
+//            }
+//        } else {
+//            poptip.hide()
+//            poptip.text = ""
+//        }
     }
     
     @IBAction func tapLocation(_ sender: Any) {
         let tipText = gmsPlace?.formattedAddress ?? "No Location Available"
-        if(poptip.text != tipText) {
-            poptip.hide()
-            setupPoptip()
-            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: placeIcon.frame)
-            poptip.tapHandler = { poptip in
-                if let navVC = self.presentingViewController as? UINavigationController {
+//        if(poptip.text != tipText) {
+//            poptip.hide()
+//            setupPoptip()
+//            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: placeIcon.frame)
+//            poptip.tapHandler = { poptip in
+//                if let navVC = self.presentingViewController as? UINavigationController {
 //                    if let tripVC = navVC.viewControllers[0] as? TripViewController {
 //                        self.dismiss(animated: true) {
 //                            tripVC.performSegue(withIdentifier: "presentMap", sender: self)
 //                        }
 //                    }
-                }
-            }
-        } else {
-            poptip.hide()
-            poptip.text = ""
-        }
+//                }
+//            }
+//        } else {
+//            poptip.hide()
+//            poptip.text = ""
+//        }
     }
     
     @IBAction func tapWebsite(_ sender: Any) {
         //let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
         let tipText = gmsPlace?.website?.description ?? "No Website Available"
-        if(poptip.text != tipText) {
-            poptip.hide()
-            setupPoptip()
-            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: websiteIcon.frame)
-            poptip.tapHandler = { poptip in
-                if let websiteUrl = self.gmsPlace?.website {
-                    UIApplication.shared.open(websiteUrl, options: [:], completionHandler: nil)
-                }
-            }
-        } else {
-            poptip.hide()
-            poptip.text = ""
-        }
+//        if(poptip.text != tipText) {
+//            poptip.hide()
+//            setupPoptip()
+//            poptip.show(text: tipText, direction: .down, maxWidth: 200, in: contentView, from: websiteIcon.frame)
+//            poptip.tapHandler = { poptip in
+//                if let websiteUrl = self.gmsPlace?.website {
+//                    UIApplication.shared.open(websiteUrl, options: [:], completionHandler: nil)
+//                }
+//            }
+//        } else {
+//            poptip.hide()
+//            poptip.text = ""
+//        }
     }
     
     override func viewDidLoad() {

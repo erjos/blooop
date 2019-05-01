@@ -1,6 +1,5 @@
 import Foundation
 import GooglePlaces
-
 import Realm
 import RealmSwift
 
@@ -33,8 +32,8 @@ class PrimaryLocation: Object {
     }
     
     func setCity(place: GMSPlace){
-        placeID = place.placeID
-        locationName = place.name
+        placeID = place.placeID ?? "No ID found"
+        locationName = place.name ?? "No name found"
         locationId = generateLocationId()
     }
     

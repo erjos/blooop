@@ -1,5 +1,4 @@
 PODS:
-  - AMPopTip (4.0.1)
   - GoogleMaps (3.1.0):
     - GoogleMaps/Maps (= 3.1.0)
   - GoogleMaps/Base (3.1.0)
@@ -14,26 +13,23 @@ PODS:
     - Realm (= 3.14.2)
 
 DEPENDENCIES:
-  - AMPopTip
   - GoogleMaps
   - GooglePlaces
   - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - AMPopTip
     - GoogleMaps
     - GooglePlaces
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
-  AMPopTip: 41742f15d743203496cfdcd576f41b596b0efae3
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
   GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
   Realm: 179c6706e3a49dbfe112e572fd3c03d3169bea35
   RealmSwift: 1797f272fb51c555b764fada32e82159a2c65247
 
-PODFILE CHECKSUM: fbda08451e37eb11715eae88926eb4003c4cb5db
+PODFILE CHECKSUM: b66aa185cf9f04c49f9b88ddb7b51387131d5965
 
 COCOAPODS: 1.5.3

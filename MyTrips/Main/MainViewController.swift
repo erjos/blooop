@@ -195,7 +195,7 @@ class MainViewController: UIViewController {
                 return
             }
             let location = SubLocation()
-            location.placeID = place.placeID
+            location.placeID = place.placeID ?? "No ID found"
             location.label = place.name
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             RealmManager.addSublocationsToCity(city: savedTrip, location: location)
