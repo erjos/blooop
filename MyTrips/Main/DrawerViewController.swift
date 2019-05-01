@@ -117,9 +117,9 @@ class DrawerViewController: UIViewController {
         menuDelegate?.shouldCloseMenu(menu: self)
     }
     
-//    func adjustTableHeight(count:Int){
-//        self.tableHeighConstraint.constant = CGFloat((CELL_HEIGHT * count) + HEADER_HEIGHT)
-//    }
+    func adjustTableHeight(count:Int){
+        self.tableHeighConstraint.constant = CGFloat((CELL_HEIGHT * count) + HEADER_HEIGHT)
+    }
 }
 
 extension DrawerViewController: HeaderViewDelegate {
@@ -170,11 +170,11 @@ extension DrawerViewController: UITableViewDataSource {
         switch tableState {
         case .Menu:
             let items = menuItems.getVisibleItems()
-            //self.adjustTableHeight(count: items.count)
+            self.adjustTableHeight(count: items.count)
             return items.count
         case .TripList:
             let count = trips?.count ?? 0
-            //self.adjustTableHeight(count: count)
+            self.adjustTableHeight(count: count)
             return count
         }
     }

@@ -10,31 +10,22 @@ import GoogleMaps
 import GooglePlaces
 
 //TODO:
-
 //Next Release:
-//Theme: Clean functionality
-
 //>change scroll indicator insets
 //> When click on a place - highlight it on the map and open the new place controller below the map where the table is
-//> Let menu close when we pan swipe it
+//> Let menu close when we pan swipe it...
 //> make menu prettier
-//> could put a pop out button on the map so users can view the map as a full screen if they want
-
-//> Currently user is allowed to add multiple of the same location to the trip - would be nice to have an alert asking if this is intentional... but not necessarily a requirement
-//> Maybe we only show existing trips in the menu for this first version - not sure if we have any other needed functionality
 //> Image or animation or something to put in the table when theres no items listed
 //> Add a loading state to the main page for loading trips and loading the autocomplete vc
-//> Do we want to add zoom buttons to the map?
 
-//Stretch goals
-//> Feature: Need to do something when we click on a place after we start planning - open a new screen or initiate a way to input more data specific to that place (notes, dates times, etc.) - start simple
-
+//Stretch goals:
 //> Create a protocol that can abstract out the mechanism of saving the realm data
+//> Put a pop out button on the map so users can view the map as a full screen if they want
+//> Do we want to add zoom buttons to the map?
 
 enum TripSaveStatus {
     //trip exists and is saved
     case Saved
-    
     //trip doesnt exist
     case Empty
 }
@@ -337,10 +328,8 @@ extension MainViewController: PlaceDetailsDelegate {
 
 extension MainViewController : PlaceTableDelegate {
     func didSelectPlace(place: SubLocation) {
-        //TODO: pass the sublocation to the view controller everytime this is called
-        //trigger the new view child view controller and pass the sublocation to the view controller
-        addContentController(viewController: placeDetailsViewController, container: containerView)
-        //set the delegate
         placeDetailsViewController.delegate = self
+        placeDetailsViewController.place = place
+        addContentController(viewController: placeDetailsViewController, container: containerView)
     }
 }

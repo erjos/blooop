@@ -276,6 +276,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odN-Uu-sFH">
                                 <rect key="frame" x="0.0" y="20" width="200" height="647"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="647" id="8KH-Fh-17h"/>
+                                </constraints>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -292,7 +295,7 @@
                             <constraint firstItem="odN-Uu-sFH" firstAttribute="leading" secondItem="dgO-Qu-Izv" secondAttribute="leading" id="St2-01-RrJ">
                                 <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
-                            <constraint firstAttribute="bottom" secondItem="odN-Uu-sFH" secondAttribute="bottom" id="iKW-zz-88A"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="odN-Uu-sFH" secondAttribute="bottom" id="iKW-zz-88A"/>
                             <constraint firstAttribute="trailing" secondItem="odN-Uu-sFH" secondAttribute="trailing" id="zly-yQ-M1b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n3G-E1-ivO"/>
@@ -312,6 +315,7 @@
                     </view>
                     <connections>
                         <outlet property="menuTableView" destination="odN-Uu-sFH" id="YQn-Bg-LJ1"/>
+                        <outlet property="tableHeighConstraint" destination="8KH-Fh-17h" id="Fb8-tb-57E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQu-Yo-hWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1071,11 +1075,20 @@ Cgo
                                                     <action selector="didPressClose:" destination="g2N-4w-nMr" eventType="touchUpInside" id="6AU-3U-2SI"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnx-2t-aKE">
+                                                <rect key="frame" x="15" y="5" width="49.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="Hnx-2t-aKE" firstAttribute="top" secondItem="w0T-Jv-E6E" secondAttribute="top" constant="5" id="H7x-Jb-pVT"/>
                                             <constraint firstAttribute="trailing" secondItem="FxP-s8-dH5" secondAttribute="trailing" constant="15" id="YWM-Bq-sYY"/>
                                             <constraint firstItem="FxP-s8-dH5" firstAttribute="top" secondItem="w0T-Jv-E6E" secondAttribute="top" id="bV6-UK-Swb"/>
+                                            <constraint firstItem="FxP-s8-dH5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hnx-2t-aKE" secondAttribute="trailing" id="ckK-EA-jqu"/>
+                                            <constraint firstItem="Hnx-2t-aKE" firstAttribute="leading" secondItem="w0T-Jv-E6E" secondAttribute="leading" constant="15" id="xfK-FY-J1H"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1099,6 +1112,9 @@ Cgo
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="279"/>
+                    <connections>
+                        <outlet property="placeLabel" destination="Hnx-2t-aKE" id="NqE-aI-TIG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGZ-IL-yzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
