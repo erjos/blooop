@@ -1,17 +1,17 @@
 PODS:
-  - AMPopTip (3.5.0)
-  - GoogleMaps (2.7.0):
-    - GoogleMaps/Maps (= 2.7.0)
-  - GoogleMaps/Base (2.7.0)
-  - GoogleMaps/Maps (2.7.0):
+  - AMPopTip (4.0.1)
+  - GoogleMaps (3.1.0):
+    - GoogleMaps/Maps (= 3.1.0)
+  - GoogleMaps/Base (3.1.0)
+  - GoogleMaps/Maps (3.1.0):
     - GoogleMaps/Base
-  - GooglePlaces (2.7.0):
-    - GoogleMaps/Base (= 2.7.0)
-  - Realm (3.13.1):
-    - Realm/Headers (= 3.13.1)
-  - Realm/Headers (3.13.1)
-  - RealmSwift (3.13.1):
-    - Realm (= 3.13.1)
+  - GooglePlaces (3.1.0):
+    - GoogleMaps/Base (= 3.1.0)
+  - Realm (3.14.2):
+    - Realm/Headers (= 3.14.2)
+  - Realm/Headers (3.14.2)
+  - RealmSwift (3.14.2):
+    - Realm (= 3.14.2)
 
 DEPENDENCIES:
   - AMPopTip
@@ -28,11 +28,11 @@ SPEC REPOS:
     - RealmSwift
 
 SPEC CHECKSUMS:
-  AMPopTip: 871ae0570b68fe396e714922b3f7d8ed6a36bb71
-  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
-  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
-  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
-  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  AMPopTip: 41742f15d743203496cfdcd576f41b596b0efae3
+  GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
+  GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
+  Realm: 179c6706e3a49dbfe112e572fd3c03d3169bea35
+  RealmSwift: 1797f272fb51c555b764fada32e82159a2c65247
 
 PODFILE CHECKSUM: fbda08451e37eb11715eae88926eb4003c4cb5db
 

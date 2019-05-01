@@ -155,6 +155,8 @@ open class PopTip: UIView {
   @objc open dynamic var maskColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
   /// Flag to enable or disable background mask
   @objc open dynamic var shouldShowMask = false
+  /// Flag to enable or disable the checks that make sure that the tip does not extend over the container
+  @objc open dynamic var constrainInContainerView = true
   /// Holds the CGrect with the rect the tip is pointing to
   open var from = CGRect.zero {
     didSet {
@@ -168,6 +170,9 @@ open class PopTip: UIView {
   @objc open dynamic var shouldDismissOnTap = true
   /// A boolean value that determines whether to dismiss when tapping outside the poptip.
   @objc open dynamic var shouldDismissOnTapOutside = true
+  /// A boolean value that determines whether to consider the originating frame as part of the poptip,
+  /// i.e wether to call the `tapHandler` or the `tapOutsideHandler` when the tap occurs in the `from` frame.
+  @objc open dynamic var shouldConsiderOriginatingFrameAsPopTip = false
   /// A boolean value that determines whether to dismiss when swiping outside the poptip.
   @objc open dynamic var shouldDismissOnSwipeOutside = false
   /// A boolean value that determines if the action animation should start automatically when the poptip is shown
@@ -239,7 +244,9 @@ open class PopTip: UIView {
     frame.size = CGSize(width: textBounds.width + padding * 2 + edgeInsets.horizontal, height: textBounds.height + padding * 2 + edgeInsets.vertical + arrowSize.height)
     var x = from.origin.x + from.width / 2 - frame.width / 2
     if x < 0 { x = edgeMargin }
-    if (x + frame.width > containerView.bounds.width) { x = containerView.bounds.width - frame.width - edgeMargin }
+    if constrainInContainerView && (x + frame.width > containerView.bounds.width) {
+      x = containerView.bounds.width - frame.width - edgeMargin
+    }
     
     if direction == .down {
       frame.origin = CGPoint(x: x, y: from.origin.y + from.height + offset)
@@ -248,7 +255,7 @@ open class PopTip: UIView {
     }
     
     // Make sure that the bubble doesn't leave the boundaries of the view
-    let arrowPosition = CGPoint(
+    var arrowPosition = CGPoint(
       x: from.origin.x + from.width / 2 - frame.origin.x,
       y: (direction == .up) ? frame.height : from.origin.y + from.height - frame.origin.y + offset
     )
@@ -261,18 +268,25 @@ open class PopTip: UIView {
       bubbleOffset = -(arrowSize.width + edgeMargin)
     }
     
-    // Make sure that the bubble doesn't leaves the boundaries of the view
-    let leftSpace = frame.origin.x - containerView.frame.origin.x
-    let rightSpace = containerView.frame.width - leftSpace - frame.width
-    
-    if bubbleOffset < 0 && leftSpace < abs(bubbleOffset) {
-      bubbleOffset = -leftSpace + edgeMargin
-    } else if bubbleOffset > 0 && rightSpace < bubbleOffset {
-      bubbleOffset = rightSpace - edgeMargin
+    if constrainInContainerView {
+      // Make sure that the bubble doesn't leave the boundaries of the view
+      let leftSpace = frame.origin.x - containerView.frame.origin.x
+      let rightSpace = containerView.frame.width - leftSpace - frame.width
+      
+      if bubbleOffset < 0 && leftSpace < abs(bubbleOffset) {
+        bubbleOffset = -leftSpace + edgeMargin
+      } else if bubbleOffset > 0 && rightSpace < bubbleOffset {
+        bubbleOffset = rightSpace - edgeMargin
+      }
     }
-    
     frame.origin.x += bubbleOffset
     frame.size = CGSize(width: frame.width + borderWidth * 2, height: frame.height + borderWidth * 2)
+    
+    // Only when the tip is not constrained, make sure to center the frame if the containerView is smaller than the tip
+    if containerView.frame.width < frame.width, !constrainInContainerView {
+      frame.origin.x = -frame.width / 2 + containerView.frame.width / 2
+      arrowPosition.x += frame.width / 2 - containerView.frame.width / 2
+    }
     
     return (frame, arrowPosition)
   }
@@ -291,15 +305,15 @@ open class PopTip: UIView {
     var y = from.origin.y + from.height / 2 - frame.height / 2
     
     if y < 0 { y = edgeMargin }
-    //Make sure we stay in the view limits except if it has scroll then it must be inside contentview limits not the view
+    // Make sure we stay in the view limits except if it has scroll then it must be inside contentview limits not the view
     if let containerScrollView = containerView as? UIScrollView {
-        if y + frame.height > containerScrollView.contentSize.height {
-            y = containerScrollView.contentSize.height - frame.height - edgeMargin
-        }
+      if y + frame.height > containerScrollView.contentSize.height {
+        y = containerScrollView.contentSize.height - frame.height - edgeMargin
+      }
     } else {
-        if y + frame.height > containerView.bounds.height {
-            y = containerView.bounds.height - frame.height - edgeMargin
-        }
+      if y + frame.height > containerView.bounds.height && constrainInContainerView {
+        y = containerView.bounds.height - frame.height - edgeMargin
+      }
     }
     frame.origin = CGPoint(x: x, y: y)
     
@@ -315,13 +329,15 @@ open class PopTip: UIView {
       bubbleOffset = -(arrowPosition.y - arrowSize.height)
     }
     
-    let topSpace = frame.origin.y - containerView.frame.origin.y
-    let bottomSpace = containerView.frame.height - topSpace - frame.height
-    
-    if bubbleOffset < 0 && topSpace < abs(bubbleOffset) {
-      bubbleOffset = -topSpace + edgeMargin
-    } else if bubbleOffset > 0 && bottomSpace < bubbleOffset {
-      bubbleOffset = bottomSpace - edgeMargin
+    if constrainInContainerView {
+      let topSpace = frame.origin.y - containerView.frame.origin.y
+      let bottomSpace = containerView.frame.height - topSpace - frame.height
+      
+      if bubbleOffset < 0 && topSpace < abs(bubbleOffset) {
+        bubbleOffset = -topSpace + edgeMargin
+      } else if bubbleOffset > 0 && bottomSpace < bubbleOffset {
+        bubbleOffset = bottomSpace - edgeMargin
+      }
     }
     
     frame.origin.y += bubbleOffset
@@ -332,7 +348,7 @@ open class PopTip: UIView {
   
   /// Checks if the rect with positioning `.none` is inside the container
   internal func rectContained(rect: CGRect) -> CGRect {
-    guard let containerView = containerView else { return .zero }
+    guard let containerView = containerView, constrainInContainerView else { return rect }
     
     var finalRect = rect
     
@@ -446,15 +462,13 @@ open class PopTip: UIView {
     
     setNeedsDisplay()
     
-    if shouldDismissOnTap || shouldDismissOnTapOutside {
-      if tapGestureRecognizer == nil {
-        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PopTip.handleTap(_:)))
-        tapGestureRecognizer?.cancelsTouchesInView = false
-        self.addGestureRecognizer(tapGestureRecognizer!)
-      }
-      if shouldDismissOnTapOutside && tapRemoveGestureRecognizer == nil {
-        tapRemoveGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PopTip.handleTapOutside(_:)))
-      }
+    if tapGestureRecognizer == nil {
+      tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PopTip.handleTap(_:)))
+      tapGestureRecognizer?.cancelsTouchesInView = false
+      self.addGestureRecognizer(tapGestureRecognizer!)
+    }
+    if shouldDismissOnTapOutside && tapRemoveGestureRecognizer == nil {
+      tapRemoveGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PopTip.handleTapOutside(_:)))
     }
     if shouldDismissOnSwipeOutside && swipeGestureRecognizer == nil {
       swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PopTip.handleSwipeOutside(_:)))
@@ -712,7 +726,12 @@ open class PopTip: UIView {
     if shouldDismissOnTapOutside {
       hide()
     }
-    tapOutsideHandler?(self)
+
+    if shouldConsiderOriginatingFrameAsPopTip && from.contains(gesture.location(in: containerView)) {
+      tapHandler?(self)
+    } else {
+      tapOutsideHandler?(self)
+    }
   }
   
   @objc fileprivate func handleSwipeOutside(_ gesture: UITapGestureRecognizer) {
