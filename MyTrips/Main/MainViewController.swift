@@ -64,6 +64,7 @@ class MainViewController: UIViewController {
     var mapMarkers:[GMSMarker]?
     
     var placeTableViewController: PlaceTableViewController?
+    lazy var placeDetailsViewController: PlaceDetailsViewController = UIStoryboard(name: "MyTrip", bundle: Bundle.main).instantiateViewController(withIdentifier: "placeDetailsVC") as! PlaceDetailsViewController
     
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
@@ -172,6 +173,7 @@ class MainViewController: UIViewController {
                 fatalError("You messed up casting this view controller")
             }
             self.placeTableViewController = placeTableVC
+            self.placeTableViewController?.placeTableDelegate = self
             placeTableViewController?.trip = self.trip
         }
     }
@@ -214,9 +216,26 @@ class MainViewController: UIViewController {
         }
     }
     
-    func deleteMapMarker(indexPath: IndexPath){
+    func deleteMapMarker(indexPath: IndexPath) {
         let marker = mapMarkers?.remove(at: indexPath.row)
         marker?.map = nil
+    }
+    
+    //TODO:move these two methods to a view controller extension
+    func addContentController(viewController: UIViewController, container: UIView) {
+        addChildViewController(viewController)
+        container.addSubview(viewController.view)
+        
+        viewController.view.frame = container.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        viewController.didMove(toParentViewController: self)
+    }
+    
+    func removeContentController(viewController: UIViewController) {
+        viewController.willMove(toParentViewController: nil)
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParentViewController()
     }
 }
 
@@ -307,5 +326,21 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
+
+extension MainViewController: PlaceDetailsDelegate {
+    func shouldClose() {
+        removeContentController(viewController: self.placeDetailsViewController)
+    }
+}
+
+extension MainViewController : PlaceTableDelegate {
+    func didSelectPlace(place: SubLocation) {
+        //TODO: pass the sublocation to the view controller everytime this is called
+        //trigger the new view child view controller and pass the sublocation to the view controller
+        addContentController(viewController: placeDetailsViewController, container: containerView)
+        //set the delegate
+        placeDetailsViewController.delegate = self
     }
 }

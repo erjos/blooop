@@ -263,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fb3-Na-Wr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714" y="1158"/>
+            <point key="canvasLocation" x="1679" y="1071"/>
         </scene>
         <!--Drawer View Controller-->
         <scene sceneID="1r9-Ch-s1T">
@@ -1046,21 +1046,67 @@ Cgo
             </objects>
             <point key="canvasLocation" x="782" y="1854"/>
         </scene>
-        <!--View Controller-->
+        <!--Place Details View Controller-->
         <scene sceneID="FH7-dR-h6u">
             <objects>
-                <viewController id="g2N-4w-nMr" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="placeDetailsVC" id="g2N-4w-nMr" customClass="PlaceDetailsViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QMn-Pz-f7s">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="279"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SLQ-fB-DJe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="279"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0T-Jv-E6E" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="279"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxP-s8-dH5">
+                                                <rect key="frame" x="336" y="0.0" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="Ii7-0v-374"/>
+                                                    <constraint firstAttribute="width" constant="24" id="dKY-FP-fYZ"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" image="close"/>
+                                                <connections>
+                                                    <action selector="didPressClose:" destination="g2N-4w-nMr" eventType="touchUpInside" id="6AU-3U-2SI"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="FxP-s8-dH5" secondAttribute="trailing" constant="15" id="YWM-Bq-sYY"/>
+                                            <constraint firstItem="FxP-s8-dH5" firstAttribute="top" secondItem="w0T-Jv-E6E" secondAttribute="top" id="bV6-UK-Swb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="w0T-Jv-E6E" firstAttribute="leading" secondItem="SLQ-fB-DJe" secondAttribute="leading" id="2Yl-3w-sr7"/>
+                                    <constraint firstAttribute="bottom" secondItem="w0T-Jv-E6E" secondAttribute="bottom" id="3AG-cW-nMm"/>
+                                    <constraint firstAttribute="trailing" secondItem="w0T-Jv-E6E" secondAttribute="trailing" id="Cb8-mW-ZfY"/>
+                                    <constraint firstItem="w0T-Jv-E6E" firstAttribute="top" secondItem="SLQ-fB-DJe" secondAttribute="top" id="orD-Ie-iDs"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w0T-Jv-E6E" firstAttribute="width" secondItem="QMn-Pz-f7s" secondAttribute="width" id="Dg6-5R-WNb"/>
+                            <constraint firstItem="w0T-Jv-E6E" firstAttribute="height" secondItem="QMn-Pz-f7s" secondAttribute="height" priority="250" id="EWW-eh-jj1"/>
+                            <constraint firstItem="SLQ-fB-DJe" firstAttribute="top" secondItem="QMn-Pz-f7s" secondAttribute="topMargin" id="TsK-s0-EPt"/>
+                            <constraint firstAttribute="trailing" secondItem="SLQ-fB-DJe" secondAttribute="trailing" id="YmX-SA-Buy"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="SLQ-fB-DJe" secondAttribute="bottom" id="jrq-Sw-c4M"/>
+                            <constraint firstItem="SLQ-fB-DJe" firstAttribute="leading" secondItem="QMn-Pz-f7s" secondAttribute="leading" id="uDp-Hc-WEJ"/>
+                        </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="279"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGZ-IL-yzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1678" y="1397"/>
         </scene>
     </scenes>
     <resources>
+        <image name="close" width="24" height="24"/>
         <image name="menu" width="24" height="24"/>
         <image name="refresh" width="24" height="24"/>
         <image name="search" width="24" height="24"/>

@@ -16,12 +16,17 @@ enum TableListView {
     case Expanded
 }
 
+protocol PlaceTableDelegate: class {
+    func didSelectPlace(place: SubLocation)
+}
+
 class PlaceTableViewController: UIViewController {
 
     @IBOutlet weak var placeTableView: UITableView!
     
     var trip: PrimaryLocation?
     var tableListState: TableListView = .Compact
+    weak var placeTableDelegate: PlaceTableDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,6 +141,14 @@ extension PlaceTableViewController: UITableViewDelegate {
         } else {
             return 44.00
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let sublocation = self.trip?.getSubLocation(from: indexPath) else {
+            return
+        }
+        
+        self.placeTableDelegate?.didSelectPlace(place: sublocation)
     }
 }
 
