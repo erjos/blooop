@@ -11,7 +11,6 @@ import GooglePlaces
 
 //TODO:
 //Next Release:
-//>change scroll indicator insets
 //> When click on a place - highlight it on the map and open the new place controller below the map where the table is
 //> Let menu close when we pan swipe it...
 //> make menu prettier

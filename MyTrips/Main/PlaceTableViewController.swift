@@ -53,23 +53,24 @@ extension PlaceTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let placeID = trip?.getSubLocationPlaceID(from: indexPath) else {
+            return UITableViewCell()
+        }
+        //TODO: This is needed if we want to fetch photos later on - its not very intuitive how this works right now - might be able to clean it up or at least make it easier to understand
+        GooglePhotoManager.loadMetaDataList(placeID: placeID, success: { list in
+            GoogleResourceManager.sharedInstance.addPhotoMetaData(metaData: (placeID, list))
+        }) { error in
+            //TODO: ERROR
+        }
+        
         if(tableListState == .Compact){
             let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceListTableViewCell
             
             cell.placeNameLabel.text = trip?.getSubLocation(from: indexPath).label
             return cell
         } else {
-            //Not registered with the table
             let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell
-            guard let placeID = trip?.getSubLocationPlaceID(from: indexPath) else {
-                return cell
-            }
-            
-            GooglePhotoManager.loadMetaDataList(placeID: placeID, success: { list in
-                GoogleResourceManager.sharedInstance.addPhotoMetaData(metaData: (placeID, list))
-            }) { error in
-                //TODO: ERROR
-            }
             
             GooglePhotoManager.getFirstPhoto(placeID: placeID, success: { (image, attr) in
                 cell.setThumbnailImage(image: image)
