@@ -239,8 +239,9 @@ extension MainViewController: MenuDelegate {
     
     //Used to clear the map when user wants to create a new trip
     func shouldClearMap() {
+        //check to make sure details view is closed
+        removeContentController(viewController: placeDetailsViewController)
         self.mapContainer.clear()
-        
         //maybe combine these into a method so that they occur at the same time?
         //would be the benefit of moving them to a viewModel object so that we can make these private and only accessible via methods that make sense
         self.trip = nil
@@ -257,6 +258,8 @@ extension MainViewController: MenuDelegate {
     }
     
     func shouldLoadTrip(trip: PrimaryLocation) {
+        //check to make sure details view is closed
+        removeContentController(viewController: placeDetailsViewController)
         self.trip = trip
         self.currentTripStatus = .Saved
         
@@ -297,6 +300,8 @@ extension MainViewController: GMSMapViewDelegate {
 
 extension MainViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        //check to make sure details view is closed
+        removeContentController(viewController: placeDetailsViewController)
         handlePlaceResultReturned(place: place, tripState: self.currentTripStatus)
         dismiss(animated: true, completion: nil)
     }
@@ -320,7 +325,8 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
 }
 
 extension MainViewController: PlaceDetailsDelegate {
-    func shouldClose() {
+    
+    func shouldCloseDetails() {
         removeContentController(viewController: placeDetailsViewController)
     }
 }

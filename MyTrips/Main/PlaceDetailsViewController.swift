@@ -22,7 +22,7 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var photoCollection: UICollectionView!
     
     @IBAction func didPressClose(_ sender: Any) {
-        delegate?.shouldClose()
+        delegate?.shouldCloseDetails()
     }
     
     @IBAction func tapNotes(_ sender: Any) {
@@ -90,7 +90,7 @@ class PlaceDetailsViewController: UIViewController {
 }
 
 protocol PlaceDetailsDelegate: class {
-    func shouldClose()
+    func shouldCloseDetails()
 }
 
 extension PlaceDetailsViewController: UICollectionViewDataSource {
