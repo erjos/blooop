@@ -321,7 +321,7 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
 
 extension MainViewController: PlaceDetailsDelegate {
     func shouldClose() {
-        removeContentController(viewController: self.placeDetailsViewController)
+        removeContentController(viewController: placeDetailsViewController)
     }
 }
 

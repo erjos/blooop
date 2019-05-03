@@ -1087,11 +1087,15 @@ Cgo
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Notes..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yre-cA-NdS">
                                                         <rect key="frame" x="8" y="30" width="339" height="30"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <gestureRecognizers/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="Ydu-6X-xm9"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="Rln-n1-5bY" appends="YES" id="UJR-H1-dZ1"/>
+                                                        </connections>
                                                     </textView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl5-gt-u1H">
                                                         <rect key="frame" x="8" y="3" width="24" height="24"/>
@@ -1101,7 +1105,7 @@ Cgo
                                                         </constraints>
                                                         <state key="normal" image="notes"/>
                                                         <connections>
-                                                            <action selector="openNotes:" destination="g2N-4w-nMr" eventType="touchUpInside" id="TLR-dU-Mq3"/>
+                                                            <action selector="clickNotesButton:" destination="g2N-4w-nMr" eventType="touchUpInside" id="TLR-dU-Mq3"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbW-Np-B6f">
@@ -1192,6 +1196,7 @@ Cgo
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="400"/>
                     <connections>
+                        <outlet property="notesTextView" destination="yre-cA-NdS" id="3Fs-r8-21x"/>
                         <outlet property="pageControl" destination="wDA-mQ-v0y" id="Tc3-tt-Peh"/>
                         <outlet property="photoCollection" destination="BJz-JU-YZo" id="knf-mS-OEJ"/>
                         <outlet property="placeLabel" destination="Hnx-2t-aKE" id="NqE-aI-TIG"/>
@@ -1199,6 +1204,11 @@ Cgo
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGZ-IL-yzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Rln-n1-5bY">
+                    <connections>
+                        <action selector="tapNotes:" destination="g2N-4w-nMr" id="7L7-gu-kzc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1677.5999999999999" y="1436.5817091454273"/>
         </scene>

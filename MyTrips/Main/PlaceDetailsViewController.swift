@@ -15,6 +15,7 @@ class PlaceDetailsViewController: UIViewController {
     weak var delegate: PlaceDetailsDelegate?
     lazy var gmsPlace = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
 
+    @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var placeLabel: UILabel!
@@ -24,12 +25,33 @@ class PlaceDetailsViewController: UIViewController {
         delegate?.shouldClose()
     }
     
-    @IBAction func openNotes(_ sender: Any) {
+    @IBAction func tapNotes(_ sender: Any) {
+        //TODO: maybe create and enum to represent notes state
+        guard self.textViewHeightConstraint.constant != 80 else {
+            return
+        }
+        toggleNotes()
+    }
+    
+    @IBAction func clickNotesButton(_ sender: Any) {
+        toggleNotes()
+    }
+    
+    //TODO: probably should provide explicit open close instructions here so that we can use it to return vc to initial state when we close out
+    func toggleNotes() {
         UIView.animate(withDuration: 0.2) {
             self.textViewHeightConstraint.constant = self.textViewHeightConstraint.constant == 80 ? 30 : 80
             self.view.layoutIfNeeded()
         }
-        //create outlet for textView
+        self.notesTextView.isEditable = !self.notesTextView.isEditable
+        self.notesTextView.isScrollEnabled = !self.notesTextView.isScrollEnabled
+        if (self.notesTextView.isEditable) {
+            notesTextView.becomeFirstResponder()
+            
+        }
+        
+        //When open delete placeholder text and scroll to bottom - when closed, if empty, replace placeholder text
+        //Need to adjust frame of screen so notes are visible when keyboard is open
     }
     
     override func viewDidLoad() {
@@ -37,6 +59,26 @@ class PlaceDetailsViewController: UIViewController {
         
         //create outlet for the collectionView and page control
         photoCollection.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.parent?.view.frame.origin.y == 0 {
+                self.parent?.view.frame.origin.y -= keyboardSize.height
+            }
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.parent?.view.frame.origin.y != 0 {
+            self.parent?.view.frame.origin.y = 0
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
