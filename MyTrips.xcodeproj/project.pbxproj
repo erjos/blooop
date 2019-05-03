@@ -14,7 +14,6 @@
 		5262DFA021F6731400A2E918 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DF9F21F6731400A2E918 /* DrawerViewController.swift */; };
 		5262DFA221FE74BF00A2E918 /* DrawerHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */; };
 		5262DFA421FE9BA400A2E918 /* DrawerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */; };
-		529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F4EA520F287F800D1E965 /* TripHeaderView.swift */; };
 		52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1922F21EBC2B4004F073A /* MainViewController.swift */; };
 		52C4E9482278C9F3006E83F2 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */; };
 		52D79B3B2278EFD9007E8DDE /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */; };
@@ -30,7 +29,6 @@
 		863E26E7207FFDBD00029FF4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863E26E6207FFDBD00029FF4 /* LocationManager.swift */; };
 		864F67E2207EACD500B6554B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864F67E1207EACD500B6554B /* Models.swift */; };
 		86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A895A12019917D00CE3926 /* AppDelegate.swift */; };
-		86A895A72019917D00CE3926 /* Trip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A895A52019917D00CE3926 /* Trip.storyboard */; };
 		86A895A92019917D00CE3926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A895A82019917D00CE3926 /* Assets.xcassets */; };
 		86A895AC2019917D00CE3926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */; };
 		86B5A8D920C95F5C00B24F43 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5A8D820C95F5C00B24F43 /* RealmManager.swift */; };
@@ -56,7 +54,6 @@
 		86B7EB15208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */; };
 		86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */; };
 		86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */; };
-		86FC567D20A1E9A100D9BB00 /* PlaceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +64,6 @@
 		5262DF9F21F6731400A2E918 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerHeaderView.xib; sourceTree = "<group>"; };
 		5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHeaderView.swift; sourceTree = "<group>"; };
-		529F4EA520F287F800D1E965 /* TripHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHeaderView.swift; sourceTree = "<group>"; };
 		52C1922F21EBC2B4004F073A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
 		52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +81,6 @@
 		864F67E1207EACD500B6554B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		86A8959E2019917D00CE3926 /* MyTrips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTrips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A895A12019917D00CE3926 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86A895A62019917D00CE3926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trip.storyboard; sourceTree = "<group>"; };
 		86A895A82019917D00CE3926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86A895AB2019917D00CE3926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86A895AD2019917D00CE3926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,7 +107,6 @@
 		86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
-		86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModalViewController.swift; sourceTree = "<group>"; };
 		E5C3FFBBA9A114229E56F47A /* Pods_MyTrips.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTrips.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -227,8 +221,6 @@
 				86B5D47120C5CEDA00A851DE /* PlaceDetails */,
 				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
 				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
-				86A895A52019917D00CE3926 /* Trip.storyboard */,
-				529F4EA520F287F800D1E965 /* TripHeaderView.swift */,
 				525011322137684700A40DAB /* AboutAppViewController.swift */,
 			);
 			path = "Trip Details";
@@ -239,7 +231,6 @@
 			children = (
 				86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */,
 				86B7EB12208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift */,
-				86FC567B20A1E9A100D9BB00 /* PlaceModalViewController.swift */,
 				52137A242114AA1B008F3052 /* CustomTipsView.xib */,
 				52137A262114ACC4008F3052 /* CustomTipsView.swift */,
 			);
@@ -333,7 +324,6 @@
 			files = (
 				86A895AC2019917D00CE3926 /* LaunchScreen.storyboard in Resources */,
 				86A895A92019917D00CE3926 /* Assets.xcassets in Resources */,
-				86A895A72019917D00CE3926 /* Trip.storyboard in Resources */,
 				52137A252114AA1B008F3052 /* CustomTipsView.xib in Resources */,
 				862FBB4020C80FA20078D689 /* MyTrip.storyboard in Resources */,
 				5262DFA221FE74BF00A2E918 /* DrawerHeaderView.xib in Resources */,
@@ -424,7 +414,6 @@
 				52E5F61D213626E700672DE2 /* Mock.swift in Sources */,
 				863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */,
 				86B7EB14208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift in Sources */,
-				86FC567D20A1E9A100D9BB00 /* PlaceModalViewController.swift in Sources */,
 				52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */,
 				52D79B3B2278EFD9007E8DDE /* PlaceDetailsViewController.swift in Sources */,
 				5262DFA021F6731400A2E918 /* DrawerViewController.swift in Sources */,
@@ -432,7 +421,6 @@
 				86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */,
 				525011332137684700A40DAB /* AboutAppViewController.swift in Sources */,
 				8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */,
-				529F4EA620F287F800D1E965 /* TripHeaderView.swift in Sources */,
 				52FDB33621F148DF00FB6153 /* PlaceListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,14 +428,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		86A895A52019917D00CE3926 /* Trip.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				86A895A62019917D00CE3926 /* Base */,
-			);
-			name = Trip.storyboard;
-			sourceTree = "<group>";
-		};
 		86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

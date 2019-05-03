@@ -15,12 +15,21 @@ class PlaceDetailsViewController: UIViewController {
     weak var delegate: PlaceDetailsDelegate?
     lazy var gmsPlace = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
 
+    @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
     
     @IBAction func didPressClose(_ sender: Any) {
         delegate?.shouldClose()
+    }
+    
+    @IBAction func openNotes(_ sender: Any) {
+        UIView.animate(withDuration: 0.2) {
+            self.textViewHeightConstraint.constant = self.textViewHeightConstraint.constant == 80 ? 30 : 80
+            self.view.layoutIfNeeded()
+        }
+        //create outlet for textView
     }
     
     override func viewDidLoad() {
