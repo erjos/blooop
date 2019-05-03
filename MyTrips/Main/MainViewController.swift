@@ -241,6 +241,7 @@ extension MainViewController: MenuDelegate {
     func shouldClearMap() {
         //check to make sure details view is closed
         removeContentController(viewController: placeDetailsViewController)
+        
         self.mapContainer.clear()
         //maybe combine these into a method so that they occur at the same time?
         //would be the benefit of moving them to a viewModel object so that we can make these private and only accessible via methods that make sense
@@ -260,6 +261,7 @@ extension MainViewController: MenuDelegate {
     func shouldLoadTrip(trip: PrimaryLocation) {
         //check to make sure details view is closed
         removeContentController(viewController: placeDetailsViewController)
+        
         self.trip = trip
         self.currentTripStatus = .Saved
         
