@@ -15,11 +15,13 @@ class PlaceDetailsViewController: UIViewController {
     weak var delegate: PlaceDetailsDelegate?
     lazy var gmsPlace = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
 
+    @IBOutlet weak var moreInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
+    @IBOutlet weak var moreInfoView: UIView!
     
     @IBAction func didPressClose(_ sender: Any) {
         delegate?.shouldCloseDetails()
@@ -35,6 +37,14 @@ class PlaceDetailsViewController: UIViewController {
     
     @IBAction func clickNotesButton(_ sender: Any) {
         toggleNotes()
+    }
+    
+    @IBAction func clickMoreInfo(_ sender: Any) {
+        self.moreInfoView.isHidden = !self.moreInfoView.isHidden
+        UIView.animate(withDuration: 0.2) {
+            self.moreInfoHeightConstraint.constant = self.moreInfoHeightConstraint.constant == 50 ? 0 : 50
+            self.view.layoutIfNeeded()
+        }
     }
     
     //TODO: probably should provide explicit open close instructions here so that we can use it to return vc to initial state when we close out
@@ -69,9 +79,6 @@ class PlaceDetailsViewController: UIViewController {
             if self.parent?.view.frame.origin.y == 0 {
                 self.parent?.view.frame.origin.y -= keyboardSize.height
             }
-//            if self.view.frame.origin.y == 0 {
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
         }
     }
     
@@ -85,6 +92,10 @@ class PlaceDetailsViewController: UIViewController {
         //TODO: we have some inconsistencies with how we label things right now - between the place label and the gms name (right now they're the same but wont always be)
         placeLabel.text = place?.label
         self.photoCollection.reloadData()
+        
+        //hide more info view
+        self.moreInfoView.isHidden = true
+        self.moreInfoHeightConstraint.constant = 0
     }
 
 }
