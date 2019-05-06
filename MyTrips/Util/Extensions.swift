@@ -11,6 +11,24 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
+extension UIViewController {
+    func addContentController(viewController: UIViewController, container: UIView) {
+        addChildViewController(viewController)
+        container.addSubview(viewController.view)
+        
+        viewController.view.frame = container.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        viewController.didMove(toParentViewController: self)
+    }
+    
+    func removeContentController(viewController: UIViewController) {
+        viewController.willMove(toParentViewController: nil)
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParentViewController()
+    }
+}
+
 extension Date {
     var day: Int { return Calendar.current.component(.day, from:self) }
     var month: Int { return Calendar.current.component(.month, from:self) }

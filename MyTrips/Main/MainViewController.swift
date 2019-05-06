@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
     var mapMarkers:[GMSMarker]?
     
     var placeTableViewController: PlaceTableViewController?
-    lazy var placeDetailsViewController: PlaceDetailsViewController = UIStoryboard(name: "MyTrip", bundle: Bundle.main).instantiateViewController(withIdentifier: "placeDetailsVC") as! PlaceDetailsViewController
+    var placeDetailsViewController: PlaceDetailsViewController?
     
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
@@ -210,23 +210,6 @@ class MainViewController: UIViewController {
         let marker = mapMarkers?.remove(at: indexPath.row)
         marker?.map = nil
     }
-    
-    //TODO:move these two methods to a view controller extension
-    func addContentController(viewController: UIViewController, container: UIView) {
-        addChildViewController(viewController)
-        container.addSubview(viewController.view)
-        
-        viewController.view.frame = container.bounds
-        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        viewController.didMove(toParentViewController: self)
-    }
-    
-    func removeContentController(viewController: UIViewController) {
-        viewController.willMove(toParentViewController: nil)
-        viewController.view.removeFromSuperview()
-        viewController.removeFromParentViewController()
-    }
 }
 
 extension MainViewController: MenuDelegate {
@@ -240,7 +223,9 @@ extension MainViewController: MenuDelegate {
     //Used to clear the map when user wants to create a new trip
     func shouldClearMap() {
         //check to make sure details view is closed
-        removeContentController(viewController: placeDetailsViewController)
+        if let placeDetails = placeDetailsViewController {
+            removeContentController(viewController: placeDetails)
+        }
         
         self.mapContainer.clear()
         //maybe combine these into a method so that they occur at the same time?
@@ -260,7 +245,9 @@ extension MainViewController: MenuDelegate {
     
     func shouldLoadTrip(trip: PrimaryLocation) {
         //check to make sure details view is closed
-        removeContentController(viewController: placeDetailsViewController)
+        if let placeDetails = placeDetailsViewController {
+            removeContentController(viewController: placeDetails)
+        }
         
         self.trip = trip
         self.currentTripStatus = .Saved
@@ -303,7 +290,9 @@ extension MainViewController: GMSMapViewDelegate {
 extension MainViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         //check to make sure details view is closed
-        removeContentController(viewController: placeDetailsViewController)
+        if let placeDetails = placeDetailsViewController {
+            removeContentController(viewController: placeDetails)
+        }
         handlePlaceResultReturned(place: place, tripState: self.currentTripStatus)
         dismiss(animated: true, completion: nil)
     }
@@ -329,14 +318,20 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
 extension MainViewController: PlaceDetailsDelegate {
     
     func shouldCloseDetails() {
-        removeContentController(viewController: placeDetailsViewController)
+        if let placeDetails = placeDetailsViewController {
+            removeContentController(viewController: placeDetails)
+        }
     }
 }
 
 extension MainViewController : PlaceTableDelegate {
     func didSelectPlace(place: SubLocation) {
-        placeDetailsViewController.delegate = self
-        placeDetailsViewController.place = place
-        addContentController(viewController: placeDetailsViewController, container: containerView)
+        guard let detailsVC = UIStoryboard(name: "MyTrip", bundle: Bundle.main).instantiateViewController(withIdentifier: "placeDetailsVC") as? PlaceDetailsViewController else {
+            return
+        }
+        addContentController(viewController: detailsVC, container: containerView)
+        placeDetailsViewController = detailsVC
+        placeDetailsViewController?.delegate = self
+        placeDetailsViewController?.place = place
     }
 }

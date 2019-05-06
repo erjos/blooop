@@ -9,7 +9,6 @@ import UIKit
 import GooglePlaces
 
 class PlaceDetailsViewController: UIViewController {
-    
     var place: SubLocation!
     var photoCount = 0
     weak var delegate: PlaceDetailsDelegate?
@@ -47,7 +46,6 @@ class PlaceDetailsViewController: UIViewController {
         }
     }
     
-    //TODO: probably should provide explicit open close instructions here so that we can use it to return vc to initial state when we close out
     func toggleNotes() {
         UIView.animate(withDuration: 0.2) {
             self.textViewHeightConstraint.constant = self.textViewHeightConstraint.constant == 80 ? 30 : 80
@@ -60,8 +58,11 @@ class PlaceDetailsViewController: UIViewController {
             
         }
         
-        //When open delete placeholder text and scroll to bottom - when closed, if empty, replace placeholder text
-        //Need to adjust frame of screen so notes are visible when keyboard is open
+        if(notesTextView.text == "Notes...") {
+            notesTextView.text = ""
+        } else if (notesTextView.text == "") {
+            notesTextView.text = "Notes..."
+        }
     }
     
     override func viewDidLoad() {
@@ -96,6 +97,10 @@ class PlaceDetailsViewController: UIViewController {
         //hide more info view
         self.moreInfoView.isHidden = true
         self.moreInfoHeightConstraint.constant = 0
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.photoCollection.reloadData()
     }
 
 }
