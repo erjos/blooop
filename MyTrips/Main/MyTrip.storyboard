@@ -1150,6 +1150,9 @@ Cgo
                                                                     <constraint firstAttribute="width" constant="24" id="olB-8f-quz"/>
                                                                 </constraints>
                                                                 <state key="normal" image="date_24"/>
+                                                                <connections>
+                                                                    <action selector="clickDate:" destination="g2N-4w-nMr" eventType="touchUpInside" id="JaG-tG-P3Z"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1323,6 +1326,7 @@ Cgo
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="400"/>
                     <connections>
+                        <outlet property="dateLabel" destination="mvq-RZ-bOs" id="sQm-pp-UVf"/>
                         <outlet property="moreInfoHeightConstraint" destination="Knr-fv-Oe6" id="KY3-47-eFS"/>
                         <outlet property="moreInfoView" destination="nVE-4S-03k" id="bb0-bE-VMc"/>
                         <outlet property="notesTextView" destination="yre-cA-NdS" id="3Fs-r8-21x"/>

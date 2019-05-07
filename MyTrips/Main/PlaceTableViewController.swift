@@ -17,7 +17,7 @@ enum TableListView {
 }
 
 protocol PlaceTableDelegate: class {
-    func didSelectPlace(place: SubLocation)
+    func didSelectPlace(place: SubLocation, indexPath: IndexPath)
 }
 
 class PlaceTableViewController: UIViewController {
@@ -149,7 +149,7 @@ extension PlaceTableViewController: UITableViewDelegate {
             return
         }
         
-        self.placeTableDelegate?.didSelectPlace(place: sublocation)
+        self.placeTableDelegate?.didSelectPlace(place: sublocation, indexPath: indexPath)
     }
 }
 

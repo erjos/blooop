@@ -50,7 +50,6 @@ class MainViewController: UIViewController {
     var currentTripStatus: TripSaveStatus = .Empty
     //used to restrict search results
     var coordinateBounds: GMSCoordinateBounds?
-    //TODO: do we want to create a class to handle all the map stuff or keep in on this viewController? - could embed one using a child view controller
     var mapMarkers:[GMSMarker]?
     
     var placeTableViewController: PlaceTableViewController?
@@ -131,7 +130,7 @@ class MainViewController: UIViewController {
     }
     
     
-    private func handleMapSetup(for place: GMSPlace?){
+    private func handleMapSetup(for place: GMSPlace?) {
         //check to see if a marker exists - make sure we use the existing marker to setup the view so its more relevant to the user
         if let firstMarker = self.mapMarkers?.first {
             self.setupMapView(for: firstMarker.position)
@@ -210,6 +209,15 @@ class MainViewController: UIViewController {
         let marker = mapMarkers?.remove(at: indexPath.row)
         marker?.map = nil
     }
+    
+    func closePlaceDetails() {
+        if let placeDetails = placeDetailsViewController {
+            removeContentController(viewController: placeDetails)
+            
+            //de-select map marker
+            self.mapContainer.selectedMarker = nil
+        }
+    }
 }
 
 extension MainViewController: MenuDelegate {
@@ -222,11 +230,7 @@ extension MainViewController: MenuDelegate {
     
     //Used to clear the map when user wants to create a new trip
     func shouldClearMap() {
-        //check to make sure details view is closed
-        if let placeDetails = placeDetailsViewController {
-            removeContentController(viewController: placeDetails)
-        }
-        
+        self.closePlaceDetails()
         self.mapContainer.clear()
         //maybe combine these into a method so that they occur at the same time?
         //would be the benefit of moving them to a viewModel object so that we can make these private and only accessible via methods that make sense
@@ -244,10 +248,7 @@ extension MainViewController: MenuDelegate {
     }
     
     func shouldLoadTrip(trip: PrimaryLocation) {
-        //check to make sure details view is closed
-        if let placeDetails = placeDetailsViewController {
-            removeContentController(viewController: placeDetails)
-        }
+        closePlaceDetails()
         
         self.trip = trip
         self.currentTripStatus = .Saved
@@ -285,14 +286,29 @@ extension MainViewController: GMSMapViewDelegate {
             self.resetMap.isHidden = false
         }
     }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        closePlaceDetails()
+        let marker = mapMarkers?
+            .enumerated()
+            .first{$0.element == marker}
+        guard let markerIndex = marker?.offset else {
+            return false
+        }
+        let indexPath = IndexPath(row: markerIndex, section: 0)
+        guard let subLocation = trip?.getSubLocation(from: indexPath) else {
+            return false
+        }
+        self.didSelectPlace(place: subLocation, indexPath: indexPath)
+        return true
+    }
+    
+    
 }
 
 extension MainViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        //check to make sure details view is closed
-        if let placeDetails = placeDetailsViewController {
-            removeContentController(viewController: placeDetails)
-        }
+        closePlaceDetails()
         handlePlaceResultReturned(place: place, tripState: self.currentTripStatus)
         dismiss(animated: true, completion: nil)
     }
@@ -318,20 +334,21 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
 extension MainViewController: PlaceDetailsDelegate {
     
     func shouldCloseDetails() {
-        if let placeDetails = placeDetailsViewController {
-            removeContentController(viewController: placeDetails)
-        }
+        closePlaceDetails()
     }
 }
 
 extension MainViewController : PlaceTableDelegate {
-    func didSelectPlace(place: SubLocation) {
+    func didSelectPlace(place: SubLocation, indexPath: IndexPath) {
+        //select the correct marker
+        self.mapContainer.selectedMarker = mapMarkers?[indexPath.row]
+        
         guard let detailsVC = UIStoryboard(name: "MyTrip", bundle: Bundle.main).instantiateViewController(withIdentifier: "placeDetailsVC") as? PlaceDetailsViewController else {
             return
         }
+        detailsVC.place = place
+        detailsVC.delegate = self
         addContentController(viewController: detailsVC, container: containerView)
         placeDetailsViewController = detailsVC
-        placeDetailsViewController?.delegate = self
-        placeDetailsViewController?.place = place
     }
 }
