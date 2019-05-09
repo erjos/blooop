@@ -11,7 +11,6 @@ import GooglePlaces
 
 //TODO:
 //Next Release:
-//> When click on a place - highlight it on the map and open the new place controller below the map where the table is
 //> Let menu close when we pan swipe it...
 //> make menu prettier
 //> Image or animation or something to put in the table when theres no items listed
@@ -167,14 +166,14 @@ class MainViewController: UIViewController {
         }
     }
     
-    func saveTrip(){
+    func saveTrip() {
         if let primaryLocation = trip {
             RealmManager.storeData(object: primaryLocation)
             self.currentTripStatus = .Saved
         }
     }
     
-    func handlePlaceResultReturned(place: GMSPlace, tripState: TripSaveStatus){
+    func handlePlaceResultReturned(place: GMSPlace, tripState: TripSaveStatus) {
         switch tripState {
         case .Empty:
             self.trip = PrimaryLocation()
@@ -232,13 +231,9 @@ extension MainViewController: MenuDelegate {
     func shouldClearMap() {
         self.closePlaceDetails()
         self.mapContainer.clear()
-        //maybe combine these into a method so that they occur at the same time?
-        //would be the benefit of moving them to a viewModel object so that we can make these private and only accessible via methods that make sense
         self.trip = nil
         self.currentTripStatus = .Empty
-        
         self.placeTableViewController?.placeTableView.reloadData()
-        
         closeMenu()
         resetMap.isHidden = true
     }
@@ -342,10 +337,10 @@ extension MainViewController : PlaceTableDelegate {
     func didSelectPlace(place: SubLocation, indexPath: IndexPath) {
         //select the correct marker
         self.mapContainer.selectedMarker = mapMarkers?[indexPath.row]
-        
         guard let detailsVC = UIStoryboard(name: "MyTrip", bundle: Bundle.main).instantiateViewController(withIdentifier: "placeDetailsVC") as? PlaceDetailsViewController else {
             return
         }
+        //need to set the place before we add the veiwController
         detailsVC.place = place
         detailsVC.delegate = self
         addContentController(viewController: detailsVC, container: containerView)

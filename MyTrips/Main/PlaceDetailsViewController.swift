@@ -21,6 +21,8 @@ class PlaceDetailsViewController: UIViewController {
     var photoCount = 0
     weak var delegate: PlaceDetailsDelegate?
     lazy var gmsPlace = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
+    
+    let NOTES_PLACEHOLDER = "Notes..."
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var moreInfoHeightConstraint: NSLayoutConstraint!
@@ -67,13 +69,12 @@ class PlaceDetailsViewController: UIViewController {
         self.notesTextView.isScrollEnabled = !self.notesTextView.isScrollEnabled
         if (self.notesTextView.isEditable) {
             notesTextView.becomeFirstResponder()
-            
         }
         
-        if(notesTextView.text == "Notes...") {
+        if(notesTextView.text == NOTES_PLACEHOLDER) {
             notesTextView.text = ""
         } else if (notesTextView.text == "") {
-            notesTextView.text = "Notes..."
+            notesTextView.text = NOTES_PLACEHOLDER
         }
     }
     
@@ -103,6 +104,7 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //TODO: test if we can move this to view did load now that we recreate the view Controller each time its opened
         //TODO: we have some inconsistencies with how we label things right now - between the place label and the gms name (right now they're the same but wont always be)
         placeLabel.text = place?.label
         self.photoCollection.reloadData()
@@ -110,6 +112,19 @@ class PlaceDetailsViewController: UIViewController {
         //hide more info view
         self.moreInfoView.isHidden = true
         self.moreInfoHeightConstraint.constant = 0
+        
+        //check if notes are empty - load them if they exist
+        if(self.place.notes != ""){
+            self.notesTextView.text = place.notes
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        //could also put this into the resign first responder or delegate function for the textView
+//        if(notesTextView.text != NOTES_PLACEHOLDER) {
+//            //save to realm object
+//            RealmManager.saveNotes(place: place, notes: notesTextView.text)
+//        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -194,6 +209,15 @@ extension PlaceDetailsViewController : UICollectionViewDelegate {
             photoCell.setImage(image: image)
         }) { photoError in
             //error
+        }
+    }
+}
+
+extension PlaceDetailsViewController : UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if(notesTextView.text != NOTES_PLACEHOLDER) {
+            //save to realm object
+            RealmManager.saveNotes(place: place, notes: notesTextView.text)
         }
     }
 }

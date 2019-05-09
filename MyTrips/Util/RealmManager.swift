@@ -28,7 +28,20 @@ class RealmManager {
         return results
     }
     
-    static func saveSublocationDate(city: PrimaryLocation, date: Date){
+    static func saveNotes(place: SubLocation, notes: String) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                place.notes = notes
+            }
+        } catch let error as NSError {
+            //handle error
+            print(error)
+        }
+    }
+    
+    //I dont think this will work correctly
+    static func saveSublocationDate(city: PrimaryLocation, date: Date) {
         do {
             let realm = try Realm()
             try realm.write {

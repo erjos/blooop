@@ -81,6 +81,7 @@ class SubLocation: Object {
     @objc dynamic var label: String?
     @objc dynamic var date: Date?
     @objc dynamic var placeID: String = ""
+    @objc dynamic var notes: String = ""
     
     func fetchGMSPlace(success: @escaping(_ id: String, _ success: Bool)->Void){
         GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in

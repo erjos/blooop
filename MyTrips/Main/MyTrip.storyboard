@@ -1111,6 +1111,7 @@ Cgo
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <connections>
+                                                                    <outlet property="delegate" destination="g2N-4w-nMr" id="wnC-W0-Gsu"/>
                                                                     <outletCollection property="gestureRecognizers" destination="Rln-n1-5bY" appends="YES" id="UJR-H1-dZ1"/>
                                                                 </connections>
                                                             </textView>
