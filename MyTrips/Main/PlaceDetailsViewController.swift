@@ -11,7 +11,6 @@ import GooglePlaces
 //TODO:
 //> add date picker to allow users to set date label - save to object (do we need to write it if its already a realm managed object?)
 //> make date show/hide based on if there is one saved or not
-//> allow users to save notes on the place object
 //> add done button to the toolbar on the keyboards
 //> allow users to add a custom label besides the place location name
 //> reflect the new data (date, custome label, etc.) on the expanded cell view on the table
@@ -24,7 +23,7 @@ class PlaceDetailsViewController: UIViewController {
     
     let NOTES_PLACEHOLDER = "Notes..."
 
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var moreInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
@@ -58,6 +57,11 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     @IBAction func clickDate(_ sender: Any) {
+        self.dateField.isHidden = false
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        dateField.inputView = datePicker
+        self.dateField.becomeFirstResponder()
     }
     
     func toggleNotes() {
@@ -82,8 +86,15 @@ class PlaceDetailsViewController: UIViewController {
         super.viewDidLoad()
         photoCollection.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
         
-        //TODO: make this conditional based on if there is a date saved on the place object
-        self.dateLabel.isHidden = true
+        //Hide the date label if the date is nil
+        if(place.date == nil) {
+            self.dateField.isHidden = true
+        } else {
+            dateField.text = place.date?.description
+        }
+        
+        
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)

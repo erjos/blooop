@@ -1137,13 +1137,6 @@ Cgo
                                                                     <action selector="clickMoreInfo:" destination="g2N-4w-nMr" eventType="touchUpInside" id="b3w-X1-OYz"/>
                                                                 </connections>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5/1/2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvq-RZ-bOs">
-                                                                <rect key="frame" x="134" y="5" width="67" height="21"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbW-Np-B6f">
                                                                 <rect key="frame" x="93" y="3" width="24" height="24"/>
                                                                 <constraints>
@@ -1155,11 +1148,22 @@ Cgo
                                                                     <action selector="clickDate:" destination="g2N-4w-nMr" eventType="touchUpInside" id="JaG-tG-P3Z"/>
                                                                 </connections>
                                                             </button>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5/7/2019" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E3O-MM-Fyr">
+                                                                <rect key="frame" x="132" y="3" width="72" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="24" id="UvJ-Os-PZp"/>
+                                                                </constraints>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
+                                                            <constraint firstItem="E3O-MM-Fyr" firstAttribute="leading" secondItem="pbW-Np-B6f" secondAttribute="trailing" constant="15" id="08s-60-wwi"/>
                                                             <constraint firstItem="yre-cA-NdS" firstAttribute="top" secondItem="klu-oj-HFc" secondAttribute="top" constant="30" id="4Gi-ft-wMU"/>
                                                             <constraint firstItem="pbW-Np-B6f" firstAttribute="top" secondItem="kl5-gt-u1H" secondAttribute="top" id="9t9-kL-cOw"/>
+                                                            <constraint firstItem="E3O-MM-Fyr" firstAttribute="top" secondItem="pbW-Np-B6f" secondAttribute="top" id="JTF-bO-0Ua"/>
                                                             <constraint firstItem="qBD-1K-2q2" firstAttribute="leading" secondItem="kl5-gt-u1H" secondAttribute="trailing" constant="15" id="SYc-Sd-CDc"/>
                                                             <constraint firstAttribute="trailing" secondItem="yre-cA-NdS" secondAttribute="trailing" constant="15" id="T4T-Q4-0Fl"/>
                                                             <constraint firstItem="yre-cA-NdS" firstAttribute="top" secondItem="kl5-gt-u1H" secondAttribute="bottom" constant="3" id="Uza-zs-35J"/>
@@ -1327,7 +1331,7 @@ Cgo
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="400"/>
                     <connections>
-                        <outlet property="dateLabel" destination="mvq-RZ-bOs" id="sQm-pp-UVf"/>
+                        <outlet property="dateField" destination="E3O-MM-Fyr" id="1b8-OR-tdd"/>
                         <outlet property="moreInfoHeightConstraint" destination="Knr-fv-Oe6" id="KY3-47-eFS"/>
                         <outlet property="moreInfoView" destination="nVE-4S-03k" id="bb0-bE-VMc"/>
                         <outlet property="notesTextView" destination="yre-cA-NdS" id="3Fs-r8-21x"/>
