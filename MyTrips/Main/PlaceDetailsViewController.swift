@@ -9,11 +9,10 @@ import UIKit
 import GooglePlaces
 
 //TODO:
-//> add date picker to allow users to set date label - save to object (do we need to write it if its already a realm managed object?)
-//> make date show/hide based on if there is one saved or not
-//> add done button to the toolbar on the keyboards
 //> allow users to add a custom label besides the place location name
 //> reflect the new data (date, custome label, etc.) on the expanded cell view on the table
+
+//TODO: we have some inconsistencies with how we label things right now - between the place label and the gms name (right now they're the same but wont always be)
 
 class PlaceDetailsViewController: UIViewController {
     var place: SubLocation!
@@ -22,6 +21,8 @@ class PlaceDetailsViewController: UIViewController {
     lazy var gmsPlace = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
     
     let NOTES_PLACEHOLDER = "Notes..."
+    
+    let datePicker = UIDatePicker()
 
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var moreInfoHeightConstraint: NSLayoutConstraint!
@@ -57,16 +58,16 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     @IBAction func clickDate(_ sender: Any) {
-        self.dateField.isHidden = false
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .date
-        dateField.inputView = datePicker
         self.dateField.becomeFirstResponder()
     }
     
     @objc func notesDoneAction() {
         toggleNotes()
         notesTextView.resignFirstResponder()
+    }
+    
+    @objc func dateDoneAction() {
+        dateField.resignFirstResponder()
     }
     
     func toggleNotes() {
@@ -90,18 +91,32 @@ class PlaceDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         photoCollection.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
+        //setup place label
+        placeLabel.text = place?.label
+        self.photoCollection.reloadData()
         
-        //Hide the date label if the date is nil
+        //setup date
         if(place.date == nil) {
             self.dateField.isHidden = true
         } else {
-            dateField.text = place.date?.description
+            dateField.text = place.date?.formatDateAsString()
+            datePicker.date = place.date ?? Date()
+        }
+        datePicker.datePickerMode = .date
+        dateField.inputView = datePicker
+        dateField.inputAccessoryView = createInputToolbar(doneSelector: #selector(dateDoneAction), cancelButton: false, cancelSelector: nil)
+        
+        //setup more-info
+        self.moreInfoView.isHidden = true
+        self.moreInfoHeightConstraint.constant = 0
+        
+        //setup notes
+        notesTextView.inputAccessoryView = createInputToolbar(doneSelector: #selector(self.notesDoneAction), cancelButton: false, cancelSelector: nil)
+        if(!self.place.notes.isEmpty) {
+            self.notesTextView.text = place.notes
         }
         
-        //create toolbar for notes text view
-        notesTextView.inputAccessoryView = createInputToolbar(doneSelector: #selector(self.notesDoneAction), cancelButton: false, cancelSelector: nil)
-        
-        
+        //setup keyboard
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -118,30 +133,6 @@ class PlaceDetailsViewController: UIViewController {
         if self.parent?.view.frame.origin.y != 0 {
             self.parent?.view.frame.origin.y = 0
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //TODO: test if we can move this to view did load now that we recreate the view Controller each time its opened
-        //TODO: we have some inconsistencies with how we label things right now - between the place label and the gms name (right now they're the same but wont always be)
-        placeLabel.text = place?.label
-        self.photoCollection.reloadData()
-        
-        //hide more info view
-        self.moreInfoView.isHidden = true
-        self.moreInfoHeightConstraint.constant = 0
-        
-        //check if notes are empty - load them if they exist
-        if(self.place.notes != ""){
-            self.notesTextView.text = place.notes
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        //could also put this into the resign first responder or delegate function for the textView
-//        if(notesTextView.text != NOTES_PLACEHOLDER) {
-//            //save to realm object
-//            RealmManager.saveNotes(place: place, notes: notesTextView.text)
-//        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -171,6 +162,7 @@ extension PlaceDetailsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionViewCell
+        
         //do we need to reset cell?
         return cell
     }
@@ -230,7 +222,16 @@ extension PlaceDetailsViewController : UICollectionViewDelegate {
     }
 }
 
-extension PlaceDetailsViewController : UITextViewDelegate {
+extension PlaceDetailsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //save date to realm object
+        RealmManager.saveSublocationDate(place: place, date: datePicker.date)
+        textField.text = datePicker.date.formatDateAsString()
+        textField.isHidden = false
+    }
+}
+
+extension PlaceDetailsViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if(notesTextView.text != NOTES_PLACEHOLDER) {
             //save to realm object

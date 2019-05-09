@@ -41,11 +41,11 @@ class RealmManager {
     }
     
     //I dont think this will work correctly
-    static func saveSublocationDate(city: PrimaryLocation, date: Date) {
+    static func saveSublocationDate(place: SubLocation, date: Date) {
         do {
             let realm = try Realm()
             try realm.write {
-                city.subLocations.last?.date = date
+                place.date = date
                 print("Added sublocation date")
             }
         } catch let error as NSError {
