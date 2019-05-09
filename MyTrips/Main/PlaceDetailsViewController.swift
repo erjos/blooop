@@ -64,6 +64,11 @@ class PlaceDetailsViewController: UIViewController {
         self.dateField.becomeFirstResponder()
     }
     
+    @objc func notesDoneAction() {
+        toggleNotes()
+        notesTextView.resignFirstResponder()
+    }
+    
     func toggleNotes() {
         UIView.animate(withDuration: 0.2) {
             self.textViewHeightConstraint.constant = self.textViewHeightConstraint.constant == 80 ? 30 : 80
@@ -93,7 +98,8 @@ class PlaceDetailsViewController: UIViewController {
             dateField.text = place.date?.description
         }
         
-        
+        //create toolbar for notes text view
+        notesTextView.inputAccessoryView = createInputToolbar(doneSelector: #selector(self.notesDoneAction), cancelButton: false, cancelSelector: nil)
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -103,7 +109,7 @@ class PlaceDetailsViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.parent?.view.frame.origin.y == 0 {
-                self.parent?.view.frame.origin.y -= keyboardSize.height
+                self.parent?.view.frame.origin.y -= (keyboardSize.height - 50)
             }
         }
     }

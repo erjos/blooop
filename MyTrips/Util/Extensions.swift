@@ -27,6 +27,27 @@ extension UIViewController {
         viewController.view.removeFromSuperview()
         viewController.removeFromParentViewController()
     }
+    
+    
+    //Do we want to add other customizations such as tint, etc.
+    func createInputToolbar(doneSelector: Selector, cancelButton: Bool, cancelSelector: Selector?) -> UIToolbar {
+        let toolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        toolbar.barStyle = .default
+        toolbar.barTintColor = UIColor.white
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: doneSelector)
+        //done.tintColor = UIColor.black
+        
+        var items = [flexSpace, done]
+        if cancelButton {
+            let cancel: UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: cancelSelector)
+            items.insert(cancel, at: 0)
+        }
+        toolbar.items = items
+        toolbar.sizeToFit()
+        return toolbar
+    }
 }
 
 extension Date {
