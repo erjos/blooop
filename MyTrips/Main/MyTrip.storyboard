@@ -1106,7 +1106,8 @@ Cgo
                                                                 <color key="backgroundColor" white="0.93563988095238082" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <gestureRecognizers/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="30" id="Ydu-6X-xm9"/>
+                                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="BFu-0b-rid"/>
+                                                                    <constraint firstAttribute="height" priority="251" constant="30" id="Ydu-6X-xm9"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

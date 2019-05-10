@@ -66,6 +66,15 @@ extension Date {
     }
 }
 
+extension UITextView {
+    
+    func getHeightToFit() -> CGFloat {
+        let fixedWidth = self.frame.width
+        let size = self.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        return size.height
+    }
+}
+
 extension UIView {
     func dropShadow() {
         self.layer.masksToBounds = false

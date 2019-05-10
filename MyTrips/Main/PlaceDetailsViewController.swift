@@ -23,6 +23,7 @@ class PlaceDetailsViewController: UIViewController {
     let NOTES_PLACEHOLDER = "Notes..."
     
     let datePicker = UIDatePicker()
+    var collapsedNotesHeight: CGFloat = 30
 
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var moreInfoHeightConstraint: NSLayoutConstraint!
@@ -38,14 +39,14 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     @IBAction func tapNotes(_ sender: Any) {
-        //TODO: maybe create and enum to represent notes state
-        guard self.textViewHeightConstraint.constant != 80 else {
+        guard !self.notesTextView.isEditable else {
             return
         }
         toggleNotes()
     }
     
     @IBAction func clickNotesButton(_ sender: Any) {
+        //notesTextView.resignFirstResponder()
         toggleNotes()
     }
     
@@ -62,21 +63,27 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     @objc func notesDoneAction() {
+        //notesTextView.resignFirstResponder()
         toggleNotes()
-        notesTextView.resignFirstResponder()
     }
     
     @objc func dateDoneAction() {
         dateField.resignFirstResponder()
     }
     
+    //might be easier to read if we pass in an enum
     func toggleNotes() {
+        if (notesTextView.isFirstResponder) {
+            notesTextView.resignFirstResponder()
+        }
+        
         UIView.animate(withDuration: 0.2) {
-            self.textViewHeightConstraint.constant = self.textViewHeightConstraint.constant == 80 ? 30 : 80
-            self.view.layoutIfNeeded()
+            if(self.collapsedNotesHeight < 80) {
+                self.textViewHeightConstraint.constant = self.textViewHeightConstraint.constant == 80 ? self.collapsedNotesHeight : 80
+                self.view.layoutIfNeeded()
+            }
         }
         self.notesTextView.isEditable = !self.notesTextView.isEditable
-        self.notesTextView.isScrollEnabled = !self.notesTextView.isScrollEnabled
         if (self.notesTextView.isEditable) {
             notesTextView.becomeFirstResponder()
         }
@@ -121,6 +128,12 @@ class PlaceDetailsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.layoutIfNeeded()
+        textViewHeightConstraint.constant = notesTextView.getHeightToFit()
+        self.collapsedNotesHeight = notesTextView.getHeightToFit()
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.parent?.view.frame.origin.y == 0 {
@@ -140,7 +153,6 @@ class PlaceDetailsViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-
 }
 
 protocol PlaceDetailsDelegate: class {
@@ -233,6 +245,10 @@ extension PlaceDetailsViewController: UITextFieldDelegate {
 
 extension PlaceDetailsViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
+        //update new notes collapsed height
+        let height = self.notesTextView.getHeightToFit()
+        self.collapsedNotesHeight = height
+        
         if(notesTextView.text != NOTES_PLACEHOLDER) {
             //save to realm object
             RealmManager.saveNotes(place: place, notes: notesTextView.text)
