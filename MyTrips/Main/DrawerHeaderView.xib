@@ -18,7 +18,9 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bab-wx-PmR">
                     <rect key="frame" x="5" y="21" width="24" height="24"/>
-                    <state key="normal" image="back_black"/>
+                    <state key="normal" image="back_white">
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="backButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="15l-MN-pIZ"/>
                     </connections>
@@ -26,11 +28,11 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRr-no-qKv">
                     <rect key="frame" x="39" y="18.5" width="59" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="bab-wx-PmR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2NX-LP-gXJ"/>
                 <constraint firstItem="VRr-no-qKv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2pK-Kl-hba"/>
@@ -48,6 +50,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back_black" width="24" height="24"/>
+        <image name="back_white" width="24" height="24"/>
     </resources>
 </document>

@@ -53,7 +53,8 @@ class PlaceDetailsViewController: UIViewController {
     @IBAction func clickMoreInfo(_ sender: Any) {
         self.moreInfoView.isHidden = !self.moreInfoView.isHidden
         UIView.animate(withDuration: 0.2) {
-            self.moreInfoHeightConstraint.constant = self.moreInfoHeightConstraint.constant == 50 ? 0 : 50
+            //TODO: get rid of this hard coded constraint - set a variable on the view controller in view did load to pull the values from the storyboard
+            self.moreInfoHeightConstraint.constant = self.moreInfoHeightConstraint.constant == 60 ? 0 : 60
             self.view.layoutIfNeeded()
         }
     }

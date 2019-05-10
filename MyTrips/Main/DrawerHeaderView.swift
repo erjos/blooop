@@ -28,7 +28,6 @@ class DrawerHeaderView: UIView {
     }
     
     func setupHeaderView(tableState: DrawerTableState) {
-        self.backgroundColor = UIColor.lightGray
         self.hideBackButton(shouldHide: (tableState == .Menu))
         
         switch tableState {

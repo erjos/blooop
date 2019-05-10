@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52137A252114AA1B008F3052 /* CustomTipsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52137A242114AA1B008F3052 /* CustomTipsView.xib */; };
-		52137A272114ACC4008F3052 /* CustomTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A262114ACC4008F3052 /* CustomTipsView.swift */; };
 		52137A292114CA12008F3052 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A282114CA12008F3052 /* ApiKeys.swift */; };
 		525011332137684700A40DAB /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525011322137684700A40DAB /* AboutAppViewController.swift */; };
 		5262DFA021F6731400A2E918 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DF9F21F6731400A2E918 /* DrawerViewController.swift */; };
@@ -57,8 +55,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		52137A242114AA1B008F3052 /* CustomTipsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTipsView.xib; sourceTree = "<group>"; };
-		52137A262114ACC4008F3052 /* CustomTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTipsView.swift; sourceTree = "<group>"; };
 		52137A282114CA12008F3052 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		525011322137684700A40DAB /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		5262DF9F21F6731400A2E918 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -161,7 +157,10 @@
 				5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */,
 				5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */,
 				52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */,
-				52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */,
+				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
+				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
+				525011322137684700A40DAB /* AboutAppViewController.swift */,
+				86B5D47120C5CEDA00A851DE /* PlaceDetails */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -203,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				529F4EA320F283E500D1E965 /* Main */,
-				86B5D47020C5BB0000A851DE /* Trip Details */,
 				529F4EA420F2841C00D1E965 /* Util */,
 				86A895A12019917D00CE3926 /* AppDelegate.swift */,
 				86A895A82019917D00CE3926 /* Assets.xcassets */,
@@ -215,24 +213,12 @@
 			path = MyTrips;
 			sourceTree = "<group>";
 		};
-		86B5D47020C5BB0000A851DE /* Trip Details */ = {
-			isa = PBXGroup;
-			children = (
-				86B5D47120C5CEDA00A851DE /* PlaceDetails */,
-				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
-				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
-				525011322137684700A40DAB /* AboutAppViewController.swift */,
-			);
-			path = "Trip Details";
-			sourceTree = "<group>";
-		};
 		86B5D47120C5CEDA00A851DE /* PlaceDetails */ = {
 			isa = PBXGroup;
 			children = (
+				52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */,
 				86B7EB13208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib */,
 				86B7EB12208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift */,
-				52137A242114AA1B008F3052 /* CustomTipsView.xib */,
-				52137A262114ACC4008F3052 /* CustomTipsView.swift */,
 			);
 			path = PlaceDetails;
 			sourceTree = "<group>";
@@ -324,7 +310,6 @@
 			files = (
 				86A895AC2019917D00CE3926 /* LaunchScreen.storyboard in Resources */,
 				86A895A92019917D00CE3926 /* Assets.xcassets in Resources */,
-				52137A252114AA1B008F3052 /* CustomTipsView.xib in Resources */,
 				862FBB4020C80FA20078D689 /* MyTrip.storyboard in Resources */,
 				5262DFA221FE74BF00A2E918 /* DrawerHeaderView.xib in Resources */,
 				86B7EB15208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib in Resources */,
@@ -409,7 +394,6 @@
 				86B5A8DB20CAB36C00B24F43 /* GoogleResourceManager.swift in Sources */,
 				86CA2C0520199A6500A0D770 /* ListTableViewCell.swift in Sources */,
 				5262DFA421FE9BA400A2E918 /* DrawerHeaderView.swift in Sources */,
-				52137A272114ACC4008F3052 /* CustomTipsView.swift in Sources */,
 				52C4E9482278C9F3006E83F2 /* PlaceTableViewController.swift in Sources */,
 				52E5F61D213626E700672DE2 /* Mock.swift in Sources */,
 				863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */,

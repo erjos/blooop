@@ -84,7 +84,7 @@ class DrawerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         menuTableView.register(UITableViewCell.self, forCellReuseIdentifier: CELL_REUSE_ID)
-        menuTableView.separatorColor = UIColor.darkGray
+        menuTableView.separatorColor = UIColor.black
     }
     
     func changeTableState(state: DrawerTableState){
@@ -183,7 +183,9 @@ extension DrawerViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CELL_REUSE_ID) else {
             return UITableViewCell()
         }
-        cell.backgroundColor = UIColor.lightGray
+        cell.backgroundColor = UIColor.init(red: 47, green: 47, blue: 47)
+        cell.textLabel?.textColor = UIColor.white
+        
         switch tableState {
         case .Menu:
             cell.textLabel?.text = menuItems.getItemFor(indexPath: indexPath).rawValue
