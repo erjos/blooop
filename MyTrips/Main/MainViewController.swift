@@ -54,14 +54,13 @@ class MainViewController: UIViewController {
     var placeTableViewController: PlaceTableViewController?
     var placeDetailsViewController: PlaceDetailsViewController?
     
-    
     //I should be able to add the gesture to any view from this viewcontroller
     
     
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
         view.bringSubview(toFront: clearDrawerView)
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.2) {
             //TODO: remove these hardcoded values and derive from screen width
             self.menuWidth.constant = (self.menuWidth.constant == 0) ? 300 : 0
             let constant = UIScreen.main.bounds.width - 300
@@ -107,10 +106,20 @@ class MainViewController: UIViewController {
         //add pan gesture to view
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         self.view.addGestureRecognizer(panGesture)
+        self.drawerView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    //consider combining these two methods
+    func openMenu() {
+        UIView.animate(withDuration: 0.2) {
+            self.menuWidth.constant = 300
+            self.menuCoverWidth.constant = UIScreen.main.bounds.width - 300
+            self.view.layoutIfNeeded()
+        }
     }
     
     @objc func closeMenu() {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.2) {
             self.menuWidth.constant = 0
             self.menuCoverWidth.constant = 0
             self.view.layoutIfNeeded()
@@ -359,12 +368,17 @@ extension MainViewController : PlaceTableDelegate {
 extension MainViewController : UIGestureRecognizerDelegate {
     
     @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
+        //might not need this bool - but I could see it being useful in other situations
         let gestureIsDraggingFromLeftToRight = (recognizer.velocity(in: view).x > 0)
         
         switch recognizer.state {
             
         case .began:
-            //if currentState == .bothCollapsed {
+            //bring to front
+            view.bringSubview(toFront: drawerView)
+            view.bringSubview(toFront: clearDrawerView)
+            
+            //probably dont need this here
             if gestureIsDraggingFromLeftToRight {
                 //addLeftPanelViewController()
             } else {
@@ -376,23 +390,34 @@ extension MainViewController : UIGestureRecognizerDelegate {
             
         case .changed:
             if let rview = recognizer.view {
-//                rview.center.x = rview.center.x + recognizer.translation(in: view).x
-//                recognizer.setTranslation(CGPoint.zero, in: view)
+                //UIView.animate(withDuration: 0) {
+                self.menuWidth.constant = self.menuWidth.constant + recognizer.translation(in: self.view).x
+                
+                self.menuCoverWidth.constant = UIScreen.main.bounds.width - self.menuWidth.constant
+                    //self.view.layoutIfNeeded()
+                //}
+                
+                //let panValue = rview.center.x + recognizer.translation(in: view).x
+                //print("value: \(recognizer.translation(in: view))")
+                recognizer.setTranslation(CGPoint.zero, in: view)
             }
             
         case .ended:
-            if //let _ = leftViewController,
-                let rview = recognizer.view {
-                // animate the side panel open or closed based on whether the view
-                // has moved more or less than halfway
-                let hasMovedGreaterThanHalfway = rview.center.x > view.bounds.size.width
-                self.menuButton(self)
-                //animateLeftPanel(shouldExpand: hasMovedGreaterThanHalfway)
+            if gestureIsDraggingFromLeftToRight {
+                let hasMovedGreaterThanHalfway = menuWidth.constant > 150
                 
-            } else if //let _ = rightViewController,
-                let rview = recognizer.view {
-                let hasMovedGreaterThanHalfway = rview.center.x < 0
-                //animateRightPanel(shouldExpand: hasMovedGreaterThanHalfway)
+                if (hasMovedGreaterThanHalfway) {
+                    self.openMenu()
+                } else {
+                    self.closeMenu()
+                }
+            } else {
+                let hasMovedGreaterThanHalfway = menuWidth.constant < 150
+                if (hasMovedGreaterThanHalfway) {
+                    self.closeMenu()
+                } else {
+                    self.openMenu()
+                }
             }
         default:
             break

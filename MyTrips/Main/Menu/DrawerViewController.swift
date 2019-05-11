@@ -184,6 +184,7 @@ extension DrawerViewController: UITableViewDataSource {
         }
         cell.backgroundColor = UIColor.init(red: 47, green: 47, blue: 47)
         cell.textLabel?.textColor = UIColor.white
+        cell.textLabel?.lineBreakMode = .byClipping
         cell.selectionStyle = .none
         
         switch tableState {
