@@ -182,7 +182,7 @@ extension DrawerViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CELL_REUSE_ID) else {
             return UITableViewCell()
         }
-        cell.backgroundColor = UIColor.init(red: 47, green: 47, blue: 47)
+        cell.backgroundColor = UIColor.init(red: 55, green: 55, blue: 55)
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.lineBreakMode = .byClipping
         cell.selectionStyle = .none
