@@ -103,8 +103,7 @@ class DrawerViewController: UIViewController {
             trips = RealmManager.fetchData()
             changeTableState(state: .TripList)
         case .AboutApp:
-            menuDelegate?.shouldCloseMenu(menu: self)
-            menuDelegate?.shouldShowAboutApp()
+            self.performSegue(withIdentifier: "showAboutApp", sender: self)
         }
     }
     
@@ -185,6 +184,7 @@ extension DrawerViewController: UITableViewDataSource {
         }
         cell.backgroundColor = UIColor.init(red: 47, green: 47, blue: 47)
         cell.textLabel?.textColor = UIColor.white
+        cell.selectionStyle = .none
         
         switch tableState {
         case .Menu:
@@ -201,5 +201,7 @@ protocol MenuDelegate: class {
     func shouldCloseMenu(menu: DrawerViewController)
     func shouldClearMap()
     func shouldLoadTrip(trip: PrimaryLocation)
+    
+    //might be able to pull this function
     func shouldShowAboutApp()
 }

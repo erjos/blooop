@@ -54,6 +54,10 @@ class MainViewController: UIViewController {
     var placeTableViewController: PlaceTableViewController?
     var placeDetailsViewController: PlaceDetailsViewController?
     
+    
+    //I should be able to add the gesture to any view from this viewcontroller
+    
+    
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
         view.bringSubview(toFront: clearDrawerView)
@@ -99,6 +103,10 @@ class MainViewController: UIViewController {
         menuWidth.constant = 0
         menuCoverWidth.constant = 0
         self.resetMap.isHidden = true
+        
+        //add pan gesture to view
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        self.view.addGestureRecognizer(panGesture)
     }
     
     @objc func closeMenu() {
@@ -346,4 +354,49 @@ extension MainViewController : PlaceTableDelegate {
         addContentController(viewController: detailsVC, container: containerView)
         placeDetailsViewController = detailsVC
     }
+}
+
+extension MainViewController : UIGestureRecognizerDelegate {
+    
+    @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
+        let gestureIsDraggingFromLeftToRight = (recognizer.velocity(in: view).x > 0)
+        
+        switch recognizer.state {
+            
+        case .began:
+            //if currentState == .bothCollapsed {
+            if gestureIsDraggingFromLeftToRight {
+                //addLeftPanelViewController()
+            } else {
+                //addRightPanelViewController()
+            }
+            
+            //showShadowForCenterViewController(true)
+            //}
+            
+        case .changed:
+            if let rview = recognizer.view {
+//                rview.center.x = rview.center.x + recognizer.translation(in: view).x
+//                recognizer.setTranslation(CGPoint.zero, in: view)
+            }
+            
+        case .ended:
+            if //let _ = leftViewController,
+                let rview = recognizer.view {
+                // animate the side panel open or closed based on whether the view
+                // has moved more or less than halfway
+                let hasMovedGreaterThanHalfway = rview.center.x > view.bounds.size.width
+                self.menuButton(self)
+                //animateLeftPanel(shouldExpand: hasMovedGreaterThanHalfway)
+                
+            } else if //let _ = rightViewController,
+                let rview = recognizer.view {
+                let hasMovedGreaterThanHalfway = rview.center.x < 0
+                //animateRightPanel(shouldExpand: hasMovedGreaterThanHalfway)
+            }
+        default:
+            break
+        }
+    }
+    
 }

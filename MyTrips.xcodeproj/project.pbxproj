@@ -147,15 +147,13 @@
 		529F4EA320F283E500D1E965 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				52BE6EAA228614FA0062279E /* Menu */,
 				862FBB3F20C80FA20078D689 /* MyTrip.storyboard */,
 				52C1922F21EBC2B4004F073A /* MainViewController.swift */,
 				52FDB33821F63C1B00FB6153 /* PlaceTableHeaderView.swift */,
 				52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */,
 				52FDB33421F148DF00FB6153 /* PlaceListTableViewCell.swift */,
 				52FDB33521F148DF00FB6153 /* PlaceListTableViewCell.xib */,
-				5262DF9F21F6731400A2E918 /* DrawerViewController.swift */,
-				5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */,
-				5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */,
 				52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */,
 				86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */,
 				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
@@ -178,6 +176,16 @@
 				52137A282114CA12008F3052 /* ApiKeys.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		52BE6EAA228614FA0062279E /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				5262DF9F21F6731400A2E918 /* DrawerViewController.swift */,
+				5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */,
+				5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		86A895952019917D00CE3926 = {
