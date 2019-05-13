@@ -66,10 +66,12 @@ extension PlaceTableViewController: UITableViewDataSource {
             //TODO: ERROR
         }
         
+        let place = trip?.getSubLocation(from: indexPath)
+        
         if(tableListState == .Compact){
             let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceListTableViewCell
             
-            cell.placeNameLabel.text = trip?.getSubLocation(from: indexPath).label
+            cell.placeNameLabel.text = place?.label
             cell.selectionStyle = .none
             return cell
         } else {
@@ -80,17 +82,20 @@ extension PlaceTableViewController: UITableViewDataSource {
             }) { error in
                 cell.handleFailedImage()
             }
+            cell.dateLabel.isHidden = true
+            
+            //show date if it is set
+            if let date = place?.date {
+                cell.dateLabel.text = date.formatDateAsString()
+                cell.dateLabel.isHidden = false
+            }
             
             //cell.activityLabel.isHidden = true
-            //cell.dateLabel.isHidden = true
+            
             //if let label = trip?.getSubLocation(from: indexPath).label {
             //cell.activityLabel.isHidden = false
             //cell.activityLabel.text = label
             //}
-            //            if let date = city.getSubLocation(from: indexPath).date?.formatDateAsString() {
-            //                cell.dateLabel.isHidden = false
-            //                cell.dateLabel.text = date
-            //            }
             let gms = GoogleResourceManager.sharedInstance.getPlaceForId(ID: placeID)
             cell.locationLabel.text = gms?.name
             cell.selectionStyle = .none
@@ -141,7 +146,7 @@ extension PlaceTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(tableListState == .Expanded){
-            return 130.00
+            return 145.00
         } else {
             return 44.00
         }
