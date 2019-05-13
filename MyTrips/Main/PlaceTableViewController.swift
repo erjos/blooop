@@ -82,12 +82,20 @@ extension PlaceTableViewController: UITableViewDataSource {
             }) { error in
                 cell.handleFailedImage()
             }
+            
+            //TODO: do we want to move these a prepare for reuse method?
             cell.dateLabel.isHidden = true
+            cell.notesLabel.isHidden = true
             
             //show date if it is set
             if let date = place?.date {
                 cell.dateLabel.text = date.formatDateAsString()
                 cell.dateLabel.isHidden = false
+            }
+            
+            if place?.notes != "" {
+                cell.notesLabel.text = place?.notes
+                cell.notesLabel.isHidden = false
             }
             
             //cell.activityLabel.isHidden = true
@@ -122,6 +130,7 @@ extension PlaceTableViewController: UITableViewDelegate {
         //Setup for existing trip
         view?.setLabel(name: name)
         view?.editButton.isHidden = false
+        view?.listButton.isHidden = false
         view?.delegate = self
         
         return view

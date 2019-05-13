@@ -22,6 +22,7 @@ class PlaceTableHeaderView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.editButton.isHidden = true
+        self.listButton.isHidden = true
     }
     
     func setLabel(name: String){

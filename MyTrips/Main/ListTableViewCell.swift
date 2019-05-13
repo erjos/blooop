@@ -6,32 +6,34 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var notesLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
+    //TODO: is this in use anywhere?
     override func prepareForReuse() {
         super.prepareForReuse()
         thumbnail.image = nil
         thumbnail.layer.borderWidth = 0.0
-        //dateLabel.text = ""
-        //activityLabel.text = ""
+        dateLabel.text = ""
+        notesLabel.text = ""
         locationLabel.text = ""
     }
     
-    func setThumbnailImage(image: UIImage){
+    func setThumbnailImage(image: UIImage) {
         imageContainer.isHidden = false
         thumbnail.image = image
         thumbnail.contentMode = .scaleToFill
         thumbnail.layer.borderWidth = 0.0
     }
     
-    func handleFailedImage(){
+    func handleFailedImage() {
         imageContainer.isHidden = false
+        //TODO: this placeholder dont work none
         thumbnail.image = #imageLiteral(resourceName: "picture_thumbnail")
         thumbnail.contentMode = .scaleAspectFit
         thumbnail.layer.borderColor = UIColor.gray.cgColor
