@@ -44,7 +44,10 @@ class MainViewController: UIViewController {
     
     //**ViewModel stuff**
     var trip: PrimaryLocation? {
-        didSet { self.placeTableViewController?.trip = self.trip }
+        didSet {
+            self.placeTableViewController?.trip = self.trip
+            placeTableViewController?.placeholderImage.isHidden = true
+        }
     }
     var currentTripStatus: TripSaveStatus = .Empty
     //used to restrict search results
@@ -179,6 +182,8 @@ class MainViewController: UIViewController {
             }
             self.placeTableViewController = placeTableVC
             self.placeTableViewController?.placeTableDelegate = self
+            
+            //TODO: do we need this if we use the did set? Are both in use?
             placeTableViewController?.trip = self.trip
         }
     }

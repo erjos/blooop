@@ -22,8 +22,10 @@ protocol PlaceTableDelegate: class {
 
 class PlaceTableViewController: UIViewController {
 
+    @IBOutlet weak var placeholderImage: UIImageView!
     @IBOutlet weak var placeTableView: UITableView!
     
+    //TODO:can we use a didSet here to deal with the image placeholder change?
     var trip: PrimaryLocation?
     var tableListState: TableListView = .Compact
     weak var placeTableDelegate: PlaceTableDelegate?

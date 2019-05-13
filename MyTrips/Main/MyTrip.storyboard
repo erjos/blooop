@@ -245,12 +245,21 @@
                                     <outlet property="delegate" destination="ezm-Lf-kf6" id="ueu-J8-qZF"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="a0F-RB-e2y">
+                                <rect key="frame" x="67.5" y="19.5" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="6m5-F2-jzY"/>
+                                    <constraint firstAttribute="height" constant="240" id="gig-z8-gl2"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="a0F-RB-e2y" firstAttribute="centerX" secondItem="Ixl-g4-1jZ" secondAttribute="centerX" id="65y-fR-nqA"/>
                             <constraint firstItem="xLm-CZ-zBT" firstAttribute="bottom" secondItem="FGf-eb-KRg" secondAttribute="bottom" id="7Gl-1o-hPR"/>
                             <constraint firstItem="FGf-eb-KRg" firstAttribute="leading" secondItem="Ixl-g4-1jZ" secondAttribute="leading" id="CqN-3q-Y54"/>
                             <constraint firstItem="xLm-CZ-zBT" firstAttribute="trailing" secondItem="FGf-eb-KRg" secondAttribute="trailing" id="S6W-to-w4e"/>
+                            <constraint firstItem="a0F-RB-e2y" firstAttribute="centerY" secondItem="Ixl-g4-1jZ" secondAttribute="centerY" id="TiP-fC-5KX"/>
                             <constraint firstItem="FGf-eb-KRg" firstAttribute="top" secondItem="Ixl-g4-1jZ" secondAttribute="top" id="weW-dX-WQx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xLm-CZ-zBT"/>
@@ -258,6 +267,7 @@
                     <size key="freeformSize" width="375" height="279"/>
                     <connections>
                         <outlet property="placeTableView" destination="FGf-eb-KRg" id="j1M-hT-Ibd"/>
+                        <outlet property="placeholderImage" destination="a0F-RB-e2y" id="BhE-Ld-AmW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fb3-Na-Wr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1363,6 +1373,7 @@ Cgo
         <image name="menu" width="24" height="24"/>
         <image name="notes" width="24" height="24"/>
         <image name="phone" width="24" height="24"/>
+        <image name="place_placeholder" width="612" height="792"/>
         <image name="refresh" width="24" height="24"/>
         <image name="search" width="24" height="24"/>
     </resources>

@@ -117,7 +117,8 @@ class DrawerViewController: UIViewController {
     }
     
     func adjustTableHeight(count:Int){
-        self.tableHeighConstraint.constant = CGFloat((CELL_HEIGHT * count) + HEADER_HEIGHT)
+        //TODO: have to change this if we modify design of the table (ie. header and footer)
+        self.tableHeighConstraint.constant = CGFloat((CELL_HEIGHT * count) + HEADER_HEIGHT + HEADER_HEIGHT)
     }
 }
 
@@ -151,6 +152,18 @@ extension DrawerViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(HEADER_HEIGHT)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat(HEADER_HEIGHT)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let rect = CGRect(x: 0, y: 0, width: Int(UIScreen.main.bounds.width), height: HEADER_HEIGHT)
+        let footer = UIView(frame: rect)
+        
+        footer.backgroundColor = UIColor.init(red: 45, green: 45, blue: 45)
+        return footer
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
