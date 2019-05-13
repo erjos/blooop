@@ -246,21 +246,21 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="a0F-RB-e2y">
-                                <rect key="frame" x="67.5" y="19.5" width="240" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="6m5-F2-jzY"/>
-                                    <constraint firstAttribute="height" constant="240" id="gig-z8-gl2"/>
-                                </constraints>
+                                <rect key="frame" x="50" y="0.0" width="275" height="279"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="a0F-RB-e2y" firstAttribute="centerX" secondItem="Ixl-g4-1jZ" secondAttribute="centerX" id="65y-fR-nqA"/>
                             <constraint firstItem="xLm-CZ-zBT" firstAttribute="bottom" secondItem="FGf-eb-KRg" secondAttribute="bottom" id="7Gl-1o-hPR"/>
+                            <constraint firstAttribute="bottom" secondItem="a0F-RB-e2y" secondAttribute="bottom" id="BV0-qp-yiZ"/>
                             <constraint firstItem="FGf-eb-KRg" firstAttribute="leading" secondItem="Ixl-g4-1jZ" secondAttribute="leading" id="CqN-3q-Y54"/>
+                            <constraint firstAttribute="trailing" secondItem="a0F-RB-e2y" secondAttribute="trailing" constant="50" id="DaS-PW-NuA"/>
                             <constraint firstItem="xLm-CZ-zBT" firstAttribute="trailing" secondItem="FGf-eb-KRg" secondAttribute="trailing" id="S6W-to-w4e"/>
                             <constraint firstItem="a0F-RB-e2y" firstAttribute="centerY" secondItem="Ixl-g4-1jZ" secondAttribute="centerY" id="TiP-fC-5KX"/>
+                            <constraint firstItem="a0F-RB-e2y" firstAttribute="top" secondItem="Ixl-g4-1jZ" secondAttribute="top" id="aFU-fT-Kxf"/>
                             <constraint firstItem="FGf-eb-KRg" firstAttribute="top" secondItem="Ixl-g4-1jZ" secondAttribute="top" id="weW-dX-WQx"/>
+                            <constraint firstItem="a0F-RB-e2y" firstAttribute="leading" secondItem="Ixl-g4-1jZ" secondAttribute="leading" constant="50" id="yBq-r0-DPB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xLm-CZ-zBT"/>
                     </view>
@@ -1194,7 +1194,7 @@ Cgo
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="LnX-7x-DEe">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pge-nl-VxK">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pge-nl-VxK" userLabel="Phone View">
                                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="24"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="UNY-0P-FEe">
@@ -1204,14 +1204,15 @@ Cgo
                                                                                     <constraint firstAttribute="height" constant="24" id="hV2-z7-EJ4"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(555)-333-1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXi-v0-xju">
-                                                                                <rect key="frame" x="54" y="3.5" width="107" height="17"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No phone available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXi-v0-xju">
+                                                                                <rect key="frame" x="54" y="3.5" width="122.5" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <gestureRecognizers/>
                                                                         <constraints>
                                                                             <constraint firstItem="UNY-0P-FEe" firstAttribute="leading" secondItem="pge-nl-VxK" secondAttribute="leading" constant="15" id="7Ow-LM-qYc"/>
                                                                             <constraint firstItem="HXi-v0-xju" firstAttribute="centerY" secondItem="pge-nl-VxK" secondAttribute="centerY" id="PSY-Au-GZX"/>
@@ -1219,8 +1220,11 @@ Cgo
                                                                             <constraint firstItem="UNY-0P-FEe" firstAttribute="centerY" secondItem="pge-nl-VxK" secondAttribute="centerY" id="sOP-47-uge"/>
                                                                             <constraint firstAttribute="height" constant="24" id="t1H-YJ-6sK"/>
                                                                         </constraints>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="qvj-Wi-nub" appends="YES" id="zja-gt-Xm7"/>
+                                                                        </connections>
                                                                     </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOu-oJ-s2N">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOu-oJ-s2N" userLabel="Website View">
                                                                         <rect key="frame" x="0.0" y="26" width="375" height="24"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="BOG-SP-1Yb">
@@ -1230,14 +1234,15 @@ Cgo
                                                                                     <constraint firstAttribute="height" constant="24" id="Sqh-dG-Ab3"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.mytripsapp.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oj-qX-q8Q">
-                                                                                <rect key="frame" x="54" y="3.5" width="139.5" height="17"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No website available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oj-qX-q8Q">
+                                                                                <rect key="frame" x="54" y="3.5" width="132" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <gestureRecognizers/>
                                                                         <constraints>
                                                                             <constraint firstItem="3oj-qX-q8Q" firstAttribute="leading" secondItem="BOG-SP-1Yb" secondAttribute="trailing" constant="15" id="DMh-OD-ld0"/>
                                                                             <constraint firstAttribute="height" constant="24" id="H5N-WE-oQe"/>
@@ -1245,6 +1250,9 @@ Cgo
                                                                             <constraint firstItem="BOG-SP-1Yb" firstAttribute="leading" secondItem="LOu-oJ-s2N" secondAttribute="leading" constant="15" id="t3y-JQ-LSx"/>
                                                                             <constraint firstItem="BOG-SP-1Yb" firstAttribute="centerY" secondItem="LOu-oJ-s2N" secondAttribute="centerY" id="uGI-1X-gyx"/>
                                                                         </constraints>
+                                                                        <connections>
+                                                                            <outletCollection property="gestureRecognizers" destination="QIx-19-M5e" appends="YES" id="rG1-Hb-cTm"/>
+                                                                        </connections>
                                                                     </view>
                                                                 </subviews>
                                                             </stackView>
@@ -1350,15 +1358,27 @@ Cgo
                         <outlet property="moreInfoView" destination="nVE-4S-03k" id="bb0-bE-VMc"/>
                         <outlet property="notesTextView" destination="yre-cA-NdS" id="3Fs-r8-21x"/>
                         <outlet property="pageControl" destination="wDA-mQ-v0y" id="Tc3-tt-Peh"/>
+                        <outlet property="phoneNumber" destination="HXi-v0-xju" id="j5M-aA-HwI"/>
                         <outlet property="photoCollection" destination="BJz-JU-YZo" id="knf-mS-OEJ"/>
                         <outlet property="placeLabel" destination="Hnx-2t-aKE" id="NqE-aI-TIG"/>
                         <outlet property="textViewHeightConstraint" destination="Ydu-6X-xm9" id="d4j-Q4-IO6"/>
+                        <outlet property="website" destination="3oj-qX-q8Q" id="yQA-WI-wMo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGZ-IL-yzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Rln-n1-5bY">
                     <connections>
                         <action selector="tapNotes:" destination="g2N-4w-nMr" id="7L7-gu-kzc"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="qvj-Wi-nub">
+                    <connections>
+                        <action selector="tapPhoneView:" destination="g2N-4w-nMr" id="MXZ-dP-2Oe"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="QIx-19-M5e">
+                    <connections>
+                        <action selector="tapWebsiteView:" destination="g2N-4w-nMr" id="OE2-H1-JVd"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

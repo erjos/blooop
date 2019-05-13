@@ -70,6 +70,7 @@ extension PlaceTableViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell") as! PlaceListTableViewCell
             
             cell.placeNameLabel.text = trip?.getSubLocation(from: indexPath).label
+            cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "listCell") as! ListTableViewCell

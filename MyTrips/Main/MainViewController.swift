@@ -11,10 +11,10 @@ import GooglePlaces
 
 //TODO:
 //Next Release:
-//> Let menu close when we pan swipe it...
-//> make menu prettier
-//> Image or animation or something to put in the table when theres no items listed
+
 //> Add a loading state to the main page for loading trips and loading the autocomplete vc
+//> Allow users to click on places on the map to pull up temp place details and decide if they want to add it to the trip...
+//> Create a way for the app to function offline - handle sessions better
 
 //Stretch goals:
 //> Create a protocol that can abstract out the mechanism of saving the realm data
@@ -159,14 +159,17 @@ class MainViewController: UIViewController {
     }
     
     private func setupMapView(for coordinate: CLLocationCoordinate2D?) {
+        mapContainer?.delegate = self
+        
         if let target = coordinate {
             let camera = GMSCameraPosition.camera(withTarget: target, zoom: 10)
             mapContainer.camera = camera
             locationManager.stopUpdatingLocation()
         }
+        
         if trip != nil {
+            //TODO: evaluate how we handle the coordinate bounds and decide if it works how you want
             coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapContainer)
-            mapContainer?.delegate = self
         }
         self.mapContainer.bringSubview(toFront: self.resetMap)
     }
@@ -302,6 +305,11 @@ extension MainViewController: GMSMapViewDelegate {
             self.coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapView)
             self.resetMap.isHidden = false
         }
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String, name: String, location: CLLocationCoordinate2D) {
+        //TODO: implement this on the map to allow easier retrieval of places
+        //can be used to retrieve interactions from the map
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {

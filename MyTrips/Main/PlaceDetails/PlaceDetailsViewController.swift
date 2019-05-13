@@ -33,6 +33,8 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
     @IBOutlet weak var moreInfoView: UIView!
+    @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet weak var website: UILabel!
     
     @IBAction func didPressClose(_ sender: Any) {
         delegate?.shouldCloseDetails()
@@ -61,6 +63,23 @@ class PlaceDetailsViewController: UIViewController {
     
     @IBAction func clickDate(_ sender: Any) {
         self.dateField.becomeFirstResponder()
+    }
+    
+    @IBAction func tapPhoneView(_ sender: Any) {
+        guard let phone = gmsPlace?.phoneNumber else {
+            return
+        }
+        guard let url = URL(string: phone) else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    @IBAction func tapWebsiteView(_ sender: Any) {
+        guard let url = gmsPlace?.website else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc func notesDoneAction() {
@@ -117,6 +136,14 @@ class PlaceDetailsViewController: UIViewController {
         //setup more-info
         self.moreInfoView.isHidden = true
         self.moreInfoHeightConstraint.constant = 0
+        
+        if let phone = gmsPlace?.phoneNumber {
+            self.phoneNumber.text = phone
+        }
+        
+        if let website = gmsPlace?.website?.description {
+            self.website.text = website
+        }
         
         //setup notes
         notesTextView.inputAccessoryView = createInputToolbar(doneSelector: #selector(self.notesDoneAction), cancelButton: false, cancelSelector: nil)
