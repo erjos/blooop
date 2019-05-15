@@ -53,6 +53,8 @@ class MainViewController: UIViewController {
     var currentTripStatus: TripSaveStatus = .Empty
     //used to restrict search results
     var coordinateBounds: GMSCoordinateBounds?
+    let maxBoundingZoom: Float = 10.0
+    
     var mapMarkers:[GMSMarker]?
     
     var placeTableViewController: PlaceTableViewController?
@@ -163,13 +165,12 @@ class MainViewController: UIViewController {
         mapContainer?.delegate = self
         
         if let target = coordinate {
-            let camera = GMSCameraPosition.camera(withTarget: target, zoom: 10)
+            let camera = GMSCameraPosition.camera(withTarget: target, zoom: maxBoundingZoom)
             mapContainer.camera = camera
             locationManager.stopUpdatingLocation()
         }
         
         if trip != nil {
-            //TODO: evaluate how we handle the coordinate bounds and decide if it works how you want
             coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapContainer)
         }
         self.mapContainer.bringSubview(toFront: self.resetMap)
@@ -300,10 +301,21 @@ extension MainViewController: CLLocationManagerDelegate {
 }
 
 extension MainViewController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        if trip != nil {
+            
+        }
+    }
+    
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        //TODO: Improve coordinate bounds to only expand past the initial zoom if we zoom out - dont want to shrink the search space, because users might zoom in and not know where things are they want to search for are - keep the initial bounds though as a good starting point
         if let _ = trip {
-            self.coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapView)
+            let zoom = mapView.camera.zoom
+            //if zoom is <= to maxBoundingZoom we know we either zoomed out or moved camera position and should update search to contain new bounds
+            if(zoom <= self.maxBoundingZoom) {
+                //reset restriction bounds to new camera view
+                self.coordinateBounds = LocationManager.getLocationBoundsFromMap(map: mapView)
+            }
             self.resetMap.isHidden = false
         }
     }
