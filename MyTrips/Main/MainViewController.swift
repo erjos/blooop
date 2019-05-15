@@ -11,7 +11,6 @@ import GooglePlaces
 
 //TODO:
 //Next Release:
-//> display data on the table like the date if it exists
 
 //> Add a loading state to the main page for loading trips and loading the autocomplete vc
 //> Allow users to click on places on the map to pull up temp place details and decide if they want to add it to the trip...
@@ -47,7 +46,7 @@ class MainViewController: UIViewController {
     var trip: PrimaryLocation? {
         didSet {
             self.placeTableViewController?.trip = self.trip
-            placeTableViewController?.placeholderImage.isHidden = true
+            placeTableViewController?.placeHolderView.isHidden = true
         }
     }
     var currentTripStatus: TripSaveStatus = .Empty
