@@ -10,7 +10,6 @@ import GooglePlaces
 
 //TODO:
 //> allow users to add a custom label besides the place location name
-//> reflect the new data (date, custome label, etc.) on the expanded cell view on the table
 
 //TODO: we have some inconsistencies with how we label things right now - between the place label and the gms name (right now they're the same but wont always be)
 
@@ -35,6 +34,7 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var moreInfoView: UIView!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var website: UILabel!
+    @IBOutlet weak var contentView: UIView!
     
     @IBAction func didPressClose(_ sender: Any) {
         delegate?.shouldCloseDetails()
@@ -59,6 +59,10 @@ class PlaceDetailsViewController: UIViewController {
             self.moreInfoHeightConstraint.constant = self.moreInfoHeightConstraint.constant == 60 ? 0 : 60
             self.view.layoutIfNeeded()
         }
+    }
+    
+    func getContentHeight()->CGFloat {
+        return contentView.frame.height
     }
     
     @IBAction func clickDate(_ sender: Any) {

@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mapContainer: GMSMapView!
     @IBOutlet weak var resetMap: UIButton!
     
-    //not sure that we need this - doesnt do what we want
+    @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
     
     //prob want to pull this out and manage the location via a delegate
@@ -238,7 +238,11 @@ class MainViewController: UIViewController {
     func closePlaceDetails() {
         if let placeDetails = placeDetailsViewController {
             removeContentController(viewController: placeDetails)
-            
+            UIView.animate(withDuration: 0.2) {
+                //set priority back to low priority
+                self.containerHeightConstraint.priority = UILayoutPriority.init(rawValue: 997)
+                self.view.layoutIfNeeded()
+            }
             //de-select map marker
             self.mapContainer.selectedMarker = nil
         }
@@ -293,7 +297,8 @@ extension MainViewController: MenuDelegate {
 }
 
 extension MainViewController: CLLocationManagerDelegate {
-    //TODO: test this on physical device - I think it is used to determine the starting location when a user first loads the map
+    
+    //TODO: not sure what this does - I think a blank map just initializes over 0,0 coordinates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         setupMapView(for: locations.last?.coordinate)
     }
@@ -339,8 +344,6 @@ extension MainViewController: GMSMapViewDelegate {
         self.didSelectPlace(place: subLocation, indexPath: indexPath)
         return true
     }
-    
-    
 }
 
 extension MainViewController: GMSAutocompleteViewControllerDelegate {
@@ -377,8 +380,6 @@ extension MainViewController: PlaceDetailsDelegate {
 
 extension MainViewController : PlaceTableDelegate {
     func didSelectPlace(place: SubLocation, indexPath: IndexPath) {
-        //select the correct marker
-        self.mapContainer.selectedMarker = mapMarkers?[indexPath.row]
         guard let detailsVC = UIStoryboard(name: "MyTrip", bundle: Bundle.main).instantiateViewController(withIdentifier: "placeDetailsVC") as? PlaceDetailsViewController else {
             return
         }
@@ -386,6 +387,15 @@ extension MainViewController : PlaceTableDelegate {
         detailsVC.place = place
         detailsVC.delegate = self
         addContentController(viewController: detailsVC, container: containerView)
+        
+        UIView.animate(withDuration: 0.2) {
+            //change priority to higher than equal-heights constraint
+            self.containerHeightConstraint.priority = UILayoutPriority.init(rawValue: 999)
+            self.containerHeightConstraint.constant = detailsVC.getContentHeight()
+            self.view.layoutIfNeeded()
+        }
+        //select the correct marker - needs to happen after the animation
+        self.mapContainer.selectedMarker = mapMarkers?[indexPath.row]
         placeDetailsViewController = detailsVC
     }
 }
