@@ -12,7 +12,7 @@ import GooglePlaces
 //TODO:
 //Next Release 2.0:
 //> Add a loading state to the main page for loading trips and loading the autocomplete vc **
-//> Provide way for users to delete trips..
+//> add those things to the info pList
 
 //Next Release 2.1:
 //> Allow users to click on places on the map to pull up temp place details and decide if they want to add it to the trip...
