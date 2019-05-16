@@ -44,9 +44,8 @@ class MainViewController: UIViewController {
     
     //only exists in normal height variant - aka portrait
     @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var containerView: UIView!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     //prob want to pull this out and manage the location via a delegate
     var locationManager: CLLocationManager!
     
@@ -67,9 +66,6 @@ class MainViewController: UIViewController {
     var placeTableViewController: PlaceTableViewController?
     var placeDetailsViewController: PlaceDetailsViewController?
     var tableLandscapeWidth: CGFloat = 300
-    
-    //I should be able to add the gesture to any view from this viewcontroller
-    
     
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
@@ -123,6 +119,8 @@ class MainViewController: UIViewController {
         self.drawerView.translatesAutoresizingMaskIntoConstraints = false
         //set table width value in case we change the storyboard
         self.tableLandscapeWidth = self.containerLandscapeWidth.constant
+        
+        self.activityIndicator.isHidden = true
     }
     
     //consider combining these two methods
@@ -293,6 +291,9 @@ extension MainViewController: MenuDelegate {
     }
     
     func shouldLoadTrip(trip: PrimaryLocation) {
+        view.bringSubview(toFront: activityIndicator)
+        activityIndicator.isHidden = false
+        
         closePlaceDetails()
         
         self.trip = trip
@@ -311,6 +312,7 @@ extension MainViewController: MenuDelegate {
                 //sets the view of the map
                 self.handleMapSetup(for: place)
                 self.closeMenu()
+                self.activityIndicator.isHidden = true
             }
         }
     }

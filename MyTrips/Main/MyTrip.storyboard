@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mC5-5t-aKE">
-    <device id="retina4_7" orientation="landscape">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController id="mC5-5t-aKE" customClass="MainViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3CE-en-Fu1">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYJ-NP-s7u" userLabel="Search View">
-                                <rect key="frame" x="60" y="15" width="592" height="45"/>
+                                <rect key="frame" x="60" y="35" width="300" height="45"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="xxe-Gj-MDC">
-                                        <rect key="frame" x="553" y="10.5" width="24" height="24"/>
+                                        <rect key="frame" x="261" y="10.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="9iO-3P-JeL"/>
                                             <constraint firstAttribute="width" constant="24" id="iEZ-O4-UTT"/>
@@ -49,10 +49,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddJ-Gs-ct6" userLabel="Table Container">
-                                <rect key="frame" x="0.0" y="75" width="300" height="300"/>
+                                <rect key="frame" x="0.0" y="388.5" width="375" height="278.5"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPI-BJ-1yl">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="278.5"/>
                                         <connections>
                                             <segue destination="ezm-Lf-kf6" kind="embed" identifier="placeTableEmbed" id="MIe-ah-61a"/>
                                         </connections>
@@ -80,7 +80,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKg-ia-jKm">
-                                <rect key="frame" x="15" y="15" width="45" height="45"/>
+                                <rect key="frame" x="15" y="35" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="efl-4l-Cje"/>
@@ -92,10 +92,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpj-qZ-DAL" userLabel="Menu Drawer View">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-B7-dZM">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="375"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                                         <connections>
                                             <segue destination="2hB-m7-uCQ" kind="embed" identifier="drawerEmbedSegue" id="C6A-U3-dNK"/>
                                         </connections>
@@ -112,7 +112,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvV-zJ-qbj" userLabel="Clear Drawer View">
-                                <rect key="frame" x="200" y="0.0" width="0.0" height="375"/>
+                                <rect key="frame" x="200" y="0.0" width="0.0" height="667"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="y4y-fX-lTj"/>
@@ -122,10 +122,10 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaZ-WO-CL0" userLabel="Map Container" customClass="GMSMapView">
-                                <rect key="frame" x="300" y="75" width="352" height="285"/>
+                                <rect key="frame" x="15" y="95" width="345" height="278.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ce1-14-DYb">
-                                        <rect key="frame" x="323" y="256" width="24" height="24"/>
+                                        <rect key="frame" x="316" y="249.5" width="24" height="24"/>
                                         <state key="normal" image="refresh"/>
                                         <connections>
                                             <action selector="tapReset:" destination="mC5-5t-aKE" eventType="touchUpInside" id="rpb-2G-WkP"/>
@@ -138,6 +138,10 @@
                                     <constraint firstAttribute="bottom" secondItem="Ce1-14-DYb" secondAttribute="bottom" constant="5" id="XVN-16-aXL"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="s2c-lt-yv7">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -149,6 +153,8 @@
                             <constraint firstItem="aaZ-WO-CL0" firstAttribute="leading" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" id="ULS-hU-a0e"/>
                             <constraint firstItem="hpj-qZ-DAL" firstAttribute="top" secondItem="3CE-en-Fu1" secondAttribute="top" id="XgS-nm-vt2"/>
                             <constraint firstAttribute="trailing" secondItem="ddJ-Gs-ct6" secondAttribute="trailing" id="ccP-Gl-giA"/>
+                            <constraint firstItem="s2c-lt-yv7" firstAttribute="centerX" secondItem="3CE-en-Fu1" secondAttribute="centerX" id="cmt-30-iuL"/>
+                            <constraint firstItem="s2c-lt-yv7" firstAttribute="centerY" secondItem="3CE-en-Fu1" secondAttribute="centerY" id="dbm-hB-Rw4"/>
                             <constraint firstItem="XvV-zJ-qbj" firstAttribute="top" secondItem="3CE-en-Fu1" secondAttribute="top" id="fx5-Ly-Bdi"/>
                             <constraint firstItem="TKg-ia-jKm" firstAttribute="top" secondItem="SYJ-NP-s7u" secondAttribute="top" id="hIp-L9-WVR"/>
                             <constraint firstItem="aaZ-WO-CL0" firstAttribute="leading" secondItem="SmU-B9-bFQ" secondAttribute="leading" constant="15" id="hZQ-q2-hTw"/>
@@ -195,6 +201,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="s2c-lt-yv7" id="HqK-Sg-kqy"/>
                         <outlet property="clearDrawerView" destination="XvV-zJ-qbj" id="eKR-K7-ve4"/>
                         <outlet property="containerHeightConstraint" destination="Hco-9A-Hw7" id="4ig-Pw-Ird"/>
                         <outlet property="containerLandscapeWidth" destination="gSz-Kx-oeY" id="Fo6-dR-jxI"/>
@@ -296,11 +303,11 @@
             <objects>
                 <viewController id="2hB-m7-uCQ" customClass="DrawerViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dgO-Qu-Izv">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="odN-Uu-sFH">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="200" height="647"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="647" id="8KH-Fh-17h"/>
@@ -360,11 +367,11 @@
             <objects>
                 <viewController title="About the App" id="i0A-4U-c9d" customClass="AboutAppViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DRW-ia-6WF">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMj-uy-dm6">
-                                <rect key="frame" x="0.0" y="32" width="200" height="343"/>
+                                <rect key="frame" x="0.0" y="64" width="200" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -1044,7 +1051,7 @@ Cgo
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4w-ob-QrY">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
+                                <rect key="frame" x="0.0" y="20" width="200" height="44"/>
                                 <items>
                                     <navigationItem title="About the App" id="G0C-Jv-hgT">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="vFr-Jk-c93">
