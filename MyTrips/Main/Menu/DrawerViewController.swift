@@ -185,6 +185,7 @@ extension DrawerViewController: UITableViewDelegate {
         }
         header.delegate = self
         header.setupHeaderView(tableState: tableState)
+        tableView.setEditing(false, animated: false)
         return header
     }
     

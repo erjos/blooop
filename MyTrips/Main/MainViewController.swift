@@ -273,6 +273,8 @@ extension MainViewController: MenuDelegate {
     
     //Used to clear the map when user wants to create a new trip
     func shouldClearMap(trip: PrimaryLocation?) {
+        //block to check if the trip we deleted is invalidated -
+        //TODO: could probably pass something other than the trip - we dont need it, we just need to know to check invalidation
         if let _ = trip {
             guard self.trip?.isInvalidated ?? false else {
                 return
