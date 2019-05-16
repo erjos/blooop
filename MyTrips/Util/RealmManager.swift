@@ -15,6 +15,17 @@ class RealmManager {
         }
     }
     
+    static func deletePrimaryLocation(trip: PrimaryLocation) {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.delete(trip)
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
     static func fetchData() -> Results<PrimaryLocation>? {
         var results: Results<PrimaryLocation>?
         do {

@@ -272,13 +272,17 @@ extension MainViewController: MenuDelegate {
     }
     
     //Used to clear the map when user wants to create a new trip
-    func shouldClearMap() {
+    func shouldClearMap(trip: PrimaryLocation?) {
+        if let _ = trip {
+            guard self.trip?.isInvalidated ?? false else {
+                return
+            }
+        }
         self.closePlaceDetails()
         self.mapContainer.clear()
         self.trip = nil
         self.currentTripStatus = .Empty
         self.placeTableViewController?.placeTableView.reloadData()
-        closeMenu()
         resetMap.isHidden = true
     }
     

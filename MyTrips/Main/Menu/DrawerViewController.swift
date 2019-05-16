@@ -97,7 +97,7 @@ class DrawerViewController: UIViewController {
         
         switch selection {
         case .NewTrip:
-            menuDelegate?.shouldClearMap()
+            menuDelegate?.shouldClearMap(trip: nil)
             menuDelegate?.shouldCloseMenu(menu: self)
         case .MyTrips:
             trips = RealmManager.fetchData()
@@ -190,13 +190,25 @@ extension DrawerViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete) {
-            //throw an alert asking if they're sure they want to delete and will lose all data
-            //get the trip that was selected using the index path
-            //in the success alert handler delete the trip using the realm manager
-            //call the delete rows from table view in the same completion
+            //move this logic to an alert generator...
+            let alert = UIAlertController(title: "Are you sure you want to delete this trip?", message: "You will lose all saved data associated with this trip.", preferredStyle: .alert)
+            let delete = UIAlertAction(title: "Delete", style: .default) { (action) in
+                //get the trip that was selected using the index path
+                guard let trip = self.trips?[indexPath.row] else {
+                    return
+                }
+                //delete data from realm
+                RealmManager.deletePrimaryLocation(trip: trip)
+                //remove from table
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.menuDelegate?.shouldClearMap(trip: trip)
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(delete)
+            alert.addAction(cancel)
             
-            //remove from table
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            //throw an alert asking if they're sure they want to delete and will lose all data
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
@@ -237,7 +249,7 @@ extension DrawerViewController: UITableViewDataSource {
 
 protocol MenuDelegate: class {
     func shouldCloseMenu(menu: DrawerViewController)
-    func shouldClearMap()
+    func shouldClearMap(trip: PrimaryLocation?)
     func shouldLoadTrip(trip: PrimaryLocation)
     
     //might be able to pull this function
