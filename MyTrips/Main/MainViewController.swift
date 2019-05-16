@@ -17,6 +17,7 @@ import GooglePlaces
 //Next Release 2.1:
 //> Allow users to click on places on the map to pull up temp place details and decide if they want to add it to the trip...
 //> Create a way for the app to function offline - handle sessions better
+//> should probably ensure there is a cache in place for the pictures that we've already loaded on the table view
 
 //Stretch goals:
 //> Create a protocol that can abstract out the mechanism of saving the realm data
@@ -247,6 +248,7 @@ class MainViewController: UIViewController {
             }
             //de-select map marker
             self.mapContainer.selectedMarker = nil
+            self.placeTableViewController?.placeTableView.reloadData()
         }
     }
 }
