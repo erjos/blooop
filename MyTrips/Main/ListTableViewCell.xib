@@ -61,7 +61,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpV-6a-qsY">
-                        <rect key="frame" x="15" y="106.5" width="282" height="18"/>
+                        <rect key="frame" x="15" y="106.5" width="41" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -75,15 +75,18 @@
                     <constraint firstAttribute="trailing" secondItem="CMY-5i-9Hh" secondAttribute="trailing" id="BKz-J2-LRX"/>
                     <constraint firstItem="CMY-5i-9Hh" firstAttribute="top" secondItem="Q5U-Ek-EF6" secondAttribute="bottom" id="BOh-BY-eVR"/>
                     <constraint firstAttribute="bottom" secondItem="CMY-5i-9Hh" secondAttribute="bottom" id="CHg-A5-lGo"/>
-                    <constraint firstItem="Q5U-Ek-EF6" firstAttribute="leading" secondItem="JpV-6a-qsY" secondAttribute="trailing" constant="10" id="L2c-Ko-PJx"/>
+                    <constraint firstItem="5Vl-OX-sjO" firstAttribute="leading" secondItem="Q5U-Ek-EF6" secondAttribute="trailing" constant="10" id="FJ2-Da-4nO"/>
+                    <constraint firstItem="Q5U-Ek-EF6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JpV-6a-qsY" secondAttribute="trailing" constant="10" id="L2c-Ko-PJx"/>
                     <constraint firstAttribute="trailing" secondItem="Q5U-Ek-EF6" secondAttribute="trailing" constant="20" id="LcP-UT-iJ0"/>
                     <constraint firstItem="5Vl-OX-sjO" firstAttribute="top" secondItem="m0o-gw-pVk" secondAttribute="bottom" constant="10" id="NHc-3r-mpy"/>
                     <constraint firstItem="Q5U-Ek-EF6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m0o-gw-pVk" secondAttribute="trailing" constant="10" id="NlY-50-fIc"/>
                     <constraint firstItem="JpV-6a-qsY" firstAttribute="top" secondItem="5Vl-OX-sjO" secondAttribute="bottom" constant="10" id="Og7-DC-hbn"/>
                     <constraint firstItem="Q5U-Ek-EF6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Raa-70-Hwh"/>
                     <constraint firstItem="m0o-gw-pVk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="TgQ-na-nDN"/>
+                    <constraint firstItem="Q5U-Ek-EF6" firstAttribute="leading" secondItem="m0o-gw-pVk" secondAttribute="leading" id="aTI-zW-IP3"/>
                     <constraint firstItem="CMY-5i-9Hh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mL0-df-pOY"/>
                     <constraint firstItem="JpV-6a-qsY" firstAttribute="leading" secondItem="5Vl-OX-sjO" secondAttribute="leading" id="sah-VQ-jdk"/>
+                    <constraint firstItem="Q5U-Ek-EF6" firstAttribute="trailing" secondItem="m0o-gw-pVk" secondAttribute="trailing" id="szr-PM-Ttz"/>
                     <constraint firstItem="5Vl-OX-sjO" firstAttribute="leading" secondItem="m0o-gw-pVk" secondAttribute="leading" id="t2f-ml-SRL"/>
                     <constraint firstItem="Q5U-Ek-EF6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="tYN-x9-95S">
                         <variation key="heightClass=compact" constant="15"/>
@@ -93,22 +96,30 @@
                     <mask key="constraints">
                         <exclude reference="0wz-EW-ecg"/>
                         <exclude reference="TgQ-na-nDN"/>
-                        <exclude reference="BOh-BY-eVR"/>
                         <exclude reference="7Na-LL-rOp"/>
+                        <exclude reference="aTI-zW-IP3"/>
+                        <exclude reference="szr-PM-Ttz"/>
                         <exclude reference="tYN-x9-95S"/>
+                        <exclude reference="FJ2-Da-4nO"/>
+                        <exclude reference="BOh-BY-eVR"/>
                     </mask>
                 </variation>
                 <variation key="heightClass=compact">
                     <mask key="constraints">
                         <include reference="0wz-EW-ecg"/>
                         <include reference="TgQ-na-nDN"/>
-                        <exclude reference="BOh-BY-eVR"/>
                         <exclude reference="4NM-e6-vYU"/>
                         <include reference="7Na-LL-rOp"/>
+                        <exclude reference="L2c-Ko-PJx"/>
                         <exclude reference="LcP-UT-iJ0"/>
                         <exclude reference="NlY-50-fIc"/>
                         <exclude reference="Raa-70-Hwh"/>
-                        <include reference="tYN-x9-95S"/>
+                        <include reference="aTI-zW-IP3"/>
+                        <exclude reference="szr-PM-Ttz"/>
+                        <exclude reference="tYN-x9-95S"/>
+                        <include reference="FJ2-Da-4nO"/>
+                        <exclude reference="t2f-ml-SRL"/>
+                        <exclude reference="BOh-BY-eVR"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

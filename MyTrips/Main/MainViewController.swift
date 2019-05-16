@@ -10,9 +10,11 @@ import GoogleMaps
 import GooglePlaces
 
 //TODO:
-//Next Release:
+//Next Release 2.0:
+//> Add a loading state to the main page for loading trips and loading the autocomplete vc **
+//> Provide way for users to delete trips..
 
-//> Add a loading state to the main page for loading trips and loading the autocomplete vc
+//Next Release 2.1:
 //> Allow users to click on places on the map to pull up temp place details and decide if they want to add it to the trip...
 //> Create a way for the app to function offline - handle sessions better
 
@@ -388,12 +390,14 @@ extension MainViewController : PlaceTableDelegate {
         detailsVC.delegate = self
         addContentController(viewController: detailsVC, container: containerView)
         
+        //what happens in landscape?
         UIView.animate(withDuration: 0.2) {
             //change priority to higher than equal-heights constraint
             self.containerHeightConstraint.priority = UILayoutPriority.init(rawValue: 999)
             self.containerHeightConstraint.constant = detailsVC.getContentHeight()
             self.view.layoutIfNeeded()
         }
+        
         //select the correct marker - needs to happen after the animation
         self.mapContainer.selectedMarker = mapMarkers?[indexPath.row]
         placeDetailsViewController = detailsVC
@@ -458,5 +462,4 @@ extension MainViewController : UIGestureRecognizerDelegate {
             break
         }
     }
-    
 }
