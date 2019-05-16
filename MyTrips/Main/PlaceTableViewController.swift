@@ -138,7 +138,7 @@ extension PlaceTableViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if(editingStyle == .delete){
+        if(editingStyle == .delete) {
             guard let location = trip else {
                 return
             }

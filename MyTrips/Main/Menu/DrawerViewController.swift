@@ -120,11 +120,23 @@ class DrawerViewController: UIViewController {
         //TODO: have to change this if we modify design of the table (ie. header and footer)
         self.tableHeighConstraint.constant = CGFloat((CELL_HEIGHT * count) + HEADER_HEIGHT + HEADER_HEIGHT)
     }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        //checks to make sure editing is off - keeps edit button working if user swipes to delete
+        self.menuTableView.setEditing(false, animated: animated)
+        self.menuTableView.setEditing(editing, animated: animated)
+    }
 }
 
 extension DrawerViewController: HeaderViewDelegate {
     func didPressBack() {
         changeTableState(state: .Menu)
+    }
+    
+    func didPressEdit(shouldEdit: Bool) {
+        setEditing(shouldEdit, animated: true)
     }
 }
 
@@ -174,6 +186,18 @@ extension DrawerViewController: UITableViewDelegate {
         header.delegate = self
         header.setupHeaderView(tableState: tableState)
         return header
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete) {
+            //throw an alert asking if they're sure they want to delete and will lose all data
+            //get the trip that was selected using the index path
+            //in the success alert handler delete the trip using the realm manager
+            //call the delete rows from table view in the same completion
+            
+            //remove from table
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
 

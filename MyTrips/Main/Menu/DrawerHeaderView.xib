@@ -31,18 +31,30 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74d-MA-5ti">
+                    <rect key="frame" x="330" y="18" width="30" height="30"/>
+                    <state key="normal" title="Edit">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="editButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="2nx-5x-dSa"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.1773212874" green="0.1773212874" blue="0.1773212874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="bab-wx-PmR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2NX-LP-gXJ"/>
                 <constraint firstItem="VRr-no-qKv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2pK-Kl-hba"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="74d-MA-5ti" secondAttribute="trailing" constant="15" id="40g-JM-9Jo"/>
                 <constraint firstItem="bab-wx-PmR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="5Pq-Q9-tV0"/>
+                <constraint firstItem="74d-MA-5ti" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="C7E-j6-teb"/>
                 <constraint firstItem="VRr-no-qKv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="39" id="mTM-cY-LBk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="backButton" destination="bab-wx-PmR" id="QVf-Ld-Nmc"/>
+                <outlet property="editDoneButton" destination="74d-MA-5ti" id="2Xf-qs-DLG"/>
                 <outlet property="headerLabel" destination="VRr-no-qKv" id="cY7-su-5pW"/>
                 <outlet property="headerLeadingConstraint" destination="mTM-cY-LBk" id="LHl-mo-jbi"/>
             </connections>
