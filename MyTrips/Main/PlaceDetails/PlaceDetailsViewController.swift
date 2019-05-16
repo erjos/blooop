@@ -65,6 +65,10 @@ class PlaceDetailsViewController: UIViewController {
         return contentView.frame.height
     }
     
+    func getContentWidth() ->CGFloat {
+        return contentView.frame.width
+    }
+    
     @IBAction func clickDate(_ sender: Any) {
         self.dateField.becomeFirstResponder()
     }
@@ -222,9 +226,10 @@ extension PlaceDetailsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let deviceWidth = self.view.window?.frame.width
+        let screenWidth = self.contentView.frame.width
         //this number is 70 to give additional room inside the collection - constraints add to 60 outside the collection
-        let cellWidth = deviceWidth! - 70
+        //must be related to the size of the content when we initialize it from the storyboard?
+        let cellWidth = screenWidth - 70
         let size = CGSize.init(width: cellWidth, height: 155)
         return size
     }

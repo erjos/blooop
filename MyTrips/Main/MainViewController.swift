@@ -39,7 +39,12 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mapContainer: GMSMapView!
     @IBOutlet weak var resetMap: UIButton!
     
+    //only exists in short height variant - aka landscape views
+    @IBOutlet weak var containerLandscapeWidth: NSLayoutConstraint!
+    
+    //only exists in normal height variant - aka portrait
     @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var containerView: UIView!
     
     //prob want to pull this out and manage the location via a delegate
@@ -61,6 +66,7 @@ class MainViewController: UIViewController {
     
     var placeTableViewController: PlaceTableViewController?
     var placeDetailsViewController: PlaceDetailsViewController?
+    var tableLandscapeWidth: CGFloat = 300
     
     //I should be able to add the gesture to any view from this viewcontroller
     
@@ -115,6 +121,8 @@ class MainViewController: UIViewController {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         self.view.addGestureRecognizer(panGesture)
         self.drawerView.translatesAutoresizingMaskIntoConstraints = false
+        //set table width value in case we change the storyboard
+        self.tableLandscapeWidth = self.containerLandscapeWidth.constant
     }
     
     //consider combining these two methods
@@ -244,6 +252,8 @@ class MainViewController: UIViewController {
             UIView.animate(withDuration: 0.2) {
                 //set priority back to low priority
                 self.containerHeightConstraint.priority = UILayoutPriority.init(rawValue: 997)
+                //idk if we need to do this - could keep the other width and remove this hardcoded value or at least store it dynamically...
+                self.containerLandscapeWidth.constant = self.tableLandscapeWidth
                 self.view.layoutIfNeeded()
             }
             //de-select map marker
@@ -392,16 +402,17 @@ extension MainViewController : PlaceTableDelegate {
         detailsVC.delegate = self
         addContentController(viewController: detailsVC, container: containerView)
         
-        //what happens in landscape?
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.2, animations: {
             //change priority to higher than equal-heights constraint
             self.containerHeightConstraint.priority = UILayoutPriority.init(rawValue: 999)
             self.containerHeightConstraint.constant = detailsVC.getContentHeight()
+            self.containerLandscapeWidth.constant = detailsVC.getContentWidth()
             self.view.layoutIfNeeded()
+        }) { (isComplete) in
+            //select the correct marker - needs to happen after the animation
+            self.mapContainer.selectedMarker = self.mapMarkers?[indexPath.row]
         }
         
-        //select the correct marker - needs to happen after the animation
-        self.mapContainer.selectedMarker = mapMarkers?[indexPath.row]
         placeDetailsViewController = detailsVC
     }
 }
