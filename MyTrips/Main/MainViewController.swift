@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
     var coordinateBounds: GMSCoordinateBounds?
     let maxBoundingZoom: Float = 10.0
     
-    var mapMarkers:[GMSMarker]?
+    var mapMarkers = [GMSMarker]()
     
     var placeTableViewController: PlaceTableViewController?
     var placeDetailsViewController: PlaceDetailsViewController?
@@ -167,7 +167,7 @@ class MainViewController: UIViewController {
     
     private func handleMapSetup(for place: GMSPlace?) {
         //check to see if a marker exists - make sure we use the existing marker to setup the view so its more relevant to the user
-        if let firstMarker = self.mapMarkers?.first {
+        if let firstMarker = self.mapMarkers.first {
             self.setupMapView(for: firstMarker.position)
         } else {
             self.setupMapView(for:place?.coordinate)
@@ -239,14 +239,14 @@ class MainViewController: UIViewController {
             
             let marker = mapContainer.addMapMarker(for: place, label: place.name)
             //add new marker to the list
-            mapMarkers?.append(marker)
+            mapMarkers.append(marker)
             placeTableViewController?.placeTableView.reloadData()
         }
     }
     
     func deleteMapMarker(indexPath: IndexPath) {
-        let marker = mapMarkers?.remove(at: indexPath.row)
-        marker?.map = nil
+        let marker = mapMarkers.remove(at: indexPath.row)
+        marker.map = nil
     }
     
     func closePlaceDetails() {
@@ -358,7 +358,7 @@ extension MainViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         closePlaceDetails()
-        let marker = mapMarkers?
+        let marker = mapMarkers
             .enumerated()
             .first{$0.element == marker}
         guard let markerIndex = marker?.offset else {
@@ -423,7 +423,7 @@ extension MainViewController : PlaceTableDelegate {
             self.view.layoutIfNeeded()
         }) { (isComplete) in
             //select the correct marker - needs to happen after the animation
-            self.mapContainer.selectedMarker = self.mapMarkers?[indexPath.row]
+            self.mapContainer.selectedMarker = self.mapMarkers[indexPath.row]
         }
         
         placeDetailsViewController = detailsVC
