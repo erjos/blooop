@@ -18,6 +18,7 @@ enum TableListView {
 
 protocol PlaceTableDelegate: class {
     func didSelectPlace(place: SubLocation, indexPath: IndexPath)
+    func didTapPlaceholder()
 }
 
 class PlaceTableViewController: UIViewController {
@@ -31,6 +32,9 @@ class PlaceTableViewController: UIViewController {
     var tableListState: TableListView = .Compact
     weak var placeTableDelegate: PlaceTableDelegate?
     
+    @IBAction func didTapPlaceholder(_ sender: Any) {
+        placeTableDelegate?.didTapPlaceholder()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

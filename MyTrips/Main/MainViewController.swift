@@ -11,7 +11,7 @@ import GooglePlaces
 
 //TODO:
 //Next Release 2.0:
-//> Add a loading state to the main page for loading trips and loading the autocomplete vc **
+//> ** show indicator when loading the autocomplete vc **
 //> add those things to the info pList
 
 //Next Release 2.1:
@@ -94,14 +94,19 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func tapSearch(_ sender: Any) {
+        //TODO: contain this in a function named more specific for what it does - call it here and in the place table delegate function
+        activityIndicator.isHidden = false
         let autocompleteController = GMSAutocompleteViewController()
+        //TODO: consider the implications of changing this to bias vs restrict
         autocompleteController.autocompleteBoundsMode = .restrict
         
         if let _ = trip {
             autocompleteController.autocompleteBounds = self.coordinateBounds
         }
         autocompleteController.delegate = self
-        present(autocompleteController, animated: true, completion: nil)
+        present(autocompleteController, animated: true) {
+            self.activityIndicator.isHidden = true
+        }
     }
     
     override func viewDidLoad() {
@@ -422,6 +427,10 @@ extension MainViewController : PlaceTableDelegate {
         }
         
         placeDetailsViewController = detailsVC
+    }
+    
+    func didTapPlaceholder() {
+        self.tapSearch(self)
     }
 }
 

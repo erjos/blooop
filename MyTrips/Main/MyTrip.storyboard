@@ -259,19 +259,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQF-va-Q1p">
                                 <rect key="frame" x="0.0" y="50" width="375" height="229"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="a0F-RB-e2y">
-                                        <rect key="frame" x="50" y="20" width="275" height="189"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="a0F-RB-e2y">
+                                        <rect key="frame" x="90" y="20" width="195" height="189"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.86018880208333337" alpha="0.3965111301369863" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="a0F-RB-e2y" firstAttribute="leading" secondItem="KQF-va-Q1p" secondAttribute="leading" constant="50" id="9oW-6N-J4h"/>
+                                    <constraint firstItem="a0F-RB-e2y" firstAttribute="leading" secondItem="KQF-va-Q1p" secondAttribute="leading" constant="90" id="9oW-6N-J4h"/>
                                     <constraint firstItem="a0F-RB-e2y" firstAttribute="centerX" secondItem="KQF-va-Q1p" secondAttribute="centerX" id="BWN-lD-Lj0"/>
                                     <constraint firstAttribute="bottom" secondItem="a0F-RB-e2y" secondAttribute="bottom" constant="20" id="UXh-bh-Ga3"/>
-                                    <constraint firstAttribute="trailing" secondItem="a0F-RB-e2y" secondAttribute="trailing" constant="50" id="Ux5-KD-ywP"/>
+                                    <constraint firstAttribute="trailing" secondItem="a0F-RB-e2y" secondAttribute="trailing" constant="90" id="Ux5-KD-ywP"/>
                                     <constraint firstItem="a0F-RB-e2y" firstAttribute="top" secondItem="KQF-va-Q1p" secondAttribute="top" constant="20" id="Wt7-PZ-d2I"/>
                                     <constraint firstItem="a0F-RB-e2y" firstAttribute="centerY" secondItem="KQF-va-Q1p" secondAttribute="centerY" id="nnu-nI-8de"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cb1-Gg-IwO" appends="YES" id="M2c-cs-yjG"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -295,6 +299,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fb3-Na-Wr5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cb1-Gg-IwO">
+                    <connections>
+                        <action selector="didTapPlaceholder:" destination="ezm-Lf-kf6" id="fdE-YN-4Bn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1679" y="1071"/>
         </scene>
