@@ -11,8 +11,7 @@ import GooglePlaces
 
 //TODO:
 //Next Release 2.0:
-//> ** show indicator when loading the autocomplete vc **
-//> add those things to the info pList
+// add user defaults functionality to remember last loaded trip -- Store trip name perhaps? Then check on launch and pull it up?
 
 //Next Release 2.1:
 //> Allow users to click on places on the map to pull up temp place details and decide if they want to add it to the trip...
@@ -39,11 +38,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mapContainer: GMSMapView!
     @IBOutlet weak var resetMap: UIButton!
     
-    //only exists in short height variant - aka landscape views
-    @IBOutlet weak var containerLandscapeWidth: NSLayoutConstraint!
-    
-    //only exists in normal height variant - aka portrait
-    @IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mapTableEqualHeight: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     //prob want to pull this out and manage the location via a delegate
@@ -122,8 +117,6 @@ class MainViewController: UIViewController {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         self.view.addGestureRecognizer(panGesture)
         self.drawerView.translatesAutoresizingMaskIntoConstraints = false
-        //set table width value in case we change the storyboard
-        self.tableLandscapeWidth = self.containerLandscapeWidth.constant
         
         self.activityIndicator.isHidden = true
     }
@@ -252,13 +245,7 @@ class MainViewController: UIViewController {
     func closePlaceDetails() {
         if let placeDetails = placeDetailsViewController {
             removeContentController(viewController: placeDetails)
-            UIView.animate(withDuration: 0.2) {
-                //set priority back to low priority
-                self.containerHeightConstraint.priority = UILayoutPriority.init(rawValue: 997)
-                //idk if we need to do this - could keep the other width and remove this hardcoded value or at least store it dynamically...
-                self.containerLandscapeWidth.constant = self.tableLandscapeWidth
-                self.view.layoutIfNeeded()
-            }
+            
             //de-select map marker
             self.mapContainer.selectedMarker = nil
             self.placeTableViewController?.placeTableView.reloadData()
@@ -414,18 +401,8 @@ extension MainViewController : PlaceTableDelegate {
         detailsVC.place = place
         detailsVC.delegate = self
         addContentController(viewController: detailsVC, container: containerView)
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            //change priority to higher than equal-heights constraint
-            self.containerHeightConstraint.priority = UILayoutPriority.init(rawValue: 999)
-            self.containerHeightConstraint.constant = detailsVC.getContentHeight()
-            self.containerLandscapeWidth.constant = detailsVC.getContentWidth()
-            self.view.layoutIfNeeded()
-        }) { (isComplete) in
-            //select the correct marker - needs to happen after the animation
-            self.mapContainer.selectedMarker = self.mapMarkers[indexPath.row]
-        }
-        
+
+        self.mapContainer.selectedMarker = self.mapMarkers[indexPath.row]
         placeDetailsViewController = detailsVC
     }
     

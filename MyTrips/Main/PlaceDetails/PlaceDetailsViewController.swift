@@ -9,9 +9,11 @@ import UIKit
 import GooglePlaces
 
 //TODO:
-//> allow users to add a custom label besides the place location name
+//> allow users to add a custom label besides the place location name?
 
-//TODO: we have some inconsistencies with how we label things right now - between the place label and the gms name (right now they're the same but wont always be)
+//> we have some inconsistencies with how we label things right now - between the place label and the gms name (right now they're the same but wont always be)
+
+//> add category capabilities
 
 class PlaceDetailsViewController: UIViewController {
     var place: SubLocation!
@@ -35,6 +37,7 @@ class PlaceDetailsViewController: UIViewController {
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var website: UILabel!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var collectionHeightConstraint: NSLayoutConstraint!
     
     @IBAction func didPressClose(_ sender: Any) {
         delegate?.shouldCloseDetails()
@@ -61,12 +64,8 @@ class PlaceDetailsViewController: UIViewController {
         }
     }
     
-    func getContentHeight()->CGFloat {
-        return contentView.frame.height
-    }
-    
-    func getContentWidth() ->CGFloat {
-        return contentView.frame.width
+    func getCollectionHeight() -> CGFloat {
+        return self.view.frame.height - 120
     }
     
     @IBAction func clickDate(_ sender: Any) {
@@ -91,7 +90,6 @@ class PlaceDetailsViewController: UIViewController {
     }
     
     @objc func notesDoneAction() {
-        //notesTextView.resignFirstResponder()
         toggleNotes()
     }
     
@@ -166,8 +164,12 @@ class PlaceDetailsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         self.view.layoutIfNeeded()
+        //TODO: wish I had some comments explaining why these are here - idk if they do anything - experiment removing them
         textViewHeightConstraint.constant = notesTextView.getHeightToFit()
         self.collapsedNotesHeight = notesTextView.getHeightToFit()
+        
+        //set the collection height
+        self.collectionHeightConstraint.constant = self.getCollectionHeight()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -188,6 +190,16 @@ class PlaceDetailsViewController: UIViewController {
         self.photoCollection.reloadData()
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.collectionHeightConstraint.constant = self.getCollectionHeight()
+            self.photoCollection.reloadItems(at: self.photoCollection.indexPathsForVisibleItems)
+            self.photoCollection.scrollToItem(at: self.photoCollection.indexPathsForVisibleItems[0], at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
+        }
     }
 }
 
@@ -218,19 +230,31 @@ extension PlaceDetailsViewController: UICollectionViewDataSource {
 
 extension PlaceDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 50.0
+        return 0.0//50.0
     }
     
+    //This just needs to the padding of the cell in the view divided by two - might not need it for the
+    //full width
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 25, 0, 25)
+//        let screenWidth = self.contentView.frame.width
+//        let padding = screenWidth * 0.2
+//        let cellWidth = screenWidth - padding
+//
+//        let extraSpace =
+        
+         return UIEdgeInsetsMake(0, 0, 0, 0)//UIEdgeInsetsMake(0, 25, 0, 25)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenWidth = self.contentView.frame.width
-        //this number is 70 to give additional room inside the collection - constraints add to 60 outside the collection
+        //this number is 70 to give additional room inside the collection - constraints add to 60 outside the collection 25+25+10+10
         //must be related to the size of the content when we initialize it from the storyboard?
-        let cellWidth = screenWidth - 70
-        let size = CGSize.init(width: cellWidth, height: 155)
+        //let padding = screenWidth * 0.2
+        
+        //let cellWidth = screenWidth - padding
+        
+        //.54 ratio used to calculate height of the cell - do we need to use this ratio?
+        let size = CGSize.init(width: screenWidth, height: getCollectionHeight())//(screenWidth * 0.54))
         return size
     }
     
@@ -243,6 +267,10 @@ extension PlaceDetailsViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension PlaceDetailsViewController : UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
+        return proposedContentOffset
+    }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let photoCell = cell as! PhotoCollectionViewCell
         guard !photoCell.imageLoaded else {
@@ -257,14 +285,14 @@ extension PlaceDetailsViewController : UICollectionViewDelegate {
         
         guard metaDataList.count > 0 else {
             //this is setting the thumbnail
-            photoCell.setImage(image: #imageLiteral(resourceName: "picture_thumbnail"), mode: UIViewContentMode.scaleAspectFit)
+            photoCell.setImage(image: #imageLiteral(resourceName: "picture_thumbnail"))
             return
         }
         let metaData = metaDataList[indexPath.row]
         
         //should this be called by a method on the cell like "setFirstImage" ?
         GooglePhotoManager.loadImageForMetadata(photoMetadata: metaData, success: { (image, attributes) in
-            photoCell.setImage(image: image)
+            photoCell.setImage(image: image, mode: UIViewContentMode.scaleAspectFit)
         }) { photoError in
             //error
         }
