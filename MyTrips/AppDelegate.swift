@@ -7,6 +7,7 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var lastTrip: PrimaryLocation?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSPlacesClient.provideAPIKey(Keys.gmsPlacesKey)
@@ -16,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let config = Realm.Configuration.init(schemaVersion: 1, deleteRealmIfMigrationNeeded: true)
         
         Realm.Configuration.defaultConfiguration = config
+        
+        guard let tripID = UserDefaults.standard.string(forKey: "lastTrip") else {
+            return true
+        }
+        
+        //pull from realm
+        let trips = RealmManager.fetchData()
+        self.lastTrip = trips?.first(where: { tripID == $0.locationId })
+        
         //UINavigationBar.styleTitle(with: UIColor.white)
         return true
     }
