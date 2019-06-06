@@ -3,6 +3,8 @@ import GooglePlaces
 import Realm
 import RealmSwift
 
+//***IMPORTANT***
+//Start documenting your schema versions as you move forward to help keep track of migrations
 class PrimaryLocation: Object {
     //probably should just add the place here so that if we need that data again we dont have to fetch it again
     let subLocations = List<SubLocation>()
