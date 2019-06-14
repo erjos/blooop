@@ -7,6 +7,7 @@
 //
 import UIKit
 import RealmSwift
+import FirebaseUI
 
 enum DrawerTableState {
     case Menu
@@ -21,7 +22,7 @@ protocol MenuDataProtocol {
 }
 
 struct MenuData {
-    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.AboutApp, isVisible: true)]
+    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.SignIn, isVisible: true), (item: MenuItem.AboutApp, isVisible: true)]
 }
 
 extension MenuData : MenuDataProtocol {
@@ -56,6 +57,7 @@ extension MenuData : MenuDataProtocol {
 enum MenuItem: String {
     case NewTrip = "New trip"
     case MyTrips = "My trips"
+    case SignIn = "Sign in"
     case AboutApp = "About the app"
 }
 
@@ -102,6 +104,20 @@ class DrawerViewController: UIViewController {
         case .MyTrips:
             trips = RealmManager.fetchData()
             changeTableState(state: .TripList)
+        case .SignIn:
+            //TODO: get this out of here!!!
+            
+            //FirebaseApp.configure()
+            guard let authUI = FUIAuth.defaultAuthUI() else {
+                return
+            }
+            // You need to adopt a FUIAuthDelegate protocol to receive callback
+            authUI.delegate = self
+            let providers: [FUIAuthProvider] = [FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!), FUIEmailAuth()]
+            authUI.providers = providers
+            let authViewController = authUI.authViewController()
+            self.present(authViewController, animated: true, completion: nil)
+            print("sign in")
         case .AboutApp:
             self.performSegue(withIdentifier: "showAboutApp", sender: self)
         }
@@ -245,6 +261,12 @@ extension DrawerViewController: UITableViewDataSource {
             cell.textLabel?.text = trips?[indexPath.row].locationName
             return cell
         }
+    }
+}
+
+extension DrawerViewController: FUIAuthDelegate {
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        //recieve sign in callback
     }
 }
 

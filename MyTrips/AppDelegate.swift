@@ -2,6 +2,7 @@ import UIKit
 import GooglePlaces
 import GoogleMaps
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSPlacesClient.provideAPIKey(Keys.gmsPlacesKey)
         GMSServices.provideAPIKey(Keys.gmsServicesKey)
+        
+        //configure Firebase
+        FirebaseApp.configure()
         
         //TODO: lets wipe the old realm and start from scratch for this version - need to make sure to get rid of this for future migrations
         let config = Realm.Configuration.init(schemaVersion: 1, deleteRealmIfMigrationNeeded: true)
