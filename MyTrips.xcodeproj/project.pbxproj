@@ -14,7 +14,6 @@
 		5262DFA421FE9BA400A2E918 /* DrawerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */; };
 		52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1922F21EBC2B4004F073A /* MainViewController.swift */; };
 		52C4E9482278C9F3006E83F2 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */; };
-		52CF5BD422B46074004A7B30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52CF5BD322B46074004A7B30 /* GoogleService-Info.plist */; };
 		52D79B3B2278EFD9007E8DDE /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */; };
 		52E5F61D213626E700672DE2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5F61C213626E700672DE2 /* Mock.swift */; };
 		52FDB33321F143F600FB6153 /* PlaceTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */; };
@@ -64,7 +63,6 @@
 		527BD2A322B2D82C00A5745B /* MyTrips.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyTrips.entitlements; sourceTree = "<group>"; };
 		52C1922F21EBC2B4004F073A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
-		52CF5BD322B46074004A7B30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
 		52E5F61C213626E700672DE2 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableHeaderView.xib; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 				86A895A82019917D00CE3926 /* Assets.xcassets */,
 				86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */,
 				86A895AD2019917D00CE3926 /* Info.plist */,
-				52CF5BD322B46074004A7B30 /* GoogleService-Info.plist */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 			);
@@ -333,7 +330,6 @@
 				86B7EB15208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib in Resources */,
 				86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */,
 				52FDB33721F148DF00FB6153 /* PlaceListTableViewCell.xib in Resources */,
-				52CF5BD422B46074004A7B30 /* GoogleService-Info.plist in Resources */,
 				52FDB33321F143F600FB6153 /* PlaceTableHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
