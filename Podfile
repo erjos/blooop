@@ -10,6 +10,7 @@ target 'MyTrips' do
   pod 'GooglePlaces'
   pod 'RealmSwift'
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Email'
   pod 'FirebaseUI/Phone'

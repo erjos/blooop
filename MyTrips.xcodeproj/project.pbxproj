@@ -12,9 +12,9 @@
 		5262DFA021F6731400A2E918 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DF9F21F6731400A2E918 /* DrawerViewController.swift */; };
 		5262DFA221FE74BF00A2E918 /* DrawerHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */; };
 		5262DFA421FE9BA400A2E918 /* DrawerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */; };
-		527BD2A222B2D50100A5745B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 527BD2A122B2D50100A5745B /* GoogleService-Info.plist */; };
 		52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1922F21EBC2B4004F073A /* MainViewController.swift */; };
 		52C4E9482278C9F3006E83F2 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */; };
+		52CF5BD422B46074004A7B30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52CF5BD322B46074004A7B30 /* GoogleService-Info.plist */; };
 		52D79B3B2278EFD9007E8DDE /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */; };
 		52E5F61D213626E700672DE2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5F61C213626E700672DE2 /* Mock.swift */; };
 		52FDB33321F143F600FB6153 /* PlaceTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */; };
@@ -61,10 +61,10 @@
 		5262DF9F21F6731400A2E918 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerHeaderView.xib; sourceTree = "<group>"; };
 		5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHeaderView.swift; sourceTree = "<group>"; };
-		527BD2A122B2D50100A5745B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		527BD2A322B2D82C00A5745B /* MyTrips.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyTrips.entitlements; sourceTree = "<group>"; };
 		52C1922F21EBC2B4004F073A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
+		52CF5BD322B46074004A7B30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
 		52E5F61C213626E700672DE2 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableHeaderView.xib; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 				86A895A82019917D00CE3926 /* Assets.xcassets */,
 				86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */,
 				86A895AD2019917D00CE3926 /* Info.plist */,
-				527BD2A122B2D50100A5745B /* GoogleService-Info.plist */,
+				52CF5BD322B46074004A7B30 /* GoogleService-Info.plist */,
 				86B75C3F205950A200D53F90 /* GooglePlaces.framework */,
 				86B75C41205950B200D53F90 /* GoogleMapsBase.framework */,
 			);
@@ -327,13 +327,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				86A895AC2019917D00CE3926 /* LaunchScreen.storyboard in Resources */,
-				527BD2A222B2D50100A5745B /* GoogleService-Info.plist in Resources */,
 				86A895A92019917D00CE3926 /* Assets.xcassets in Resources */,
 				862FBB4020C80FA20078D689 /* MyTrip.storyboard in Resources */,
 				5262DFA221FE74BF00A2E918 /* DrawerHeaderView.xib in Resources */,
 				86B7EB15208F8BF100B2B2A2 /* PhotoCollectionViewCell.xib in Resources */,
 				86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */,
 				52FDB33721F148DF00FB6153 /* PlaceListTableViewCell.xib in Resources */,
+				52CF5BD422B46074004A7B30 /* GoogleService-Info.plist in Resources */,
 				52FDB33321F143F600FB6153 /* PlaceTableHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,18 +392,28 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyTrips/Pods-MyTrips-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

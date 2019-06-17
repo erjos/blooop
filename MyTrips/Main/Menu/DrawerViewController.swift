@@ -111,6 +111,7 @@ class DrawerViewController: UIViewController {
             guard let authUI = FUIAuth.defaultAuthUI() else {
                 return
             }
+            
             // You need to adopt a FUIAuthDelegate protocol to receive callback
             authUI.delegate = self
             let providers: [FUIAuthProvider] = [FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!), FUIEmailAuth()]
@@ -267,6 +268,10 @@ extension DrawerViewController: UITableViewDataSource {
 extension DrawerViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         //recieve sign in callback
+        
+        //use the user id to associate with other data that we store on the backend
+        //ie. trips contain a user id - 
+        
     }
 }
 
