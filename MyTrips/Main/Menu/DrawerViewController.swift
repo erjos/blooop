@@ -22,7 +22,7 @@ protocol MenuDataProtocol {
 }
 
 struct MenuData {
-    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.SignIn, isVisible: true),(item: MenuItem.SignOut, isVisible: false), (item: MenuItem.AboutApp, isVisible: true)]
+    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.SignIn, isVisible: true),(item: MenuItem.SignOut, isVisible: false), (item: MenuItem.SharedTrips, isVisible: true), (item: MenuItem.AboutApp, isVisible: true)]
 }
 
 extension MenuData : MenuDataProtocol {
@@ -59,6 +59,7 @@ enum MenuItem: String {
     case MyTrips = "My trips"
     case SignIn = "Sign in"
     case SignOut = "Sign out"
+    case SharedTrips = "Shared trips"
     case AboutApp = "About the app"
 }
 
@@ -100,6 +101,8 @@ class DrawerViewController: UIViewController {
         
         //called when user sign in state changes and called when set to determine how view handles user sign in state
         self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            //TODO: could also just direct user to signIN when they select shared trips if user is not signed in... might be easier and help with account creation
             guard user != nil else {
                 //user is not signed in
                 self.menuItems.hideItem(item: .SignOut)
@@ -127,6 +130,15 @@ class DrawerViewController: UIViewController {
         self.menuTableView.reloadData()
     }
     
+    func presentSignIn() {
+        //retrieve authVC from firebase Interactor and present it
+        guard let authVC = firebaseInteractor.getAuthViewController(delegate: self) else {
+            return
+        }
+        self.present(authVC, animated: true, completion: nil)
+        print("send to sign in")
+    }
+    
     func handleMenuSelection(indexPath: IndexPath) {
         let selection: MenuItem = menuItems.getItemFor(indexPath: indexPath)
         
@@ -138,12 +150,7 @@ class DrawerViewController: UIViewController {
             trips = RealmManager.fetchData()
             changeTableState(state: .TripList)
         case .SignIn:
-            //retrieve authVC from firebase Interactor and present it
-            guard let authVC = firebaseInteractor.getAuthViewController(delegate: self) else {
-                return
-            }
-            self.present(authVC, animated: true, completion: nil)
-            print("send to sign in")
+            presentSignIn()
         case .SignOut:
             //sign out
             do {
@@ -151,6 +158,15 @@ class DrawerViewController: UIViewController {
             } catch {
                 print ("sign out failed")
             }
+        case .SharedTrips:
+            //display shared trips view
+            //check if user is logged in
+            guard Auth.auth().currentUser != nil else {
+                presentSignIn()
+                return
+            }
+            
+            print("shared trips")
         case .AboutApp:
             self.performSegue(withIdentifier: "showAboutApp", sender: self)
         }
