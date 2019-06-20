@@ -22,7 +22,7 @@ protocol MenuDataProtocol {
 }
 
 struct MenuData {
-    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.SignIn, isVisible: true), (item: MenuItem.AboutApp, isVisible: true)]
+    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.SignIn, isVisible: true),(item: MenuItem.SignOut, isVisible: false), (item: MenuItem.AboutApp, isVisible: true)]
 }
 
 extension MenuData : MenuDataProtocol {
@@ -58,6 +58,7 @@ enum MenuItem: String {
     case NewTrip = "New trip"
     case MyTrips = "My trips"
     case SignIn = "Sign in"
+    case SignOut = "Sign out"
     case AboutApp = "About the app"
 }
 
@@ -70,6 +71,11 @@ class DrawerViewController: UIViewController {
     var menuItems = MenuData()
     var trips: Results<PrimaryLocation>?
     var tableState = DrawerTableState.Menu
+    
+    //not sure if a lazy variable is the best way to do this
+    lazy var firebaseInteractor: FirebaseAuthProtocol = FirebaseInteractor()
+    
+    var handle: AuthStateDidChangeListenerHandle?
     
     let HEADER_HEIGHT = 75
     let CELL_HEIGHT = 44
@@ -89,7 +95,34 @@ class DrawerViewController: UIViewController {
         menuTableView.separatorColor = UIColor.black
     }
     
-    func changeTableState(state: DrawerTableState){
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //called when user sign in state changes and called when set to determine how view handles user sign in state
+        self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            guard user != nil else {
+                //user is not signed in
+                self.menuItems.hideItem(item: .SignOut)
+                self.menuItems.showItem(item: .SignIn)
+                self.menuTableView.reloadData()
+                return
+            }
+            
+            //user is signed in
+            self.menuItems.hideItem(item: .SignIn)
+            self.menuItems.showItem(item: .SignOut)
+            self.menuTableView.reloadData()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        //remove login/user check
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
+    func changeTableState(state: DrawerTableState) {
         self.tableState = state
         self.menuTableView.reloadData()
     }
@@ -105,20 +138,19 @@ class DrawerViewController: UIViewController {
             trips = RealmManager.fetchData()
             changeTableState(state: .TripList)
         case .SignIn:
-            //TODO: get this out of here!!!
-            
-            //FirebaseApp.configure()
-            guard let authUI = FUIAuth.defaultAuthUI() else {
+            //retrieve authVC from firebase Interactor and present it
+            guard let authVC = firebaseInteractor.getAuthViewController(delegate: self) else {
                 return
             }
-            
-            // You need to adopt a FUIAuthDelegate protocol to receive callback
-            authUI.delegate = self
-            let providers: [FUIAuthProvider] = [FUIPhoneAuth(authUI:FUIAuth.defaultAuthUI()!), FUIEmailAuth()]
-            authUI.providers = providers
-            let authViewController = authUI.authViewController()
-            self.present(authViewController, animated: true, completion: nil)
-            print("sign in")
+            self.present(authVC, animated: true, completion: nil)
+            print("send to sign in")
+        case .SignOut:
+            //sign out
+            do {
+                try FUIAuth.defaultAuthUI()?.signOut()
+            } catch {
+                print ("sign out failed")
+            }
         case .AboutApp:
             self.performSegue(withIdentifier: "showAboutApp", sender: self)
         }

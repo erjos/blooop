@@ -15,6 +15,7 @@
 		52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1922F21EBC2B4004F073A /* MainViewController.swift */; };
 		52C4E9482278C9F3006E83F2 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */; };
 		52CF5BD822B85706004A7B30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52CF5BD722B85706004A7B30 /* GoogleService-Info.plist */; };
+		52CF5BDA22BBDCE2004A7B30 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF5BD922BBDCE2004A7B30 /* Authentication.swift */; };
 		52D79B3B2278EFD9007E8DDE /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */; };
 		52E5F61D213626E700672DE2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5F61C213626E700672DE2 /* Mock.swift */; };
 		52FDB33321F143F600FB6153 /* PlaceTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */; };
@@ -65,6 +66,7 @@
 		52C1922F21EBC2B4004F073A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
 		52CF5BD722B85706004A7B30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		52CF5BD922BBDCE2004A7B30 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
 		52E5F61C213626E700672DE2 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableHeaderView.xib; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				52E5F61C213626E700672DE2 /* Mock.swift */,
 				864F67E1207EACD500B6554B /* Models.swift */,
 				52137A282114CA12008F3052 /* ApiKeys.swift */,
+				52CF5BD922BBDCE2004A7B30 /* Authentication.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				5262DFA021F6731400A2E918 /* DrawerViewController.swift in Sources */,
 				52137A292114CA12008F3052 /* ApiKeys.swift in Sources */,
 				86A895A22019917D00CE3926 /* AppDelegate.swift in Sources */,
+				52CF5BDA22BBDCE2004A7B30 /* Authentication.swift in Sources */,
 				525011332137684700A40DAB /* AboutAppViewController.swift in Sources */,
 				8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */,
 				52FDB33621F148DF00FB6153 /* PlaceListTableViewCell.swift in Sources */,
