@@ -18,6 +18,7 @@ class DrawerHeaderView: UIView {
     weak var delegate: HeaderViewDelegate?
     let MENU_LABEL = "Menu"
     let TRIPS_LABEL = "My Trips"
+    let SHARED_LABEL = "Shared with me"
     
     let EDIT_LABEL = "Edit"
     let DONE_LABEL = "Done"
@@ -44,15 +45,19 @@ class DrawerHeaderView: UIView {
         self.editDoneButton.isHidden = shouldHide
     }
     
+    //Is this logic best contained in a method here? - gets more complex with multiple sections
     func setupHeaderView(tableState: DrawerTableState) {
+        
         self.hideBackButton(shouldHide: (tableState == .Menu))
         self.hideEditButton(shouldHide: (tableState == .Menu))
         
         switch tableState {
         case .Menu:
             self.headerLabel.text = MENU_LABEL
-        case .TripList:
+        case .MyTrips:
             self.headerLabel.text = TRIPS_LABEL
+        case .SharedTrips:
+            self.headerLabel.text = SHARED_LABEL
         }
     }
 }

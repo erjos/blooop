@@ -17,6 +17,8 @@ import GooglePlaces
 //> Allow users to click on places on the map to pull up temp place details and decide if they want to add it to the trip...
 //> Create a way for the app to function offline - handle sessions better
 //> should probably ensure there is a cache in place for the pictures that we've already loaded on the table view
+//> Make expanded cells more useful - show number and website or something - dont load pictures everytime cell comes on screen, it looks stupid
+//> make full screen for place details - pictures look shitty and load too slowly
 
 //Stretch goals:
 //> Create a protocol that can abstract out the mechanism of saving the realm data

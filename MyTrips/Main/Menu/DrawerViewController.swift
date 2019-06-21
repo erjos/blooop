@@ -9,9 +9,17 @@ import UIKit
 import RealmSwift
 import FirebaseUI
 
+//settings and share button on the trip header - allows you to share and edit permissions (private/public) straight from the trip
+//shared trips - shows trips that have been shared w you or trips that you collaborate on with others
+//should have a notification badge to indicate when new trips have been shared with you
+//Shared with me
+
+//Collab Trips - should this be saved to myTrips or no? Keep separate for now
+
 enum DrawerTableState {
     case Menu
-    case TripList
+    case MyTrips
+    case SharedTrips
 }
 
 protocol MenuDataProtocol {
@@ -148,7 +156,7 @@ class DrawerViewController: UIViewController {
             menuDelegate?.shouldCloseMenu(menu: self)
         case .MyTrips:
             trips = RealmManager.fetchData()
-            changeTableState(state: .TripList)
+            changeTableState(state: .MyTrips)
         case .SignIn:
             presentSignIn()
         case .SignOut:
@@ -165,6 +173,8 @@ class DrawerViewController: UIViewController {
                 presentSignIn()
                 return
             }
+            
+            changeTableState(state: .SharedTrips)
             
             print("shared trips")
         case .AboutApp:
@@ -222,8 +232,11 @@ extension DrawerViewController: UITableViewDelegate {
         switch tableState {
         case .Menu:
             handleMenuSelection(indexPath: indexPath)
-        case .TripList:
+        case .MyTrips:
             handleTripSelection(indexPath: indexPath)
+        case .SharedTrips:
+            //might be able to use same handleTripSelection method for this
+            print("selected shared trip")
         }
     }
     
@@ -280,16 +293,31 @@ extension DrawerViewController: UITableViewDelegate {
 }
 
 extension DrawerViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch tableState {
+        case .Menu:
+            return 1
+        case .MyTrips:
+            return 1
+        case .SharedTrips:
+            print("load sections for shared trips")
+            return 2
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableState {
         case .Menu:
             let items = menuItems.getVisibleItems()
             self.adjustTableHeight(count: items.count)
             return items.count
-        case .TripList:
+        case .MyTrips:
             let count = trips?.count ?? 0
             self.adjustTableHeight(count: count)
             return count
+        case .SharedTrips:
+            //once logged in we need to load shared trips from the server
+            print("load rows for shared trips")
+            return 3
         }
     }
     
@@ -306,8 +334,12 @@ extension DrawerViewController: UITableViewDataSource {
         case .Menu:
             cell.textLabel?.text = menuItems.getItemFor(indexPath: indexPath).rawValue
             return cell
-        case .TripList:
+        case .MyTrips:
             cell.textLabel?.text = trips?[indexPath.row].locationName
+            return cell
+        case .SharedTrips:
+            //load shared trip data onto cell
+            cell.textLabel?.text = "Shared Trip1"
             return cell
         }
     }

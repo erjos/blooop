@@ -10,7 +10,16 @@ import UIKit
 
 class PlaceTableHeaderView: UIView {
 
+    //TODO: new more button is responsible for:
+    //> editing trip
+    //> controlling default table cell options (compact/expanded)
+    //> sharing with new users and adding collaborators
+    //> controlling share and collab settings (who can edit/view) - if public will only show who can edit
+    //> eventually making trips public or private (trips will be public by default)
+    
     @IBOutlet weak var placeLabel: UILabel!
+    
+    //TODO: add this functionality to the new more menu for trips
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var listButton: UIButton!
     
