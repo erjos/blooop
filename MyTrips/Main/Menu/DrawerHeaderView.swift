@@ -56,7 +56,7 @@ class DrawerHeaderView: UIView {
             self.headerLabel.text = MENU_LABEL
         case .MyTrips:
             self.headerLabel.text = TRIPS_LABEL
-        case .SharedTrips:
+        case .Notifications:
             self.headerLabel.text = SHARED_LABEL
         }
     }

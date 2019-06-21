@@ -19,7 +19,7 @@ import FirebaseUI
 enum DrawerTableState {
     case Menu
     case MyTrips
-    case SharedTrips
+    case Notifications
 }
 
 protocol MenuDataProtocol {
@@ -30,7 +30,7 @@ protocol MenuDataProtocol {
 }
 
 struct MenuData {
-    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.SignIn, isVisible: true),(item: MenuItem.SignOut, isVisible: false), (item: MenuItem.SharedTrips, isVisible: true), (item: MenuItem.AboutApp, isVisible: true)]
+    var itemsList = [(item: MenuItem.NewTrip, isVisible: true), (item: MenuItem.MyTrips, isVisible: true), (item: MenuItem.SignIn, isVisible: true),(item: MenuItem.SignOut, isVisible: false), (item: MenuItem.Notifications, isVisible: true), (item: MenuItem.AboutApp, isVisible: true)]
 }
 
 extension MenuData : MenuDataProtocol {
@@ -67,7 +67,7 @@ enum MenuItem: String {
     case MyTrips = "My trips"
     case SignIn = "Sign in"
     case SignOut = "Sign out"
-    case SharedTrips = "Shared trips"
+    case Notifications = "Notifications"
     case AboutApp = "About the app"
 }
 
@@ -166,17 +166,16 @@ class DrawerViewController: UIViewController {
             } catch {
                 print ("sign out failed")
             }
-        case .SharedTrips:
-            //display shared trips view
+        case .Notifications:
+            //display notifications state
             //check if user is logged in
             guard Auth.auth().currentUser != nil else {
                 presentSignIn()
                 return
             }
             
-            changeTableState(state: .SharedTrips)
-            
-            print("shared trips")
+            changeTableState(state: .Notifications)
+            print("Notifications")
         case .AboutApp:
             self.performSegue(withIdentifier: "showAboutApp", sender: self)
         }
@@ -234,9 +233,9 @@ extension DrawerViewController: UITableViewDelegate {
             handleMenuSelection(indexPath: indexPath)
         case .MyTrips:
             handleTripSelection(indexPath: indexPath)
-        case .SharedTrips:
-            //might be able to use same handleTripSelection method for this
-            print("selected shared trip")
+        case .Notifications:
+            //show messages...
+            print("selected notication")
         }
     }
     
@@ -299,9 +298,8 @@ extension DrawerViewController: UITableViewDataSource {
             return 1
         case .MyTrips:
             return 1
-        case .SharedTrips:
-            print("load sections for shared trips")
-            return 2
+        case .Notifications:
+            return 1
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -314,9 +312,9 @@ extension DrawerViewController: UITableViewDataSource {
             let count = trips?.count ?? 0
             self.adjustTableHeight(count: count)
             return count
-        case .SharedTrips:
-            //once logged in we need to load shared trips from the server
-            print("load rows for shared trips")
+        case .Notifications:
+            //once logged in we need to load notifications from the server
+            print("load rows for notifications")
             return 3
         }
     }
@@ -337,7 +335,7 @@ extension DrawerViewController: UITableViewDataSource {
         case .MyTrips:
             cell.textLabel?.text = trips?[indexPath.row].locationName
             return cell
-        case .SharedTrips:
+        case .Notifications:
             //load shared trip data onto cell
             cell.textLabel?.text = "Shared Trip1"
             return cell
@@ -346,6 +344,7 @@ extension DrawerViewController: UITableViewDataSource {
 }
 
 extension DrawerViewController: FUIAuthDelegate {
+    //TODO: investigate what needs to be done with refresh token and checking if we are authenticated etc...
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         //recieve sign in callback
         

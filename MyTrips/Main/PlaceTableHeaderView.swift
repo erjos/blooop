@@ -19,7 +19,8 @@ class PlaceTableHeaderView: UIView {
     
     @IBOutlet weak var placeLabel: UILabel!
     
-    //TODO: add this functionality to the new more menu for trips
+    @IBOutlet weak var moreButton: UIButton!
+    //TODO: remove these two - will be handled by different delegate and passed back from more menu
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var listButton: UIButton!
     
@@ -30,12 +31,16 @@ class PlaceTableHeaderView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.editButton.isHidden = true
-        self.listButton.isHidden = true
+        //self.editButton.isHidden = true
+        //self.listButton.isHidden = true
     }
     
     func setLabel(name: String){
         self.placeLabel.text = name
+    }
+    
+    @IBAction func tapMore(_ sender: Any) {
+        self.delegate?.didSelectMore()
     }
     
     @IBAction func tapEdit(_ sender: Any) {
@@ -64,8 +69,11 @@ class PlaceTableHeaderView: UIView {
 }
 
 protocol PlaceTableHeaderDelegate: class {
+    //TODO: remove this - will be handled by different delegate and passed back from more menu
     func didSelectEdit(shouldEdit: Bool)
     
-    //TODO:pass in an enum to define the list views
+    //TODO: remove this - will be handled by different delegate and passed back from more menu
     func didChangeListView()
+    
+    func didSelectMore()
 }

@@ -134,8 +134,8 @@ extension PlaceTableViewController: UITableViewDelegate {
         
         //Setup for existing trip
         view?.setLabel(name: name)
-        view?.editButton.isHidden = false
-        view?.listButton.isHidden = false
+        //view?.editButton.isHidden = false
+        //view?.listButton.isHidden = false
         view?.delegate = self
         
         return view
@@ -176,10 +176,16 @@ extension PlaceTableViewController: UITableViewDelegate {
 }
 
 extension PlaceTableViewController: PlaceTableHeaderDelegate {
+    //TODO: remove this - will be handled by different delegate and passed back from more menu
     func didSelectEdit(shouldEdit: Bool) {
         setEditing(shouldEdit, animated: true)
     }
     
+    func didSelectMore() {
+        //open the more menu
+    }
+    
+    //TODO: remove this - will be handled by different delegate and passed back from more menu
     func didChangeListView() {
         //switch the table state
         self.tableListState = (self.tableListState == .Compact) ? .Expanded : .Compact
