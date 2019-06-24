@@ -10,6 +10,8 @@ import UIKit
 
 class TripMoreViewController: UIViewController {
 
+    @IBOutlet weak var moreMenuContainer: UIView!
+    @IBOutlet weak var usersTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
