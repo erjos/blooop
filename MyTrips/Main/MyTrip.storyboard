@@ -1086,7 +1086,7 @@ Cgo
         <scene sceneID="Zez-5K-CGy">
             <objects>
                 <tableViewController id="0dJ-CR-40w" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0Aa-1I-3nt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0Aa-1I-3nt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1311,20 +1311,20 @@ Cgo
             </objects>
             <point key="canvasLocation" x="782" y="2244"/>
         </scene>
-        <!--View Controller-->
+        <!--Trip More View Controller-->
         <scene sceneID="3Nu-Ju-Ohd">
             <objects>
-                <viewController id="uqL-Lf-xZT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripMoreVC" id="uqL-Lf-xZT" customClass="TripMoreViewController" customModule="MyTrips" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CLf-ni-Wh4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2YS-pY-szX" userLabel="Users table">
-                                <rect key="frame" x="0.0" y="220" width="375" height="447"/>
+                                <rect key="frame" x="0.0" y="240" width="375" height="427"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2g-v0-1nS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="220"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="jBw-2Z-87N"/>
                                 </constraints>
@@ -1335,13 +1335,13 @@ Cgo
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Y2g-v0-1nS" firstAttribute="top" secondItem="CLf-ni-Wh4" secondAttribute="top" id="4NK-Z7-Jj3"/>
                             <constraint firstItem="2YS-pY-szX" firstAttribute="leading" secondItem="1Jm-zk-mSd" secondAttribute="leading" id="E77-mq-4xw"/>
                             <constraint firstItem="2YS-pY-szX" firstAttribute="trailing" secondItem="1Jm-zk-mSd" secondAttribute="trailing" id="Fma-K8-8Pp"/>
                             <constraint firstItem="Y2g-v0-1nS" firstAttribute="leading" secondItem="1Jm-zk-mSd" secondAttribute="leading" id="QTT-aN-bMj"/>
                             <constraint firstItem="Y2g-v0-1nS" firstAttribute="trailing" secondItem="1Jm-zk-mSd" secondAttribute="trailing" id="bUK-Ic-C1G"/>
                             <constraint firstItem="1Jm-zk-mSd" firstAttribute="bottom" secondItem="2YS-pY-szX" secondAttribute="bottom" id="e5u-X1-3P2"/>
                             <constraint firstItem="2YS-pY-szX" firstAttribute="top" secondItem="Y2g-v0-1nS" secondAttribute="bottom" id="epU-3k-qGI"/>
+                            <constraint firstItem="1Jm-zk-mSd" firstAttribute="top" secondItem="Y2g-v0-1nS" secondAttribute="top" id="wh8-EZ-t5J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Jm-zk-mSd"/>
                     </view>

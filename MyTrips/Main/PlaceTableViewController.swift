@@ -183,6 +183,9 @@ extension PlaceTableViewController: PlaceTableHeaderDelegate {
     
     func didSelectMore() {
         //open the more menu
+        let moreVC = UIStoryboard.init(name: "MyTrip", bundle: Bundle.main).instantiateViewController(withIdentifier: "TripMoreVC") as! TripMoreViewController
+        
+        self.present(moreVC, animated: true, completion: nil)
     }
     
     //TODO: remove this - will be handled by different delegate and passed back from more menu
