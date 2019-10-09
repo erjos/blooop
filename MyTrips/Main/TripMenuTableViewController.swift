@@ -10,7 +10,7 @@ import UIKit
 
 class TripMenuTableViewController: UITableViewController {
     
-    var delegate: TripMenuDelegate?
+    weak var delegate: TripMenuDelegate?
     
     enum TripMenuOptions: Int {
         case EditTrip = 0
@@ -54,17 +54,13 @@ class TripMenuTableViewController: UITableViewController {
         case .EditTrip:
             //edit trip
             self.delegate?.didSelectEdit(shouldEdit: true)
-            self.dismiss(animated: true) {
-                //might not need complettion
-                return
-            }
-            return
+            self.dismiss(animated: true, completion: nil)
         case .ShareTrip:
             //share trip
             return
         case .SaveTrip:
             //save trip
-            //use this to save the trip to the firebase server
+            self.delegate?.didSelectSave()
             return
         case .Privacy:
             //public or private toggle
@@ -75,4 +71,5 @@ class TripMenuTableViewController: UITableViewController {
 
 protocol TripMenuDelegate: class {
     func didSelectEdit(shouldEdit: Bool)
+    func didSelectSave()
 }

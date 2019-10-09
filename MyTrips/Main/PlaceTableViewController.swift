@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseUI
 
 enum TableListView {
     //simple just the name
@@ -32,6 +35,7 @@ class PlaceTableViewController: UIViewController {
     var tableListState: TableListView = .Compact
     var tableHeader: PlaceTableHeaderView?
     weak var placeTableDelegate: PlaceTableDelegate?
+    lazy var firebaseInteractor: FirebaseAuthProtocol = FirebaseInteractor()
     
     @IBAction func didTapPlaceholder(_ sender: Any) {
         placeTableDelegate?.didTapPlaceholder()
@@ -191,6 +195,39 @@ extension PlaceTableViewController: TripMenuDelegate {
             header.moreButton.isHidden = shouldEdit
             header.doneButton.isHidden = !shouldEdit
         }
+    }
+    
+    func didSelectSave() {
+        //need to check if user is logged in and save a custom object if they are with a unique user identifier
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            //check if user is signed in
+            guard user != nil else {
+                guard let authVC = self.firebaseInteractor.getAuthViewController(delegate: self) else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                    self.present(authVC, animated: true, completion: nil)
+                }
+                print("send to sign in")
+                return
+            }
+            
+            //if user is signed in save the current trip to the firestore
+            
+        }
+    }
+}
+
+extension PlaceTableViewController: FUIAuthDelegate {
+    //TODO: investigate what needs to be done with refresh token and checking if we are authenticated etc...
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        //recieve sign in callback
+        
+        //use the user id to associate with other data that we store on the backend
+        //ie. trips contain a user id -
+        
     }
 }
 
