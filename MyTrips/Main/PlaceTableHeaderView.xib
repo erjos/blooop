@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,9 +27,20 @@
                         <action selector="tapMore:" destination="iN0-l3-epB" eventType="touchUpInside" id="94e-eY-BEn"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9b-EF-xb5">
+                    <rect key="frame" x="375" y="10" width="37" height="30"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="tapDone:" destination="iN0-l3-epB" eventType="touchUpInside" id="3mX-b7-cfc"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="L9b-EF-xb5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="60Z-tc-m82"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="L9b-EF-xb5" secondAttribute="trailing" constant="15" id="Gpe-Vl-AI0"/>
                 <constraint firstItem="2Dc-1A-Djt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="WqE-Vd-pMB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HN3-zF-9Za" secondAttribute="trailing" constant="15" id="dcg-OM-YiU"/>
                 <constraint firstItem="2Dc-1A-Djt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="jwC-Mc-JKp"/>
@@ -40,6 +49,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="doneButton" destination="L9b-EF-xb5" id="lnv-yM-aCI"/>
                 <outlet property="moreButton" destination="HN3-zF-9Za" id="4rs-pS-Kkq"/>
                 <outlet property="placeLabel" destination="2Dc-1A-Djt" id="NAh-zm-LVm"/>
             </connections>

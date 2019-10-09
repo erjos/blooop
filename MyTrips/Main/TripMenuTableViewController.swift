@@ -9,6 +9,15 @@
 import UIKit
 
 class TripMenuTableViewController: UITableViewController {
+    
+    var delegate: TripMenuDelegate?
+    
+    enum TripMenuOptions: Int {
+        case EditTrip = 0
+        case ShareTrip = 1
+        case SaveTrip = 2
+        case Privacy = 3
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +36,43 @@ class TripMenuTableViewController: UITableViewController {
         return 1
     }
 
+    //if this returns a diff number than in the storyboard it will crash
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 4
     }
 
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
+        
+        guard let selection = TripMenuOptions(rawValue: indexPath.row) else {
+            return
+        }
+        
+        switch selection {
+        case .EditTrip:
+            //edit trip
+            self.delegate?.didSelectEdit(shouldEdit: true)
+            self.dismiss(animated: true) {
+                //might not need complettion
+                return
+            }
+            return
+        case .ShareTrip:
+            //share trip
+            return
+        case .SaveTrip:
+            //save trip
+            //use this to save the trip to the firebase server
+            return
+        case .Privacy:
+            //public or private toggle
+            return
+        }
     }
+}
+
+protocol TripMenuDelegate: class {
+    func didSelectEdit(shouldEdit: Bool)
 }

@@ -30,6 +30,7 @@ class PlaceTableViewController: UIViewController {
     //TODO:can we use a didSet here to deal with the image placeholder change?
     var trip: PrimaryLocation?
     var tableListState: TableListView = .Compact
+    var tableHeader: PlaceTableHeaderView?
     weak var placeTableDelegate: PlaceTableDelegate?
     
     @IBAction func didTapPlaceholder(_ sender: Any) {
@@ -51,6 +52,12 @@ class PlaceTableViewController: UIViewController {
         //checks to make sure editing is off - keeps edit button working if user swipes to delete
         self.placeTableView.setEditing(false, animated: animated)
         self.placeTableView.setEditing(editing, animated: animated)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? TripMenuTableViewController {
+            destination.delegate = self
+        }
     }
 }
 
@@ -138,6 +145,7 @@ extension PlaceTableViewController: UITableViewDelegate {
         //view?.listButton.isHidden = false
         view?.delegate = self
         
+        self.tableHeader = view
         return view
     }
     
@@ -175,24 +183,30 @@ extension PlaceTableViewController: UITableViewDelegate {
     }
 }
 
-extension PlaceTableViewController: PlaceTableHeaderDelegate {
-    //TODO: remove this - will be handled by different delegate and passed back from more menu
+//delegate to handle trip menu selections
+extension PlaceTableViewController: TripMenuDelegate {
     func didSelectEdit(shouldEdit: Bool) {
         setEditing(shouldEdit, animated: true)
+        if let header = self.tableHeader {
+            header.moreButton.isHidden = shouldEdit
+            header.doneButton.isHidden = !shouldEdit
+        }
     }
+}
+
+//delegate to handle actions for the table header
+extension PlaceTableViewController: PlaceTableHeaderDelegate {
     
     func didSelectMore() {
-        //open the more menu
-        let moreVC = UIStoryboard.init(name: "MyTrip", bundle: Bundle.main).instantiateViewController(withIdentifier: "TripMoreVC") as! TripMoreViewController
-        
-        self.present(moreVC, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "showTripMenu", sender: self)
     }
     
-    //TODO: remove this - will be handled by different delegate and passed back from more menu
-    func didChangeListView() {
-        //switch the table state
-        self.tableListState = (self.tableListState == .Compact) ? .Expanded : .Compact
-        self.placeTableView.reloadData()
+    func didSelectDone() {
+        setEditing(false, animated: true)
+        if let header = self.tableHeader {
+            header.moreButton.isHidden = false
+            header.doneButton.isHidden = true
+        }
     }
 }
 

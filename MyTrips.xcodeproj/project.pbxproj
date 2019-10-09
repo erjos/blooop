@@ -17,7 +17,6 @@
 		52C4E9482278C9F3006E83F2 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */; };
 		52CF5BD822B85706004A7B30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52CF5BD722B85706004A7B30 /* GoogleService-Info.plist */; };
 		52CF5BDA22BBDCE2004A7B30 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF5BD922BBDCE2004A7B30 /* Authentication.swift */; };
-		52CF5BE122BD3A52004A7B30 /* TripMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF5BDF22BD3A52004A7B30 /* TripMoreViewController.swift */; };
 		52D79B3B2278EFD9007E8DDE /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */; };
 		52E5F61D213626E700672DE2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5F61C213626E700672DE2 /* Mock.swift */; };
 		52FDB33321F143F600FB6153 /* PlaceTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */; };
@@ -70,7 +69,6 @@
 		52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
 		52CF5BD722B85706004A7B30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52CF5BD922BBDCE2004A7B30 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
-		52CF5BDF22BD3A52004A7B30 /* TripMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMoreViewController.swift; sourceTree = "<group>"; };
 		52D79B3A2278EFD9007E8DDE /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
 		52E5F61C213626E700672DE2 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		52FDB33221F143F600FB6153 /* PlaceTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableHeaderView.xib; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 				86CA2C0320199A6500A0D770 /* ListTableViewCell.swift */,
 				525011322137684700A40DAB /* AboutAppViewController.swift */,
 				86B5D47120C5CEDA00A851DE /* PlaceDetails */,
-				52CF5BDF22BD3A52004A7B30 /* TripMoreViewController.swift */,
 				5208733C22C15EA70075B816 /* TripMenuTableViewController.swift */,
 			);
 			path = Main;
@@ -457,7 +454,6 @@
 				52CF5BDA22BBDCE2004A7B30 /* Authentication.swift in Sources */,
 				525011332137684700A40DAB /* AboutAppViewController.swift in Sources */,
 				8629CC8520D3EDB600ED49E1 /* Extensions.swift in Sources */,
-				52CF5BE122BD3A52004A7B30 /* TripMoreViewController.swift in Sources */,
 				52FDB33621F148DF00FB6153 /* PlaceListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
