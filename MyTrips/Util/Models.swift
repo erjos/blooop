@@ -20,36 +20,37 @@ class PrimaryLocation: Object {
         return "locationId"
     }
     
-    private func generateLocationId()->String{
+    //TODO: this is confusing - maybe change this to use the UUID instead or just use what firebase provides
+    private func generateLocationId()->String {
         let number = Int(arc4random_uniform(1000000))
         let id = locationName + number.description
         return id
     }
     
     //used when generating sample data for the app
-    func setCity(name: String, placeID: String){
+    func setCity(name: String, placeID: String) {
         self.placeID = placeID
         self.locationName = name
         locationId = generateLocationId()
     }
     
-    func setCity(place: GMSPlace){
+    func setCity(place: GMSPlace) {
         placeID = place.placeID ?? "No ID found"
         locationName = place.name ?? "No name found"
         locationId = generateLocationId()
     }
     
-    func getSubLocation(from indexPath: IndexPath)-> SubLocation{
+    func getSubLocation(from indexPath: IndexPath)-> SubLocation {
         return subLocations[indexPath.row]
     }
     
-    func getSubLocationPlaceID(from indexPath: IndexPath) -> String{
+    func getSubLocationPlaceID(from indexPath: IndexPath) -> String {
         return subLocations[indexPath.row].placeID
     }
     
     //this is confusing and I need to reevaluate how I make this work
     //TODO: move this method to delegate/protocol
-    func fetchGmsPlacesForCity(complete: @escaping(Bool)->Void){
+    func fetchGmsPlacesForCity(complete: @escaping(Bool)->Void) {
         var fetchedPlaces = [String]()
         self.fetchGMSPlace { isSuccess in
             if(self.subLocations.count > 0){
@@ -67,7 +68,7 @@ class PrimaryLocation: Object {
         }
     }
     
-    func fetchGMSPlace(success: @escaping(Bool)->Void){
+    func fetchGMSPlace(success: @escaping(Bool)->Void) {
         GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
             guard let gms = place else {
                 return success(false)
@@ -85,7 +86,7 @@ class SubLocation: Object {
     @objc dynamic var placeID: String = ""
     @objc dynamic var notes: String = ""
     
-    func fetchGMSPlace(success: @escaping(_ id: String, _ success: Bool)->Void){
+    func fetchGMSPlace(success: @escaping(_ id: String, _ success: Bool)->Void) {
         GMSPlacesClient.shared().lookUpPlaceID(self.placeID) { (place, error) in
             guard let gms = place else {
                 return success(self.placeID, false)

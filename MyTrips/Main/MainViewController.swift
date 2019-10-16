@@ -8,10 +8,9 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
-
-//TODO:
-//Next Release 2.0:
-// add user defaults functionality to remember last loaded trip -- Store trip name perhaps? Then check on launch and pull it up?
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseUI
 
 //Next Release 2.1:
 //> Allow users to click on places on the map to pull up temp place details and decide if they want to add it to the trip...
@@ -63,6 +62,8 @@ class MainViewController: UIViewController {
     var placeTableViewController: PlaceTableViewController?
     var placeDetailsViewController: PlaceDetailsViewController?
     var tableLandscapeWidth: CGFloat = 300
+    
+    lazy var firebaseInteractor: FirebaseAuthProtocol = FirebaseInteractor()
     
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
@@ -126,6 +127,15 @@ class MainViewController: UIViewController {
             self.shouldLoadTrip(trip: lastTrip)
         }
         
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            guard user != nil else {
+                if let loginVC = self.firebaseInteractor.getAuthViewController(delegate: self) {
+                    self.present(loginVC, animated: true, completion: nil)
+                }
+                return
+            }
+        }
+        
         self.activityIndicator.isHidden = true
     }
     
@@ -164,7 +174,6 @@ class MainViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
     }
-    
     
     private func handleMapSetup(for place: GMSPlace?) {
         //check to see if a marker exists - make sure we use the existing marker to setup the view so its more relevant to the user
@@ -400,7 +409,6 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
 }
 
 extension MainViewController: PlaceDetailsDelegate {
-    
     func shouldCloseDetails() {
         closePlaceDetails()
     }
@@ -482,5 +490,21 @@ extension MainViewController : UIGestureRecognizerDelegate {
         default:
             break
         }
+    }
+}
+
+extension MainViewController: FUIAuthDelegate {
+    //TODO: investigate what needs to be done with refresh token and checking if we are authenticated etc...
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        //recieve sign in callback
+        
+        //use the user id to associate with other data that we store on the backend
+        //ie. trips contain a user id -
+        
+    }
+    
+    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
+        //return custom view controller
+        return FUIAuthPickerViewController(nibName: "CustomAuthViewController", bundle: Bundle.main, authUI: authUI)
     }
 }
