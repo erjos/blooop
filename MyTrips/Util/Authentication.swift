@@ -28,10 +28,6 @@ class FirebaseInteractor: FirebaseAuthProtocol {
     func isUserLoggedIn() -> Bool {
         return Auth.auth().currentUser != nil
     }
-    
-    func setTripDocument() {
-        
-    }
 }
 
 //AuthenticationInteractor will handle general auth specifc methods that can be abstracted away from the Firebase library
@@ -48,6 +44,7 @@ class AuthInteractor : AuthenticationProtocol {
 //FirebaseInteractor will define specific firebase related methods
 protocol FirebaseAuthProtocol {
     func getAuthViewController(delegate: FUIAuthDelegate)->UIViewController?
+    func isUserLoggedIn() -> Bool
 }
 
 //AuthenticationProtocol will define general Auth specifc methods that can be abstracted away from the Firebase library

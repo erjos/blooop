@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		5208733D22C15EA70075B816 /* TripMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208733C22C15EA70075B816 /* TripMenuTableViewController.swift */; };
 		52137A292114CA12008F3052 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52137A282114CA12008F3052 /* ApiKeys.swift */; };
+		522ED600237388AF00B18AE0 /* MyTripsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522ED5FF237388AF00B18AE0 /* MyTripsTests.swift */; };
 		525011332137684700A40DAB /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525011322137684700A40DAB /* AboutAppViewController.swift */; };
 		5262DFA021F6731400A2E918 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DF9F21F6731400A2E918 /* DrawerViewController.swift */; };
 		5262DFA221FE74BF00A2E918 /* DrawerHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */; };
 		5262DFA421FE9BA400A2E918 /* DrawerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262DFA321FE9BA400A2E918 /* DrawerHeaderView.swift */; };
 		52BAB7782357D69B00ECF4E0 /* CustomAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAB7762357D69B00ECF4E0 /* CustomAuthViewController.swift */; };
 		52BAB7792357D69B00ECF4E0 /* CustomAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52BAB7772357D69B00ECF4E0 /* CustomAuthViewController.xib */; };
+		52BAB77B2357E86300ECF4E0 /* FirebaseStorageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BAB77A2357E86300ECF4E0 /* FirebaseStorageInteractor.swift */; };
 		52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1922F21EBC2B4004F073A /* MainViewController.swift */; };
 		52C4E9482278C9F3006E83F2 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */; };
 		52CF5BD822B85706004A7B30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52CF5BD722B85706004A7B30 /* GoogleService-Info.plist */; };
@@ -59,9 +61,22 @@
 		86CA2C0620199A6500A0D770 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86CA2C0420199A6500A0D770 /* ListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		522ED602237388AF00B18AE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86A895962019917D00CE3926 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86A8959D2019917D00CE3926;
+			remoteInfo = MyTrips;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5208733C22C15EA70075B816 /* TripMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMenuTableViewController.swift; sourceTree = "<group>"; };
 		52137A282114CA12008F3052 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
+		522ED5FD237388AF00B18AE0 /* MyTripsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTripsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		522ED5FF237388AF00B18AE0 /* MyTripsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsTests.swift; sourceTree = "<group>"; };
+		522ED601237388AF00B18AE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		525011322137684700A40DAB /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		5262DF9F21F6731400A2E918 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		5262DFA121FE74BF00A2E918 /* DrawerHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawerHeaderView.xib; sourceTree = "<group>"; };
@@ -69,6 +84,7 @@
 		527BD2A322B2D82C00A5745B /* MyTrips.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyTrips.entitlements; sourceTree = "<group>"; };
 		52BAB7762357D69B00ECF4E0 /* CustomAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthViewController.swift; sourceTree = "<group>"; };
 		52BAB7772357D69B00ECF4E0 /* CustomAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAuthViewController.xib; sourceTree = "<group>"; };
+		52BAB77A2357E86300ECF4E0 /* FirebaseStorageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageInteractor.swift; sourceTree = "<group>"; };
 		52C1922F21EBC2B4004F073A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		52C4E9472278C9F3006E83F2 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
 		52CF5BD722B85706004A7B30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -118,6 +134,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		522ED5FA237388AF00B18AE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86A8959B2019917D00CE3926 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +178,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		522ED5FE237388AF00B18AE0 /* MyTripsTests */ = {
+			isa = PBXGroup;
+			children = (
+				522ED5FF237388AF00B18AE0 /* MyTripsTests.swift */,
+				522ED601237388AF00B18AE0 /* Info.plist */,
+			);
+			path = MyTripsTests;
+			sourceTree = "<group>";
+		};
 		529F4EA320F283E500D1E965 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +221,7 @@
 				864F67E1207EACD500B6554B /* Models.swift */,
 				52137A282114CA12008F3052 /* ApiKeys.swift */,
 				52CF5BD922BBDCE2004A7B30 /* Authentication.swift */,
+				52BAB77A2357E86300ECF4E0 /* FirebaseStorageInteractor.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -207,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				86A895A02019917D00CE3926 /* MyTrips */,
+				522ED5FE237388AF00B18AE0 /* MyTripsTests */,
 				86A8959F2019917D00CE3926 /* Products */,
 				86B75C432059511700D53F90 /* Frameworks */,
 				09D5EFF83269AD02388F3EE3 /* Pods */,
@@ -217,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				86A8959E2019917D00CE3926 /* MyTrips.app */,
+				522ED5FD237388AF00B18AE0 /* MyTripsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -274,6 +309,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		522ED5FC237388AF00B18AE0 /* MyTripsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 522ED606237388AF00B18AE0 /* Build configuration list for PBXNativeTarget "MyTripsTests" */;
+			buildPhases = (
+				522ED5F9237388AF00B18AE0 /* Sources */,
+				522ED5FA237388AF00B18AE0 /* Frameworks */,
+				522ED5FB237388AF00B18AE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				522ED603237388AF00B18AE0 /* PBXTargetDependency */,
+			);
+			name = MyTripsTests;
+			productName = MyTripsTests;
+			productReference = 522ED5FD237388AF00B18AE0 /* MyTripsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		86A8959D2019917D00CE3926 /* MyTrips */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86A895B02019917D00CE3926 /* Build configuration list for PBXNativeTarget "MyTrips" */;
@@ -300,10 +353,15 @@
 		86A895962019917D00CE3926 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Joseph, Ethan";
 				TargetAttributes = {
+					522ED5FC237388AF00B18AE0 = {
+						CreatedOnToolsVersion = 11.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 86A8959D2019917D00CE3926;
+					};
 					86A8959D2019917D00CE3926 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -329,11 +387,19 @@
 			projectRoot = "";
 			targets = (
 				86A8959D2019917D00CE3926 /* MyTrips */,
+				522ED5FC237388AF00B18AE0 /* MyTripsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		522ED5FB237388AF00B18AE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86A8959C2019917D00CE3926 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -437,6 +503,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		522ED5F9237388AF00B18AE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				522ED600237388AF00B18AE0 /* MyTripsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86A8959A2019917D00CE3926 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,6 +527,7 @@
 				52BAB7782357D69B00ECF4E0 /* CustomAuthViewController.swift in Sources */,
 				52E5F61D213626E700672DE2 /* Mock.swift in Sources */,
 				863E26E5207FA1C000029FF4 /* GooglePhotoManager.swift in Sources */,
+				52BAB77B2357E86300ECF4E0 /* FirebaseStorageInteractor.swift in Sources */,
 				86B7EB14208F8BF100B2B2A2 /* PhotoCollectionViewCell.swift in Sources */,
 				52C1923021EBC2B4004F073A /* MainViewController.swift in Sources */,
 				52D79B3B2278EFD9007E8DDE /* PlaceDetailsViewController.swift in Sources */,
@@ -468,6 +543,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		522ED603237388AF00B18AE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 86A8959D2019917D00CE3926 /* MyTrips */;
+			targetProxy = 522ED602237388AF00B18AE0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		86A895AA2019917D00CE3926 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -480,6 +563,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		522ED604237388AF00B18AE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R95E8A2PP3;
+				INFOPLIST_FILE = MyTripsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erj.MyTripsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyTrips.app/MyTrips";
+			};
+			name = Debug;
+		};
+		522ED605237388AF00B18AE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R95E8A2PP3;
+				INFOPLIST_FILE = MyTripsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erj.MyTripsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyTrips.app/MyTrips";
+			};
+			name = Release;
+		};
 		86A895AE2019917D00CE3926 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -634,6 +761,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		522ED606237388AF00B18AE0 /* Build configuration list for PBXNativeTarget "MyTripsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				522ED604237388AF00B18AE0 /* Debug */,
+				522ED605237388AF00B18AE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		86A895992019917D00CE3926 /* Build configuration list for PBXProject "MyTrips" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -221,26 +221,7 @@ extension PlaceTableViewController: TripMenuDelegate {
             
             //create dictionary of sublocation data
             
-            var subs = [[String : Any]]()
-            if let sublocations = self.trip?.subLocations {
-                
-                for sublocation in sublocations {
-                    let locationData = ["label" : sublocation.label as Any,
-                                        "date" : sublocation.date as Any,
-                                        "placeId" : sublocation.placeID,
-                                        "notes" : sublocation.notes] as [String : Any]
-                    
-                    subs.append(locationData)
-                }
-            }
             
-            let docData : [String : Any] = ["owner" : user?.uid,
-                                            "placeId" : self.trip?.placeID,
-                                            "label" : self.trip?.label,
-                                            "locationId" : self.trip?.locationId,
-                                            "subLocations" : subs]
-            
-            Firestore.firestore().collection("trips").addDocument(data: docData)
         }
     }
 }

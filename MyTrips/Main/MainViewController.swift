@@ -236,6 +236,9 @@ class MainViewController: UIViewController {
             
             //save the trip automatically
             self.saveTrip()
+            //save the trip to the server if the user is logged in
+            self.updateTripFirebase(isUserLoggedIn: self.firebaseInteractor.isUserLoggedIn())
+            
             //caches the places when we fetch them so we only have to get them once per session
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             
@@ -256,6 +259,14 @@ class MainViewController: UIViewController {
             mapMarkers.append(marker)
             placeTableViewController?.placeTableView.reloadData()
         }
+    }
+    
+    
+    func updateTripFirebase(isUserLoggedIn: Bool) {
+        guard isUserLoggedIn else {
+            return
+        }
+        //save the trip
     }
     
     func deleteMapMarker(indexPath: IndexPath) {
