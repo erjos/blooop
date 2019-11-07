@@ -12,18 +12,6 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseUI
 
-//Next Release 2.1:
-//> Allow users to click on places on the map to pull up temp place details and decide if they want to add it to the trip...
-//> Create a way for the app to function offline - handle sessions better
-//> should probably ensure there is a cache in place for the pictures that we've already loaded on the table view
-//> Make expanded cells more useful - show number and website or something - dont load pictures everytime cell comes on screen, it looks stupid
-//> make full screen for place details - pictures look shitty and load too slowly
-
-//Stretch goals:
-//> Create a protocol that can abstract out the mechanism of saving the realm data
-//> Put a pop out button on the map so users can view the map as a full screen if they want
-//> Do we want to add zoom buttons to the map?
-
 enum TripSaveStatus {
     //trip exists and is saved
     case Saved
@@ -42,17 +30,19 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mapTableEqualHeight: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     //prob want to pull this out and manage the location via a delegate
     var locationManager: CLLocationManager!
     
-    //**ViewModel stuff**
     var trip: PrimaryLocation? {
         didSet {
             self.placeTableViewController?.trip = self.trip
             placeTableViewController?.placeHolderView.isHidden = true
         }
     }
+    
     var currentTripStatus: TripSaveStatus = .Empty
+    
     //used to restrict search results
     var coordinateBounds: GMSCoordinateBounds?
     let maxBoundingZoom: Float = 10.0
@@ -63,7 +53,7 @@ class MainViewController: UIViewController {
     var placeDetailsViewController: PlaceDetailsViewController?
     var tableLandscapeWidth: CGFloat = 300
     
-    lazy var firebaseInteractor: FirebaseAuthProtocol = FirebaseInteractor()
+    lazy var storageInteractor: Storage = StorageInteractor()
     
     @IBAction func menuButton(_ sender: Any) {
         view.bringSubview(toFront: drawerView)
@@ -76,7 +66,6 @@ class MainViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
-    
     @IBAction func tapReset(_ sender: Any) {
         //get place for id
         guard let id = self.trip?.placeID else {
@@ -86,22 +75,11 @@ class MainViewController: UIViewController {
         
         handleMapSetup(for: place)
     }
-    
     @IBAction func tapMenuCover(_ sender: Any) {
         closeMenu()
     }
-    
     @IBAction func tapSearch(_ sender: Any) {
-        //TODO: contain this in a function named more specific for what it does - call it here and in the place table delegate function
-        activityIndicator.isHidden = false
-        let autocompleteController = GMSAutocompleteViewController()
-        //TODO: consider the implications of changing this to bias vs restrict
-        autocompleteController.autocompleteBoundsMode = .restrict
-        
-        if let _ = trip {
-            autocompleteController.autocompleteBounds = self.coordinateBounds
-        }
-        autocompleteController.delegate = self
+        let autocompleteController = getAutocomplete(trip: self.trip)
         present(autocompleteController, animated: true) {
             self.activityIndicator.isHidden = true
         }
@@ -111,7 +89,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         setupLocationManager()
-        locationManager.startUpdatingLocation()
+        
         menuWidth.constant = 0
         menuCoverWidth.constant = 0
         self.resetMap.isHidden = true
@@ -129,7 +107,7 @@ class MainViewController: UIViewController {
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
             guard user != nil else {
-                if let loginVC = self.firebaseInteractor.getAuthViewController(delegate: self) {
+                if let loginVC = FirebaseAuthUtil.getAuthViewController(delegate: self) {
                     self.present(loginVC, animated: true, completion: nil)
                 }
                 return
@@ -173,6 +151,18 @@ class MainViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+    }
+    
+    private func getAutocomplete(trip: PrimaryLocation?) -> GMSAutocompleteViewController {
+        let autocompleteController = GMSAutocompleteViewController()
+        //TODO: consider the implications of changing this to bias vs restrict
+        autocompleteController.autocompleteBoundsMode = .restrict
+        if let _ = trip {
+            autocompleteController.autocompleteBounds = self.coordinateBounds
+        }
+        autocompleteController.delegate = self
+        return autocompleteController
     }
     
     private func handleMapSetup(for place: GMSPlace?) {
@@ -210,15 +200,14 @@ class MainViewController: UIViewController {
             }
             self.placeTableViewController = placeTableVC
             self.placeTableViewController?.placeTableDelegate = self
-            
-            //TODO: do we need this if we use the did set? Are both in use?
             placeTableViewController?.trip = self.trip
         }
     }
     
     func saveTrip() {
         if let primaryLocation = trip {
-            RealmManager.storeData(object: primaryLocation)
+            let uid = Auth.auth().currentUser?.uid
+            self.storageInteractor.saveTrip(userId: uid, trip: primaryLocation)
             self.currentTripStatus = .Saved
         }
     }
@@ -236,8 +225,6 @@ class MainViewController: UIViewController {
             
             //save the trip automatically
             self.saveTrip()
-            //save the trip to the server if the user is logged in
-            self.updateTripFirebase(isUserLoggedIn: self.firebaseInteractor.isUserLoggedIn())
             
             //caches the places when we fetch them so we only have to get them once per session
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
@@ -259,14 +246,6 @@ class MainViewController: UIViewController {
             mapMarkers.append(marker)
             placeTableViewController?.placeTableView.reloadData()
         }
-    }
-    
-    
-    func updateTripFirebase(isUserLoggedIn: Bool) {
-        guard isUserLoggedIn else {
-            return
-        }
-        //save the trip
     }
     
     func deleteMapMarker(indexPath: IndexPath) {
@@ -296,7 +275,6 @@ extension MainViewController: MenuDelegate {
     //Used to clear the map when user wants to create a new trip
     func shouldClearMap(trip: PrimaryLocation?) {
         //block to check if the trip we deleted is invalidated -
-        //TODO: could probably pass something other than the trip - we dont need it, we just need to know to check invalidation
         if let _ = trip {
             guard self.trip?.isInvalidated ?? false else {
                 return
@@ -505,7 +483,6 @@ extension MainViewController : UIGestureRecognizerDelegate {
 }
 
 extension MainViewController: FUIAuthDelegate {
-    //TODO: investigate what needs to be done with refresh token and checking if we are authenticated etc...
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         //recieve sign in callback
         

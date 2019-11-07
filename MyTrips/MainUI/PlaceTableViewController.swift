@@ -35,7 +35,7 @@ class PlaceTableViewController: UIViewController {
     var tableListState: TableListView = .Compact
     var tableHeader: PlaceTableHeaderView?
     weak var placeTableDelegate: PlaceTableDelegate?
-    lazy var firebaseInteractor: FirebaseAuthProtocol = FirebaseInteractor()
+    //lazy var firebaseInteractor: AuthUtilProtocol = FirebaseAuthUtil()
     
     @IBAction func didTapPlaceholder(_ sender: Any) {
         placeTableDelegate?.didTapPlaceholder()
@@ -202,7 +202,7 @@ extension PlaceTableViewController: TripMenuDelegate {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             //check if user is signed in
             guard user != nil else {
-                guard let authVC = self.firebaseInteractor.getAuthViewController(delegate: self) else {
+                guard let authVC = FirebaseAuthUtil.getAuthViewController(delegate: self) else {
                     return
                 }
                 

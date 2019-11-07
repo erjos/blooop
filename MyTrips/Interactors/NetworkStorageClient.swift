@@ -10,12 +10,8 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 
-class FirebaseStorageInteractor: StorageProtocol {
-    func updateTrip(trip: PrimaryLocation, user: User?) {
-        
-        guard let activeUser = user else {
-            return
-        }
+class NetworkStorageClient: NetworkStorageProtocol {
+    func updateTrip(_ trip: PrimaryLocation, _ userId: String) {
         
         var subs = [[String : Any]]()
         let sublocations = trip.subLocations
@@ -29,7 +25,7 @@ class FirebaseStorageInteractor: StorageProtocol {
                 subs.append(locationData)
         }
 
-        let docData : [String : Any] = ["owner" : activeUser.uid,
+        let docData : [String : Any] = ["owner" : userId,
                                         "placeId" : trip.placeID,
                                         "label" : trip.label,
                                         "locationId" : trip.locationId,
@@ -39,6 +35,7 @@ class FirebaseStorageInteractor: StorageProtocol {
     }
 }
 
-protocol StorageProtocol {
-    func updateTrip(trip: PrimaryLocation, user: User?)
+protocol NetworkStorageProtocol {
+    //updates single trip in storage
+    func updateTrip(_ trip: PrimaryLocation, _ userId: String)
 }

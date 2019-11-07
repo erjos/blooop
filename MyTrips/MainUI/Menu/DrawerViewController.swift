@@ -81,9 +81,6 @@ class DrawerViewController: UIViewController {
     var trips: Results<PrimaryLocation>?
     var tableState = DrawerTableState.Menu
     
-    //not sure if a lazy variable is the best way to do this
-    lazy var firebaseInteractor: FirebaseAuthProtocol = FirebaseInteractor()
-    
     var handle: AuthStateDidChangeListenerHandle?
     
     let HEADER_HEIGHT = 75
@@ -140,7 +137,7 @@ class DrawerViewController: UIViewController {
     
     func presentSignIn() {
         //retrieve authVC from firebase Interactor and present it
-        guard let authVC = firebaseInteractor.getAuthViewController(delegate: self) else {
+        guard let authVC = FirebaseAuthUtil.getAuthViewController(delegate: self) else {
             return
         }
         self.present(authVC, animated: true, completion: nil)

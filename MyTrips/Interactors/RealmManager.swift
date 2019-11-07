@@ -92,29 +92,29 @@ class RealmManager {
         }
     }
     
-    static func storeData(object: PrimaryLocation) {
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.add(object, update: true)
-                print("Added new object")
-            }
-        } catch let error as NSError {
-            //handle error
-            print(error)
-        }
-    }
+//    static func storeData(object: PrimaryLocation) {
+//        do {
+//            let realm = try Realm()
+//            try realm.write {
+//                realm.add(object, update: true)
+//                print("Added new object")
+//            }
+//        } catch let error as NSError {
+//            //handle error
+//            print(error)
+//        }
+//    }
     
-    static func deleteData(object: Object) {
-        do {
-            let realm = try Realm()
-            try realm.write {
-                 realm.delete(object)
-                print("Deleted object")
-            }
-        } catch let error as NSError {
-            //handle error
-            print(error)
-        }
-    }
+//    static func deleteData(object: Object) {
+//        do {
+//            let realm = try Realm()
+//            try realm.write {
+//                 realm.delete(object)
+//                print("Deleted object")
+//            }
+//        } catch let error as NSError {
+//            //handle error
+//            print(error)
+//        }
+//    }
 }
