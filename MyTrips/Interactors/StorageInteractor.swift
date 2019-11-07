@@ -19,7 +19,7 @@ class StorageInteractor: Storage {
             return
         }
         
-        self.networkStorageClient.updateTrip(trip, uuid)
+        self.networkStorageClient.saveNewTrip(trip, uuid)//updateTrip(trip, uuid)
     }
 }
 

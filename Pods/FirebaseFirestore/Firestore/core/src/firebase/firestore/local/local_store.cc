@@ -37,8 +37,8 @@ using model::DocumentKeySet;
 using model::DocumentMap;
 using model::DocumentVersionMap;
 using model::ListenSequenceNumber;
-using model::MaybeDocumentMap;
 using model::MaybeDocument;
+using model::MaybeDocumentMap;
 using model::Mutation;
 using model::MutationBatch;
 using model::MutationBatchResult;
@@ -266,8 +266,10 @@ model::MaybeDocumentMap LocalStore::ApplyRemoteEvent(
       const ByteString& resume_token = change.resume_token();
       // Update the resume token if the change includes one.
       if (!resume_token.empty()) {
-        QueryData new_query_data = old_query_data.Copy(
-            remote_event.snapshot_version(), resume_token, sequence_number);
+        QueryData new_query_data =
+            old_query_data
+                .WithResumeToken(resume_token, remote_event.snapshot_version())
+                .WithSequenceNumber(sequence_number);
         target_ids[target_id] = new_query_data;
 
         // Update the query data if there are target changes (or if sufficient
@@ -318,10 +320,11 @@ model::MaybeDocumentMap LocalStore::ApplyRemoteEvent(
         remote_document_cache_->Add(doc);
         changed_docs = changed_docs.insert(key, doc);
       } else {
-        LOG_DEBUG("LocalStore Ignoring outdated watch update for %s. "
-                  "Current version: %s  Watch version: %s",
-                  key.ToString(), existing_doc->version().ToString(),
-                  doc.version().ToString());
+        LOG_DEBUG(
+            "LocalStore Ignoring outdated watch update for %s. "
+            "Current version: %s  Watch version: %s",
+            key.ToString(), existing_doc->version().ToString(),
+            doc.version().ToString());
       }
 
       // If this was a limbo resolution, make sure we mark when it was accessed.

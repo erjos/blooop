@@ -12,30 +12,54 @@ import FirebaseAuth
 
 class NetworkStorageClient: NetworkStorageProtocol {
     func updateTrip(_ trip: PrimaryLocation, _ userId: String) {
-        
-        var subs = [[String : Any]]()
-        let sublocations = trip.subLocations
-        for sublocation in sublocations {
-            
-                let locationData = ["label" : sublocation.label as Any,
-                                    "date" : sublocation.date as Any,
-                                    "placeId" : sublocation.placeID,
-                                    "notes" : sublocation.notes] as [String : Any]
-                
-                subs.append(locationData)
-        }
+          var subs = [[String : Any]]()
+              let sublocations = trip.subLocations
+              for sublocation in sublocations {
+                  
+                      let locationData = ["label" : sublocation.label as Any,
+                                          "date" : sublocation.date as Any,
+                                          "placeId" : sublocation.placeID,
+                                          "notes" : sublocation.notes] as [String : Any]
+                      
+                      subs.append(locationData)
+              }
 
-        let docData : [String : Any] = ["owner" : userId,
-                                        "placeId" : trip.placeID,
-                                        "label" : trip.label,
-                                        "locationId" : trip.locationId,
-                                        "subLocations" : subs]
-        
-        Firestore.firestore().collection("trips").addDocument(data: docData)
+              let docData : [String : Any] = ["owner" : userId,
+                                              "placeId" : trip.placeID,
+                                              "label" : trip.label,
+                                              "locationId" : trip.locationId,
+                                              "subLocations" : subs]
+              
+              Firestore.firestore().collection("trips").addDocument(data: docData)
+              //Firestore.firestore().collection("trips").
+    }
+    
+    func saveNewTrip(_ trip: PrimaryLocation, _ userId: String) {
+        var subs = [[String : Any]]()
+            let sublocations = trip.subLocations
+            for sublocation in sublocations {
+                
+                    let locationData = ["label" : sublocation.label as Any,
+                                        "date" : sublocation.date as Any,
+                                        "placeId" : sublocation.placeID,
+                                        "notes" : sublocation.notes] as [String : Any]
+                    
+                    subs.append(locationData)
+            }
+
+            let docData : [String : Any] = ["owner" : userId,
+                                            "placeId" : trip.placeID,
+                                            "label" : trip.label,
+                                            "locationId" : trip.locationId,
+                                            "subLocations" : subs]
+            
+            let ref = Firestore.firestore().collection("trips").addDocument(data: docData)
+            //Firestore.firestore().collection("trips").
     }
 }
 
 protocol NetworkStorageProtocol {
-    //updates single trip in storage
+    func saveNewTrip(_ trip: PrimaryLocation, _ userId: String)
+    //updates existing trip in storage
     func updateTrip(_ trip: PrimaryLocation, _ userId: String)
 }
