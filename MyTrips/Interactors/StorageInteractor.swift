@@ -21,10 +21,22 @@ class StorageInteractor: Storage {
         
         self.networkStorageClient.saveNewTrip(trip, uuid)//updateTrip(trip, uuid)
     }
+    
+    func updateTrip(userId: String?, trip: PrimaryLocation) {
+        guard let uuid = userId else {
+            self.localStorageClient.updateTrip(trip)
+            return
+        }
+        
+        self.networkStorageClient.updateTrip(trip, uuid)
+    }
 }
 
 protocol Storage {
+    //saves new trip
     func saveTrip(userId: String?, trip: PrimaryLocation)
+    
+    func updateTrip(userId: String?, trip:PrimaryLocation)
 }
 
 //delete the RealmManager class and test that local storage functionality is retained

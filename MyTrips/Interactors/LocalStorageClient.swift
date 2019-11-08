@@ -28,5 +28,6 @@ class LocalStorageClient: LocalStorageProtocol {
 }
 
 protocol LocalStorageProtocol {
+    //will save new trip or update existing trip
     func updateTrip(_ trip: PrimaryLocation)
 }

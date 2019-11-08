@@ -235,10 +235,13 @@ class MainViewController: UIViewController {
             guard let savedTrip = trip else {
                 return
             }
+            
             let location = SubLocation()
             location.placeID = place.placeID ?? "No ID found"
             location.label = place.name
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
+            
+            //update the trip data HERE
             RealmManager.addSublocationsToCity(city: savedTrip, location: location)
             
             let marker = mapContainer.addMapMarker(for: place, label: place.name)
