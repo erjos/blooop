@@ -37,6 +37,7 @@ class StorageInteractor: Storage {
 protocol Storage {
     //saves new trip
     func saveNewTrip(userId: String?, trip: PrimaryLocation)
+    //updates existing trip
     func updateTrip(userId: String?, trip:PrimaryLocation)
 }
 

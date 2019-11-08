@@ -80,18 +80,18 @@ class RealmManager {
     
     //todo: rename city to trip I think :/
     //append the new subLocation to the sublocations property then update the object in storage
-    static func addSublocationsToCity(city: PrimaryLocation, location: SubLocation){
-        do {
-            let realm = try Realm()
-            try realm.write {
-                city.subLocations.append(location)
-                print("Added new sublocation")
-            }
-        } catch let error as NSError {
-            //handle error
-            print(error)
-        }
-    }
+//    static func addSublocationsToCity(city: PrimaryLocation, location: SubLocation){
+//        do {
+//            let realm = try Realm()
+//            try realm.write {
+//                city.subLocations.append(location)
+//                print("Added new sublocation")
+//            }
+//        } catch let error as NSError {
+//            //handle error
+//            print(error)
+//        }
+//    }
     
 //    static func storeData(object: PrimaryLocation) {
 //        do {

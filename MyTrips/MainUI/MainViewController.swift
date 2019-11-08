@@ -212,16 +212,23 @@ class MainViewController: UIViewController {
         }
     }
     
+    func updateTrip() {
+        if let primaryLocation = trip {
+            let uid = Auth.auth().currentUser?.uid
+            self.storageInteractor.updateTrip(userId: uid, trip: primaryLocation)
+        }
+    }
+    
     func handlePlaceResultReturned(place: GMSPlace, tripState: TripSaveStatus) {
         switch tripState {
         case .Empty:
             self.trip = PrimaryLocation()
             self.trip?.setPrimaryLocation(place: place)
-            //save the current trip as last trip for loading purposes
+            //** save the current trip as last trip for loading purposes
             UserDefaults.standard.set(self.trip?.tripUUID, forKey: "lastTrip")
-            //save the trip to users account OR locally
+            //** save the trip to users account OR locally
             self.saveTrip()
-            //caches the places when we fetch them so we only have to get them once per session
+            //** caches the places when we fetch them so we only have to get them once per session
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
             placeTableViewController?.placeTableView.reloadData()
             setupMapView(for: place.coordinate)
@@ -233,11 +240,11 @@ class MainViewController: UIViewController {
             let location = SubLocation()
             location.placeID = place.placeID ?? "No ID found"
             location.label = place.name
+            //** caches the places when we fetch them so we only have to get them once per session
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
-            
-            //update the trip data HERE
-            RealmManager.addSublocationsToCity(city: savedTrip, location: location)
-            
+            //** add sublocation to the trip
+            savedTrip.addSublocation(location)
+            self.updateTrip()
             let marker = mapContainer.addMapMarker(for: place, label: place.name)
             //add new marker to the list
             mapMarkers.append(marker)
