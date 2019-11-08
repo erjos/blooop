@@ -207,7 +207,7 @@ class MainViewController: UIViewController {
     func saveTrip() {
         if let primaryLocation = trip {
             let uid = Auth.auth().currentUser?.uid
-            self.storageInteractor.saveTrip(userId: uid, trip: primaryLocation)
+            self.storageInteractor.saveNewTrip(userId: uid, trip: primaryLocation)
             self.currentTripStatus = .Saved
         }
     }
@@ -216,19 +216,13 @@ class MainViewController: UIViewController {
         switch tripState {
         case .Empty:
             self.trip = PrimaryLocation()
-            
-            //TODO:could we just move the implementation of adding the place to the resource manager  to the setCity method or would this couple things together too much?
-            self.trip?.setCity(place: place)
-            
+            self.trip?.setPrimaryLocation(place: place)
             //save the current trip as last trip for loading purposes
-            UserDefaults.standard.set(self.trip?.locationId, forKey: "lastTrip")
-            
-            //save the trip automatically
+            UserDefaults.standard.set(self.trip?.tripUUID, forKey: "lastTrip")
+            //save the trip to users account OR locally
             self.saveTrip()
-            
             //caches the places when we fetch them so we only have to get them once per session
             GoogleResourceManager.sharedInstance.addGmsPlace(place: place)
-            
             placeTableViewController?.placeTableView.reloadData()
             setupMapView(for: place.coordinate)
         case .Saved:
@@ -303,7 +297,7 @@ extension MainViewController: MenuDelegate {
         
         self.trip = trip
         //save the current trip as last trip for loading purposes
-        UserDefaults.standard.set(self.trip?.locationId, forKey: "lastTrip")
+        UserDefaults.standard.set(self.trip?.tripUUID, forKey: "lastTrip")
         self.currentTripStatus = .Saved
         
         //fetches the place and adds it to the resource cache - I hate how this works

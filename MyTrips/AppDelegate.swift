@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         //TODO: lets wipe the old realm and start from scratch for this version - need to make sure to get rid of this for future migrations
+        //UPDATE THIS AND TEST REALM UPDATES
         let config = Realm.Configuration.init(schemaVersion: 1, deleteRealmIfMigrationNeeded: true)
         
         Realm.Configuration.defaultConfiguration = config
@@ -28,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //pull from realm
         let trips = RealmManager.fetchData()
-        self.lastTrip = trips?.first(where: { tripID == $0.locationId })
+        self.lastTrip = trips?.first(where: { tripID == $0.tripUUID })
         
         //UINavigationBar.styleTitle(with: UIColor.white)
         return true

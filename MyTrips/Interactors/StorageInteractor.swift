@@ -12,14 +12,16 @@ class StorageInteractor: Storage {
     lazy var networkStorageClient: NetworkStorageProtocol = NetworkStorageClient()
     lazy var localStorageClient: LocalStorageProtocol = LocalStorageClient()
     
-    func saveTrip(userId: String?, trip: PrimaryLocation) {
+    func saveNewTrip(userId: String?, trip: PrimaryLocation) {
         //check for the user
         guard let uuid = userId else {
+            //set trip id locally to save to realm
+            trip.setTripUUID()
             self.localStorageClient.updateTrip(trip)
             return
         }
         
-        self.networkStorageClient.saveNewTrip(trip, uuid)//updateTrip(trip, uuid)
+        self.networkStorageClient.saveNewTrip(trip, uuid)
     }
     
     func updateTrip(userId: String?, trip: PrimaryLocation) {
@@ -34,8 +36,7 @@ class StorageInteractor: Storage {
 
 protocol Storage {
     //saves new trip
-    func saveTrip(userId: String?, trip: PrimaryLocation)
-    
+    func saveNewTrip(userId: String?, trip: PrimaryLocation)
     func updateTrip(userId: String?, trip:PrimaryLocation)
 }
 

@@ -3,41 +3,49 @@ import GooglePlaces
 import Realm
 import RealmSwift
 
+//Do we want to keep existing realms
+
 //***IMPORTANT***
-//Start documenting your schema versions as you move forward to help keep track of migrations
+//Document schema versions to keep track of migrations
 class PrimaryLocation: Object {
-    //probably should just add the place here so that if we need that data again we dont have to fetch it again
     let subLocations = List<SubLocation>()
+    //** GooglePlace Unique ID
     @objc dynamic var placeID: String = ""
+    //** City Name
     @objc dynamic var locationName: String = ""
-    @objc dynamic var locationId: String = ""
+    //** Trip Unique Identifier
+    //ACCOUNT FOR THIS CHANGE IN THE MIGRATION
+    @objc dynamic var tripUUID: String = ""
     
     //** User label - could be optional
     @objc dynamic var label: String = ""
     @objc dynamic var date: Date?
     
     override static func primaryKey() -> String {
-        return "locationId"
+        return "tripUUID"
     }
     
-    //TODO: this is confusing - maybe change this to use the UUID instead or just use what firebase provides
-    private func generateLocationId()->String {
-        let number = Int(arc4random_uniform(1000000))
-        let id = locationName + number.description
-        return id
+    
+    //** Generates ID when user is not logged in
+    func setTripUUID() {
+        self.tripUUID = UUID().uuidString
     }
     
-    //used when generating sample data for the app
+    //** Helper method to generate mock data
     func setCity(name: String, placeID: String) {
         self.placeID = placeID
         self.locationName = name
-        locationId = generateLocationId()
     }
     
-    func setCity(place: GMSPlace) {
+    //** Adds sublocation to a trip
+    func addSublocation(_ subLocation: SubLocation) {
+        self.subLocations.append(subLocation)
+    }
+    
+    //** Sets the primary location of the trip before saving it
+    func setPrimaryLocation(place: GMSPlace) {
         placeID = place.placeID ?? "No ID found"
         locationName = place.name ?? "No name found"
-        locationId = generateLocationId()
     }
     
     func getSubLocation(from indexPath: IndexPath)-> SubLocation {
@@ -96,5 +104,3 @@ class SubLocation: Object {
         }
     }
 }
-
-

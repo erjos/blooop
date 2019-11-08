@@ -24,7 +24,6 @@ class FirebaseAuthUtil: AuthUtilProtocol {
         return authUI?.authViewController()
     }
     
-    
     static func getUserId() -> String? {
         return Auth.auth().currentUser?.uid
     }
