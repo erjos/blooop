@@ -21,6 +21,7 @@ class PlaceDetailsViewController: UIViewController {
     weak var delegate: PlaceDetailsDelegate?
     lazy var gmsPlace = GoogleResourceManager.sharedInstance.getPlaceForId(ID: place.placeID)
     
+    lazy var storageInteractor: Storage = StorageInteractor()
     let NOTES_PLACEHOLDER = "Notes..."
     
     let datePicker = UIDatePicker()
@@ -205,6 +206,7 @@ class PlaceDetailsViewController: UIViewController {
 
 protocol PlaceDetailsDelegate: class {
     func shouldCloseDetails()
+    func shouldUpdateTrip()
 }
 
 extension PlaceDetailsViewController: UICollectionViewDataSource {
@@ -301,8 +303,8 @@ extension PlaceDetailsViewController : UICollectionViewDelegate {
 
 extension PlaceDetailsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //save date to realm object
-        RealmManager.saveSublocationDate(place: place, date: datePicker.date)
+        place.date = datePicker.date
+        self.delegate?.shouldUpdateTrip()
         textField.text = datePicker.date.formatDateAsString()
         textField.isHidden = false
     }
@@ -316,7 +318,8 @@ extension PlaceDetailsViewController: UITextViewDelegate {
         
         if(notesTextView.text != NOTES_PLACEHOLDER) {
             //save to realm object
-            RealmManager.saveNotes(place: place, notes: notesTextView.text)
+            place.notes = notesTextView.text
+            self.delegate?.shouldUpdateTrip()
         }
     }
 }

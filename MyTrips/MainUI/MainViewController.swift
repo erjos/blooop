@@ -403,7 +403,11 @@ extension MainViewController: GMSAutocompleteViewControllerDelegate {
 
 extension MainViewController: PlaceDetailsDelegate {
     func shouldCloseDetails() {
-        closePlaceDetails()
+        self.closePlaceDetails()
+    }
+    
+    func shouldUpdateTrip() {
+        self.updateTrip()
     }
 }
 
