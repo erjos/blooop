@@ -10,6 +10,9 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 
+//NOTES: If we handle the errors so that when network connection fails we store the trip locally, then the next time we have a successful connection and the user is logged in we should just be able to update the trip without issue
+
+//Test these different cases of logging in and then trying to modify a trip when the network connection is lost
 class NetworkStorageClient: NetworkStorageProtocol {
     func updateTrip(_ trip: PrimaryLocation, _ userId: String) {
         var subs = [[String : Any]]()

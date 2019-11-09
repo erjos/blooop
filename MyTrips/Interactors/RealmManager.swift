@@ -3,18 +3,6 @@ import RealmSwift
 
 class RealmManager {
     
-    static func deleteSubLocation(city: PrimaryLocation, indexPath: IndexPath) {
-        do {
-            let realm = try Realm()
-            try realm.write {
-                city.subLocations.remove(at: indexPath.row)
-            }
-        } catch let error as NSError {
-            //handle error
-            print(error)
-        }
-    }
-    
     static func deletePrimaryLocation(trip: PrimaryLocation) {
         do {
             let realm = try Realm()

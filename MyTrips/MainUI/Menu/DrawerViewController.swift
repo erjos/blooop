@@ -14,8 +14,6 @@ import FirebaseUI
 //should have a notification badge to indicate when new trips have been shared with you
 //Shared with me
 
-//Collab Trips - should this be saved to myTrips or no? Keep separate for now
-
 enum DrawerTableState {
     case Menu
     case MyTrips

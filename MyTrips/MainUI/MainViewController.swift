@@ -416,6 +416,7 @@ extension MainViewController : PlaceTableDelegate {
         guard let detailsVC = UIStoryboard(name: "MyTrip", bundle: Bundle.main).instantiateViewController(withIdentifier: "placeDetailsVC") as? PlaceDetailsViewController else {
             return
         }
+        
         //need to set the place before we add the veiwController
         detailsVC.place = place
         detailsVC.delegate = self
@@ -427,6 +428,11 @@ extension MainViewController : PlaceTableDelegate {
     
     func didTapPlaceholder() {
         self.tapSearch(self)
+    }
+    
+    func didDeleteSublocation(indexPath: IndexPath) {
+        self.updateTrip()
+        self.deleteMapMarker(indexPath: indexPath)
     }
 }
 

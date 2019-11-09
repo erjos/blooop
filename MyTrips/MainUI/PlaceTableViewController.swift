@@ -20,6 +20,7 @@ enum TableListView {
 }
 
 protocol PlaceTableDelegate: class {
+    func didDeleteSublocation(indexPath: IndexPath)
     func didSelectPlace(place: SubLocation, indexPath: IndexPath)
     func didTapPlaceholder()
 }
@@ -75,6 +76,7 @@ extension PlaceTableViewController: UITableViewDataSource {
         guard let placeID = trip?.getSubLocationPlaceID(from: indexPath) else {
             return UITableViewCell()
         }
+        
         //TODO: This is needed if we want to fetch photos later on - its not very intuitive how this works right now - might be able to clean it up or at least make it easier to understand
         GooglePhotoManager.loadMetaDataList(placeID: placeID, success: { list in
             GoogleResourceManager.sharedInstance.addPhotoMetaData(metaData: (placeID, list))
@@ -158,15 +160,10 @@ extension PlaceTableViewController: UITableViewDelegate {
             guard let location = trip else {
                 return
             }
-            
-            //TODO: should we use a delegate here?
-            guard let mainVC = self.parent as? MainViewController else {
-                fatalError("You messed up the tables parent View Controller")
-            }
-            mainVC.deleteMapMarker(indexPath: indexPath)
-            
-            RealmManager.deleteSubLocation(city: location, indexPath: indexPath)
+            //** remove sublocation from the trip
+            location.subLocations.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            placeTableDelegate?.didDeleteSublocation(indexPath: indexPath)
         }
     }
     
