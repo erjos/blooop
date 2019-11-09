@@ -76,7 +76,8 @@ class DrawerViewController: UIViewController {
     
     //stuff
     var menuItems = MenuData()
-    var trips: Results<PrimaryLocation>?
+    var tripsRealm: Results<PrimaryLocation>?
+    var tripsFirebase: [PrimaryLocation]?
     var tableState = DrawerTableState.Menu
     
     var handle: AuthStateDidChangeListenerHandle?
@@ -88,6 +89,7 @@ class DrawerViewController: UIViewController {
     
     //delegate
     weak var menuDelegate: MenuDelegate?
+    lazy var storageInteractor: Storage = StorageInteractor()
     
     @IBAction func tapMenu(_ sender: Any) {
         self.menuDelegate?.shouldCloseMenu(menu: self)
@@ -105,7 +107,6 @@ class DrawerViewController: UIViewController {
         //called when user sign in state changes and called when set to determine how view handles user sign in state
         self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             
-            //TODO: could also just direct user to signIN when they select shared trips if user is not signed in... might be easier and help with account creation
             guard user != nil else {
                 //user is not signed in
                 self.menuItems.hideItem(item: .SignOut)
@@ -150,7 +151,14 @@ class DrawerViewController: UIViewController {
             menuDelegate?.shouldClearMap(trip: nil)
             menuDelegate?.shouldCloseMenu(menu: self)
         case .MyTrips:
-            trips = RealmManager.fetchData()
+            
+            //probably handle the user id optional check here because we will need to do two fetch methods as one returns an array of trips and one returns a Result list of the trips
+            let uid = Auth.auth().currentUser?.uid
+            //getUserid and fetch trips
+            self.storageInteractor.fetchTrips(userId: uid) { (tripList) in
+                self.tripsFirebase = tripList as? Results
+            }
+            
             changeTableState(state: .MyTrips)
         case .SignIn:
             presentSignIn()
@@ -177,6 +185,8 @@ class DrawerViewController: UIViewController {
     }
     
     func handleTripSelection(indexPath: IndexPath) {
+        
+        //select the correct data source to go off of, realm or firebase
         guard let selection = trips?[indexPath.row] else {
             return
         }

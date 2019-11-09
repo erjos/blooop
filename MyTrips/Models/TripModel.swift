@@ -3,8 +3,6 @@ import GooglePlaces
 import Realm
 import RealmSwift
 
-//Do we want to keep existing realms
-
 //***IMPORTANT***
 //Document schema versions to keep track of migrations
 class PrimaryLocation: Object {
@@ -13,18 +11,42 @@ class PrimaryLocation: Object {
     @objc dynamic var placeID: String = ""
     //** City Name
     @objc dynamic var locationName: String = ""
+    
+    //ACCOUNT FOR THESE CHANGE IN THE MIGRATION
     //** Trip Unique Identifier
-    //ACCOUNT FOR THIS CHANGE IN THE MIGRATION
     @objc dynamic var tripUUID: String = ""
+    //** Trip Owner uuid
+    @objc dynamic var owner: String = ""
     
     //** User label - could be optional
     @objc dynamic var label: String = ""
+    
+    //At no point right now are we setting a date on a primary location
     @objc dynamic var date: Date?
     
+    //** returns the tripUUID as the primaryKey for realm to reference
     override static func primaryKey() -> String {
         return "tripUUID"
     }
     
+    //** Helper function to setup PrimaryLocation from firebase doc reference
+    func setPrimaryLocation(_ data: [String: Any], _ uuid: String) {
+        self.placeID = data["placeId"] as? String ?? ""
+        self.locationName = data["locationName"] as? String ?? ""
+        self.owner = data["owner"] as? String ?? ""
+        self.label = data["label"] as? String ?? ""
+        
+        self.tripUUID = uuid
+        //create property for "owner"
+        
+        let subLocationList = data["subLocations"] as? [[String : Any]] ?? [[String:Any]]()
+        
+        for subData in subLocationList {
+            let sub = SubLocation()
+            sub.setSublocation(data: subData)
+            subLocations.append(sub)
+        }
+    }
     
     //** Generates ID when user is not logged in
     func setTripUUID() {
@@ -102,5 +124,13 @@ class SubLocation: Object {
             GoogleResourceManager.sharedInstance.addGmsPlace(place: gms)
             success(self.placeID, true)
         }
+    }
+    
+    //** Helper function to setup SubLocation from firebase doc reference
+    func setSublocation(data: [String : Any]) {
+        self.label = data["label"] as? String
+        self.date = data["date"] as? Date
+        self.placeID = data["placeId"] as? String ?? ""
+        self.notes = data["notes"] as? String ?? ""
     }
 }

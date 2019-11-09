@@ -14,16 +14,16 @@ class RealmManager {
         }
     }
     
-    static func fetchData() -> Results<PrimaryLocation>? {
-        var results: Results<PrimaryLocation>?
-        do {
-            let realm = try Realm()
-            results = realm.objects(PrimaryLocation.self)
-            return results
-        } catch let error as NSError {
-            //handle error
-            print(error)
-        }
-        return results
-    }
+//    static func fetchData() -> Results<PrimaryLocation>? {
+//        var results: Results<PrimaryLocation>?
+//        do {
+//            let realm = try Realm()
+//            results = realm.objects(PrimaryLocation.self)
+//            return results
+//        } catch let error as NSError {
+//            //handle error
+//            print(error)
+//        }
+//        return results
+//    }
 }

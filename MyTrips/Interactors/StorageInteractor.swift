@@ -32,6 +32,22 @@ class StorageInteractor: Storage {
         
         self.networkStorageClient.updateTrip(trip, uuid)
     }
+    
+    func fetchTrips(userId: String?, success: @escaping ([PrimaryLocation]) -> Void) {
+        guard let uuid = userId else {
+            //fetch data from the realm
+            
+            
+            return
+        }
+        
+        //add closure for error handeling as well
+        self.networkStorageClient.fetchTrips(uuid) { (tripList) in
+            success(tripList)
+        }
+        
+        //fetch data from the network
+    }
 }
 
 protocol Storage {
@@ -39,6 +55,8 @@ protocol Storage {
     func saveNewTrip(userId: String?, trip: PrimaryLocation)
     //updates existing trip
     func updateTrip(userId: String?, trip:PrimaryLocation)
+    //fetches stored trips
+    func fetchTrips(userId: String?, success: @escaping (_ trips: [PrimaryLocation])->Void)
 }
 
 //delete the RealmManager class and test that local storage functionality is retained

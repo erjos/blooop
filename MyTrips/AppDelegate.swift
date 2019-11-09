@@ -27,9 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
-        //pull from realm
-        let trips = RealmManager.fetchData()
-        self.lastTrip = trips?.first(where: { tripID == $0.tripUUID })
+        //pull from realm in order to display the last trip edited
+        //UNCOMMENT HERE
+        //let trips = RealmManager.fetchData()
+        //self.lastTrip = trips?.first(where: { tripID == $0.tripUUID })
         
         //UINavigationBar.styleTitle(with: UIColor.white)
         return true
